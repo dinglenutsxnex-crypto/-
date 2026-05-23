@@ -1,4 +1,4 @@
-import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone } from "@babylonjs/core";
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, TransformNode } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
@@ -10,11 +10,6 @@ async function loadBytes(path: string): Promise<Uint8Array> {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to load ${path}`);
   return new Uint8Array(await res.arrayBuffer());
-}
-
-interface BoneIdMapEntry {
-  name: string;
-  id: number;
 }
 
 function parseSkeletonIds(xmlText: string): Map<number, string> {
@@ -50,8 +45,6 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
   ]);
 
   const idToName = parseSkeletonIds(skeletonXml);
-  const nameToId = new Map<string, number>();
-  for (const [id, name] of idToName) nameToId.set(name, id);
   const anim = AnimationBinaries.LoadFromBytes(animBytes, "agl_super_1_kick_1.bytes");
   if (!anim) {
     console.error("Failed to parse animation");
@@ -65,29 +58,28 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     hasTangents: !!anim.animationTangents,
   });
 
-  const skel = result.skeleton;
-  if (!skel) {
-    console.error("No skeleton on character");
-    return;
+  // Map all scene TransformNodes by name (covers all parts: body, head, hair, etc.)
+  const tnByName = new Map<string, TransformNode>();
+  for (const tn of scene.transformNodes) {
+    if (!tnByName.has(tn.name)) tnByName.set(tn.name, tn);
   }
 
-  // Build bone lookup by ID — use skeleton bones which handle dirty invalidation
-  const boneById = new Map<number, Bone>();
-  for (const sk of scene.skeletons) {
-    for (const b of sk.bones) {
-      const boneId = nameToId.get(b.name);
-      if (boneId !== undefined && !boneById.has(boneId)) boneById.set(boneId, b);
-    }
-  }
-
-  // Debug: log which animation bone IDs we match against skeleton bones
-  let matchedBones = 0;
+  // Debug bone match rate
+  let matched = 0;
   const unmatched: number[] = [];
   for (const id of anim.bonesIDs) {
-    if (boneById.has(id)) matchedBones++;
+    const bname = idToName.get(id);
+    if (bname && tnByName.has(bname)) matched++;
     else unmatched.push(id);
   }
-  console.log(`Animation bone match: ${matchedBones}/${anim.bonesIDs.length} matched, ${unmatched.length} unmatched:`, unmatched);
+  console.log(`Animation bone match: ${matched}/${anim.bonesIDs.length} matched, ${unmatched.length} unmatched:`, unmatched);
+
+  // Force skeleton to recompute matrices each frame after we update TNs
+  const skel = result.skeleton;
+  if (!skel) {
+    console.error("No skeleton");
+    return;
+  }
 
   // Track frame timing
   let currentFrame = 0;
@@ -99,19 +91,21 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     const dt = (now - lastTime) / 1000;
     lastTime = now;
 
-    // Advance ~30 fps
     currentFrame = (currentFrame + dt * 30) % frameCount;
     const frameIdx = Math.floor(currentFrame);
 
     const frame = anim.frames[frameIdx];
     for (let i = 0; i < anim.bonesIDs.length; i++) {
       const boneID = anim.bonesIDs[i];
-      const bone = boneById.get(boneID);
-      if (!bone) continue;
+      const boneName = idToName.get(boneID);
+      if (!boneName) continue;
+
+      const tn = tnByName.get(boneName);
+      if (!tn) continue;
 
       const t = frame.bonesAnimation[i];
-      bone.setPosition(t.position);
-      bone.setRotationQuaternion(t.rotation);
+      tn.position = t.position;
+      tn.rotationQuaternion = t.rotation;
     }
   });
 }

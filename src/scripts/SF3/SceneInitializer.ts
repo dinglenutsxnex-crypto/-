@@ -111,7 +111,9 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
       tn.position = t.position;
       tn.rotationQuaternion = t.rotation;
     }
-  });
+
+    // Force skeleton matrix recompute — TN changes don't always dirty the skeleton
+    for (const sk of scene.skeletons) (sk as any)._isDirty = true;
   });
 }
 

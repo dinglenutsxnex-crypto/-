@@ -105,7 +105,9 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
 
       const t = frame.bonesAnimation[i];
       tn.position = t.position;
-      tn.rotationQuaternion = t.rotation;
+      const q = t.rotation.clone();
+      q.normalize();
+      tn.rotationQuaternion = q;
     }
   });
 }

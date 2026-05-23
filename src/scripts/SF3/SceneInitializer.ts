@@ -41,7 +41,7 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
   // Load animation data
   const [skeletonXml, animBytes] = await Promise.all([
     loadBytes("assets/configs/content/bones/configs/skeleton.txt").then(b => new TextDecoder().decode(b)),
-    loadBytes("assets/animations/agl_super_1_kick_1.bytes"),
+    loadBytes("assets/animations/m_idle.bytes"),
   ]);
 
   const idToName = parseSkeletonIds(skeletonXml);

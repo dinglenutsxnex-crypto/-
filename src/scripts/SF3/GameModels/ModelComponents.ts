@@ -85,11 +85,8 @@ export async function assembleCharacter(
     }
   }
 
-  // Rotate master armature so character faces -Z
   const rootNodes: TransformNode[] = [];
   if (masterArmature) {
-    masterArmature.rotationQuaternion = null;
-    masterArmature.rotation.y = Math.PI / 2;
     rootNodes.push(masterArmature);
   }
 

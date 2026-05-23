@@ -112,6 +112,7 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
       tn.rotationQuaternion = t.rotation;
     }
   });
+  });
 }
 
 function setupCamera(scene: Scene): void {

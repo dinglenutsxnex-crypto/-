@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="helm_agl_10">
+  <Prefabs>
+    <Prefab Name="helm_agl_10_tie1" ConfigName="helm_agl_10_bones" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="helm__agl_10__helmet" />
+    <Mesh Name="helm__agl_10__tie" />
+  </Meshes>
+  <Materials>
+    <Material Name="steel" CapsuleName="Head">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_head_top" />
+    </Material>
+    <Material Name="steel" CapsuleName="Neck">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_chest" />
+    </Material>
+  </Materials>
+</ModelObject>

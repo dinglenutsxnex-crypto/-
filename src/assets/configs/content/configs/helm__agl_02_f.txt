@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="agl_02">
+  <Meshes>
+    <Mesh Name="helm__agl_02__helmet" />
+    <Mesh Name="helm__agl_02__tie" />
+  </Meshes>
+  <Materials>
+    <Material Name="steel" CapsuleName="Head">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_head_top" />
+    </Material>
+    <Material Name="steel" CapsuleName="Neck">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_chest" />
+    </Material>
+  </Materials>
+</ModelObject>

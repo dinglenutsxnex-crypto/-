@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+	<Bones>
+		<Bone Name="w_twohanded_hammer_01_l" ID="200"/>
+		<Bone Name="w_twohanded_hammer_02_l" ID="201"/>
+		<Bone Name="w_twohanded_hammer_trail1_l" ID="202"/>
+		<Bone Name="w_twohanded_hammer_trail2_l" ID="203"/>
+		<Bone Name="w_twohanded_hammer_trail3_l" ID="204"/>
+		<Bone Name="w_twohanded_hammer_trail4_l" ID="205"/>
+		<Bone Name="w_twohanded_hammer_03_l_wl" ID="206"/>
+		<Bone Name="w_twohanded_hammer_03_l_wr" ID="207"/>
+		<Bone Name="w_twohanded_hammer_01_r" ID="208"/>
+		<Bone Name="w_twohanded_hammer_02_r" ID="209"/>
+		<Bone Name="w_twohanded_hammer_trail1_r" ID="210"/>
+		<Bone Name="w_twohanded_hammer_trail2_r" ID="211"/>
+		<Bone Name="w_twohanded_hammer_trail3_r" ID="212"/>
+		<Bone Name="w_twohanded_hammer_trail4_r" ID="213"/>
+		<Bone Name="w_twohanded_hammer_03_r_wl" ID="214"/>
+		<Bone Name="w_twohanded_hammer_03_r_wr" ID="215"/>
+	</Bones>
+  <Vertexes>
+    <Vertex Name="twohanded_hammer_head_l_wl" BoneName="w_twohanded_hammer_03_l_wl" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="twohanded_hammer_head_l_wr" BoneName="w_twohanded_hammer_03_l_wr" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="twohanded_hammer_top_l" BoneName="w_twohanded_hammer_01_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="twohanded_hammer_top_r" BoneName="w_twohanded_hammer_01_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="twohanded_hammer_bottom_l" BoneName="w_twohanded_hammer_02_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="twohanded_hammer_bottom_r" BoneName="w_twohanded_hammer_02_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="twohanded_hammer_head_r_wl" BoneName="w_twohanded_hammer_03_r_wl" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="twohanded_hammer_head_r_wr" BoneName="w_twohanded_hammer_03_r_wr" LocalPosition="0.00000 0.00000 0.00000" />
+  </Vertexes>
+  <Mirroring>
+    <DualMirrorers>
+      <Mirrorer MirrorAxis="None">
+        <Bone Name="w_twohanded_hammer_01_r" MirrorBone="w_twohanded_hammer_01_l" />
+        <Bone Name="w_twohanded_hammer_02_r" MirrorBone="w_twohanded_hammer_02_l" />
+        <Bone Name="w_twohanded_hammer_trail1_r" MirrorBone="w_twohanded_hammer_trail1_l" />
+        <Bone Name="w_twohanded_hammer_trail2_r" MirrorBone="w_twohanded_hammer_trail2_l" />
+        <Bone Name="w_twohanded_hammer_trail3_r" MirrorBone="w_twohanded_hammer_trail3_l" />
+        <Bone Name="w_twohanded_hammer_trail4_r" MirrorBone="w_twohanded_hammer_trail4_l" />
+      </Mirrorer>
+    </DualMirrorers>
+  </Mirroring>
+  <Capsules>
+    <Capsule Name="w_twohanded_hammer_Attacking_Edge_l" Vertex1="twohanded_hammer_head_l_wl" Vertex2="twohanded_hammer_head_l_wr" Radius="14"/>
+    <Capsule Name="w_twohanded_hammer_Attacking_Edge_r" Vertex1="twohanded_hammer_head_r_wl" Vertex2="twohanded_hammer_head_r_wr" Radius="14" LeftMirrorCapsule="twohanded_Hammers_Attacking_Edge_l"/>
+    <Capsule Name="w_twohanded_hammer_Stave_l" Vertex1="twohanded_hammer_top_l" Vertex2="twohanded_hammer_bottom_l" Radius="6.3"/>
+    <Capsule Name="w_twohanded_hammer_Stave_r" Vertex1="twohanded_hammer_top_r" Vertex2="twohanded_hammer_bottom_r" Radius="6.3" LeftMirrorCapsule="w_twohanded_hammer_Stave_l"/>
+  </Capsules>
+</BonesData>

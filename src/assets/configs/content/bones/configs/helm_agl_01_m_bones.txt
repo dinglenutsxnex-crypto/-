@@ -1,0 +1,11 @@
+<BonesData>
+	<Bones>
+		<Bone Name="h_agl_01_m_hair_1" ID="5001"/>
+		<Bone Name="h_agl_01_m_hair_2" ID="5002"/>
+		<Bone Name="h_agl_01_m_hair_3" ID="5003"/>
+		<Bone Name="h_agl_01_m_hair_4" ID="5004"/>
+		<Bone Name="h_agl_01_m_hair_5" ID="5005"/>
+	</Bones>
+  <Vertexes>
+  </Vertexes>
+</BonesData>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+	<Bones>
+		<Bone Name="magic_joint_root" ID="400" Mass="1"/>
+		<Bone Name="magic_joint_right" ID="401" Mass="1"/>
+		<Bone Name="magic_joint_left" ID="402" Mass="1"/>
+		<Bone Name="magic_joint_top" ID="403" Mass="1"/>
+		<Bone Name="magic_joint_bottom" ID="404" Mass="1"/>
+	</Bones>
+    <Vertexes>
+    <Vertex Name="bottom" BoneName="magic_joint_top"/>
+    <Vertex Name="top" BoneName="magic_joint_root"/>
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="Shuriken_attacking_edge" Vertex1="top" Vertex2="bottom" Radius="6"/>
+  </Capsules>
+</BonesData>
+   

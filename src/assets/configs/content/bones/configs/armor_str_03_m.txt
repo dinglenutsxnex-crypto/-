@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="armor_str_03_m">
+  <Meshes>
+    <Mesh Name="str_03_m_body" />
+    <Mesh Name="str_03_m_shoulders" />
+  </Meshes>
+</ModelObject>

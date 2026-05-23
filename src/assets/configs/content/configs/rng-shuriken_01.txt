@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject>
+  <Meshes>
+    <Mesh Name="rng__shuriken_test__shuriken" />
+  </Meshes>
+</ModelObject>

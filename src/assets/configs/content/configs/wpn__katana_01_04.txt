@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn-katana_01_04">
+  <Prefabs>
+    <Prefab Name="w_katana_01_l" ConfigName="weapon_katana" MirroringDuplicate="0" Droppable="1" />
+    <Prefab Name="w_katana_01_r" ConfigName="weapon_katana" MirroringDuplicate="1" Droppable="1" />
+    <Prefab Name="w_katana_scabbard_01_l"/>
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__katana_01_04__l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__katana_01_04__r" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__katana_01_04__trail_l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__katana_01_04__trail_r" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__katana_01_04__scabbard_l"/>
+  </Meshes>
+  <Materials>
+    <Material Name="katana" CapsuleName="Katana_Attacking_Edge_l">
+      <Vertex Name="katana_bottom_l" />
+      <Vertex Name="katana_top_l" />
+    </Material>
+    <Material Name="katana" CapsuleName="Katana_Attacking_Edge_r">
+      <Vertex Name="katana_bottom_r" />
+      <Vertex Name="katana_top_r" />
+    </Material>
+  </Materials>
+</ModelObject>

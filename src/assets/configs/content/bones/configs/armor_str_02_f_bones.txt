@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+  <Bones>
+		<Bone Name="str_02_f_tie_l" ID="300"/>
+		<Bone Name="str_02_f_tie_l" ID="301"/>
+  </Bones>
+  <Vertexes>
+  </Vertexes>
+</BonesData>

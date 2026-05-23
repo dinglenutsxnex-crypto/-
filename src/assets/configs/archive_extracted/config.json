@@ -1,0 +1,25 @@
+{
+  "DefaultRequestTimeout": 5000,
+  "JoinZoneTimeout": 5000,
+  "Ping": {
+    "Delay": 2000,
+    "FailAttempts": 3
+  },
+  "OfflineRequestTimeout":{
+    "PerRequests" : 10,
+    "ExtraTimeout" : 500
+  },
+  "Timeouts" : {
+    "create_player": 10000,
+    "refresh_battles": 7000,
+    "set_chapter": 7000,
+    "ping": 3000
+  },
+  "TimeoutParams" : {
+      "Min" : 5000,
+      "Multiplier" : 2,
+      "Max" : 10000
+  },
+  "CheckEmail": true,
+  "BundlesBaseURL": "https://sf3assets.nekkimobile.ru/bundles/"
+}

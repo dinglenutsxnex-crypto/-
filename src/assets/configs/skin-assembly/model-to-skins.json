@@ -1,0 +1,68 @@
+{
+  "_comment": "Extracted from Unity asset bundles. Maps equipment Model name + gender to skin glb paths.",
+  "_skeleton": {
+    "_defaultSkeleton": "skeleton",
+    "_source": "fight_settings.yaml line 55: DefaultSkeleton: skeleton"
+  },
+  "_models": {
+    "arm__base_m": {
+      "skinType": "arm",
+      "parts": ["body", "pants_l", "pants_r"],
+      "textureFiles": {
+        "_CM": "arm__base_m_CM.png",
+        "_RGB": "arm__base_m_RGB.png",
+        "_SF": "arm__base_m_SF.png"
+      },
+      "_note": "armor (Type=Armor) model arm__base, male. Each part has same textures."
+    },
+    "head__01a_m": {
+      "skinType": "head",
+      "singleMesh": true,
+      "textureFiles": {
+        "_CM": "head__01a_m_CM.png",
+        "_RGB": "head__01a_m_RGB.png",
+        "_SF": "head__01a_m_SF.png"
+      },
+      "_note": "head (Head field) model head__01a, male. Single mesh, no sub-parts."
+    },
+    "hair__01_m": {
+      "skinType": "hair",
+      "singleMesh": true,
+      "textureFiles": {
+        "_CM": "hair__m_01_CM.png",
+        "_RGB": "hair__m_01_RGB.png",
+        "_SF": "hair__m_01_SF.png"
+      },
+      "_note": "helm (Type=Helmet) model hair-01, male. Textures misnamed: m/01 swapped vs folder name."
+    },
+    "wpn-fists_m": {
+      "skinType": "wpn",
+      "singleMesh": true,
+      "textureFiles": {},
+      "_note": "No wpn skins exist in assets. Fists have no mesh."
+    }
+  },
+  "_equipmentDefaults": {
+    "_source": "itemmodels.js + user_default.json",
+    "weapon": { "model": "wpn-fists" },
+    "armor": { "model": "arm__base", "note": "user_default.json overrides to arm-base, but canonical is arm__base from itemmodels.js DefaultArmor" },
+    "helmet": { "model": "hair-01" }
+  },
+  "_headDefaults": {
+    "_source": "heads.js + user_default.json Appearance.Head",
+    "head__01a": "Default head for race 1a"
+  },
+  "_genderSuffix": {
+    "male": "_m",
+    "female": "_f",
+    "_rule": "Appended for Armor, Helmet, and names containing 'HEAD' (case-insensitive). From ModelObject.LoadModel() line 90-100."
+  },
+  "_skinPathPattern": {
+    "_description": "Unity LoadSkinPrefab builds path from mesh name by splitting on '__'",
+    "_typeIndex": 0,
+    "_subtypeIndex": 1,
+    "_rule": "path = '{type}/{subtype}/{fullMeshName}'",
+    "_example": "arm__base_m__body → arm/base_m/arm__base_m__body → skins/arm/arm__base_m__body/mesh.glb"
+  },
+  "_folderTypes": ["arm", "helm", "wpn", "rng", "head", "hair", "mgc"]
+}

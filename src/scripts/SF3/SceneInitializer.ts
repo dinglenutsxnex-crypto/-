@@ -1,0 +1,134 @@
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Skeleton, TransformNode } from "@babylonjs/core";
+import "@babylonjs/loaders";
+import { SceneManager } from "../core/SceneManager";
+import { Gender } from "../sf3DTO/Gender";
+import { EquipmentType } from "./Items/EquipmentType";
+import { assembleCharacter } from "./GameModels/ModelComponents";
+import { AnimationBinaries } from "./Moves/AnimationBinaries";
+
+async function loadBytes(path: string): Promise<Uint8Array> {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`Failed to load ${path}`);
+  return new Uint8Array(await res.arrayBuffer());
+}
+
+interface BoneIdMapEntry {
+  name: string;
+  id: number;
+}
+
+function parseSkeletonIds(xmlText: string): Map<number, string> {
+  const map = new Map<number, string>();
+  const regex = /<Bone\s+Name="([^"]+)"\s+ID="(\d+)"/g;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(xmlText)) !== null) {
+    map.set(parseInt(match[2], 10), match[1]);
+  }
+  return map;
+}
+
+export async function initializeScene(mgr: SceneManager): Promise<void> {
+  const scene = mgr.scene;
+  setupCamera(scene);
+  setupLights(scene);
+
+  const result = await assembleCharacter(scene, Gender.Male, "head__01a", [
+    { type: EquipmentType.Armor, model: "arm__base" },
+    { type: EquipmentType.Helmet, model: "hair-01" },
+  ]);
+
+  console.log("Character assembled:", {
+    meshes: result.meshes.map(m => m.name),
+    skeleton: result.skeleton?.name,
+    roots: result.rootNodes.map(n => n.name),
+  });
+
+  // Load animation data
+  const [skeletonXml, animBytes] = await Promise.all([
+    loadBytes("assets/configs/content/bones/configs/skeleton.txt").then(b => new TextDecoder().decode(b)),
+    loadBytes("assets/animations/agl_super_1_kick_1.bytes"),
+  ]);
+
+  const idToName = parseSkeletonIds(skeletonXml);
+  const anim = AnimationBinaries.LoadFromBytes(animBytes, "agl_super_1_kick_1.bytes");
+  if (!anim) {
+    console.error("Failed to parse animation");
+    return;
+  }
+
+  console.log("Animation loaded:", {
+    frames: anim.frames.length,
+    bones: anim.bonesIDs.length,
+    boneIds: anim.bonesIDs,
+    hasTangents: !!anim.animationTangents,
+  });
+
+  const skel = result.skeleton;
+  if (!skel) {
+    console.error("No skeleton on character");
+    return;
+  }
+
+  // Build TransformNode lookup by name — scan ALL TransformNodes in the scene
+  // (multi-glb assembly means bones can live under different armatures)
+  const tnByName = new Map<string, TransformNode>();
+  for (const tn of scene.transformNodes) {
+    if (!tnByName.has(tn.name)) tnByName.set(tn.name, tn);
+  }
+
+  // Debug: log which animation bone IDs we can actually find TNs for
+  let matchedBones = 0;
+  const unmatched: number[] = [];
+  for (const id of anim.bonesIDs) {
+    const bname = idToName.get(id);
+    if (bname && tnByName.has(bname)) matchedBones++;
+    else unmatched.push(id);
+  }
+  console.log(`Animation bone match: ${matchedBones}/${anim.bonesIDs.length} matched, ${unmatched.length} unmatched:`, unmatched);
+  // Log all TransformNode names for debugging
+  console.log("All scene TransformNodes:", [...tnByName.keys()]);
+
+  // Track frame timing
+  let currentFrame = 0;
+  const frameCount = anim.frames.length;
+  let lastTime = performance.now();
+
+  scene.onBeforeRenderObservable.add(() => {
+    const now = performance.now();
+    const dt = (now - lastTime) / 1000;
+    lastTime = now;
+
+    // Advance ~30 fps
+    currentFrame = (currentFrame + dt * 30) % frameCount;
+    const frameIdx = Math.floor(currentFrame);
+
+    const frame = anim.frames[frameIdx];
+    for (let i = 0; i < anim.bonesIDs.length; i++) {
+      const boneID = anim.bonesIDs[i];
+      const boneName = idToName.get(boneID);
+      if (!boneName) continue;
+
+      const tn = tnByName.get(boneName);
+      if (!tn) continue;
+
+      const t = frame.bonesAnimation[i];
+      tn.position = t.position;
+      tn.rotationQuaternion = t.rotation;
+    }
+  });
+}
+
+function setupCamera(scene: Scene): void {
+  const cam = new FreeCamera("cam", new Vector3(0, 155, -950), scene);
+  cam.setTarget(Vector3.Zero());
+  cam.minZ = 10;
+  cam.maxZ = 5000;
+  cam.fov = 30 * Math.PI / 180;
+  scene.activeCamera = cam;
+}
+
+function setupLights(scene: Scene): void {
+  new HemisphericLight("hemi", new Vector3(0, 1, 0), scene);
+  const dir = new DirectionalLight("dir", new Vector3(-0.5, -1, -0.3), scene);
+  dir.position.set(300, 500, 300);
+}

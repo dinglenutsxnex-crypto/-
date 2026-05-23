@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+<Bones>
+		<Bone Name="w_spear_01_l" ID="753"/>
+		<Bone Name="w_spear_02_blade_l" ID="754"/>
+		<Bone Name="w_spear_trail1_l" ID="755"/>
+		<Bone Name="w_spear_trail2_l" ID="756"/>
+		<Bone Name="w_spear_trail3_l" ID="757"/>
+		<Bone Name="w_spear_trail4_l" ID="758"/>
+		<Bone Name="w_spear_03_stave_l" ID="759"/>
+		<Bone Name="w_spear_01_r" ID="760"/>
+		<Bone Name="w_spear_02_blade_r" ID="761"/>
+		<Bone Name="w_spear_trail1_r" ID="762"/>
+		<Bone Name="w_spear_trail2_r" ID="763"/>
+		<Bone Name="w_spear_trail3_r" ID="764"/>
+		<Bone Name="w_spear_trail4_r" ID="765"/>
+		<Bone Name="w_spear_03_stave_r" ID="766"/>
+</Bones>
+  <Mirroring>
+    <DualMirrorers>
+      <Mirrorer MirrorAxis="None">
+        <Bone Name="w_spear_01_l" MirrorBone="w_spear_01_r" />
+        <Bone Name="w_spear_02_blade_l" MirrorBone="w_spear_02_blade_r" />
+        <Bone Name="w_spear_03_stave_l" MirrorBone="w_spear_03_stave_r" />
+		<Bone Name="w_spear_trail1_l" MirrorBone="w_spear_trail1_r" />
+        <Bone Name="w_spear_trail2_l" MirrorBone="w_spear_trail2_r" />
+        <Bone Name="w_spear_trail3_l" MirrorBone="w_spear_trail3_r" />
+        <Bone Name="w_spear_trail4_l" MirrorBone="w_spear_trail4_r" />
+      </Mirrorer>
+    </DualMirrorers>
+  </Mirroring>
+  <Vertexes>
+    <Vertex Name="spear_bottom_l" BoneName="w_spear_03_stave_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="spear_top_l" BoneName="w_spear_02_blade_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="spear_bottom_r" BoneName="w_spear_03_stave_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="spear_top_r" BoneName="w_spear_02_blade_r" LocalPosition="0.00000 0.00000 0.00000" />
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="Spear_Attacking_Edge_l" Vertex1="spear_bottom_l" Vertex2="spear_top_l" Radius="3"/>
+    <Capsule Name="Spear_Attacking_Edge_r" Vertex1="spear_bottom_r" Vertex2="spear_top_r" Radius="3" LeftMirrorCapsule="Spear_Attacking_Edge_l"/>
+  </Capsules>
+</BonesData>

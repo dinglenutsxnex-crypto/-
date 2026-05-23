@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn__hammers_01_02">
+  <Prefabs>
+    <Prefab Name="w_hammer_01_l" ConfigName="weapon_hammers" Droppable="1" />
+    <Prefab Name="w_hammer_01_r" ConfigName="weapon_hammers" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__hammer_01_02__l" Droppable="1" />
+    <Mesh Name="wpn__hammer_01_02__r" Droppable="1" />
+    <Mesh Name="wpn__hammer_01_02__trail_l" />
+    <Mesh Name="wpn__hammer_01_02__trail_r" />
+  </Meshes>
+  <Materials>
+    <Material Name="hammer" CapsuleName="Hammers_Attacking_Edge_l">
+      <Vertex Name="hammer_top_l" />
+      <Vertex Name="hammer_bottom_l" />
+    </Material>
+    <Material Name="hammer" CapsuleName="Hammers_Attacking_Edge_r">
+      <Vertex Name="hammer_top_r" />
+      <Vertex Name="hammer_bottom_r" />
+    </Material>
+  </Materials>
+</ModelObject>
+

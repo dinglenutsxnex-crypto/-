@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+<Bones>
+		<Bone Name="w_naginata_01_l" ID="240"/>
+		<Bone Name="w_naginata_02_blade_l" ID="241"/>
+		<Bone Name="w_naginata_03_stave_l" ID="242"/>
+		<Bone Name="w_naginata_01_r" ID="250"/>
+		<Bone Name="w_naginata_02_blade_r" ID="251"/>
+		<Bone Name="w_naginata_03_stave_r" ID="252"/>
+		<Bone Name="w_naginata_trail1_l" ID="260"/>
+		<Bone Name="w_naginata_trail2_l" ID="261"/>
+		<Bone Name="w_naginata_trail3_l" ID="262"/>
+		<Bone Name="w_naginata_trail4_l" ID="263"/>
+		<Bone Name="w_naginata_trail1_r" ID="264"/>
+		<Bone Name="w_naginata_trail2_r" ID="265"/>
+		<Bone Name="w_naginata_trail3_r" ID="266"/>
+		<Bone Name="w_naginata_trail4_r" ID="267"/>
+</Bones>
+  <Mirroring>
+    <DualMirrorers>
+      <Mirrorer MirrorAxis="None">
+        <Bone Name="w_naginata_01_r" MirrorBone="w_naginata_01_l" />
+        <Bone Name="w_naginata_02_blade_r" MirrorBone="w_naginata_02_blade_l" />
+        <Bone Name="w_naginata_03_stave_r" MirrorBone="w_naginata_03_stave_l" />
+		<Bone Name="w_naginata_trail1_r" MirrorBone="w_naginata_trail1_l" />
+        <Bone Name="w_naginata_trail2_r" MirrorBone="w_naginata_trail2_l" />
+        <Bone Name="w_naginata_trail3_r" MirrorBone="w_naginata_trail3_l" />
+        <Bone Name="w_naginata_trail4_r" MirrorBone="w_naginata_trail4_l" />
+      </Mirrorer>
+    </DualMirrorers>
+  </Mirroring>
+  <Vertexes>
+    <Vertex Name="naginata_bottom_l" BoneName="w_naginata_03_stave_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="naginata_top_l" BoneName="w_naginata_02_blade_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="naginata_bottom_r" BoneName="w_naginata_03_stave_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="naginata_top_r" BoneName="w_naginata_02_blade_r" LocalPosition="0.00000 0.00000 0.00000" />
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="naginata_Attacking_Edge_l" Vertex1="naginata_bottom_l" Vertex2="naginata_top_l" Radius="3"/>
+    <Capsule Name="naginata_Attacking_Edge_r" Vertex1="naginata_bottom_r" Vertex2="naginata_top_r" Radius="3" LeftMirrorCapsule="naginata_Attacking_Edge_l"/>
+  </Capsules>
+</BonesData>

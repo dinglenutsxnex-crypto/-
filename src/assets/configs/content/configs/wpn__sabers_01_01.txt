@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject>
+  <Prefabs>
+    <Prefab Name="w_saber_01_l" ConfigName="weapon_sabers" Droppable="1" />
+    <Prefab Name="w_saber_01_r" ConfigName="weapon_sabers" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__sabers_01_01__l" Droppable="1" />
+    <Mesh Name="wpn__sabers_01_01__r" Droppable="1" />
+    <Mesh Name="wpn__sabers_01_01__l_tie" Droppable="1" />
+    <Mesh Name="wpn__sabers_01_01__r_tie" Droppable="1" />
+    <Mesh Name="wpn__sabers_01_01__trail_l" Droppable="1"  />
+    <Mesh Name="wpn__sabers_01_01__trail_r" Droppable="1"  />
+  </Meshes>
+  <Materials>
+    <Material Name="steel" CapsuleName="Sword_Attacking_Edge_l">
+      <Vertex Name="saber_top_l" />
+      <Vertex Name="saber_bottom_l" />
+    </Material>
+    <Material Name="steel" CapsuleName="Sword_Attacking_Edge_r">
+      <Vertex Name="saber_top_r" />
+      <Vertex Name="saber_bottom_r" />
+    </Material>
+  </Materials>
+</ModelObject>

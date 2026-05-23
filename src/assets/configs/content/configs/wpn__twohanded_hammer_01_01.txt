@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn__twohanded_hammers_01_02">
+  <Prefabs>
+    <Prefab Name="w_twohanded_hammer_01_l" ConfigName="weapon_twohanded_hammer" Droppable="1" />
+    <Prefab Name="w_twohanded_hammer_01_r" ConfigName="weapon_twohanded_hammer" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__twohanded_hammer_01_01__l" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__twohanded_hammer_01_01__r" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__twohanded_hammer_01_01__trail_l" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__twohanded_hammer_01_01__trail_r" MirroringDuplicate="0" Droppable="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="hammer" CapsuleName="w_twohanded_hammer_Attacking_Edge_l">
+      <Vertex Name="twohanded_hammer_head_l_wl" />
+      <Vertex Name="twohanded_hammer_headl_wr" />
+    </Material>
+    <Material Name="hammer" CapsuleName="w_twohanded_hammer_Attacking_Edge_r">
+      <Vertex Name="twohanded_hammer_head_r_wl" />
+      <Vertex Name="twohanded_hammer_head_r_wl" />
+    </Material>
+    <Material Name="wood" CapsuleName="w_twohanded_hammer_Stave_l">
+      <Vertex Name="twohanded_hammer_top_l" />
+      <Vertex Name="twohanded_hammer_bottom_l" />
+    </Material>
+    <Material Name="wood" CapsuleName="w_twohanded_hammer_Stave_r">
+      <Vertex Name="twohanded_hammer_top_r" />
+      <Vertex Name="twohanded_hammer_bottob_r" />
+    </Material>
+  </Materials>
+</ModelObject>

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SHADOW_SWORD_LONELY_SPINNING_SLASH
+  m_Rect:
+    serializedVersion: 2
+    x: 9.07612
+    y: 0
+    width: 45.847755
+    height: 64
+  m_Offset: {x: 2.7327392E-06, y: 0}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32.32323
+  m_Pivot: {x: 0.50000006, y: 0.5}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RD:
+    texture: {fileID: 2800000, guid: bbc40fd3a024c23408c1e49419217d59, type: 3}
+    alphaTexture: {fileID: 0}
+    vertices:
+    - serializedVersion: 2
+      pos: {x: 0.6496875, y: 0.99000007, z: 0}
+    - serializedVersion: 2
+      pos: {x: 0.7115625, y: -0.40218753, z: 0}
+    - serializedVersion: 2
+      pos: {x: 0.7115625, y: 0.83531255, z: 0}
+    - serializedVersion: 2
+      pos: {x: 0.30937502, y: -0.99000007, z: 0}
+    - serializedVersion: 2
+      pos: {x: -0.0928125, y: -0.99000007, z: 0}
+    - serializedVersion: 2
+      pos: {x: -0.5259375, y: 0.99000007, z: 0}
+    - serializedVersion: 2
+      pos: {x: -0.680625, y: 0.83531255, z: 0}
+    - serializedVersion: 2
+      pos: {x: -0.7115625, y: -0.0928125, z: 0}
+    - serializedVersion: 2
+      pos: {x: -0.7115625, y: -0.37125, z: 0}
+    indices:
+    - 8
+    - 7
+    - 4
+    - 6
+    - 4
+    - 7
+    - 5
+    - 4
+    - 6
+    - 0
+    - 4
+    - 5
+    - 3
+    - 4
+    - 0
+    - 1
+    - 3
+    - 0
+    - 2
+    - 1
+    - 0
+    textureRect:
+      serializedVersion: 2
+      x: 9.07612
+      y: 0
+      width: 45.847755
+      height: 64
+    textureRectOffset: {x: 0, y: 0}
+    settingsRaw: 64
+    uvTransform: {x: 32.32323, y: 32, z: 32.32323, w: 32}

@@ -1,0 +1,23 @@
+Lines:
+  - Hint_Shadow_Form_Skill_Helmet
+  - Hint_Shadow_Form_Skill_Weapon
+  - Hint_Shadow_Form_Skill_Armor
+  - Hint_Shadow_Form_Cooldown
+  # - Lore_Hint_1
+  # - Lore_Hint_2
+  # - Lore_Hint_3
+  # - Lore_Hint_4
+  # - Lore_Hint_5
+  # - Lore_Hint_6
+  # - Lore_Hint_7
+  # - Lore_Hint_8
+  # - Lore_Hint_9
+  # - Lore_Hint_10
+  # - Lore_Hint_11
+  # - Lore_Hint_12
+  # - Lore_Hint_13
+  # - Lore_Hint_14
+  # - Lore_Hint_15
+  # - Lore_Hint_16
+  # - Lore_Hint_17
+  # - Lore_Hint_18

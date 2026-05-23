@@ -1,0 +1,415 @@
+{
+  "format": "sf3-scene-v1",
+  "source": "fight.unity",
+  "sceneName": "fight",
+  "renderSettings": {
+    "fog": 1,
+    "fogColor": {
+      "r": 1,
+      "g": 0,
+      "b": 0.14482737,
+      "a": 1
+    },
+    "fogMode": 1,
+    "fogDensity": 0.01,
+    "linearFogStart": 180,
+    "linearFogEnd": 2000,
+    "ambientSkyColor": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 1
+    },
+    "ambientIntensity": 1,
+    "ambientMode": 3
+  },
+  "lightmapSettings": {
+    "bakeResolution": 40,
+    "textureWidth": 1024,
+    "textureHeight": 1024
+  },
+  "hierarchy": [
+    {
+      "name": "ColorManager",
+      "layer": 0,
+      "isActive": 1,
+      "tag": "Untagged",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "81ea3aab6eef140741e58000d7025a3e",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "EffectsManager",
+      "layer": 0,
+      "isActive": 1,
+      "tag": "Untagged",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "8a29ac1f8a3c2e7997c774bdc74c384a",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "BattleCamera",
+      "layer": 0,
+      "isActive": 1,
+      "tag": "Untagged",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "dffc39a796cb5122f175f44b6a9feb53",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Main Camera",
+          "layer": 0,
+          "isActive": 1,
+          "tag": "MainCamera",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": null,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "eulerHint": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "components": [
+            {
+              "type": "camera",
+              "data": {
+                "type": "perspective",
+                "enabled": 1,
+                "clearFlags": 1,
+                "backgroundColor": {
+                  "r": 0.32352942,
+                  "g": 0.32352942,
+                  "b": 0.32352942,
+                  "a": 0.019607844
+                },
+                "nearClip": 10,
+                "farClip": 5000,
+                "fieldOfView": 30,
+                "orthographicSize": 5,
+                "depth": -1,
+                "cullingMask": 939524095,
+                "targetTexture": null,
+                "viewport": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1,
+                  "height": 1
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "0441c7bdcda88773c55700fef052b8c4",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "7464b78a67bc883e9d06f5f8523961d0",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "9d6cd449d85994cc6438aca941a07c62",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "8a9944fe38943b54418e0568fedfaaaa",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "3b31d377767258a594eab4f67dcc5eec",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "1ddcb5a73a9d389a4b21dba5e2b8ff0f",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "75cdd955170dfb22a6da4d55e583e62f",
+                  "_indent": 2
+                }
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "battle_controller",
+      "layer": 0,
+      "isActive": 1,
+      "tag": "Untagged",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "f7a93727e663b1fda36c04f0a8a4c741",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "models_container",
+      "layer": 0,
+      "isActive": 1,
+      "tag": "Untagged",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "ad837feddbc76605bb4c7f1dc18ea68f",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "game_cheats_controller",
+      "layer": 0,
+      "isActive": 1,
+      "tag": "Untagged",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "c52ed987716154bd0a11fa6e5f24a602",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": []
+    }
+  ]
+}

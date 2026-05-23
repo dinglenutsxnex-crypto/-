@@ -1,0 +1,36 @@
+<BonesData>
+  <Vertexes>
+    <Vertex Name="dual_sword_top_l" BoneName="w_dual_swords_02_l" LocalPosition="0.00000 0.00000 -2.40000" />
+    <Vertex Name="dual_sword_bottom_l" BoneName="w_dual_swords_01_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="dual_sword_top_r" BoneName="w_dual_swords_02_r" LocalPosition="0.00000 0.00000 2.40000" />
+    <Vertex Name="dual_sword_bottom_r" BoneName="w_dual_swords_01_r" LocalPosition="0.00000 0.00000 0.00000" />
+  </Vertexes>
+  <Bones>
+    <Bone Name="w_dual_swords_01_l" ID="200"/>
+    <Bone Name="w_dual_swords_02_l" ID="201"/>
+    <Bone Name="w_dual_swords_01_r" ID="202"/>
+    <Bone Name="w_dual_swords_02_r" ID="203"/>
+	<Bone Name="w_dual_swords_trail1_l" ID="260"/>
+	<Bone Name="w_dual_swords_trail2_l" ID="261"/>
+	<Bone Name="w_dual_swords_trail3_l" ID="262"/>
+	<Bone Name="w_dual_swords_trail4_l" ID="263"/>
+	<Bone Name="w_dual_swords_trail1_r" ID="264"/>
+	<Bone Name="w_dual_swords_trail2_r" ID="265"/>
+	<Bone Name="w_dual_swords_trail3_r" ID="266"/>
+	<Bone Name="w_dual_swords_trail4_r" ID="267"/>
+  </Bones>
+  <Mirroring>
+    <DualMirrorers>
+      <Mirrorer MirrorAxis="None">
+        <Bone Name="w_dual_swords_trail1_l" MirrorBone="w_dual_swords_trail1_r" />
+        <Bone Name="w_dual_swords_trail2_l" MirrorBone="w_dual_swords_trail2_r" />
+        <Bone Name="w_dual_swords_trail3_l" MirrorBone="w_dual_swords_trail3_r" />
+        <Bone Name="w_dual_swords_trail4_l" MirrorBone="w_dual_swords_trail4_r" />
+      </Mirrorer>
+    </DualMirrorers>
+  </Mirroring>
+  <Capsules>
+    <Capsule Name="Dual_Sword_Attacking_Edge_l" Vertex1="dual_sword_top_l" Vertex2="dual_sword_bottom_l" Radius="2.5" />
+    <Capsule Name="Dual_Sword_Attacking_Edge_r" Vertex1="dual_sword_top_r" Vertex2="dual_sword_bottom_r" Radius="2.5" LeftMirrorCapsule="Dual_Sword_Attacking_Edge_l" />
+  </Capsules>
+</BonesData>

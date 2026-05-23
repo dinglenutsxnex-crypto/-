@@ -1,0 +1,1160 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Localization>
+  <Words>    
+
+    <Word Title="configs_downloaded">CONFIG UPDATE</Word>
+    <Word Title="unrecoverable_error">UNRECOVERABLE ERROR</Word>
+    <Word Title="user_cleared">USER IS BEING CLEARED</Word>
+    <Word Title="player_updated">PLAYER DATA UPDATED</Word>
+
+    <Word Title="booster">BOOSTER PACK</Word>
+    
+    <Word Title="beta_test_login_email">Please input your beta-test email:</Word>
+    <Word Title="beta_test_login_email_fail">Wrong e-mail:
+    
+Please input e-mail used for beta-test registration.</Word>
+
+    <Word Title="error_CbtInvalidEmail">Wrong e-mail:
+    
+Please input e-mail used for beta-test registration.</Word>
+    
+    <Word Title="server_connection_data_loss_possible">server_connection_data_loss_possible</Word>
+    <Word Title="wait_brawler">(Replace_me)Searching...</Word>
+    <Word Title="error">Error</Word>
+
+    <Word Title="replace_perk">Do you want to replace {0} with {1}?</Word>
+    <Word Title="replace_same_type_perk">Ability {0} of the same type has already been applied. Do you want to replace it with {1}?</Word>
+    
+    <Word Title="beta_LegionDojo_MQ_Tutorial_Controls_FightEnter">I'm your sergeant. This is first legionary training.</Word>
+    <Word Title="TUTORIAL">LET'S GO!</Word>
+    <Word Title="SKIP">SKIP</Word>
+    <Word Title="battle_type_test">TEST</Word>
+
+
+    <Word Title="error_BrawlerCannotFindEnemy">error_BrawlerCannotFindEnemy</Word>
+    <Word Title="error_BrawlerFightMissed">error_BrawlerFightMissed</Word>
+    <Word Title="error_BrawlerInvalidEnemy">error_BrawlerInvalidEnemy</Word>
+    <Word Title="error_BrawlerAlreadyStarted">error_BrawlerAlreadyStarted</Word>
+    <Word Title="error_BrawlerInvalidTotalRounds">error_BrawlerInvalidTotalRounds</Word>
+
+    <Word Title="error_InvalidDisplayName">error_InvalidDisplayName</Word>
+    
+
+    <!--
+    
+    <Word Title="dojo_chatter_Gizmo_1">Ever had such a feeling, like there’s no one else in Shadow Squad except us?</Word>
+    <Word Title="dojo_chatter_Gizmo_2">Shadow Squad is hated and feared, but we have some truly dogged people here, like you. Why don’t you, kinda, take a walk or something?</Word>
+    <Word Title="dojo_chatter_Gizmo_3">Sarge’s gonna shoot the works to make Legion better, yeah, he will.</Word>
+    <Word Title="dojo_chatter_Gizmo_4">I don’t get on with people, mostly - they say I'm all about trouble. But you and I shall be rapping all right, I’m sure.</Word>
+    <Word Title="dojo_chatter_Gizmo_4_f">Y’ain’t got nuffin in ya head ‘xept fighting. So we won’t get along, ‘cause Gizmo likes romance, you know.</Word>
+    <Word Title="dojo_chatter_Gizmo_5">Dodge when I attack, then strike. Ya ain't gonna win by swinging y’arms and legs at large.</Word>
+    
+    -->
+    
+    
+    
+    <!-- ALTERNATIVE (TEMP)  -->
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic_FightEnter_1_Alternative">I wanted to believe the Legion’s very heart to be the last place for them to look for us. But I was wrong. We’re being watched... that’s a spy, go get him!</Word>
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic_win_1_Alternative">Served him right... When he awakens, it will all seem like a bad dream for him.</Word>
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic_loss_Alternative">Heck, we were too relaxed and forgot the danger. Got to be much more cautious, or else trouble won’t be long for coming.</Word>
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial_FightEnter_1_Alternative">Look at the Scouts to see how dangerous Shadow Energy is. Their squad has led our way here. But dealing with a power like that always leaves its mark.</Word>
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial_FightEnter_2_Alternative">They say the Scouts are burying something at the Gorge. They finally have cracked their brain—the same expects your squad, so it’s your case to solve. Go!</Word>
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial_win_1_Alternative">The Scouts fell on you like wild beasts, didn’t they? Do you want to end up like that, too? Your Sarge must be blind not to see the menace.</Word>
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial_loss_1_Alternative">Shadow Energy has made the Scouts faster and angrier. At the beginning of our great way—who could’ve expected it to come to this?</Word>
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_FightEnter_1_Alternative">Sarge is building more Shadow squads. But I am sure the Liquidators, who are coming soon, will solve all our problems.</Word>
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_FightEnter_2_Alternative">Compared to them you’re a crip. They’re called in only on rare days of trouble, and build their might absorbing Shadow Energy. Whoever stands in their way dies.</Word>
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_FightEnter_3_Alternative">Training for Liquidator is demanding—few can complete it. But I’ll show you some of it: it’ good for the youth to know that the Legion’s really capable of.</Word>
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_Win_Alternative">Not bad. I didn’t think you’d manage. The Liquidators often fight Shadow emanations—something your kind isn’t trained for. A huge omission, if you ask me.</Word>
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_loss_Alternative">Expectedly, the Liquidators rarely lose. But there’s a drawback to their situation, too: the bargain with Shadow dooms them to loneliness, even among their own.</Word>
+     
+    
+    
+    
+    <Word Title="feedback_title">FEEDBACK</Word>
+    <Word Title="feedback_subtitle">Describe any problems you had:</Word>
+    
+    <Word Title="feedback_1">UI is hard to interact</Word>
+    <Word Title="feedback_2">Poor performance</Word>
+    <Word Title="feedback_3">Game crashes</Word>
+    <Word Title="feedback_4">Don't know what to do next</Word>
+    <Word Title="feedback_5">Game is too hard</Word>
+    
+    <Word Title="feedback_input">Additional thoughts, problems and suggestions:</Word>
+    <Word Title="feedback_later">LATER</Word>
+    <Word Title="feedback_send">SEND</Word>
+    
+    
+    <Word Title="system_message_title">SYSTEM MESSAGE</Word>
+    <Word Title="kick_another_session_login">Error: another user with the same ID has connected.
+
+Game will be restarted.</Word>
+
+    <Word Title="kick_anothersessionlogin">Error: another user with the same ID has connected.
+
+Game will be restarted.</Word>
+    
+    <Word Title="menu_button_map">MAP</Word>
+    <Word Title="menu_button_inventory">INVENTORY</Word>
+    <Word Title="menu_button_boosters">BOOSTERS</Word>
+    <Word Title="menu_button_store">STORE</Word>
+    <Word Title="menu_button_training">TRAINING</Word>
+    <Word Title="menu_button_settings">SETTINGS</Word>
+    
+    <Word Title="to_be_continued">This is the end of the Chapter I main quest, but you can still play side missions if you want.
+
+Stay tuned for the release date!</Word>
+    
+    
+    <!-- VV VERIFIED FOR PLAYABLE DEMO VV -->
+
+    <!--                                                                       -->
+    <Word Title="combo">COMBO</Word>
+    <Word Title="substitution">{0}</Word>
+    <Word Title="Atribute">{image0:150} {1}</Word>
+    <Word Title="yes_sir">YES SIR!</Word>
+    <Word Title="fight">FIGHT!</Word>
+    <Word Title="understood">GOT IT!</Word>
+
+    <Word Title="CHAPTER1_RARE">BOOSTER PACK</Word>
+    <Word Title="CHAPTER1_EPIC">BOOSTER PACK</Word>
+    <Word Title="CHAPTER1_LEGENDARY">BOOSTER PACK</Word>
+    
+    <Word Title="shop_restriction">Faction: {0}</Word>
+    <Word Title="shop_requirement">Requirement: Level [b]{0}[/b]</Word>
+    <Word Title="shop_refresh">Refresh Store</Word>
+    <Word Title="shop_guaranteedLoot">Contains:</Word>
+    <Word Title="shop_boosterDesc">Chapter {0} Booster Pack</Word>
+<!-- Contains {1} cards</Word> -->
+    <Word Title="shop_boosterBuySuccessful">Booster Pack successfully bought!</Word>
+    <Word Title="card_requirement">Requires Level [FF6009]{0}[-]</Word>
+    <Word Title="Properties_imbue">APPLY</Word>
+    <Word Title="Properties_back">BACK</Word>
+    <Word Title="Properties_remove">REMOVE</Word>
+    <Word Title="Properties_nobonus">NO BONUS</Word>
+    <Word Title="reward_new_level">NEW LEVEL</Word>
+    <Word Title="shop_name_with_set_icon">{image0:60} {1}</Word>
+    <Word Title="shop_name_without_set_icon">{0}</Word>
+
+    <Word Title="connection_get_battle">Connect to the network to get this battle</Word>
+    <Word Title="battle_cooldown">This battle is not available for you at the moment</Word>
+    <Word Title="new_mission_in">NEW MISSION IN </Word> 
+    
+    <Word Title="survival_battle_finished">ROUNDS WON: [FF6009]{0}[-]</Word>
+    <Word Title="congratulations">YOU WIN!</Word>
+    <Word Title="loss">YOU LOSE!</Word>
+    <Word Title="base_reward">BASE REWARD</Word>
+    <Word Title="reward_total_gold">TOTAL GOLD</Word>
+    <Word Title="reward_total_bonus">TOTAL GEMS</Word>
+    <Word Title="reward_new_item">NEW ITEM</Word>
+    <Word Title="reward_new_ability">NEW ABILITY</Word>
+    <Word Title="reward_upgrade">UPGRADE</Word>
+    <Word Title="reward">REWARD</Word>
+    <Word Title="shop_try_on">TRY ON</Word>
+    <Word Title="pause_return">RETURN</Word>
+    <Word Title="pause_active_abilitys">ACTIVE ABILITIES</Word>
+    <Word Title="pause_surrender">SURRENDER</Word>
+    <Word Title="warning">WARNING!</Word>
+    <Word Title="next">MORE</Word>
+    <Word Title="btnFight">FIGHT</Word>
+    <Word Title="btn_Help_Gizmo">HELP GIZMO</Word>
+    <Word Title="continue">CONTINUE</Word>
+    <Word Title="ok">OK</Word>
+    <Word Title="cancel">CANCEL</Word>
+    <Word Title="upgrade">UPGRADE!</Word>
+    <Word Title="NO_PERKS">NO ABILITIES</Word>
+
+    <Word Title="rarity_common">Common</Word>
+    <Word Title="rarity_rare">Rare</Word>
+    <Word Title="rarity_epic">Epic</Word>
+    <Word Title="rarity_legendary">Legendary</Word>
+
+    <Word Title="server_connection_wait_mandatory">Waiting for server response...</Word>
+    <Word Title="download">DOWNLOAD</Word>
+    <Word Title="download_new_version">Please update the application</Word>
+    <Word Title="restart_game">Server data has been updated.
+
+Restart is necessary.</Word>
+
+    <Word Title="NAME_PLAYER">PLAYER</Word>
+    <Word Title="NAME_PLAYER_1">PLAYER ONE</Word>
+    <Word Title="NAME_PLAYER_2">PLAYER TWO</Word>
+
+    <Word Title="legion">Legion</Word>
+    <Word Title="dynasty">Dynasty</Word>
+    <Word Title="heralds">Heralds</Word>
+
+    <!-- Battle Tutorial -->
+    <Word Title="Tutorial_Basic_Attack"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=fist size=100 color=#FDBE11 /> TO <color="#FDBE11Э>PUNCH</color> YOUR OPPONENT]]></Word>
+    <Word Title="Tutorial_Basic_AttackCloser"><![CDATA[<color="#FDBE11">PUNCH</color> <quad atlas=NativeUI/Atlases/Fight name=fist size=100 color=#FDBE11 /> GIZMO]]></Word>
+    <Word Title="Tutorial_Basic_Step_Forward"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-90/> TO <color="#FDBE11">STEP FORWARD</color>]]></Word>
+    <Word Title="Tutorial_Combos_Block"><![CDATA[STAND STILL TO <color="#FDBE11">BLOCK</color> (BLOCK <color="#FDBE11">{0} / 3</color> HITS)]]></Word>
+    <Word Title="Tutorial_Praise"><![CDATA[<color="#FDBE11">  GREAT!  </color>]]></Word> 
+    <Word Title="Tutorial_Combos_Jump_Kick"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=foot size=100 color=#FDBE11 /> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100/> TO DO A <color="#FDBE11">JUMP KICK</color>]]></Word>
+    <Word Title="Tutorial_Combos_StepCloser"><![CDATA[COME CLOSER AND <color="#FDBE11">THROW</color> <quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-90 /> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=fist size=100 color=#FDBE11/> GIZMO]]></Word>
+    <Word Title="Tutorial_Combos_Throw"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-90/><color="#FDBE11"> + </color><quad atlas=NativeUI/Atlases/Fight name=fist size=100 color=#FDBE11 /> TO <color="#FDBE11">THROW</color> GIZMO]]></Word>
+    <Word Title="Tutorial_Low_Kick"><![CDATA[USE YOUR FEET!<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-1100/> AND <quad atlas=NativeUI/Atlases/Fight name=foot size=100 color=#FDBE11 /> FOR A <color="#FDBE11">LOW KICK</color>]]></Word>
+    <Word Title="Tutorial_Low_KickCloser"><![CDATA[<color="#FDBE11">KICK</color> <quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-180/> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=foot size=100 color=#FDBE11 /> GIZMO]]></Word>
+    <Word Title="Tutorial_Shadow_Form_Charge"><![CDATA[<color="#FDBE11">SHADOW ENERGY</color> GETS CHARGED WITH EVERY HIT]]></Word>
+    <Word Title="Tutorial_Shadow_Form_Skill_Helmet"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100/> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=shadow size=100 color=#FDBE11 /> TO USE <color="#FDBE11">SHADOW ABILITY</color> OF YOUR HELMET]]></Word>
+    <Word Title="Tutorial_Shadow_Form_Skill_Weapon"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-90/> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=shadow size=100 color=#FDBE11 /> TO USE <color="#FDBE11">SHADOW ABILITY</color> OF YOUR WEAPON]]></Word>
+    <Word Title="Tutorial_Shadow_Form_Skill_Weapon_Reverse"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=90/> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=shadow size=100 color=#FDBE11 /> TO USE <color="#FDBE11">SHADOW ABILITY</color> OF YOUR WEAPON]]></Word>
+    <Word Title="Tutorial_Shadow_Form_Skill_Armor"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-180/> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=shadow size=100 color=#FDBE11 /> TO USE <color="#FDBE11">SHADOW ABILITY</color> OF YOUR ARMOR]]></Word>
+    <Word Title="Tutorial_Shadow_Form_Toggle"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=shadow size=100 color=#FDBE11 /> TO TURN ON <color="#FDBE11">SHADOW FORM</color>]]></Word>
+    <Word Title="Tutorial_Shadow_Form_Cooldown"><![CDATA[YOU CAN USE YOUR <color="#FDBE11">ABILITY</color> AGAIN AFTER A SHORT <color="#FDBE11">COOLDOWN</color>]]></Word>
+    <Word Title="Tutorial_Super_Slash"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-90/> AND TAP <quad atlas=NativeUI/Atlases/Fight name=fist size=100 color=#FDBE11 /> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=fist size=100 color=#FDBE11 /> TO USE <color="FDBE11">SPECIAL ATTACK</color>]]></Word>
+    <Word Title="Tutorial_Super_Slash_Reverse"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=90/> AND TAP <quad atlas=NativeUI/Atlases/Fight name=fist size=100 color=#FDBE11 /> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=fist size=100 color=#FDBE11 /> TO USE <color="FDBE11">SPECIAL ATTACK</color>]]></Word>
+    <Word Title="Tutorial_Super_Slash_Armor"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-90/> AND TAP <quad atlas=NativeUI/Atlases/Fight name=foot size=100 color=#FDBE11 /> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=foot size=100 color=#FDBE11 /> TO USE <color="FDBE11">SPECIAL KICK</color>]]></Word>
+    <Word Title="Tutorial_Super_Slash_Armor_Reverse"><![CDATA[<quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=90/> AND TAP <quad atlas=NativeUI/Atlases/Fight name=foot size=100 color=#FDBE11 /> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=foot size=100 color=#FDBE11 /> TO USE <color="FDBE11">SPECIAL KICK</color>]]></Word>
+
+
+    <Word Title="bonus_headhits">HEAD HIT</Word>
+    <Word Title="bonus_first_strike">FIRST STRIKE</Word>
+    <Word Title="bonus_criticals">CRITICAL</Word>
+    <Word Title="bonus_combo">MAX COMBO</Word>
+    <Word Title="bonus_shadow_abilities">SHADOW ABILITY</Word>
+    
+    <Word Title="PERK_DESC_POWER">POWER</Word>
+    <Word Title="PERK_DESC_SUPER_MOVE">SPECIAL MOVE</Word>
+    <Word Title="PERK_DESC_PERK">PERK</Word>
+    
+    <Word Title="SUPER_TWOHANDED_SWORD_1">GUILLOTINE</Word>
+    <Word Title="SUPER_TWOHANDED_SWORD_2">MAELSTROM</Word>
+    <Word Title="SUPER_TWOHANDED_SWORD_3">CAVEMAN'S RAGE</Word>
+    <Word Title="SUPER_TWOHANDED_SWORD_4">STINGRAY STAB</Word>
+
+    <Word Title="SUPER_SWORDS_STRONG_1">PENDULUM</Word>
+    <Word Title="SUPER_SWORDS_STRONG_2">GRINDER</Word>
+    
+    <Word Title="SUPER_AXES_1">CHOP TILL DROP</Word>
+    <Word Title="SUPER_AXES_2">RAZOR SQUALL</Word>
+    
+    <Word Title="SUPER_SWORD_1">AVALANCHE</Word>
+    <Word Title="SUPER_SWORD_2">STEEP DIVE</Word>
+
+    <Word Title="SUPER_HAMMERS_1">NUTCRACKER</Word>
+    
+    <Word Title="SUPER_SPEAR_2">BROCHETTE</Word>
+    
+    <Word Title="SUPER_SPEAR_3">SNAKEBITE</Word>
+
+    <Word Title="SUPER_ARMOR_STRONG_1">COLOSSUS STEPS</Word>
+    <Word Title="SUPER_ARMOR_STRONG_2">BATTERING RAM</Word>
+    <Word Title="SUPER_ARMOR_STRONG_3">STRANGLEHOLD</Word>
+
+
+
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_1">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]190[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_1_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]214[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_1_3">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]238[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_1_4">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]260[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_1_5">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]285[-]</Word>
+
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]160[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_2_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]200[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_2_3">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]240[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_2_4">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]280[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_2_5">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]320[-]</Word>
+
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_3">A sequence of [FDBE11]3[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]220[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_3_2">A sequence of [FDBE11]3[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]302[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_3_3">A sequence of [FDBE11]3[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]386[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_3_4">A sequence of [FDBE11]3[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]468[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_3_5">A sequence of [FDBE11]3[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]550[-]</Word>
+
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_4">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]180[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_4_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]203[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_4_3">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]225[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_4_4">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]248[-]</Word>
+    <Word Title="desc_SUPER_TWOHANDED_SWORD_4_5">A sequence of [FDBE11]2[-] attacks with [FDBE11]Two-Handed Sword[-]
+Power: [FDBE11]270[-]</Word>
+
+    <Word Title="desc_SUPER_SWORDS_STRONG_1">A sequence of [FDBE11]2[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]170[-]</Word>
+    <Word Title="desc_SUPER_SWORDS_STRONG_1_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]191[-]</Word>
+    <Word Title="desc_SUPER_SWORDS_STRONG_1_3">A sequence of [FDBE11]2[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]212[-]</Word>
+    <Word Title="desc_SUPER_SWORDS_STRONG_1_4">A sequence of [FDBE11]2[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]234[-]</Word>
+    <Word Title="desc_SUPER_SWORDS_STRONG_1_5">A sequence of [FDBE11]2[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]255[-]</Word>
+
+    <Word Title="desc_SUPER_SWORDS_STRONG_2">A sequence of [FDBE11]3[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]180[-]</Word>
+    <Word Title="desc_SUPER_SWORDS_STRONG_2_2">A sequence of [FDBE11]3[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]203[-]</Word>
+    <Word Title="desc_SUPER_SWORDS_STRONG_2_3">A sequence of [FDBE11]3[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]225[-]</Word>
+    <Word Title="desc_SUPER_SWORDS_STRONG_2_4">A sequence of [FDBE11]3[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]248[-]</Word>
+    <Word Title="desc_SUPER_SWORDS_STRONG_2_5">A sequence of [FDBE11]3[-] attacks with [FDBE11]Dual Swords[-]
+Power: [FDBE11]270[-]</Word>
+
+    <Word Title="desc_SUPER_AXES_1">A sequence of [FDBE11]3[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]200[-]</Word>
+    <Word Title="desc_SUPER_AXES_1_2">A sequence of [FDBE11]3[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]275[-]</Word>
+    <Word Title="desc_SUPER_AXES_1_3">A sequence of [FDBE11]3[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]350[-]</Word>
+    <Word Title="desc_SUPER_AXES_1_4">A sequence of [FDBE11]3[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]425[-]</Word>
+    <Word Title="desc_SUPER_AXES_1_5">A sequence of [FDBE11]3[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]500[-]</Word>
+
+    <Word Title="desc_SUPER_AXES_2">A sequence of [FDBE11]4[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]180[-]</Word>
+    <Word Title="desc_SUPER_AXES_2_2">A sequence of [FDBE11]4[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]203[-]</Word>
+    <Word Title="desc_SUPER_AXES_2_3">A sequence of [FDBE11]4[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]225[-]</Word>
+    <Word Title="desc_SUPER_AXES_2_4">A sequence of [FDBE11]4[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]248[-]</Word>
+    <Word Title="desc_SUPER_AXES_2_5">A sequence of [FDBE11]4[-] attacks with [FDBE11]Axes[-]
+Power: [FDBE11]270[-]</Word>
+
+    <Word Title="desc_SUPER_SWORD_1">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]180[-]</Word>
+    <Word Title="desc_SUPER_SWORD_1_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]225[-]</Word>
+    <Word Title="desc_SUPER_SWORD_1_3">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]270[-]</Word>
+    <Word Title="desc_SUPER_SWORD_1_4">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]315[-]</Word>
+    <Word Title="desc_SUPER_SWORD_1_5">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]360[-]</Word>
+
+    <Word Title="desc_SUPER_SWORD_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]160[-]</Word>
+    <Word Title="desc_SUPER_SWORD_2_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]180[-]</Word>
+    <Word Title="desc_SUPER_SWORD_2_3">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]200[-]</Word>
+    <Word Title="desc_SUPER_SWORD_2_4">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]220[-]</Word>
+    <Word Title="desc_SUPER_SWORD_2_5">A sequence of [FDBE11]2[-] attacks with [FDBE11]One-Handed Sword[-]
+Power: [FDBE11]240[-]</Word>
+
+    <Word Title="desc_SUPER_HAMMERS_1">A sequence of [FDBE11]3[-] attacks with [FDBE11]Hammers[-]
+Power: [FDBE11]170[-]</Word>
+    <Word Title="desc_SUPER_HAMMERS_1_2">A sequence of [FDBE11]3[-] attacks with [FDBE11]Hammers[-]
+Power: [FDBE11]191[-]</Word>
+    <Word Title="desc_SUPER_HAMMERS_1_3">A sequence of [FDBE11]3[-] attacks with [FDBE11]Hammers[-]
+Power: [FDBE11]213[-]</Word>
+    <Word Title="desc_SUPER_HAMMERS_1_4">A sequence of [FDBE11]3[-] attacks with [FDBE11]Hammers[-]
+Power: [FDBE11]234[-]</Word>
+    <Word Title="desc_SUPER_HAMMERS_1_5">A sequence of [FDBE11]3[-] attacks with [FDBE11]Hammers[-]
+Power: [FDBE11]255[-]</Word>
+
+    <Word Title="desc_SUPER_SPEAR_1">A sequence of [FDBE11]3[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]170[-]</Word>
+    <Word Title="desc_SUPER_SPEAR_1_2">A sequence of [FDBE11]3[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]191[-]</Word>
+    <Word Title="desc_SUPER_SPEAR_1_3">A sequence of [FDBE11]3[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]213[-]</Word>
+    <Word Title="desc_SUPER_SPEAR_1_4">A sequence of [FDBE11]3[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]234[-]</Word>
+    <Word Title="desc_SUPER_SPEAR_1_5">A sequence of [FDBE11]3[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]255[-]</Word>
+
+    <Word Title="desc_SUPER_SPEAR_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]180[-]</Word>
+    <Word Title="desc_SUPER_SPEAR_2_2">A sequence of [FDBE11]2[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]201[-]</Word>
+    <Word Title="desc_SUPER_SPEAR_2_3">A sequence of [FDBE11]2[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]223[-]</Word>
+    <Word Title="desc_SUPER_SPEAR_2_4">A sequence of [FDBE11]2[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]244[-]</Word>
+    <Word Title="desc_SUPER_SPEAR_2_5">A sequence of [FDBE11]2[-] attacks with [FDBE11]Spear[-]
+Power: [FDBE11]265[-]</Word>
+
+    <Word Title="desc_SUPER_ARMOR_STRONG_1">A powerful [FDBE11]Kick[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]160[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_1_2">A powerful [FDBE11]Kick[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]180[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_1_3">A powerful [FDBE11]Kick[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]200[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_1_4">A powerful [FDBE11]Kick[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]220[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_1_5">A powerful [FDBE11]Kick[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]240[-]</Word>
+
+    <Word Title="desc_SUPER_ARMOR_STRONG_2">A powerful [FDBE11]Dash[-] sequence, consisting of [FDBE11]3[-] attacks
+Power: [FDBE11]160[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_2_2">A powerful [FDBE11]Dash[-] sequence, consisting of [FDBE11]3[-] attacks
+Power: [FDBE11]200[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_2_3">A powerful [FDBE11]Dash[-] sequence, consisting of [FDBE11]3[-] attacks
+Power: [FDBE11]240[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_2_4">A powerful [FDBE11]Dash[-] sequence, consisting of [FDBE11]3[-] attacks
+Power: [FDBE11]280[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_2_5">A powerful [FDBE11]Dash[-] sequence, consisting of [FDBE11]3[-] attacks
+Power: [FDBE11]320[-]</Word>
+
+    <Word Title="desc_SUPER_ARMOR_STRONG_3">A powerful [FDBE11]Grapple[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]200[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_3_2">A powerful [FDBE11]Grapple[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]275[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_3_3">A powerful [FDBE11]Grapple[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]350[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_3_4">A powerful [FDBE11]Grapple[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]425[-]</Word>
+    <Word Title="desc_SUPER_ARMOR_STRONG_3_5">A powerful [FDBE11]Grapple[-] sequence, consisting of [FDBE11]2[-] attacks
+Power: [FDBE11]500[-]</Word>
+
+
+    <!--                                                                PERKS                                                                -->
+
+    <!--                                               LEGION                                               -->
+    <Word Title="PERK_BASHER">BASHER</Word>
+    <Word Title="desc_PERK_BASHER_1">A [FDBE11]8% chance[-] to stun your enemy for [FDBE11]3 seconds[-] with a hit</Word>
+    <Word Title="desc_PERK_BASHER_2">A [FDBE11]9% chance[-] to stun your enemy for [FDBE11]3 seconds[-] with a hit</Word>
+    <Word Title="desc_PERK_BASHER_3">A [FDBE11]10% chance[-] to stun your enemy for [FDBE11]3 seconds[-] with a hit</Word>
+    <Word Title="desc_PERK_BASHER_4">A [FDBE11]11% chance[-] to stun your enemy for [FDBE11]3 seconds[-] with a hit</Word>
+    <Word Title="desc_PERK_BASHER_5">A [FDBE11]12% chance[-] to stun your enemy for [FDBE11]5 seconds[-] with a hit</Word>
+    
+    <Word Title="PERK_BREACHER">BREACHER</Word>
+    <Word Title="desc_PERK_BREACHER_1">A [FDBE11]10% chance[-] to deal full damage through enemy block</Word>
+    <Word Title="desc_PERK_BREACHER_2">A [FDBE11]12% chance[-] to deal full damage through enemy block</Word>
+    <Word Title="desc_PERK_BREACHER_3">A [FDBE11]15% chance[-] to deal full damage through enemy block</Word>
+    <Word Title="desc_PERK_BREACHER_4">A [FDBE11]17% chance[-] to deal full damage through enemy block</Word>
+    <Word Title="desc_PERK_BREACHER_5">A [FDBE11]20% chance[-] to deal full damage through enemy block</Word>
+    
+    <Word Title="PERK_BERSERK">BERSERK </Word>
+    <Word Title="desc_PERK_BERSERK_1">A [FDBE11]15% chance[-] to deal [FDBE11]+10% damage[-] with a hit, losing [FDBE11]30%[-] of additional damage from your health</Word>
+    <Word Title="desc_PERK_BERSERK_2">A [FDBE11]15% chance[-] to deal [FDBE11]+20% damage[-] with a hit, losing [FDBE11]30%[-] of additional damage from your health</Word>
+    <Word Title="desc_PERK_BERSERK_3">A [FDBE11]20% chance[-] to deal [FDBE11]+20% damage[-] with a hit, losing [FDBE11]20%[-] of additional damage from your health</Word>
+    <Word Title="desc_PERK_BERSERK_4">A [FDBE11]25% chance[-] to deal [FDBE11]+30% damage[-] with a hit, losing [FDBE11]20%[-] of additional damage from your health</Word>
+    <Word Title="desc_PERK_BERSERK_5">A [FDBE11]30% chance[-] to deal [FDBE11]+30% damage[-] with a hit, losing [FDBE11]10%[-] of additional damage from your health</Word>
+    
+    <Word Title="PERK_IRON_GRIP">IRON GRIP </Word>
+    <Word Title="desc_PERK_IRON_GRIP_1">A [FDBE11]25% chance[-] to withstand Shock without dropping your weapon</Word>
+    <Word Title="desc_PERK_IRON_GRIP_2">A [FDBE11]35% chance[-] to withstand Shock without dropping your weapon</Word>
+    <Word Title="desc_PERK_IRON_GRIP_3">A [FDBE11]50% chance[-] to withstand Shock without dropping your weapon</Word>
+    <Word Title="desc_PERK_IRON_GRIP_4">A [FDBE11]75% chance[-] to withstand Shock without dropping your weapon</Word>
+    <Word Title="desc_PERK_IRON_GRIP_5">A [FDBE11]100% chance[-] to withstand Shock without dropping your weapon</Word>
+    
+    <Word Title="PERK_STEEL_FOOT">STEEL FOOT</Word>
+    <Word Title="desc_PERK_STEEL_FOOT_1">A [FDBE11]15% chance[-] to knock off your enemy to the ground with a kick</Word>
+    <Word Title="desc_PERK_STEEL_FOOT_2">A [FDBE11]16% chance[-] to knock off your enemy to the ground with a kick</Word>
+    <Word Title="desc_PERK_STEEL_FOOT_3">A [FDBE11]17% chance[-] to knock off your enemy to the ground with a kick</Word>
+    <Word Title="desc_PERK_STEEL_FOOT_4">A [FDBE11]18% chance[-] to knock off your enemy to the ground with a kick</Word>
+    <Word Title="desc_PERK_STEEL_FOOT_5">A [FDBE11]20% chance[-] to knock off your enemy to the ground with a kick</Word>
+	
+    <Word Title="PERK_ROCK">ROCK</Word>
+    <Word Title="desc_PERK_ROCK_1">A [FDBE11]15% chance[-] to withstand a Critical hit without falling, reducing its damage by [FDBE11]10%[-]</Word>
+    <Word Title="desc_PERK_ROCK_2">A [FDBE11]17% chance[-] to withstand a Critical hit without falling, reducing its damage by [FDBE11]20%[-]</Word>
+    <Word Title="desc_PERK_ROCK_3">A [FDBE11]20% chance[-] to withstand a Critical hit without falling, reducing its damage by [FDBE11]20%[-]</Word>
+    <Word Title="desc_PERK_ROCK_4">A [FDBE11]25% chance[-] to withstand a Critical hit without falling, reducing its damage by [FDBE11]30%[-]</Word>
+    <Word Title="desc_PERK_ROCK_5">A [FDBE11]30% chance[-] to withstand a Critical hit without falling, reducing its damage by [FDBE11]30%[-]</Word>
+    
+    <Word Title="PERK_STONE_SKIN">STONE SKIN</Word>
+    <Word Title="desc_PERK_STONE_SKIN_1">A [FDBE11]10% chance[-] to reduce incoming damage to [FDBE11]20%[-] of your health</Word>
+    <Word Title="desc_PERK_STONE_SKIN_2">A [FDBE11]12% chance[-] to reduce incoming damage to [FDBE11]20%[-] of your health</Word>
+    <Word Title="desc_PERK_STONE_SKIN_3">A [FDBE11]15% chance[-] to reduce incoming damage to [FDBE11]15%[-] of your health</Word>
+    <Word Title="desc_PERK_STONE_SKIN_4">A [FDBE11]17% chance[-] to reduce incoming damage to [FDBE11]15%[-] of your health</Word>
+    <Word Title="desc_PERK_STONE_SKIN_5">A [FDBE11]20% chance[-] to reduce incoming damage to [FDBE11]10%[-] of your health</Word>
+    
+    <Word Title="PERK_REVENGE">REVENGE</Word>
+    <Word Title="desc_PERK_REVENGE_1">A [FDBE11]20% chance[-] to get [FDBE11]+10% damage[-] for [FDBE11]5 seconds[-] after receiving a Critical hit</Word>
+    <Word Title="desc_PERK_REVENGE_2">A [FDBE11]25% chance[-] to get [FDBE11]+12% damage[-] for [FDBE11]5 seconds[-] after receiving a Critical hit</Word>
+    <Word Title="desc_PERK_REVENGE_3">A [FDBE11]30% chance[-] to get [FDBE11]+15% damage[-] for [FDBE11]5 seconds[-] after receiving a Critical hit</Word>
+    <Word Title="desc_PERK_REVENGE_4">A [FDBE11]35% chance[-] to get [FDBE11]+17% damage[-] for [FDBE11]5 seconds[-] after receiving a Critical hit</Word>
+    <Word Title="desc_PERK_REVENGE_5">A [FDBE11]40% chance[-] to get [FDBE11]+20% damage[-] for [FDBE11]5 seconds[-] after receiving a Critical hit</Word>
+    
+    <Word Title="PERK_REPELLER">REPELLER</Word>
+    <Word Title="desc_PERK_REPELLER_1">A [FDBE11]20% chance[-] to get [FDBE11]+10% damage[-] for [FDBE11]3 seconds[-] after a successful block</Word>
+    <Word Title="desc_PERK_REPELLER_2">A [FDBE11]25% chance[-] to get [FDBE11]+12% damage[-] for [FDBE11]3 seconds[-] after a successful block</Word>
+    <Word Title="desc_PERK_REPELLER_3">A [FDBE11]30% chance[-] to get [FDBE11]+15% damage[-] for [FDBE11]3 seconds[-] after a successful block</Word>
+    <Word Title="desc_PERK_REPELLER_4">A [FDBE11]35% chance[-] to get [FDBE11]+17% damage[-] for [FDBE11]3 seconds[-] after a successful block</Word>
+    <Word Title="desc_PERK_REPELLER_5">A [FDBE11]40% chance[-] to get [FDBE11]+20% damage[-] for [FDBE11]3 seconds[-] after a successful block</Word>
+
+    <Word Title="PERK_PREDATOR">PREDATOR</Word>
+    <Word Title="desc_PERK_PREDATOR_1">Gain [FDBE11]+10% damage[-] if your enemy's health is under [FDBE11]20%[-]</Word>
+    <Word Title="desc_PERK_PREDATOR_2">Gain [FDBE11]+12% damage[-] if your enemy's health is under [FDBE11]25%[-]</Word>
+    <Word Title="desc_PERK_PREDATOR_3">Gain [FDBE11]+15% damage[-] if your enemy's health is under [FDBE11]30%[-]</Word>
+    <Word Title="desc_PERK_PREDATOR_4">Gain [FDBE11]+17% damage[-] if your enemy's health is under [FDBE11]35%[-]</Word>
+    <Word Title="desc_PERK_PREDATOR_5">Gain [FDBE11]+20% damage[-] if your enemy's health is under [FDBE11]40%[-]</Word>
+    
+    <Word Title="PERK_RETRIBUTION">RETRIBUTION</Word>
+    <Word Title="desc_PERK_RETRIBUTION_1">Gain [FDBE11]+10% damage[-] until the end of Round after receiving a Shock</Word>
+    <Word Title="desc_PERK_RETRIBUTION_2">Gain [FDBE11]+15% damage[-] until the end of Round after receiving a Shock</Word>
+    <Word Title="desc_PERK_RETRIBUTION_3">Gain [FDBE11]+20% damage[-] until the end of Round after receiving a Shock</Word>
+    <Word Title="desc_PERK_RETRIBUTION_4">Gain [FDBE11]+25% damage[-] until the end of Round after receiving a Shock</Word>
+    <Word Title="desc_PERK_RETRIBUTION_5">Gain [FDBE11]+30% damage[-] until the end of Round after receiving a Shock</Word>
+    
+    <Word Title="PERK_RECOLLECTION">RECOLLECTION</Word>
+    <Word Title="desc_PERK_RECOLLECTION_1">A [FDBE11]30% chance[-] to get [FDBE11]+25% Shadow Energy[-] after receiving a Head hit</Word>
+    <Word Title="desc_PERK_RECOLLECTION_2">A [FDBE11]30% chance[-] to get [FDBE11]+27% Shadow Energy[-] after receiving a Head hit</Word>
+    <Word Title="desc_PERK_RECOLLECTION_3">A [FDBE11]30% chance[-] to get [FDBE11]+30% Shadow Energy[-] after receiving a Head hit</Word>
+    <Word Title="desc_PERK_RECOLLECTION_4">A [FDBE11]30% chance[-] to get [FDBE11]+32% Shadow Energy[-] after receiving a Head hit</Word>
+    <Word Title="desc_PERK_RECOLLECTION_5">A [FDBE11]30% chance[-] to get [FDBE11]+35% Shadow Energy[-] after receiving a Head hit</Word>
+
+
+    <!--                                                                ENCHANTMENTS                                                                -->
+    <Word Title="ENCHANTMENT_LIFESTEAL">LIFESTEAL</Word>
+    <Word Title="desc_ENCHANTMENT_LIFESTEAL_1">A [FDBE11]10% chance[-] to gain [FDBE11]30%[-] of your attack damage as health</Word>
+    <Word Title="desc_ENCHANTMENT_LIFESTEAL_2">A [FDBE11]13% chance[-] to gain [FDBE11]35%[-] of your attack damage as health</Word>
+    <Word Title="desc_ENCHANTMENT_LIFESTEAL_3">A [FDBE11]15% chance[-] to gain [FDBE11]40%[-] of your attack damage as health</Word>
+    <Word Title="desc_ENCHANTMENT_LIFESTEAL_4">A [FDBE11]18% chance[-] to gain [FDBE11]45%[-] of your attack damage as health</Word>
+    <Word Title="desc_ENCHANTMENT_LIFESTEAL_5">A [FDBE11]20% chance[-] to gain [FDBE11]50%[-] of your attack damage as health</Word>
+    
+    <Word Title="ENCHANTMENT_BLEEDING">BLEEDING</Word>
+    <Word Title="desc_ENCHANTMENT_BLEEDING_1">A [FDBE11]10% chance[-] to cause your enemy to lose health equal to [FDBE11]30%[-] of your attack damage over [FDBE11]3 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_BLEEDING_2">A [FDBE11]13% chance[-] to cause your enemy to lose health equal to [FDBE11]35%[-] of your attack damage over [FDBE11]3 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_BLEEDING_3">A [FDBE11]15% chance[-] to cause your enemy to lose health equal to [FDBE11]40%[-] of your attack damage over [FDBE11]3 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_BLEEDING_4">A [FDBE11]18% chance[-] to cause your enemy to lose health equal to [FDBE11]45%[-] of your attack damage over [FDBE11]3 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_BLEEDING_5">A [FDBE11]20% chance[-] to cause your enemy to lose health equal to [FDBE11]50%[-] of your attack damage over [FDBE11]3 seconds[-]</Word>
+
+    <Word Title="ENCHANTMENT_SHADOW_BURN">SHADOW BURN</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_BURN_1">A [FDBE11]30% chance[-] to cause your enemy to lose health and Shadow Energy equal to [FDBE11]50%[-] of your attack damage</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_BURN_2">A [FDBE11]30% chance[-] to cause your enemy to lose health and Shadow Energy equal to [FDBE11]63%[-] of your attack damage</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_BURN_3">A [FDBE11]30% chance[-] to cause your enemy to lose health and Shadow Energy equal to [FDBE11]75%[-] of your attack damage</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_BURN_4">A [FDBE11]30% chance[-] to cause your enemy to lose health and Shadow Energy equal to [FDBE11]88%[-] of your attack damage</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_BURN_5">A [FDBE11]30% chance[-] to cause your enemy to lose health and Shadow Energy equal to [FDBE11]100%[-] of your attack damage</Word>
+
+    <Word Title="ENCHANTMENT_SHADOW_DRAIN">SHADOW DRAIN</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_DRAIN_1">A [FDBE11]30% chance[-] to gain [FDBE11]50%[-] of your attack damage as additional Shadow Energy</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_DRAIN_2">A [FDBE11]35% chance[-] to gain [FDBE11]63%[-] of your attack damage as additional Shadow Energy</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_DRAIN_3">A [FDBE11]40% chance[-] to gain [FDBE11]75%[-] of your attack damage as additional Shadow Energy</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_DRAIN_4">A [FDBE11]45% chance[-] to gain [FDBE11]88%[-] of your attack damage as additional Shadow Energy</Word>
+    <Word Title="desc_ENCHANTMENT_SHADOW_DRAIN_5">A [FDBE11]50% chance[-] to gain [FDBE11]100%[-] of your attack damage as additional Shadow Energy</Word>
+
+    <Word Title="ENCHANTMENT_SHIELDING_BODY">SHIELDING (ARMOR)</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_BODY_1">A [FDBE11]10% chance[-] to increase your defence by [FDBE11]5%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_BODY_2">A [FDBE11]13% chance[-] to increase your defence by [FDBE11]10%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_BODY_3">A [FDBE11]15% chance[-] to increase your defence by [FDBE11]15%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_BODY_4">A [FDBE11]18% chance[-] to increase your defence by [FDBE11]20%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_BODY_5">A [FDBE11]20% chance[-] to increase your defence by [FDBE11]25%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+
+    <Word Title="ENCHANTMENT_SHIELDING_HEAD">SHIELDING (HELM)</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_HEAD_1">A [FDBE11]10% chance[-] to increase your defence by [FDBE11]5%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_HEAD_2">A [FDBE11]13% chance[-] to increase your defence by [FDBE11]10%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_HEAD_3">A [FDBE11]15% chance[-] to increase your defence by [FDBE11]15%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_HEAD_4">A [FDBE11]18% chance[-] to increase your defence by [FDBE11]20%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    <Word Title="desc_ENCHANTMENT_SHIELDING_HEAD_5">A [FDBE11]20% chance[-] to increase your defence by [FDBE11]25%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+
+    <Word Title="ENCHANTMENT_ELECTRO_SHOCK_BODY">ELECTRO SHOCK (ARMOR)</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_BODY_1">A [FDBE11]10% chance[-] to reduce your enemy's defence by [FDBE11]5%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_BODY_2">A [FDBE11]13% chance[-] to reduce your enemy's defence by [FDBE11]10%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_BODY_3">A [FDBE11]15% chance[-] to reduce your enemy's defence by [FDBE11]15%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_BODY_4">A [FDBE11]18% chance[-] to reduce your enemy's defence by [FDBE11]20%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_BODY_5">A [FDBE11]20% chance[-] to reduce your enemy's defence by [FDBE11]25%[-] for [FDBE11]2 seconds[-] after receiving a Body hit</Word>
+
+    <Word Title="ENCHANTMENT_ELECTRO_SHOCK_HEAD">ELECTRO SHOCK (HELM)</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_HEAD_1">A [FDBE11]10% chance[-] to reduce your enemy's defence by [FDBE11]5%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_HEAD_2">A [FDBE11]13% chance[-] to reduce your enemy's defence by [FDBE11]10%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_HEAD_3">A [FDBE11]15% chance[-] to reduce your enemy's defence by [FDBE11]15%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_HEAD_4">A [FDBE11]18% chance[-] to reduce your enemy's defence by [FDBE11]20%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    <Word Title="desc_ENCHANTMENT_ELECTRO_SHOCK_HEAD_5">A [FDBE11]20% chance[-] to reduce your enemy's defence by [FDBE11]25%[-] for [FDBE11]2 seconds[-] after receiving a Head hit</Word>
+    
+    
+    <Word Title="ENCHANTMENT_DAMAGE_RETURN_BODY">DAMAGE RETURN (ARMOR)</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_BODY_1">A [FDBE11]20% chance[-] to deal [FDBE11]20%[-] of incoming hit damage to your enemy</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_BODY_2">A [FDBE11]25% chance[-] to deal [FDBE11]25%[-] of incoming hit damage to your enemy</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_BODY_3">A [FDBE11]30% chance[-] to deal [FDBE11]30%[-] of incoming hit damage to your enemy</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_BODY_4">A [FDBE11]35% chance[-] to deal [FDBE11]35%[-] of incoming hit damage to your enemy</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_BODY_5">A [FDBE11]40% chance[-] to deal [FDBE11]40%[-] of incoming hit damage to your enemy</Word>
+
+    <Word Title="ENCHANTMENT_DAMAGE_RETURN_HEAD">DAMAGE RETURN (HELM)</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_HEAD_1">A [FDBE11]20% chance[-] to deal [FDBE11]20%[-] of incoming hit damage to your enemy</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_HEAD_2">A [FDBE11]25% chance[-] to deal [FDBE11]25%[-] of incoming hit damage to your enemy</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_HEAD_3">A [FDBE11]30% chance[-] to deal [FDBE11]30%[-] of incoming hit damage to your enemy</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_HEAD_4">A [FDBE11]35% chance[-] to deal [FDBE11]35%[-] of incoming hit damage to your enemy</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_RETURN_HEAD_5">A [FDBE11]40% chance[-] to deal [FDBE11]40%[-] of incoming hit damage to your enemy</Word>
+
+    <Word Title="ENCHANTMENT_DAMAGE_ABSORPTION_BODY">DAMAGE ABSORPTION (ARMOR)</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_BODY_1">A [FDBE11]20% chance[-] to reduce incoming hit damage by [FDBE11]20%[-]</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_BODY_2">A [FDBE11]25% chance[-] to reduce incoming hit damage by [FDBE11]25%[-]</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_BODY_3">A [FDBE11]30% chance[-] to reduce incoming hit damage by [FDBE11]30%[-]</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_BODY_4">A [FDBE11]35% chance[-] to reduce incoming hit damage by [FDBE11]35%[-]</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_BODY_5">A [FDBE11]40% chance[-] to reduce incoming hit damage by [FDBE11]40%[-]</Word>
+
+    <Word Title="ENCHANTMENT_DAMAGE_ABSORPTION_HEAD">DAMAGE ABSORPTION (HELM)</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_HEAD_1">A [FDBE11]20% chance[-] to reduce incoming hit damage by [FDBE11]20%[-]</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_HEAD_2">A [FDBE11]25% chance[-] to reduce incoming hit damage by [FDBE11]25%[-]</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_HEAD_3">A [FDBE11]30% chance[-] to reduce incoming hit damage by [FDBE11]30%[-]</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_HEAD_4">A [FDBE11]35% chance[-] to reduce incoming hit damage by [FDBE11]35%[-]</Word>
+    <Word Title="desc_ENCHANTMENT_DAMAGE_ABSORPTION_HEAD_5">A [FDBE11]40% chance[-] to reduce incoming hit damage by [FDBE11]40%[-]</Word>
+    
+    <Word Title="ENCHANTMENT_REGENERATION_BODY">REGENERATION (ARMOR)</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_BODY_1">A [FDBE11]20% chance[-] to replenish [FDBE11]20%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_BODY_2">A [FDBE11]25% chance[-] to replenish [FDBE11]25%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_BODY_3">A [FDBE11]30% chance[-] to replenish [FDBE11]30%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_BODY_4">A [FDBE11]35% chance[-] to replenish [FDBE11]35%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_BODY_5">A [FDBE11]40% chance[-] to replenish [FDBE11]40%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    
+    <Word Title="ENCHANTMENT_REGENERATION_HEAD">REGENERATION (HELM)</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_HEAD_1">A [FDBE11]20% chance[-] to replenish [FDBE11]20%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_HEAD_2">A [FDBE11]25% chance[-] to replenish [FDBE11]25%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_HEAD_3">A [FDBE11]30% chance[-] to replenish [FDBE11]30%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_HEAD_4">A [FDBE11]35% chance[-] to replenish [FDBE11]35%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+    <Word Title="desc_ENCHANTMENT_REGENERATION_HEAD_5">A [FDBE11]40% chance[-] to replenish [FDBE11]40%[-] of incoming hit damage as health over [FDBE11]1.5 seconds[-]</Word>
+
+
+    <Word Title="tutorial_inFight_start"><![CDATA[My name is Otto Hyme. I am the <color="#FDBE11">Sergeant</color> of the <color="#FDBE11">Shadow Squad</color>. You'll call me Sarge and do all that I tell you.]]></Word>
+    <Word Title="tutorial_inFight_start_2"><![CDATA[Ready to fight? My <color="#FDBE11">name is Gizmo</color>, and I'm here to <color="#FDBE11">test you</color>.]]></Word>
+    <Word Title="tutorial_inFight_HitGizmoWhileHeBlocks"><![CDATA[Gizmo is <color="#FDBE11">blocking</color> your hits! Try <color="#FDBE11">throwing</color> him to breach his defense.]]></Word>
+    <Word Title="tutorial_inFight_block_1"><![CDATA[Gizmo can train day and night! And you <color="#FDBE11">don't move</color> and block my hits.]]></Word>
+    <Word Title="tutorial_gizmo_aggro"><![CDATA[All right, let's fight for real!]]></Word>
+    <Word Title="tutorial_first_fight_congrats"><![CDATA[You learn fast. Let's see what else you can use in battle. <color="#FDBE11">Equip</color> your gear.]]></Word>
+    <Word Title="tutorial_go_to_freefight"><![CDATA[Excellent. Gizmo is already waiting for you.]]></Word>
+    <Word Title="beta_Tutorial_FreeFight_Win_Praise_Hint_SA"><![CDATA[Perhaps I can make you a good fighter. And now we're going to the <color="#FDBE11">store</color>.]]></Word>
+    <Word Title="tutorial_go_to_map"><![CDATA[People don't trust the <color="#FDBE11">Shadow Squad</color>, but until reinforcements arrive, there are not enough soldiers in the camp. So we have <color="#FDBE11">our first task</color> already.]]></Word>
+    <Word Title="tutorial_sf_fightenter"><![CDATA[We must punish the arrogant people from the <color="#FDBE11">Bamboo Fort</color>. They carry the flags of our enemies, the <color="#FDBE11">Dynasty</color>.]]></Word>
+    <Word Title="dojo_gotomap_Gizmo_1"><![CDATA[Enough! Enough! Go look for something else to do... Because I need to rest a little. Oh.]]></Word>
+
+    <Word Title="CHAR_AVALANCHE">AVALANCHE</Word>
+    <Word Title="CHAR_BARR">BARR</Word>
+    <Word Title="CHAR_BIGHORN">BIGHORN</Word>
+    <Word Title="CHAR_BIRCH">BIRCH</Word>
+    <Word Title="CHAR_BLACKEYE">BLACKEYE</Word>
+    <Word Title="CHAR_BORDER_PATROL">BORDER PATROL</Word>
+    <Word Title="CHAR_BOULDER">BOULDER</Word>
+    <Word Title="CHAR_CULTIST">CULTIST</Word>
+    <Word Title="CHAR_DEFECTOR">DEFECTOR</Word>
+    <Word Title="CHAR_DELINQUENT">DELINQUENT</Word>
+    <Word Title="CHAR_OUTCAST">OUTCAST</Word>
+    <Word Title="CHAR_INTERLOPER">INTERLOPER</Word>
+    <Word Title="CHAR_DOPPELGANGER">DOPPELGANGER</Word>
+    <Word Title="CHAR_DYNASTY_SOLDIER">DYNASTY SOLDIER</Word>
+    <Word Title="CHAR_EMMA">EMMA</Word>
+    <Word Title="CHAR_FORT_COMMANDER">FORT COMMANDER</Word>
+    <Word Title="CHAR_FULBARD">FULBARD</Word>
+    <Word Title="CHAR_GALEN">GALEN</Word>
+    <Word Title="CHAR_GIZMO">GIZMO</Word>
+    <Word Title="CHAR_GRETA">GRETA</Word>
+    <Word Title="CHAR_TRESPASSER">TRESPASSER</Word>
+    <Word Title="CHAR_GRETAS_SOLDIER">GRETA'S SOLDIER</Word>
+    <Word Title="CHAR_GUARDSMAN">GUARDSMAN</Word>
+    <Word Title="CHAR_HAMMERHEAD">HAMMERHEAD</Word>
+    <Word Title="CHAR_HELGA">HELGA</Word>
+    <Word Title="CHAR_HENCHMAN">HENCHMAN</Word>
+    <Word Title="CHAR_HERBALIST">HERBALIST</Word>
+    <Word Title="CHAR_HUGO">HUGO</Word>
+    <Word Title="CHAR_INVADER">INVADER</Word>
+    <Word Title="CHAR_INVISIBLEMAN">INVISIBLE MAN</Word>
+    <Word Title="CHAR_IRONHAND">IRONHAND</Word>
+    <Word Title="CHAR_IVE">IVE</Word>
+    <Word Title="CHAR_JUNE">JUNE</Word>
+    <Word Title="CHAR_LEGIONARY">LEGIONARY</Word>
+    <Word Title="CHAR_LEGION_SCOUT">LEGION SCOUT</Word>
+    <Word Title="CHAR_LOOTER">LOOTER</Word>
+    <Word Title="CHAR_MAUL">MAUL</Word>
+    <Word Title="CHAR_MYRON">MYRON</Word>
+    <Word Title="CHAR_MYSTERIOUS_OPPONENT">MYSTERIOUS OPPONENT</Word>
+    <Word Title="CHAR_OAK">OAK</Word>
+    <Word Title="CHAR_OSBERT">OSBERT</Word>
+    <Word Title="CHAR_PARTISAN">DYNASTY SOLDIER</Word>
+    <Word Title="CHAR_PARTISAN_LEADER">PARTISAN LEADER</Word>
+    <Word Title="CHAR_RAM">RAM</Word>
+    <Word Title="CHAR_RANDI">RAN DI</Word>
+    <Word Title="CHAR_RASCAL">RASCAL</Word>
+    <Word Title="CHAR_REBEL">REBEL</Word>
+    <Word Title="CHAR_ROBBER">ROBBER</Word>
+    <Word Title="CHAR_RUNAWAY">RUNAWAY</Word>
+    <Word Title="CHAR_SABOTEUR">SABOTEUR</Word>
+    <Word Title="CHAR_SARGE">SARGE</Word>
+    <Word Title="CHAR_SARGES_ALLY">SARGE'S ALLY</Word>
+    <Word Title="CHAR_SCAR">SCAR</Word>
+    <Word Title="CHAR_SHADOW_SOLDIER">SHADOW SOLDIER</Word>
+    <Word Title="CHAR_SLICER">SLICER</Word>
+    <Word Title="CHAR_SPADE">SPADE</Word>
+    <Word Title="CHAR_STEIN">STEIN</Word>
+    <Word Title="CHAR_STICH">STICH</Word>
+    <Word Title="CHAR_SURVIVALIST">SURVIVALIST</Word>
+    <Word Title="CHAR_TROUBLEMAKER">TROUBLEMAKER</Word>
+    <Word Title="CHAR_TURNCOAT">TURNCOAT</Word>
+    <Word Title="CHAR_VILLAGE_HOODLUM">VILLAGE HOODLUM</Word>
+    <Word Title="CHAR_YOUNG_LEGIONARY">YOUNG LEGIONARY</Word>
+    <Word Title="CHAR_PAGAN">PAGAN</Word>
+    <Word Title="CHAR_CONSPIRATOR">CONSPIRATOR</Word>
+    <Word Title="CHAR_GRETAS_GUARD">GRETA'S GUARD</Word>
+
+    <Word Title="tutorial_inventory"><![CDATA[OPEN YOUR <color="#FDBE11">INVENTORY</color>]]></Word>
+    <Word Title="tutorial_go_equip_weapon"><![CDATA[NOW CHECK YOUR <color="#FDBE11">WEAPON</color> TAB]]> </Word>
+    <Word Title="tutorial_tryon_helmet"><![CDATA[<color="#FDBE11">TRY ON</color> SELECTED HELMET]]></Word>
+    <Word Title="tutorial_shop"><![CDATA[GO TO <color="#FDBE11">STORE</color>]]></Word>
+    <Word Title="tutorial_equip_armor"><![CDATA[PRESS <color="#FDBE11">EQUIP</color> TO PUT ON YOUR ARMOR]]></Word>
+    <Word Title="tutorial_equip_weapon"><![CDATA[<color="#FDBE11">EQUIP</color> YOUR SWORDS]]></Word>
+    <Word Title="tutorial_purchase_helm"><![CDATA[EXCELLENT! <color="#FDBE11">PURCHASE</color> IT]]></Word>
+    <Word Title="tutorial_dojo_menu"><![CDATA[PRESS <color="#FDBE11">MENU</color> BUTTON]]></Word>
+    <Word Title="tutorial_dojo"><![CDATA[PRESS <color="#FDBE11">TRAINING</color> BUTTON]]></Word>
+    <Word Title="tutorial_map"><![CDATA[GO TO <color="#FDBE11">MAP</color>]]></Word>
+    <Word Title="tutorial_press_fight"><![CDATA[PRESS <color="#FDBE11">FIGHT</color> TO ENTER SELECTED BATTLE]]></Word>
+    <Word Title="tutorial_press_battle_icon"><![CDATA[PRESS <color="#FDBE11">BATTLE ICON</color> TO LEARN MORE ABOUT IT]]></Word>
+    <Word Title="tutorial_press_properties"><![CDATA[YOU'VE ACQUIRED A SPECIAL ATTACK! PRESS <color="#FDBE11">ABILITIES</color> TO INSPECT IT]]></Word>
+    <Word Title="tutorial_imbue_perk"><![CDATA[<color="#FDBE11">APPLY</color> ABILITY TO A SWORD]]></Word>
+
+    <Word Title="tutorial_missions_Sarge">You can engage in sideline jobs occasionally. It is a good way of gaining both experience and a few extra coins.</Word>
+    <Word Title="tutorial_survivals_Sarge">The Bamboo Fort is a burr in the Legion’s saddle, constantly being reinforced with new fighters. The more of them you wipe off, the greater will be your wage.</Word>
+
+    <Word Title="tutorial_missions"><![CDATA[<color="#FDBE11">MISSION</color> IS A PERIODICAL TYPE OF BATTLE THAT GRANTS BOTH <color="#FDBE11">COINS</color> AND <color="#FDBE11">EXPERIENCE</color>]]></Word>
+    <Word Title="tutorial_survivals"><![CDATA[<color="#FDBE11">SURVIVAL</color> IS A RECURRENT TYPE OF BATTLE WITH PROGRESSIVE <color="#FDBE11">COIN</color> REWARDS]]></Word>
+
+
+    <Word Title="wpn__onehanded_sword_01_01">CRUDE SWORD</Word>
+    <Word Title="wpn__onehanded_sword_01_02">NOBLE SWORD</Word>
+    <Word Title="wpn__onehanded_sword_01_03">BLOODLETTER'S BLADE</Word>
+    <Word Title="wpn__onehanded_sword_01_04">MOUNTAIN BLADE</Word>
+    <Word Title="wpn__onehanded_sword_02_01">NOONBLADE</Word>
+    <Word Title="wpn__onehanded_sword_02_02">LIGHT BRIM</Word>
+
+    <Word Title="wpn__dual_swords_01_01">PLAIN SWORDS</Word>
+    <Word Title="wpn__dual_swords_01_02">DOUBLE SKIVERS</Word>
+    <Word Title="wpn__dual_swords_01_03">ASH AND LIGHT</Word>
+    <Word Title="wpn__dual_swords_02_01">RIPPING KIT</Word>
+
+    <Word Title="wpn__twohanded_sword_01_01">PLAIN LONGSWORD</Word>
+    <Word Title="wpn__twohanded_sword_01_03">ORNATE TWO-HANDER</Word>
+    <Word Title="wpn__twohanded_sword_01_02">SILVER SQUALL</Word>
+    <Word Title="wpn__twohanded_sword_01_04">ARBITER</Word>
+
+    <Word Title="wpn__axes_01_01">DOUBLE HATCHETS</Word>
+    <Word Title="wpn__axes_02_01">RAMPAGE HATCHETS</Word>
+    <Word Title="wpn__axes_01_02">LABRYSES</Word>
+    <Word Title="wpn__axes_02_02">FURY BROTHERS</Word>
+    <Word Title="wpn__axes_01_03">STEEL BUTTERFLIES</Word>
+    <Word Title="wpn__axes_02_03">NIGHTBANES</Word>
+
+    <Word Title="wpn__hammers_02_01">RIFE HAMMER</Word>
+    <Word Title="wpn__hammers_01_01">SIGNETS OF WAR</Word>
+    <Word Title="wpn__hammers_02_02">WICKED TWINS</Word>
+    <Word Title="wpn__hammers_01_02">BONECRUSHERS</Word>
+
+    <Word Title="wpn__spear_01_01">IRON LANCE</Word>
+    <Word Title="wpn__spear_01_02">METAL STING</Word>
+    <Word Title="wpn__spear_01_03">VULTURE'S CLAW</Word>
+    <Word Title="wpn__spear_01_04">DESTINY'S EDGE</Word>
+
+    <Word Title="arm__str_12">TRAINING UNIFORM</Word>
+    <Word Title="arm__str_02">MOUNTAINEER'S DOUBLET</Word>
+    <Word Title="arm__str_14">ROGUE'S DOUBLET</Word>
+    
+    <Word Title="arm__str_03">REINFORCED COAT</Word>
+    <Word Title="arm__str_05">BEDROCK ARMOR</Word>
+    <Word Title="arm__str_04">SCOUT'S JACKET</Word>
+    
+    <Word Title="arm__str_13">KAGUN'S WOOLFELL</Word>
+    <Word Title="arm__str_18">SWAMPER'S CAMOUFLAGE</Word>
+    <Word Title="arm__str_15">LAMINAR CUIRASS</Word>
+    
+    <Word Title="arm__str_07">WARLORD'S PLATES</Word>
+    <Word Title="arm__str_16">LION'S PRIDE</Word>
+    <Word Title="arm__str_10">LIQUIDATOR'S HARDSHELL</Word>
+
+    <Word Title="helm__str_12">NOMAD'S CAP</Word>
+    <Word Title="helm__str_03">MOUNTAINEER'S CAP</Word>
+    <Word Title="helm__str_15">CAMPAIGNER'S HELM</Word>
+    
+    <Word Title="helm__str_01">VISORED CASQUE</Word>
+    <Word Title="helm__str_08">BEDROCK HELM</Word>
+    <Word Title="helm__str_11">SCOUT'S HAT</Word>
+
+    <Word Title="helm__str_14">KAGUN'S HORNS</Word>
+    <Word Title="helm__str_18">SWAMPER'S HEADGEAR</Word>
+    <Word Title="helm__str_02">CUIRASSIER HELM</Word>
+    
+    <Word Title="helm__str_09">WARFACE</Word>
+    <Word Title="helm__str_16">LION'S GAZE</Word>
+    <Word Title="helm__str_10">LIQUIDATOR'S HEADPIECE</Word>
+
+
+    <Word Title="difficulty_easy">EASY</Word>
+    <Word Title="difficulty_normal">NORMAL</Word>
+    <Word Title="difficulty_hard">HARD</Word>
+    <Word Title="difficulty_insane">INSANE</Word>
+    <Word Title="difficulty_impossible">IMPOSSIBLE</Word>
+    <Word Title="difficulty_unknown">???</Word>
+    
+    <Word Title="battle_type_main">MAIN QUEST</Word>
+    <Word Title="battle_type_local">MAIN QUEST</Word>
+    <Word Title="battle_type_side">SIDE QUEST</Word>
+    <Word Title="battle_type_survival">SURVIVAL</Word>
+    <Word Title="battle_type_mission">MISSION</Word>
+    <Word Title="battle_type_daily">DAILY QUEST</Word>
+    <Word Title="battle_type_brawler">BRAWLER</Word>
+
+
+    <Word Title="beta_Bamboo_MQ_Tutorial_ShadowForm">DIE EVEN HARDER</Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam">FIRST EXAM</Word>
+    <Word Title="beta_LegionDojo_MQ_NoRestOnLaurels">NO REST ON LAURELS</Word>
+    <Word Title="beta_Gorge_MQ_GameChanger">GAME CHANGER</Word>
+    <Word Title="beta_Gorge_MQ_SargesSecretCache">SARGES SECRET CACHE</Word>
+    <Word Title="beta_Bamboo_MQ_FinalResolution">FINAL RESOLUTION</Word>
+    <Word Title="beta_LegionDojo_MQ_SpillTheBeans">SPILL THE BEANS</Word>
+    <Word Title="beta_BootCamp_MQ_YouWereASonToMe">YOU WERE A SON TO ME</Word>
+    
+    <Word Title="desc_beta_Bamboo_MQ_Tutorial_ShadowForm">Neutralize the Bamboo Fort soldiers</Word>
+    <Word Title="desc_beta_BootCamp_MQ_FirstExam">Uphold Shadow Squad's honor in the tournament</Word>
+    <Word Title="desc_beta_LegionDojo_MQ_NoRestOnLaurels">Accept Sarge's heartiest congratulations</Word>
+    <Word Title="desc_beta_Gorge_MQ_GameChanger">Show Ran Di your skills</Word>
+    <Word Title="desc_beta_Gorge_MQ_SargesSecretCache">Help June to find evidence against Sarge</Word>
+    <Word Title="desc_beta_Bamboo_MQ_FinalResolution">End up with the bamboo fort</Word>
+    <Word Title="desc_beta_LegionDojo_MQ_SpillTheBeans">Pacify Gizmo</Word>
+    <Word Title="desc_beta_BootCamp_MQ_YouWereASonToMe">Accept Sarge's challenge</Word>
+
+
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic">PRIVATE AFFAIR</Word>
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial">SCOUT'S LAST TRIAL</Word>
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator">TRAIN LIKE LIQUIDATOR</Word>
+    <Word Title="beta_Bamboo_SQ_Negotiations">NEGOTIATIONS</Word>
+
+    <Word Title="desc_beta_LegionDojo_SQ_BloodyRelic">Stop the trespasser</Word>
+    <Word Title="desc_beta_Gorge_SQ_ScoutsLastTrial">Find out what are the Scouts hiding in the Gorge</Word>
+    <Word Title="desc_beta_CampNight_SQ_TrainLikeLiquidator">Endure the Liquidator's training</Word>
+    <Word Title="desc_beta_Bamboo_SQ_Negotiations">Save the negotiations</Word>
+
+
+    <Word Title="beta_Bamboo_Survival_DieEvenHarder">DIE EVEN HARDER</Word>
+    <Word Title="desc_beta_Bamboo_Survival_DieEvenHarder">Conquer the Bamboo Fort</Word>
+
+    <Word Title="beta_Gorge_Survival_TradeRoute">TRADE ROUTE</Word>
+    <Word Title="desc_beta_Gorge_Survival_TradeRoute">Protect the trade route</Word>
+
+    <!--                             MISSIONS - CHAPTER 1 - a                                          -->
+    <Word Title="beta_Mission_YouOweMeOne">YOU OWE ME ONE</Word>
+    <Word Title="desc_beta_Mission_YouOweMeOne">Help Gizmo repay his debts</Word>
+
+    <Word Title="beta_Mission_TheLegionsJustice">THE LEGION'S JUSTICE</Word>
+    <Word Title="desc_beta_Mission_TheLegionsJustice">Punish the guilty Legionary</Word>
+
+    <Word Title="beta_Mission_FullContact">FULL CONTACT</Word>
+    <Word Title="desc_beta_Mission_FullContact">Train the recruits</Word>
+
+    <Word Title="beta_Mission_FreshBlood">FRESH BLOOD</Word>
+    <Word Title="desc_beta_Mission_FreshBlood">Learn foreign culture through a fight</Word>
+
+    <Word Title="beta_Mission_Marauders">MARAUDERS</Word>
+    <Word Title="desc_beta_Mission_Marauders">Vindicate the honor of those fallen in the Gorge</Word>
+
+    <Word Title="beta_Mission_Nightwatch">NIGHTWATCH</Word>
+    <Word Title="desc_beta_Mission_Nightwatch">Endure a nightwatch</Word>
+
+    <Word Title="beta_Mission_HitNCount">HIT'N'COUNT</Word>
+    <Word Title="desc_beta_Mission_HitNCount">Play a game from Gizmo's childhood</Word>
+
+    <Word Title="beta_Mission_Blackouts">BLACKOUTS</Word>
+    <Word Title="desc_beta_Mission_Blackouts">Win in spite of Shadow Energy's side effects</Word>
+
+    <Word Title="beta_Mission_MaintainSecrecy">KEEP UNDER WRAPS</Word>
+    <Word Title="beta_Mission_RecklessRecruit">RECKLESS RECRUIT</Word>
+    <Word Title="beta_Mission_AllTomorrowsParties">ALL TOMORROW'S PARTIES</Word>
+    <Word Title="beta_Mission_AWOL">AWOL</Word>
+    <Word Title="beta_Mission_Runaway">RUNAWAY</Word>
+    <Word Title="beta_Mission_GoodReputation">GOOD REPUTATION</Word>
+    <Word Title="beta_Mission_StartWithTheBasics">START WITH THE BASICS</Word>
+    <Word Title="beta_Mission_FaceYourselfFaceYourFears">FACE YOURSELF, FACE YOUR FEARS</Word>
+    <Word Title="beta_Mission_KnowYourEnemy">KNOW YOUR ENEMY</Word>
+    <Word Title="beta_Mission_Fractured">FRACTURED</Word>
+    <Word Title="beta_Mission_AGiftFromOldFriends">A GIFT FROM OLD FRIENDS</Word>
+    <Word Title="beta_Mission_PrideAndPrejudice">PRIDE AND PREJUDICE</Word>
+    <Word Title="beta_Mission_BlastFromThePast">BLAST FROM THE PAST</Word>
+    <Word Title="beta_Mission_RiotOuttaNowhere">RIOT OUTTA NOWHERE</Word>
+    <Word Title="beta_Mission_StarvingForAFight">STARVING FOR A FIGHT</Word>
+    
+    <Word Title="desc_beta_Mission_MaintainSecrecy">Help Sarge maintain secrecy</Word>
+    <Word Title="desc_beta_Mission_RecklessRecruit">Beat Greta's spy</Word>
+    <Word Title="desc_beta_Mission_AllTomorrowsParties">Whip men who feasted in the tent in your absence</Word>
+    <Word Title="desc_beta_Mission_AWOL">Punish your careless fellow soldiers</Word>
+    <Word Title="desc_beta_Mission_Runaway">Don't let people from Dynasty spread rumors about Legion</Word>
+    <Word Title="desc_beta_Mission_GoodReputation">Don't let your drunk fellow soldiers get in trouble</Word>
+    <Word Title="desc_beta_Mission_StartWithTheBasics">Take your part in June's initial training</Word>
+    <Word Title="desc_beta_Mission_FaceYourselfFaceYourFears">Fight June who's adopted all your Shadow skills</Word>
+    <Word Title="desc_beta_Mission_KnowYourEnemy">Complete Greta's training</Word>
+    <Word Title="desc_beta_Mission_Fractured">Return a defector</Word>
+    <Word Title="desc_beta_Mission_AGiftFromOldFriends">Suppress the last resistance in Bamboo Fort</Word>
+    <Word Title="desc_beta_Mission_PrideAndPrejudice">Investigate strange things in Gorge</Word>
+    <Word Title="desc_beta_Mission_BlastFromThePast">Fight mysterious cultists</Word>
+    <Word Title="desc_beta_Mission_RiotOuttaNowhere">Suppress a riot</Word>
+    <Word Title="desc_beta_Mission_StarvingForAFight">Resume food supplies</Word>
+
+
+    <Word Title="beta_BootCamp_MQ_FirstExam_FightEnter_1"><![CDATA[If <color="#FDBE11">Shadow Squad</color> fighters win this tournament, we’ll be made part of the Legion's regular army.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_FightEnter_2"><![CDATA[The Legion has <color="#FDBE11">lost at Falcon’s Gorge</color>. After that, I got a permission to use <color="#FDBE11">Shadow Energy</color>.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_win_1"><![CDATA[Great fighting! If we win the tournament, the <color="#FDBE11">Shadow Sphere</color> will be our goal.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_win_2"><![CDATA[The <color="#FDBE11">Shadow Sphere</color> is the reason of our defeat at Falcon’s Gorge. I only know that it is guarded by the <color="#FDBE11">Heralds</color>.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_loss_1"><![CDATA[If we lose the tournament, I’ll leave the Legion, and the <color="#FDBE11">Shadow Squad</color> will be forgotten forever.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_win_4_1"><![CDATA[You have gone too far. I will not see your Shadow Squad become part of the Legion's ranks.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_win_4_2"><![CDATA[Greta, I respect you and your unit. We’re not each other’s enemies. I put the Legion first, just like you do.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_win_4_3"><![CDATA[How dare you compare yourself to me? I am not letting shadow pest anywhere near myself!]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_win_6_1"><![CDATA[Perfect! Keep that grip tight, soldier. The <color="#FDBE11">tournament</color> is our chance to <color="#FDBE11">find the Sphere</color>. Don’t miss it.]]></Word>
+
+    <Word Title="beta_BootCamp_MQ_FirstExam_FightEnter_8_1"><![CDATA[You've reached the <color="#FDBE11">tournament finals</color>. The entire Shadow Squad is counting on you.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_FightEnter_8_2"><![CDATA[Otto, your Shadow Squad goes against all Legion principles! We do NOT utilize Shadow Energy!]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_FightEnter_8_3"><![CDATA[Defeatist philosophy, Greta. Shadow Energy is our only way to <color="#FDBE11">conquering the Dynasty</color> - and then the <color="#FDBE11">Heralds</color>!]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_FightEnter_8_4"><![CDATA[Defeatist?! You’re a disgrace to our whole army! Step aside, soldiers, <color="#FDBE11">I’ll fight this one myself</color>!]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_win_8_1"><![CDATA[This was not to happen! Shadow Squad will not be part of the Legion!]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_win_8_2"><![CDATA[It's happening already, Greta. My disciple just thrashed you. A new chapter in the Legion’s books is starting.]]></Word>
+    <Word Title="beta_BootCamp_MQ_FirstExam_loss_8_1"><![CDATA[Keep trying if you want. I’ll be defending my army’s traditions to the last!]]></Word>
+
+
+    <Word Title="beta_LegionDojo_MQ_NoRestOnLaurels_FightEnter_1"><![CDATA[After your victory, <color="#FDBE11">we’re expanding</color> with many new volunteers. Gizmo will train the novices.]]></Word>
+    <Word Title="beta_LegionDojo_MQ_NoRestOnLaurels_FightEnter_2"><![CDATA[And I’m going to the Legion’s Council, so you’re staying on your own and can have some rest, champion.]]></Word>
+    <Word Title="beta_LegionDojo_MQ_NoRestOnLaurels_FightEnter_3"><![CDATA[Sarge and Gizmo gone? They <color="#FDBE11">didn't want us to meet</color> each other. But you're not going to be at their orders forever, are you?]]></Word>
+    
+    <Word Title="beta_LegionDojo_MQ_NoRestOnLaurels_Win"><![CDATA[This means that your victory at the tournament wasn't a coincidence, and you're the one I need.]]></Word>
+    <Word Title="beta_LegionDojo_MQ_NoRestOnLaurels_Loss"><![CDATA[Sound the alarm - there's a Dynasty infiltrator in the camp. Or shall you try defeating me all by yourself?]]></Word>
+    <Word Title="beta_LegionDojo_MQ_NoRestOnLaurels_Dialog_2"><![CDATA[Well, I’ve seen better fighters. Look - has Sarge told you about the <color="#FDBE11">Sphere</color>? It has incredible power.]]></Word>
+    <Word Title="beta_LegionDojo_MQ_NoRestOnLaurels_Dialog_3"><![CDATA[<color="#FDBE11">Sarge’s lying</color>. He wants to <color="#FDBE11">get hold of the Sphere</color> rather than destroy it. And only I know where it is.]]></Word>
+
+    <Word Title="beta_Gorge_MQ_GameChanger_FightEnter_1"><![CDATA[First I must meet a friend. He’s now on his way back from talks with the Legion.]]></Word>
+    <Word Title="beta_Gorge_MQ_GameChanger_FightEnter_2"><![CDATA[Hello, <color="#FDBE11">Ran Di</color>. Guess there’s no need to introduce my companion, for you usually know everyone already.]]></Word>
+    <Word Title="beta_Gorge_MQ_GameChanger_FightEnter_3"><![CDATA[I must know for sure how good this fighter is. Must I watch out for that Squad? My man will try your friend.]]></Word>
+    <Word Title="beta_Gorge_MQ_GameChanger_Win_1_1"><![CDATA[Not bad. But one win proves nothing. Will your friend be bold enough to <color="#FDBE11">face me in a fight</color>?]]></Word>
+    <Word Title="beta_Gorge_MQ_GameChanger_Win_2_1"><![CDATA[Sarge has a <color="#FDBE11">hidden cache</color> at the Gorge. My men have learn that while I was at the talks. I’ll show you where.]]></Word>
+
+    <Word Title="beta_Gorge_MQ_GameChanger_Loss"><![CDATA[Rumor stays rumor. Sarge is recruiting all kinds of loafers to his squad. This wasn’t worth my attention.]]></Word>
+
+
+    <Word Title="beta_Bamboo_MQ_FinalResolution_FightEnter_1"><![CDATA[Sarge sends you? We want intel about the Legion’s disposition and <color="#FDBE11">our wage</color>. My men aren’t fighting for free.]]></Word>
+    <Word Title="beta_Bamboo_MQ_FinalResolution_FightEnter_2"><![CDATA[The fool still believes it was Sarge who’s sent us. I wonder how much money does he make here.]]></Word>
+    <Word Title="beta_Bamboo_MQ_FinalResolution_Win_1"><![CDATA[Now <color="#FDBE11">we have proof</color> that Sarge was buying his Shadow Squad’s victories!]]></Word>
+    <Word Title="beta_Bamboo_MQ_FinalResolution_Win_2"><![CDATA[We must get back to the camp. I’ll wait in the tent while you bring the evidence to the Legion's top warlords.]]></Word>
+    <Word Title="beta_Bamboo_MQ_FinalResolution_Loss_1"><![CDATA[We can leave, but that will cost Sarge extra.]]></Word>
+    <Word Title="beta_Bamboo_MQ_FinalResolution_Loss_2"><![CDATA[You’ve done too much damage to be simply paid off.]]></Word>
+    <Word Title="beta_Bamboo_MQ_FinalResolution_InGame_Dialog_1"><![CDATA[Sarge sent you? Give me the usual. I need info about the Legion’s disposition and plans. And my fee, of course. My people aren’t fighting for free. ]]></Word>
+    <Word Title="beta_Bamboo_MQ_FinalResolution_InGame_Dialog_2"><![CDATA[Do you believe me now? And this is not the only scheme Sarge has made. I have many more stories for you.]]></Word>
+
+    <Word Title="beta_Bamboo_MQ_EnterGizmo_FightEnter_Dialog_1"><![CDATA[I knew that only a true Shadow monster like you could defeat those Bamboo half-wits, buddy!]]></Word>
+    <Word Title="beta_Bamboo_MQ_EnterGizmo_FightEnter_Dialog_1_f"><![CDATA[I knew only a true Shadow monster like you here, cutie, could defeat those Bamboo half-wits!]]></Word>
+    <Word Title="beta_Bamboo_MQ_EnterGizmo_FightEnter_Dialog_2"><![CDATA[Get lost, Gizmo! And tell Sarge we're not dancing to his tune any more.]]></Word>
+    <Word Title="beta_Bamboo_MQ_EnterGizmo_FightEnter_Dialog_3"><![CDATA[Ya run away again, girlie? Weren't ya told to stay in the camp? All right, skirt, I'm taking ya back where ya belong. ]]></Word>
+    <Word Title="beta_Bamboo_MQ_EnterGizmo_FightEnter_Dialog_4"><![CDATA[Don't let Gizmo take me! They'll use you and then throw you away, just like they want to do with me now.]]></Word>
+    <Word Title="beta_Bamboo_MQ_EnterGizmo_WinDialog"><![CDATA[Ya gotta thank me for having trained ya so well! Anyway, soon enough that ain't gonna help ya. See ya at the camp!]]></Word>
+    <Word Title="beta_Bamboo_MQ_EnterGizmo_LossDialog_1"><![CDATA[You ain't gonna win against Gizmo the Great! Get ready for a painful welcome at the camp! ]]></Word>
+    <Word Title="beta_Bamboo_MQ_EnterGizmo_LossDialog_2"><![CDATA[We're running out of time! He'll run off and inform Sarge any moment!]]></Word>
+
+    <Word Title="beta_LegionDojo_MQ_SpillTheBeans_FightEnter_1"><![CDATA[Gizmo and I came back and didn’t find you here. Where’ve you been, and who’s this girl next to you?]]></Word>
+    <Word Title="beta_LegionDojo_MQ_SpillTheBeans_FightEnter_3"><![CDATA[Who am I? Don't you know? Wasn’t it me who <color="#FDBE11">dragged you from the Gorge</color>, half-dead? Taught you <color="#FDBE11">all you know</color> now?]]></Word>
+    <Word Title="beta_LegionDojo_MQ_SpillTheBeans_FightEnter_5"><![CDATA[While Sarge's sorting things out with June, we can do the same. Been dreaming of beating you up for ages!]]></Word>
+    <Word Title="beta_LegionDojo_MQ_SpillTheBeans_Win_1"><![CDATA[I can still fight! Sarge! Gimme a little time, and I won't spare this insolent bastard!]]></Word>
+    <Word Title="beta_LegionDojo_MQ_SpillTheBeans_Win_2"><![CDATA[Calm down, Gizmo, you have lost. Which means I’ll deal with my disciple personally. Tomorrow at dawn.]]></Word>
+    <Word Title="beta_LegionDojo_MQ_SpillTheBeans_Loss"><![CDATA[Feel my might? Enjoy - you’re losing to the Legion's best, Gizmo the Great!]]></Word>
+    <Word Title="beta_LegionDojo_MQ_SpillTheBeans_InGame_Dialog_1"><![CDATA[Why am I playing small with you?! I can tear you apart with my <color="#FDBE11">bare hands</color>!]]></Word>
+
+    <Word Title="beta_BootCamp_MQ_YouWereASonToMe_FightEnter_1"><![CDATA[Are you trusting this girl? She’s a Dynasty spy! Part of their plot against us!]]></Word>
+    <Word Title="beta_BootCamp_MQ_YouWereASonToMe_FightEnter_2"><![CDATA[We’ll fight the old way, <color="#FDBE11">no Shadow techniques</color>. Just brute strength.]]></Word>
+    <Word Title="beta_BootCamp_MQ_YouWereASonToMe_Win_1"><![CDATA[Suckling! You could’ve died honorably at my hand. But now you have the whole Legion against you!]]></Word>
+    <Word Title="beta_BootCamp_MQ_YouWereASonToMe_Win_2"><![CDATA[I have escaped! I <color="#FDBE11">gave all the evidence to Greta</color>. She’ll be glad to go at Sarge!]]></Word>
+    <Word Title="beta_BootCamp_MQ_YouWereASonToMe_Win_3"><![CDATA[In exchange she gave me time to flee. The <color="#FDBE11">Sphere</color> is in the <color="#FDBE11">very heart of the Dynasty</color>. I’ll help you getting there.]]></Word>
+    <Word Title="beta_BootCamp_MQ_YouWereASonToMe_Loss"><![CDATA[Are you still breathing? We can continue later, for the custom demands fighting to the last breath.]]></Word>
+    <Word Title="beta_Bamboo_MQ_YouWereASonToMe_InGame_Dialog_1"><![CDATA[You’re not leaving this arena alive! The <color="#FDBE11">Sphere shall be mine</color>! Then I won't need armies - I’ll be an army myself!]]></Word>
+
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic_FightEnter_1"><![CDATA[My sword, my heirloom! Someone want to steal it! Help me <color="#FDBE11">stopping the thief</color>!]]></Word>
+
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic_win_1"><![CDATA[Gizmo, I’m here for the sword that belongs to our family. And you are hiding behind an alien’s back.]]></Word>
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic_win_2"><![CDATA[You’re a disgrace to the family. Joining the <color="#FDBE11">Shadow Squad</color> was the last drop!]]></Word>
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic_win_3"><![CDATA[Ah, that was my sis <color="#FDBE11">Greta</color>. Don’t pay any attention to her - the Shadow Squad is disliked by all in the Legion.]]></Word>
+
+    <Word Title="beta_LegionDojo_SQ_BloodyRelic_loss"><![CDATA[I belong to an ancient Legionary lineage - unlike you. That is obvious, even from your poor fighting.]]></Word>
+
+
+    <Word Title="beta_Gorge_SQ_Pretenders_FightEnter_Dialog_1"><![CDATA[These are our allies, but as long as Legion men are nearby, we have to pretend we're catching them. Just hold for a while and try not to get a beating.]]></Word>
+    <Word Title="beta_Gorge_SQ_Pretenders_Win"><![CDATA[Good. The Legionaries have left, and now I'll just have to explain to our friends why were we fighting them.]]></Word>
+    <Word Title="beta_Gorge_SQ_Pretenders_loss"><![CDATA[On your feet, fighter. Or has our little show resulted in serious injuries?]]></Word>
+
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial_FightEnter_1"><![CDATA[The <color="#FDBE11">Scouts</color> find areas where Shadow Energy is present. Let’s go to the Gorge, they have a meeting there today.]]></Word>
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial_FightEnter_2"><![CDATA[The <color="#FDBE11">Scouts</color> are burying some armor in the depth of the Gorge. Suspicious. I think it’s time for us to step in!]]></Word>
+
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial_win_1"><![CDATA[That’s a Scout’s armor. The jacket is still wearable; everything else has been torn by a Shadow overload.]]></Word>
+    <Word Title="beta_Gorge_SQ_ScoutsLastTrial_loss_1"><![CDATA[Them Scouts have become tough now. A while ago I used to kick them aside easily in sparring matches.]]></Word>
+
+
+    <Word Title="beta_Gorge_MQ_SargesSecretCache_FightEnter_1"><![CDATA[The cache is under one of the <color="#FDBE11">Shadow Rigs</color>. Of course: the Legionaries avoid them. Cover me, I'll find it.]]></Word>
+    <Word Title="beta_Gorge_MQ_SargesSecretCache_FightEnter_2"><![CDATA[Approaching the Shadow Rigs is dangerous! Leave the area now, before I have to resort to force!]]></Word>
+    <Word Title="beta_Gorge_MQ_SargesSecretCache_Win_1"><![CDATA[You’ve <color="#FDBE11">defeated a Herald</color>! Only they can do such disappearing tricks. And I found what I was looking for.]]></Word>
+    <Word Title="beta_Gorge_MQ_SargesSecretCache_Win_2"><![CDATA[That's a contract between Sarge and the people of the <color="#FDBE11">Bamboo Fort</color>. Looks like he’s made a <color="#FDBE11">dirty deal</color> with them!]]></Word>
+    <Word Title="beta_Gorge_MQ_SargesSecretCache_loss"><![CDATA[Losing to a <color="#FDBE11">Herald</color> is not so much of a shame. Yes - it was one of them, the so-called allies of the Dynasty.]]></Word>
+
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_FightEnter_1"><![CDATA[The <color="#FDBE11">Liquidators</color> are the Legion’s main weapon against <color="#FDBE11">Shadow Energy</color>. Our Squad must prove not being inferior.]]></Word>
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_FightEnter_2"><![CDATA[I’ll show you how the <color="#FDBE11">Liquidators</color> train. Your adversary will keep the <color="#FDBE11">Shadow Form</color> throughout the whole round!]]></Word>
+
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_Win"><![CDATA[That was commendable! I used to dream of becoming a Liquidator myself – a while ago.]]></Word>
+    <Word Title="beta_CampNight_SQ_TrainLikeLiquidator_loss"><![CDATA[On your feet, soldier! A common Legionary won’t endure the Liquidators’ training - but you must be stronger!]]></Word>
+
+    <Word Title="beta_Bamboo_SQ_Negotiations_FightEnter_1"><![CDATA[The Bamboo Fort is free. <color="#FDBE11">Ran Di</color> will take part in negotiations on its further use.]]></Word>
+    <Word Title="beta_Bamboo_SQ_Negotiations_FightEnter_2"><![CDATA[Ran Di warned me of a possible act of <color="#FDBE11">sabotage</color>. You have to <color="#FDBE11">divert the plotters</color> to ensure calm at the talks.]]></Word>
+
+
+
+    <Word Title="beta_Bamboo_SQ_Negotiations_Win"><![CDATA[Thanks for keeping them away. These people don't understand that their guerrilla warfare will bring no result.]]></Word>
+
+    <Word Title="beta_Bamboo_SQ_Negotiations_Loss"><![CDATA[Pick yourself up! The negotiations depend on you!]]></Word>
+
+    
+    <Word Title="beta_Bamboo_Survival_DieEvenHarder_FightEnter_1"><![CDATA[New soldiers come to the <color="#FDBE11">Bamboo Fort</color>. The more of them you can deal with, the higher will be your wage.]]></Word>
+    <Word Title="beta_Bamboo_Survival_DieEvenHarder_FightEnter_4_1"><![CDATA[You cannot cope with a bunch of guerrillas, Sergeant? Fear not, my squad and I will help you.]]></Word>
+    <Word Title="beta_Bamboo_Survival_DieEvenHarder_FightEnter_4_2"><![CDATA[Listen up, Shadow Squad! We’ve been fighting here for a long while; don’t let Greta take the glory!]]></Word>
+
+    <Word Title="beta_Gorge_Survival_TradeRoute_FightEnter_1"><![CDATA[The Legion camp is a <color="#FDBE11">former Dynasty village</color>. Capital dwellers send food to their kin there through the Gorge.]]></Word>
+    <Word Title="beta_Gorge_Survival_TradeRoute_FightEnter_2"><![CDATA[Some in the Legion help them. Not Sarge. <color="#FDBE11">He wants war</color>, and has people trying to cut the food supply line.]]></Word>
+    <Word Title="beta_Gorge_Survival_TradeRoute_Win"><![CDATA[Sarge has many fighters now. We must protect this route as an evidence of friendship between our nations.]]></Word>
+    <Word Title="beta_Gorge_Survival_TradeRoute_Loss"><![CDATA[We have distracted them for a while. We’ll have to come back here later.]]></Word>
+
+
+    <Word Title="beta_Mission_YouOweMeOne_BattleSelected"><![CDATA[I <color="#FDBE11">owe the guys some money</color> and told them that you have it. Don’t you? Oh, you’re in trouble then...]]></Word>
+    <Word Title="beta_Mission_YouOweMeOne_Win"><![CDATA[I swear I knew you’d come out OK, that’s why I named you. And I was right, wasn’t I?]]></Word>
+    <Word Title="beta_Mission_YouOweMeOne_Loss"><![CDATA[Well... looks like the guys just fancied fighting. They even didn’t want the money. A curious development...]]></Word>
+
+    <Word Title="beta_Mission_TheLegionsJustice_BattleSelected"><![CDATA[Today you’ll be <color="#FDBE11">administering justice</color>. In the Legion, the strong survive, that’s why much is solved by a duel.]]></Word>
+    <Word Title="beta_Mission_TheLegionsJustice_Win"><![CDATA[Good show! He's proven guilty and duly punished - all in one. Very well. That's Legion justice in action.]]></Word>
+    <Word Title="beta_Mission_TheLegionsJustice_Loss"><![CDATA[You weren’t playing at giveaway, were you? I know he’s guilty. Go and prove that!]]></Word>
+    
+    <Word Title="beta_Mission_FullContact_BattleSelected"><![CDATA[Let’s go <color="#FDBE11">teach them youngsters</color> how to fight, shall we? We won’t harm them, it’s gonna be honest.]]></Word>
+    <Word Title="beta_Mission_FullContact_Win2"><![CDATA[You win! The kid shall be all right - he’s just pretending to be hurt.]]></Word>
+    <Word Title="beta_Mission_FullContact_Loss"><![CDATA[Some greenhorns kicked your ass?! You’d be more confident next  time - you don’t want such a shame again.]]></Word>
+
+    <Word Title="beta_Mission_FreshBlood_BattleSelected"><![CDATA[The Legion has <color="#FDBE11">many fighters</color> who have <color="#FDBE11">joined during our campaign</color> against the Shadow Energy.]]></Word>
+    <Word Title="beta_Mission_FreshBlood_BattleSelected2"><![CDATA[Guys like fight with <color="#FDBE11">kicks only</color>. Dunno where they come from, but let’s teach them a lesson in their language.]]></Word>
+    <Word Title="beta_Mission_FreshBlood_Win"><![CDATA[That’s the way! Let them forget all that was before their joining the Legion. This is an army, not a circus.]]></Word>
+    <Word Title="beta_Mission_FreshBlood_Loss"><![CDATA[No, you're not giving up. Or the whole Legion shall be kicking a dead horse soon - not something we want here.]]></Word>
+
+    <Word Title="beta_Mission_Marauders_BattleSelected"><![CDATA[Many Legionaries fell fighting at Falcon’s Gorge. Their bodies were still warm when the Dynasts came for them.]]></Word>
+    <Word Title="beta_Mission_Marauders_BattleSelected2"><![CDATA[We must <color="#FDBE11">drive the marauders away</color> and bury our fellow soldiers with their weapons.]]></Word>
+    <Word Title="beta_Mission_Marauders_Win"><![CDATA[The Dynasty's true face, again! It is disgusting to soil my sword with those bastards' blood.]]></Word>
+    <Word Title="beta_Mission_Marauders_Loss"><![CDATA[We must not fall back! Fighting for the dead can be more important than defending the living.]]></Word>
+
+    <Word Title="beta_Mission_Nightwatch_BattleSelected"><![CDATA[After a hard day’s work, you’re having a <color="#FDBE11">night shift at patrolling</color>! It’s going to be difficult, but you must endure!]]></Word>
+    <Word Title="beta_Mission_Nightwatch_Win"><![CDATA[Your shift is over! Remember, Shadow soldiers will always be treated much stricter than anyone else.]]></Word>
+    <Word Title="beta_Mission_Nightwatch_Loss"><![CDATA[If you let an enemy through while on guard, there’ll be no forgiving. Stand up and fight!]]></Word>
+
+    <Word Title="beta_Mission_HitNCount_BattleSelected"><![CDATA[A <color="#FDBE11">game my sis and I played</color> as kids, drawing charcoal numbers on our bodies, then hitting them to <color="#FDBE11">score points</color>.]]></Word>
+    <Word Title="beta_Mission_HitNCount_Win"><![CDATA[So, it's my turn to lose at Hit'n'Count this time. Never happened before!]]></Word>
+    <Word Title="beta_Mission_HitNCount_Loss"><![CDATA[I’m the champion! Playing this game has taught Greta to keep her helmet on all the time she's awake! Hee-hee!]]></Word>
+
+    <Word Title="beta_Mission_Blackouts_BattleSelected"><![CDATA[At times, using <color="#FDBE11">Shadow Energy</color>, you’ll be feeling as if you’re plunging into pitch darkness.]]></Word>
+    <Word Title="beta_Mission_Blackouts_BattleSelected2"><![CDATA[Today I’ll <color="#FDBE11">imitate such blackouts</color> by putting out the torches, so that you could be prepared to everything.]]></Word>
+    <Word Title="beta_Mission_Blackouts_Win"><![CDATA[You have won in spite of the blackouts. That's what it means to merge with the dark!]]></Word>
+    <Word Title="beta_Mission_Blackouts_Loss"><![CDATA[Under conditions like these, there's no shame in being defeated. Nobody saw you lose, anyway!]]></Word>
+
+    <Word Title="beta_Mission_MaintainSecrecy_BattleSelected"><![CDATA[These are our allies, but as long as Legion men are nearby, we have to <color="#FDBE11">pretend we're catching</color> them. Just hold for a while and try not to get a beating.]]></Word>
+    <Word Title="beta_Mission_MaintainSecrecy_WIn"><![CDATA[Good. The Legionaries have left, and now I'll just have to explain to our friends why were we fighting them. ]]></Word>
+    <Word Title="beta_Mission_MaintainSecrecy_Loss"><![CDATA[On your feet, fighter. Or has our little show resulted in serious injuries? ]]></Word>
+
+    <Word Title="beta_Mission_RecklessRecruit_BattleSelected"><![CDATA[There is a Legionary from <color="#FDBE11">Greta's squad</color> asking to join us. I’m sure she is trying to plant a spy here.]]></Word>
+    <Word Title="beta_Mission_RecklessRecruit_Win"><![CDATA[Well done! We aren’t going to see this or any other spy any more.]]></Word>
+    <Word Title="beta_Mission_RecklessRecruit_Loss"><![CDATA[So, he’s more than a match for you!]]></Word>
+
+    <Word Title="beta_Mission_AllTomorrowsParties_BattleSelected"><![CDATA[Many underestimate our Squad. Some idiots used our tent for feasting yesterday.]]></Word>
+    <Word Title="beta_Mission_AllTomorrowsParties_BattleSelected2"><![CDATA[<color="#FDBE11">Drive those drunkards away</color> before they sober up and grip their swords.]]></Word>
+    <Word Title="beta_Mission_AllTomorrowsParties_Win"><![CDATA[Clean work! None of them will admit last night's deeds!]]></Word>
+    <Word Title="beta_Mission_AllTomorrowsParties_Loss"><![CDATA[You know, I have my doubts about you at times. Is defeating a sleepy, unarmed soldier that difficult? Really?]]></Word>
+
+    <Word Title="beta_Mission_AWOL_BattleSelected"><![CDATA[A couple of halfwits from our Squad decided to <color="#FDBE11">experiment with Shadow Energy</color> off-camp. Make them listen to reason.]]></Word>
+    <Word Title="beta_Mission_AWOL_Win"><![CDATA[Thanks. Being taught Shadow tricks is risky itself. It’s still too early for you kids to try new things by yourselves.]]></Word>
+    <Word Title="beta_Mission_AWOL_Loss"><![CDATA[They expected to gain cool Shadow techniques, but all they had was blackouts as a side effect. Stop them!]]></Word>
+
+    <Word Title="beta_Mission_Runaway_BattleSelected"><![CDATA[People of the province we’re occupying often flee to the Dynasty’s Capital to tell them what kind of barbarians we are. We need to <color="#FDBE11">intercept</color> one such <color="#FDBE11">runaway</color>.]]></Word>
+    <Word Title="beta_Mission_Runaway_Win"><![CDATA[You’ve helped to bring him back. I’ll see that he’s healed up and then we’ll ask why he tried to flee and give him whatever he lacked living here.]]></Word>
+    <Word Title="beta_Mission_Runaway_Loss"><![CDATA[We can’t let him escape. Others will follow his suite. And trust me, there’s nothing good for them in the Capital.]]></Word>
+
+    <Word Title="beta_Mission_GoodReputation_BattleSelected"><![CDATA[Several Legionaries, slightly drunk, set off to the Dynasty's Capital. We must <color="#FDBE11">intercept them</color>.]]></Word>
+    <Word Title="beta_Mission_GoodReputation_Win"><![CDATA[Legionaries are allowed to visit the Dynasty lands, but this permission shouldn’t be abused.]]></Word>
+    <Word Title="beta_Mission_GoodReputation_Loss"><![CDATA[They fought you off and you just let them go? We don’t want Dynasty people seeing Legionaries drunk!]]></Word>
+
+    <Word Title="beta_Mission_StartWithTheBasics_BattleSelected"><![CDATA[Soon enough I’ll teach you all things I've taught your Sarge before. For now, defeat me using <color="#FDBE11">kicks only</color>.]]></Word>
+    <Word Title="beta_Mission_StartWithTheBasics_Win"><![CDATA[You’re quick indeed. But not prepared to fight like a Dynasty warrior yet. Well, there is a time for things.]]></Word>
+    <Word Title="beta_Mission_StartWithTheBasics_Loss"><![CDATA[While a Legionary lifts up his fist, a Dynasty warrior can kick him trice. Who’s stronger?]]></Word>
+    
+    <Word Title="beta_Mission_KnowYourEnemy_BattleSelected"><![CDATA[I can teach you how to <color="#FDBE11">use your fists</color> to make blows which no Dynast can dodge.]]></Word>
+    <Word Title="beta_Mission_KnowYourEnemy_Win"><![CDATA[Enough! Do you see now that knuckle fighting is the noblest of all marital arts?]]></Word>
+    <Word Title="beta_Mission_KnowYourEnemy_Loss"><![CDATA[You have failed. These being just the basics... Were they really teaching you anything in the Shadow Squad?!]]></Word>
+
+    <Word Title="beta_Mission_Fractured_BattleSelected"><![CDATA[Not all want to serve in your Shadow squads. We have – better to say, you have – a <color="#FDBE11">deserter</color>. He went off to the Gorge. Bring him back.]]></Word>
+    <Word Title="beta_Mission_Fractured_Win"><![CDATA[Good work, soldier. The bug-out will now have to peel potatoes for the whole squad.]]></Word>
+    <Word Title="beta_Mission_Fractured_Loss"><![CDATA[No excuses expected. Are you hurt? Fine, I’m the last person to care.]]></Word>
+
+    <Word Title="beta_Mission_AGiftFromOldFriends_BattleSelected"><![CDATA[The partisans have sent their herbalists to the Bamboo Fort to <color="#FDBE11">poison the area</color> with some potions.]]></Word>
+    <Word Title="beta_Mission_AGiftFromOldFriends_BattleSelected2"><![CDATA[My people can’t make a step there. Maybe you have someone in you Squad who has better endurance?]]></Word>
+    <Word Title="beta_Mission_AGiftFromOldFriends_Win"><![CDATA[I've always said that Shadow Energy is a poison. Today we've simply used one poison to cure another.]]></Word>
+    <Word Title="beta_Mission_AGiftFromOldFriends_Loss"><![CDATA[None of your Shadow tricks were of any use. I should have asked somebody else for help.]]></Word>
+    
+
+    <Word Title="beta_Mission_PrideAndPrejudice_BattleSelected"><![CDATA[My people at the Gorge <color="#FDBE11">need help</color>. I could use someone from you Squad.]]></Word>
+    <Word Title="beta_Mission_PrideAndPrejudice_Win"><![CDATA[Ah that’s what it was. Encountering an enemy who regenerates and crying out loud for help.]]></Word>
+    <Word Title="beta_Mission_PrideAndPrejudice_Loss"><![CDATA[You’ve failed, too? Can’t say I’m surprised. You are seeing so many shadows that now you’re afraid of your own one.]]></Word>
+
+    <Word Title="beta_Mission_BlastFromThePast_BattleSelected"><![CDATA[The adepts of an ancient cult of a an <color="#FDBE11">otherwordly god</color> can still be encountered at the <color="#FDBE11">Gorge</color>.]]></Word>
+    <Word Title="beta_Mission_BlastFromThePast_BattleSelected2"><![CDATA[There is their god’s head carved from a rock a while ago, and some fanatics still gather there to worship it.]]></Word>
+    <Word Title="beta_Mission_BlastFromThePast_Win"><![CDATA[You have defeated them in spite of all the anomalies and tricks. Maybe that will help us to suppress the cult.]]></Word>
+    <Word Title="beta_Mission_BlastFromThePast_Loss"><![CDATA[Oh, I forgot to warn you - when they fight, they sort of drain your strength. Got no idea how do they do that.]]></Word>
+
+    <Word Title="beta_Mission_RiotOuttaNowhere_BattleSelected"><![CDATA[<color="#FDBE11">We’re in Dynasty land</color> now, and many here dislike our presence.]]></Word>
+    <Word Title="beta_Mission_RiotOuttaNowhere_BattleSelected2"><![CDATA[The <color="#FDBE11">locals help us with foodstuffs</color> and other needs, but some would rebel occasionally.]]></Word>
+    <Word Title="beta_Mission_RiotOuttaNowhere_Win"><![CDATA[So far we have to resort to force in cases like this, but I am sure soon enough that will not be of necessity.]]></Word>
+    <Word Title="beta_Mission_RiotOuttaNowhere_Loss"><![CDATA[This defeat was rather inopportune. Now they’ll be thinking that rebelling is easier than it seems.]]></Word>
+
+    <Word Title="beta_Mission_StarvingForAFight_BattleSelected"><![CDATA[The Dynasts are ambushing our supply trains. We must <color="#FDBE11">stop the bandits</color> as soon as possible.]]></Word>
+    <Word Title="beta_Mission_StarvingForAFight_Win"><![CDATA[Thank you, soldier. Our supplies are safe now!]]></Word>
+    <Word Title="beta_Mission_StarvingForAFight_Loss"><![CDATA[You have your orders! No soldier of mine is going to sleep hungry tonight.]]></Word>
+    
+    
+    <!--                             DAILY - CHAPTER 1 - CBT                                          -->
+    <Word Title="beta_Daily_Bonus_Farm">FELLOW SUFFERER</Word>
+    <Word Title="desc_beta_Daily_Bonus_Farm">June is trying to talk to Greta</Word>
+    <Word Title="beta_Daily_DailyFarm_FightEnter_1"><![CDATA[I’m here for a <color="#FDBE11">personal talk</color>, Greta. You can help me getting back at Otto and having his Shadow Squads disbanded.]]></Word>
+    <Word Title="beta_Daily_DailyFarm_FightEnter_2"><![CDATA[The Legion’s given free rein to Otto and <color="#FDBE11">put me under his command</color>. One of the guards will send you off.]]></Word>
+    <Word Title="beta_Daily_DailyFarm_FightEnd_1"><![CDATA[I shall be coming here <color="#FDBE11">again and again</color> until you listen to me. You can reclaim all you have lost.]]></Word>
+    <Word Title="beta_Daily_DailyFarm_FightEnd_2"><![CDATA[What do you know about what I've lost, snotnose? Even my brother outranks me now... Begone!]]></Word>
+      
+    
+    <Word Title="Lore_Hint_1">Shadow Energy entered the world after the Shadow Gates fell. Some see it as a threat to humanity, others as salvation.</Word>
+    <Word Title="Lore_Hint_2">Heralds were the reason why the previously invincible Legion was defeated in its first major clash with the Dynasty.</Word>
+    <Word Title="Lore_Hint_3">Having confronted the Dynasty, the Legion's elders have taken a decision to permit using the Shadow Energy.</Word>
+    <Word Title="Lore_Hint_4">The Legion's resort to Shadow Energy is limited to military use by the special Shadow Squad.</Word>
+    <Word Title="Lore_Hint_5">Having lost at Falcon’s Gorge, the Legion consolidated its occupation of one of the Dynasty's border provinces.</Word>
+    <Word Title="Lore_Hint_6">Relations between the Legion and the Dynasty are a "cold war." In spite of a truce, the two groups hate each other.</Word>
+    <Word Title="Lore_Hint_7">Some in the Dynasty's Chamber want to defeat the Legion in a military operation, others prefer a peaceful solution. </Word>
+    <Word Title="Lore_Hint_8">By far the largest city of the known world, Wide Gate City is the prosperous capital of the Dynasty.</Word>
+    <Word Title="Lore_Hint_9">The Legion is an army of a northern country which sees delivering the world from Shadow Energy as its sacred duty.</Word>
+    <Word Title="Lore_Hint_10">Сlever and agile users of all things old and new, the Dynasty have built their civilization upon pragmatic approach.</Word>
+    <Word Title="Lore_Hint_11">The Dynasty believes that whatever helps to achieve the aim is good, and values diversity. </Word>
+    <Word Title="Lore_Hint_12">Some in the Legion believe the Heralds and their skills to be a fable born in their cowardly brethren’s imagination.</Word>
+    <Word Title="Lore_Hint_13">The Legion accepts everyone who can pass an exhausting test of strength, endurance and fighting abilities.</Word>
+    <Word Title="Lore_Hint_14">The Legion came from the north after a scout discovered a concentration of Shadow Energy in the Dynasty’s lands.</Word>
+    <Word Title="Lore_Hint_15">The Dynasty fighters rely on dexterity to avoid enemy attacks and to deliver "stinging" hits in ingenious combinations.</Word>
+    <Word Title="Lore_Hint_16">Though seemingly ponderous, ironclad Legionaries are very effective fighters who can deal powerful stunning blows. </Word>
+    <Word Title="Lore_Hint_17">The Shadow Squad – the Legion’s special Shadow Energy-using unit – consists of non-Legion-born recruits.</Word>
+    <Word Title="Lore_Hint_18">Images of a mysterious god from the Shadow World can still be seen at Falcon's Gorge.</Word>
+    <Word Title="Hint_Shadow_Form_Skill_Helmet"><![CDATA[TO USE <color="#FDBE11">HELMET'S SHADOW ABILITY</color> PRESS <quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100/> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=shadow size=100 color=#FDBE11 /> DURING SHADOW FORM.]]></Word>
+    <Word Title="Hint_Shadow_Form_Skill_Weapon"><![CDATA[TO USE <color="#FDBE11">WEAPON'S SHADOW ABILITY</color> PRESS <quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-90/> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=shadow size=100 color=#FDBE11 /> DURING SHADOW FORM.]]></Word>
+    <Word Title="Hint_Shadow_Form_Skill_Armor"><![CDATA[TO USE <color="#FDBE11">ARMOR'S SHADOW ABILITY</color> PRESS <quad atlas=NativeUI/Atlases/Fight name=stick_btn size=100 angle=-180/> <color="#FDBE11">+</color> <quad atlas=NativeUI/Atlases/Fight name=shadow size=100 color=#FDBE11 /> DURING SHADOW FORM.]]></Word>
+    <Word Title="Hint_Shadow_Form_Cooldown"><![CDATA[YOU CAN USE <color="#FDBE11">SHADOW ABILITY</color> AGAIN AFTER A SHORT <color="#FDBE11">COOLDOWN</color>.]]></Word>
+    
+    
+    
+    <Word Title="desc_Darkness">[Fight in the dark]</Word>
+    <Word Title="desc_HotGround">[Hot ground]</Word>
+    <Word Title="desc_InvertedJoystick">[Inverted controls]</Word>
+    <Word Title="desc_ScoreFight">[Score victory]</Word>
+    <Word Title="desc_Perpetual_SF">[Opponent is in Shadow Form]</Word>
+    <Word Title="desc_Regeneration">[Opponent regenerates]</Word>
+    <Word Title="desc_Degeneration">[Health drops over time]</Word>
+    <Word Title="desc_TimeoutWin">[Win on timeout]</Word>
+    <Word Title="desc_NoKicks">[Fists only]</Word>
+    <Word Title="desc_NoPunches">[Kicks only]</Word>
+    <Word Title="desc_Unarmed">[Unarmed fight]</Word>
+    <Word Title="desc_LifeSteal">[Replenish health with hits]</Word>
+    <Word Title="desc_PerfectWin">[Win without taking any unblocked hits]</Word>
+    <Word Title="desc_InvisibleWarrior">[Opponent is invisible]</Word>
+    <!-- ^^ VERIFIED FOR PLAYABLE DEMO ^^ -->
+  </Words>
+</Localization>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+	<Bones>
+		<Bone Name="hair1" ID="6" Mass="0.05" />
+		<Bone Name="hair" ID="5" Mass="0.05"/>
+		<Bone Name="head" ID="4" Mass="5"  Ragdoll="1"/>
+		<Bone Name="neck" ID="3" Mass="5" FloorHit ="1"/>
+		<Bone Name="forearm_twist_l" ID="11" Mass="0.05"/>
+		<Bone Name="weapon_l" ID="13" Mass="0.05"/>
+		<Bone Name="f_big3_l" ID="16" Mass="0.05"/>
+		<Bone Name="f_big2_l" ID="15" Mass="0.05"/>
+		<Bone Name="f_big1_l" ID="14" Mass="0.05"/>
+		<Bone Name="f_main3_l" ID="19" Mass="0.05"/>
+		<Bone Name="f_main2_l" ID="18" Mass="0.05"/>
+		<Bone Name="f_main1_l" ID="17" Mass="0.05"/>
+		<Bone Name="f_pointer3_l" ID="22" Mass="0.05"/>
+		<Bone Name="f_pointer2_l" ID="21" Mass="0.05"/>
+		<Bone Name="f_pointer1_l" ID="20" Mass="0.05"/>
+		<Bone Name="hand_l" ID="12" Mass="0.3"/>
+		<Bone Name="forearm_l" ID="10" Mass="3" Ragdoll="1"/>
+		<Bone Name="arm_l" ID="9" Mass="3" Ragdoll="1" FloorHit ="1"/>
+		<Bone Name="scapular_l" ID="23" Mass="0.05"/>
+		<Bone Name="clavicle_l" ID="8" Mass="0.05"/>
+		<Bone Name="chest_l" ID="24" Mass="0.05"/>
+		<Bone Name="zero_joint_hand_l" ID="7" Mass="0.05"/>
+		<Bone Name="forearm_twist_r" ID="29" Mass="0.05"/>
+		<Bone Name="weapon_r" ID="31" Mass="0.05"/>
+		<Bone Name="f_big3_r" ID="34" Mass="0.05"/>
+		<Bone Name="f_big2_r" ID="33" Mass="0.05"/>
+		<Bone Name="f_big1_r" ID="32" Mass="0.05"/>
+		<Bone Name="f_main3_r" ID="37" Mass="0.05"/>
+		<Bone Name="f_main2_r" ID="36" Mass="0.05"/>
+		<Bone Name="f_main1_r" ID="35" Mass="0.05"/>
+		<Bone Name="f_pointer3_r" ID="40" Mass="0.05"/>
+		<Bone Name="f_pointer2_r" ID="39" Mass="0.05"/>
+		<Bone Name="f_pointer1_r" ID="38" Mass="0.05"/>
+		<Bone Name="hand_r" ID="30" Mass="0.3"/>
+		<Bone Name="forearm_r" ID="28" Mass="3" Ragdoll="1"/>
+		<Bone Name="arm_r" ID="27" Mass="3" Ragdoll="1" FloorHit ="1"/>
+		<Bone Name="scapular_r" ID="41" Mass="0.05"/>
+		<Bone Name="clavicle_r" ID="26" Mass="0.05"/>
+		<Bone Name="chest_r" ID="42" Mass="0.05"/>
+		<Bone Name="zero_joint_hand_r" ID="25" Mass="0.05"/>
+		<Bone Name="chest" ID="2" Mass="8" Ragdoll="1"/>
+		<Bone Name="stomach" ID="1" Mass="0.05"/>
+		<Bone Name="toe_l" ID="47" Mass="0.3"/>
+		<Bone Name="foot_l" ID="46" Mass="2"/>
+		<Bone Name="calf_l" ID="45" Mass="3" Ragdoll="1"/>
+		<Bone Name="thigh_l" ID="44" Mass="7" Ragdoll="1"/>
+		<Bone Name="back_l" ID="48" Mass="0.05"/>
+		<Bone Name="zero_joint_pelvis_l" ID="43" Mass="0.05"/>
+		<Bone Name="toe_r" ID="55" Mass="0.3"/>
+		<Bone Name="foot_r" ID="54" Mass="2"/>
+		<Bone Name="calf_r" ID="53" Mass="3" Ragdoll="1"/>
+		<Bone Name="thigh_r" ID="52" Mass="7" Ragdoll="1"/>
+		<Bone Name="back_r" ID="56" Mass="0.05"/>
+		<Bone Name="zero_joint_pelvis_r" ID="51" Mass="0.05"/>
+		<Bone Name="biceps_twist_l" ID="57" Mass="0.05"/>
+		<Bone Name="biceps_twist_r" ID="58" Mass="0.05"/>
+		<Bone Name="thigh_twist_l" ID="59" Mass="0.05"/>
+		<Bone Name="thigh_twist_r" ID="60" Mass="0.05"/>
+		<Bone Name="pelvis" ID="0" Mass="10" Ragdoll="1" FloorHit ="1"/>
+	</Bones>
+  <Mirroring>
+    <DualMirrorers>
+      <Mirrorer MirrorAxis="YZ">
+        <Bone Name="zero_joint_hand_r" MirrorBone="zero_joint_hand_l" ID="7"/>
+        <Bone Name="zero_joint_pelvis_r" MirrorBone="zero_joint_pelvis_l" ID="43"/>
+      </Mirrorer>
+      <Mirrorer MirrorAxis="None">
+        <Bone Name="chest_r" MirrorBone="chest_l" />
+        <Bone Name="f_main3_r" MirrorBone="f_main3_l" />
+        <Bone Name="f_main2_r" MirrorBone="f_main2_l" />
+        <Bone Name="f_main1_r" MirrorBone="f_main1_l" />
+        <Bone Name="f_big3_r" MirrorBone="f_big3_l" />
+        <Bone Name="f_big2_r" MirrorBone="f_big2_l" />
+        <Bone Name="f_big1_r" MirrorBone="f_big1_l" />
+        <Bone Name="weapon_r" MirrorBone="weapon_l" />
+        <Bone Name="f_pointer3_r" MirrorBone="f_pointer3_l" />
+        <Bone Name="f_pointer2_r" MirrorBone="f_pointer2_l" />
+        <Bone Name="f_pointer1_r" MirrorBone="f_pointer1_l" />
+        <Bone Name="hand_r" MirrorBone="hand_l" />
+        <Bone Name="forearm_twist_r" MirrorBone="forearm_twist_l" />
+        <Bone Name="forearm_r" MirrorBone="forearm_l" />
+        <Bone Name="arm_r" MirrorBone="arm_l" />
+        <Bone Name="scapular_r" MirrorBone="scapular_l" />
+        <Bone Name="clavicle_r" MirrorBone="clavicle_l" />
+        <Bone Name="toe_r" MirrorBone="toe_l" />
+        <Bone Name="foot_r" MirrorBone="foot_l" />
+        <Bone Name="calf_r" MirrorBone="calf_l" />
+        <Bone Name="thigh_r" MirrorBone="thigh_l" />
+        <Bone Name="back_r" MirrorBone="back_l" />
+        <Bone Name="biceps_twist_r" MirrorBone="biceps_twist_l" />
+        <Bone Name="thigh_twist_r" MirrorBone="thigh_twist_l" />
+      </Mirrorer>
+    </DualMirrorers>
+    <SelfMirrorers>
+      <Mirrorer MirrorAxis="YZ">
+        <Bone Name="hair" />
+        <Bone Name="head" />
+        <Bone Name="neck" />
+        <Bone Name="chest" />
+        <Bone Name="stomach" />
+        <Bone Name="pelvis" />
+      </Mirrorer>
+    </SelfMirrorers>
+  </Mirroring>
+  <Vertexes>
+    <Vertex Name="vert_stomach" BoneName="stomach" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_chest" BoneName="chest" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_clavicle_left" BoneName="clavicle_l" LocalPosition="0.00000 10.00000 0.00000" />
+    <Vertex Name="vert_arm_left" BoneName="arm_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_forearm_left" BoneName="forearm_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_hand_left" BoneName="hand_l" LocalPosition="0.00000 6.00000 0.00000" />
+    <Vertex Name="vert_clavicle_right" BoneName="clavicle_r" LocalPosition="0.00000 -10.00000 0.00000" />
+    <Vertex Name="vert_arm_right" BoneName="arm_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_forearm_right" BoneName="forearm_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_hand_right" BoneName="hand_r" LocalPosition="0.00000 -6.00000 0.00000" />
+    <Vertex Name="vert_head_bottom" BoneName="head" LocalPosition="-8.00000 0.00000 0.00000" />
+    <Vertex Name="vert_head_top" BoneName="hair" LocalPosition="-9.00000 -5.00000 0.00000" />
+    <Vertex Name="vert_thigh_left" BoneName="thigh_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_calf_left" BoneName="calf_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_foot_left" BoneName="foot_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_toe_left" BoneName="toe_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_thigh_right" BoneName="thigh_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_calf_right" BoneName="calf_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="vert_foot_right" BoneName="foot_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="toe_right" BoneName="toe_r" LocalPosition="0.00000 0.00000 0.00000" />
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="Head" Vertex1="vert_head_bottom" Vertex2="vert_head_top" Radius="8" Collisible="1" Defense="HeadDefense" ParentRigidbody="head"/>
+    <Capsule Name="Neck" Vertex1="vert_head_bottom" Vertex2="vert_chest" Radius="6" Collisible="1" Defense="BodyDefense" ParentRigidbody="head"/>
+    <Capsule Name="Shoulder_left" Vertex1="vert_chest" Vertex2="vert_clavicle_left" Radius="6.5" Collisible="1" Defense="BodyDefense" ParentRigidbody="arm_l"/>
+    <Capsule Name="Shoulder_right" Vertex1="vert_chest" Vertex2="vert_clavicle_right" Radius="6.5" Collisible="1" Defense="BodyDefense" LeftMirrorCapsule="Shoulder_left" ParentRigidbody="arm_r"/>
+    <Capsule Name="Forearm_left" Vertex1="vert_arm_left" Vertex2="vert_forearm_left" Radius="6" Defense="BodyDefense"  ParentRigidbody="forearm_l"/>
+    <Capsule Name="Forearm_right" Vertex1="vert_arm_right" Vertex2="vert_forearm_right" Radius="6" Defense="BodyDefense" LeftMirrorCapsule="Forearm_left"  ParentRigidbody="forearm_r"/>
+    <Capsule Name="Hand_left" Vertex1="vert_forearm_left" Vertex2="vert_hand_left" Radius="6" Defense="BodyDefense" ParentRigidbody="forearm_l"/>
+    <Capsule Name="Hand_right" Vertex1="vert_forearm_right" Vertex2="vert_hand_right" Radius="6" Defense="BodyDefense" LeftMirrorCapsule="Hand_left" ParentRigidbody="forearm_r"/>
+    <Capsule Name="Stomach" Vertex1="vert_stomach" Vertex2="vert_chest" Radius="14" Collisible="1" Defense="BodyDefense"  ParentRigidbody="pelvis"/>
+    <Capsule Name="Thigh_left" Vertex1="vert_thigh_left" Vertex2="vert_calf_left" Radius="9" Collisible="1" Defense="BodyDefense"  ParentRigidbody="thigh_l"/>
+    <Capsule Name="Thigh_right" Vertex1="vert_thigh_right" Vertex2="vert_calf_right" Radius="9" Collisible="1" Defense="BodyDefense" LeftMirrorCapsule="Thigh_left"  ParentRigidbody="thigh_r"/>
+    <Capsule Name="Leg_left" Vertex1="vert_calf_left" Vertex2="vert_foot_left" Radius="6" Collisible="1" Defense="BodyDefense"  ParentRigidbody="calf_l"/>
+    <Capsule Name="Leg_right" Vertex1="vert_calf_right" Vertex2="vert_foot_right" Radius="6" Collisible="1" Defense="BodyDefense" LeftMirrorCapsule="Leg_left"  ParentRigidbody="calf_r"/>
+    <Capsule Name="Foot_left" Vertex1="vert_foot_left" Vertex2="vert_toe_left" Radius="5" Defense="BodyDefense" ParentRigidbody="calf_l"/>
+    <Capsule Name="Foot_right" Vertex1="vert_foot_right" Vertex2="toe_right" Radius="5" Defense="BodyDefense" LeftMirrorCapsule="Foot_left" ParentRigidbody="calf_r"/>
+  </Capsules>
+  <RepulsionRect WidthScale="1" HeightScale="1" MinimumSize="40">
+    <Point Bone="neck"/>
+	<Point Bone="head"/>
+    <Point Bone="pelvis"/>
+    <Point Bone="stomach"/>
+    <Point Bone="foot_l"/>
+    <Point Bone="foot_r"/>
+  </RepulsionRect>
+</BonesData>

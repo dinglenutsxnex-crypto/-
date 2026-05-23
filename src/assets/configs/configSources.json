@@ -1,0 +1,39 @@
+{
+  "Configs": {
+    "InternalSettings": {
+      "ArchivePath": "game-settings/internalSettings.json",
+      "LocalPath": "Configs/internalSettings",
+      "IsInternal": false
+    },
+    "SplitMoves": {
+      "ArchivePath": "game-settings/splitmoves.bytes",
+      "LocalPath": "Configs/splitmoves.bytes",
+      "IsInternal": false
+    },
+    "TacticsSettings": {
+      "ArchivePath": "game-settings/tactics_settings.yaml",
+      "LocalPath": "tactics_settings",
+      "IsInternal": true
+    },
+    "Quests": {
+      "ArchivePath": "game-settings/quests_triggers_result.yaml",
+      "LocalPath": "quests_triggers",
+      "IsInternal": true
+    },
+    "FightSettings": {
+      "ArchivePath": "game-settings/fight_settings.yaml",
+      "LocalPath": "fight_settings",
+      "IsInternal": true
+    },
+    "QualitySettings": {
+      "ArchivePath": "game-settings/qualitySettings.json",
+      "LocalPath": "QualityPresets",
+      "IsInternal": true
+    },
+    "Localization": {
+      "ArchivePath": "localization/{0}.xml",
+      "LocalPath": "Localizations/{0}",
+      "IsInternal": false
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn__spear_02">
+  <Prefabs>
+    <Prefab Name="w_spear_01_l" ConfigName="weapon_spear" MirroringDuplicate="0" Droppable="1"  />
+    <Prefab Name="w_spear_01_r" ConfigName="weapon_spear" MirroringDuplicate="1" Droppable="1"  />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__spear_01_02__l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__spear_01_02__r" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__spear_01_02__trail_l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__spear_01_02__trail_r" MirroringDuplicate="1" Droppable="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="wood" CapsuleName="Spear_Attacking_Edge_l">
+      <Vertex Name="spear_bottom_l" />
+      <Vertex Name="spear_top_l" />
+    </Material>
+    <Material Name="wood" CapsuleName="Spear_Attacking_Edge_r">
+      <Vertex Name="spear_bottom_r" />
+      <Vertex Name="spear_top_r" />
+    </Material>
+  </Materials>
+</ModelObject>

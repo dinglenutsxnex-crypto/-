@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject>
+  <Prefabs>
+    <Prefab Name="w_dual_swords_01_l" ConfigName="weapon_dualswords" Droppable="1" />
+    <Prefab Name="w_dual_swords_01_r" ConfigName="weapon_dualswords" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__dual_swords_01_02__l" Droppable="1" />
+    <Mesh Name="wpn__dual_swords_01_02__r" Droppable="1" />
+    <Mesh Name="wpn__dual_swords_01_02__trail_l" Droppable="1" />
+    <Mesh Name="wpn__dual_swords_01_02__trail_r" Droppable="1" />	
+  </Meshes>
+  <Materials>
+    <Material Name="steel" CapsuleName="Sword_Attacking_Edge_l">
+      <Vertex Name="saber_top_l" />
+      <Vertex Name="saber_bottom_l" />
+    </Material>
+    <Material Name="steel" CapsuleName="Sword_Attacking_Edge_r">
+      <Vertex Name="saber_top_r" />
+      <Vertex Name="saber_bottom_r" />
+    </Material>
+  </Materials>
+</ModelObject>

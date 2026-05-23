@@ -1,0 +1,921 @@
+Battles:
+  # - ID: 9003
+    # Hidden: 0
+    # Name: temple
+    # Alias: TEMPLE
+    # Type: TEST
+    # Icon: daily_gray
+    # Image: temple
+    # Location: 
+        # LocationName: temple
+        # Music: "theme_one_more_breath"
+        # X: 470
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99 
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 25
+            # Perks:
+              # - ID: 3003
+                # StackLevel: 10
+  # - ID: 9004
+    # Hidden: 0
+    # Name: camp
+    # Alias: CAMP
+    # Type: TEST
+    # Icon: periodic_gray
+    # Image: camp
+    # Location: 
+        # LocationName: camp
+        # Music: "Chapter 1/5_legion_camp_fight"
+        # X: 470
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  # - ID: 9005
+    # Hidden: 0
+    # Name: dojo_dynasty
+    # Alias: DYNASTY_DOJO
+    # Type: TEST
+    # Icon: side_gray
+    # Image: dojo_dynasty
+    # Location: 
+        # LocationName: dojo_dynasty
+        # Music: "fight_dojo_dynasty"
+        # X: 470
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  # - ID: 9006
+    # Hidden: 0
+    # Name: Camp_night
+    # Alias: CAMP_NIGHT
+    # Type: TEST
+    # Icon: story_gray
+    # Image: Camp_night
+    # Location: 
+        # LocationName: Camp_night
+        # Music: "Chapter 1/8_legion_camp_night"
+        # X: 470
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  # - ID: 9007
+    # Hidden: 0
+    # Name: palace
+    # Alias: PALACE
+    # Type: TEST
+    # Icon: survival_gray
+    # Image: palace
+    # Location: 
+        # LocationName: palace
+        # Music: "fight_throne_room"
+        # X: 470
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  # - ID: 9008
+    # Hidden: 0
+    # Name: arena
+    # Alias: DYNASTY_ARENA
+    # Type: TEST
+    # Icon: daily_gray
+    # Image: arena
+    # Location: 
+        # LocationName: arena
+        # Music: "fight_ninja_tournament"
+        # X: 190
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  # - ID: 9009
+    # Hidden: 0
+    # Name: backstreets
+    # Alias: BACKSTREETS
+    # Type: TEST
+    # Icon: boss_gray
+    # Image: backstreets
+    # Location: 
+        # LocationName: backstreets
+        # Music: "fight_night_of_the_shadows"
+        # X: 190
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 3
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+            # Currencies:
+              # - Type: BONUS
+                # Value: 100
+              # - Type: COIN
+                # Value: 150
+            # Equipments:
+              # - ID: 4
+                # StackLevel: 10
+              # - ID: 401
+                # StackLevel: 10
+              # - ID: 200
+                # StackLevel: 10
+  # - ID: 9010
+    # Hidden: 0
+    # Name: cave
+    # Alias: CAVE
+    # Type: TEST
+    # Icon: boss
+    # Image: CAVE
+    # Location: 
+        # LocationName: cave
+        # Music: "Chapter 1/6_bridge"
+        # X: 190
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 3
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+            # Currencies:
+              # - Type: BONUS
+                # Value: 100
+              # - Type: COIN
+                # Value: 150
+            # Equipments:
+              # - ID: 4
+                # StackLevel: 10
+              # - ID: 401
+                # StackLevel: 10
+              # - ID: 200
+                # StackLevel: 10
+  # - ID: 9011
+    # Hidden: 0
+    # Name: destroyed_village
+    # Alias: DESTROYED_VILLAGE
+    # Type: TEST
+    # Icon: daily
+    # Image: destroyed_village
+    # Location: 
+        # LocationName: destroyed_village
+        # Music: "Chapter 1/6_bridge"
+        # X: 190
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 3
+    # Replayable: 1
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+            # Currencies:
+              # - Type: BONUS
+                # Value: 100
+              # - Type: COIN
+                # Value: 150
+            # Equipments:
+              # - ID: 4
+                # StackLevel: 10
+              # - ID: 401
+                # StackLevel: 10
+              # - ID: 200
+                # StackLevel: 10
+      # - ID: 2
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+            # Currencies:
+              # - Type: BONUS
+                # Value: 100
+              # - Type: COIN
+                # Value: 150
+            # Equipments:
+              # - ID: 4
+                # StackLevel: 10
+              # - ID: 401
+                # StackLevel: 10
+              # - ID: 200
+                # StackLevel: 10
+      # - ID: 3
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: REGULAR_MODE
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+          # - Experience: 0
+            # Currencies:
+              # - Type: BONUS
+                # Value: 100
+              # - Type: COIN
+                # Value: 150
+            # Equipments:
+              # - ID: 4
+                # StackLevel: 10
+              # - ID: 401
+                # StackLevel: 10
+              # - ID: 200
+                # StackLevel: 10
+  # - ID: 9013
+    # Name: bamboo
+    # Alias: BAMBOO
+    # Type: TEST
+    # Icon: story_gray
+    # Image: bamboo
+    # Location: 
+        # LocationName: bamboo
+        # Music: "Chapter 1/3_bamboo_forest"
+        # X: 190
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Hidden: 0
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  # - ID: 9014
+    # Name: destroyed_village
+    # Alias: DESTROYED_VILLAGE
+    # Type: TEST
+    # Icon: story_gray
+    # Image: destroyed_village
+    # Location: 
+        # LocationName: destroyed_village
+        # Music: "Chapter 1/6_bridge"
+        # X: 190
+        # Y: 1040
+    # Completion: []
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Hidden: 0
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  # - ID: 9015
+    # Name: dojo_heralds
+    # Alias: DOJO_HERALDS
+    # Type: TEST
+    # Icon: story_gray
+    # Image: dojo_heralds
+    # Location: 
+        # LocationName: Dojo_heralds
+        # Music: "Chapter 1/6_bridge"
+        # X: 760
+        # Y: 1040
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Hidden: 0
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  # - ID: 9016
+    # Name: Marcus_village
+    # Alias: Marcus_village
+    # Type: TEST
+    # Icon: story_gray
+    # Image: Marcus_village
+    # Location: 
+        # LocationName: Marcus_village
+        # Music: "Chapter 1/6_bridge"
+        # X: 1060
+        # Y: 940
+    # RoundTime: 99
+    # RoundsToWin: 1
+    # Replayable: 1
+    # Hidden: 0
+    # Fights:
+      # - ID: 1
+        # Rounds:
+          # - ModelInfo:
+                # Alias: alias
+                # Gender: Female
+                # Head: head__01a
+                # SkinColor:
+                      # ID: 1
+                      # Value: 0.5 
+                # HairColor:
+                      # ID: 4
+                      # Value: 0.5
+                # AiMode: NoneMode
+                # Controller: 1
+                # Equipment:
+                  # - ID: 401
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 200
+                    # StackLevel: 5
+                    # Equipped: 1
+                  # - ID: 4
+                    # StackLevel: 5
+                    # Equipped: 1
+        # Rewards:
+          # - Experience: 0
+          # - Experience: 0
+  - ID: 10
+  - ID: 20
+  - ID: 30

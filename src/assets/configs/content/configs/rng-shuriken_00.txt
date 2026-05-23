@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject>
+  <Prefabs>
+    <Prefab Name="ranged_shuriken" ConfigName="ranged_shuriken" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="rng__shuriken_00" />
+  </Meshes>
+  <Materials>
+    <Material Name="steel" CapsuleName="Shuriken_attacking_edge">
+      <Vertex Name="bottom" />
+      <Vertex Name="top" />
+    </Material>
+  </Materials>
+</ModelObject>

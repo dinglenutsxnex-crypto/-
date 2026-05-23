@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="arm-str_04_f">
+  <Meshes>
+    <Mesh Name="arm__str_04_f__body" />
+    <Mesh Name="arm__str_04_f__hand_l" />
+    <Mesh Name="arm__str_04_f__hand_r" />
+    <Mesh Name="arm__str_04_f__shoulders" />
+    <Mesh Name="arm__str_04_f__cloth" />
+    <Mesh Name="arm__str_04_f__rope" />
+  </Meshes>
+  <Materials>
+    <Material Name="steel" CapsuleName="Shoulder_left">
+      <Vertex Name="vert_chest" />
+      <Vertex Name="vert_clavicle_left" />
+    </Material>
+    <Material Name="steel" CapsuleName="Shoulder_right">
+      <Vertex Name="vert_chest" />
+      <Vertex Name="vert_clavicle_right" />
+    </Material>
+    <Material Name="steel" CapsuleName="Forearm_left">
+      <Vertex Name="vert_arm_left" />
+      <Vertex Name="vert_forearm_left" />
+    </Material>
+    <Material Name="steel" CapsuleName="Forearm_right">
+      <Vertex Name="vert_arm_right" />
+      <Vertex Name="vert_forearm_right" />
+    </Material>
+    <Material Name="steel" CapsuleName="Hand_left">
+      <Vertex Name="vert_forearm_left" />
+      <Vertex Name="vert_hand_left" />
+    </Material>
+    <Material Name="steel" CapsuleName="Hand_right">
+      <Vertex Name="vert_forearm_right" />
+      <Vertex Name="vert_hand_right" />
+    </Material>
+    <Material Name="flesh" CapsuleName="Stomach">
+      <Vertex Name="vert_stomach" />
+      <Vertex Name="vert_chest" />
+    </Material>
+    <Material Name="flesh" CapsuleName="Thigh_left">
+      <Vertex Name="vert_thigh_left" />
+      <Vertex Name="vert_calf_left" />
+    </Material>
+    <Material Name="flesh" CapsuleName="Thigh_right">
+      <Vertex Name="vert_thigh_right" />
+      <Vertex Name="vert_calf_right" />
+    </Material>
+    <Material Name="steel" CapsuleName="Leg_left">
+      <Vertex Name="vert_calf_left" />
+      <Vertex Name="vert_foot_left" />
+    </Material>
+    <Material Name="steel" CapsuleName="Leg_right">
+      <Vertex Name="vert_calf_right" />
+      <Vertex Name="vert_foot_right" />
+    </Material>
+    <Material Name="steel" CapsuleName="Foot_left">
+      <Vertex Name="vert_foot_left" />
+      <Vertex Name="vert_toe_left" />
+    </Material>
+    <Material Name="steel" CapsuleName="Foot_right">
+      <Vertex Name="vert_foot_right" />
+      <Vertex Name="toe_right" />
+    </Material>
+  </Materials>
+</ModelObject>

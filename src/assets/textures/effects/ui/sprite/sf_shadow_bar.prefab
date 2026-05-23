@@ -1,0 +1,488 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1319192166750984
+GameObject:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - component: {fileID: 4604717889352657}
+  - component: {fileID: 114312327775039285}
+  m_Layer: 0
+  m_Name: sf_shadow_bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4604717889352657
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319192166750984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114312327775039285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319192166750984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9f040b2b6bd4bf069e31e0ace12f73, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  material: {fileID: 2100000, guid: 2192aa36f49c03a4d960481b65f99a5f, type: 2}
+  mSprites:
+  - name: Shadow_bar_ver3_long_0001
+    x: 212
+    y: 348
+    width: 196
+    height: 17
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 40
+    paddingTop: 18
+    paddingBottom: 15
+  - name: Shadow_bar_ver3_long_0002
+    x: 0
+    y: 322
+    width: 196
+    height: 17
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 40
+    paddingTop: 18
+    paddingBottom: 15
+  - name: Shadow_bar_ver3_long_0003
+    x: 0
+    y: 340
+    width: 197
+    height: 18
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 39
+    paddingTop: 18
+    paddingBottom: 14
+  - name: Shadow_bar_ver3_long_0004
+    x: 0
+    y: 211
+    width: 207
+    height: 23
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 39
+    paddingTop: 17
+    paddingBottom: 10
+  - name: Shadow_bar_ver3_long_0005
+    x: 0
+    y: 359
+    width: 211
+    height: 28
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 39
+    paddingTop: 13
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0006
+    x: 0
+    y: 38
+    width: 211
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 39
+    paddingTop: 12
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0007
+    x: 218
+    y: 450
+    width: 213
+    height: 31
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 37
+    paddingTop: 12
+    paddingBottom: 7
+  - name: Shadow_bar_ver3_long_0008
+    x: 0
+    y: 175
+    width: 213
+    height: 31
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 37
+    paddingTop: 12
+    paddingBottom: 7
+  - name: Shadow_bar_ver3_long_0009
+    x: 0
+    y: 127
+    width: 214
+    height: 31
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 36
+    paddingTop: 11
+    paddingBottom: 8
+  - name: Shadow_bar_ver3_long_0010
+    x: 0
+    y: 68
+    width: 214
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 36
+    paddingTop: 10
+    paddingBottom: 8
+  - name: Shadow_bar_ver3_long_0011
+    x: 213
+    y: 416
+    width: 216
+    height: 33
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 34
+    paddingTop: 10
+    paddingBottom: 7
+  - name: Shadow_bar_ver3_long_0012
+    x: 198
+    y: 318
+    width: 216
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 34
+    paddingTop: 12
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0013
+    x: 213
+    y: 234
+    width: 217
+    height: 28
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 33
+    paddingTop: 13
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0014
+    x: 215
+    y: 68
+    width: 217
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 33
+    paddingTop: 12
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0015
+    x: 0
+    y: 452
+    width: 217
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 33
+    paddingTop: 12
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0016
+    x: 0
+    y: 287
+    width: 216
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 31
+    paddingTop: 12
+    paddingBottom: 8
+  - name: Shadow_bar_ver3_long_0017
+    x: 215
+    y: 128
+    width: 214
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 31
+    paddingTop: 12
+    paddingBottom: 8
+  - name: Shadow_bar_ver3_long_0018
+    x: 203
+    y: 482
+    width: 214
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 31
+    paddingTop: 12
+    paddingBottom: 8
+  - name: Shadow_bar_ver3_long_0019
+    x: 217
+    y: 263
+    width: 214
+    height: 30
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 31
+    paddingTop: 12
+    paddingBottom: 8
+  - name: Shadow_bar_ver3_long_0020
+    x: 0
+    y: 422
+    width: 212
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 33
+    paddingTop: 12
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0021
+    x: 215
+    y: 98
+    width: 212
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 33
+    paddingTop: 12
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0022
+    x: 0
+    y: 235
+    width: 212
+    height: 29
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 33
+    paddingTop: 12
+    paddingBottom: 9
+  - name: Shadow_bar_ver3_long_0023
+    x: 0
+    y: 394
+    width: 209
+    height: 27
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 7
+    paddingRight: 34
+    paddingTop: 13
+    paddingBottom: 10
+  - name: Shadow_bar_ver3_long_0024
+    x: 210
+    y: 388
+    width: 209
+    height: 27
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 7
+    paddingRight: 34
+    paddingTop: 13
+    paddingBottom: 10
+  - name: Shadow_bar_ver3_long_0025
+    x: 208
+    y: 207
+    width: 208
+    height: 26
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 8
+    paddingRight: 34
+    paddingTop: 14
+    paddingBottom: 10
+  - name: Shadow_bar_ver3_long_0026
+    x: 0
+    y: 101
+    width: 206
+    height: 25
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 8
+    paddingRight: 36
+    paddingTop: 14
+    paddingBottom: 11
+  - name: Shadow_bar_ver3_long_0027
+    x: 0
+    y: 12
+    width: 206
+    height: 25
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 8
+    paddingRight: 36
+    paddingTop: 14
+    paddingBottom: 11
+  - name: Shadow_bar_ver3_long_0028
+    x: 214
+    y: 159
+    width: 205
+    height: 24
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 9
+    paddingRight: 36
+    paddingTop: 15
+    paddingBottom: 11
+  - name: Shadow_bar_ver3_long_0029
+    x: 217
+    y: 294
+    width: 204
+    height: 23
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 10
+    paddingRight: 36
+    paddingTop: 15
+    paddingBottom: 12
+  - name: Shadow_bar_ver3_long_0030
+    x: 214
+    y: 184
+    width: 202
+    height: 22
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 11
+    paddingRight: 37
+    paddingTop: 16
+    paddingBottom: 12
+  - name: Shadow_bar_ver3_long_0031
+    x: 0
+    y: 265
+    width: 202
+    height: 21
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 11
+    paddingRight: 37
+    paddingTop: 16
+    paddingBottom: 13
+  - name: Shadow_bar_ver3_long_0032
+    x: 0
+    y: 491
+    width: 202
+    height: 21
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 11
+    paddingRight: 37
+    paddingTop: 16
+    paddingBottom: 13
+  - name: Shadow_bar_ver3_long_0033
+    x: 212
+    y: 366
+    width: 202
+    height: 21
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 11
+    paddingRight: 37
+    paddingTop: 16
+    paddingBottom: 13
+  mPixelSize: 1
+  mReplacement: {fileID: 0}
+  mCoordinates: 0
+  sprites: []
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1319192166750984}
+  m_IsPrefabParent: 1

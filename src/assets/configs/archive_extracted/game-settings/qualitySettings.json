@@ -1,0 +1,270 @@
+{
+  "Presets": {
+    "min": {
+      "priority": 1,
+      "textureResolution": 3,
+      "shadows": 0,
+      "shadowFormGlow": false,
+      "anisotropicFiltering": false,
+      "antiAliasing": false,
+      "cloth": true,
+      "dissolve": false,
+      "saturation": false,
+      "gamma": false,
+      "matcap": false,
+	  "fpsCap":30
+    },
+    "low": {
+      "priority": 2,
+      "textureResolution": 2,
+      "shadows": 1,
+      "shadowFormGlow": false,
+      "anisotropicFiltering": false,
+      "antiAliasing": false,
+      "cloth": true,
+      "dissolve": false,
+      "saturation": false,
+      "gamma": false,
+      "matcap": true,
+	  "fpsCap":0
+    },
+    "medium": {
+      "priority": 3,
+      "textureResolution": 1,
+      "shadows": 2,
+      "shadowFormGlow": true,
+      "anisotropicFiltering": false,
+      "antiAliasing": false,
+      "cloth": true,
+      "dissolve": true,
+      "saturation": false,
+      "gamma": false,
+      "matcap": true,
+	  "fpsCap":0
+    },
+    "high": {
+      "priority": 4,
+      "textureResolution": 0,
+      "shadows": 2,
+      "shadowFormGlow": true,
+      "anisotropicFiltering": false,
+      "antiAliasing": false,
+      "cloth": true,
+      "dissolve": true,
+      "saturation": false,
+      "gamma": false,
+      "matcap": true,
+	  "fpsCap":0
+    },
+    "ultra": {
+      "priority": 5,
+      "textureResolution": 0,
+      "shadows": 2,
+      "shadowFormGlow": true,
+      "anisotropicFiltering": true,
+      "antiAliasing": true,
+      "cloth": true,
+      "dissolve": true,
+      "saturation": false,
+      "gamma": false,
+      "matcap": true,
+	  "fpsCap":0
+    }
+  },
+  "Devices": {
+    "samsung SM-G925F": {
+      "presetName": "medium",
+      "type": 4
+    },
+  
+    "iphone4,1": {
+      "presetName": "min",
+      "type": 4
+    },
+    "iphone5,1": {
+      "presetName": "min",
+      "type": 4
+    },
+    "iphone5,2": {
+      "presetName": "min",
+      "type": 4
+    },
+    "iphone5,3": {
+      "presetName": "min",
+      "type": 4
+    },
+    "iphone5,4": {
+      "presetName": "min",
+      "type": 4
+    },
+    "iphone6,1": {
+      "presetName": "medium",
+      "type": 4
+    },
+    "iphone6,2": {
+      "presetName": "medium",
+      "type": 4
+    },
+    "iphone7,1": {
+      "presetName": "medium",
+      "type": 4
+    },
+    "iphone7,2": {
+      "presetName": "medium",
+      "type": 4
+    },
+    "iphone8,1": {
+      "presetName": "high",
+      "type": 4
+    },
+    "iphone8,2": {
+      "presetName": "ultra",
+      "type": 4
+    },
+    "iphone8,4": {
+      "presetName": "ultra",
+      "type": 4
+    },
+    "iphone9,1": {
+      "presetName": "ultra",
+      "type": 4
+    },
+    "iphone9,3": {
+      "presetName": "ultra",
+      "type": 4
+    },
+    "iphone9,2": {
+      "presetName": "ultra",
+      "type": 4
+    },
+    "iphone9,4": {
+      "presetName": "ultra",
+      "type": 4
+    },
+    
+    "iPad3,4": {
+      "presetName": "low",
+      "type": 3
+    },
+    "iPad3,5": {
+      "presetName": "low",
+      "type": 3
+    },
+    "iPad3,6": {
+      "presetName": "low",
+      "type": 3
+    },
+    "iPad4,1": {
+      "presetName": "medium",
+      "type": 3
+    },
+    "iPad4,2": {
+      "presetName": "medium",
+      "type": 3
+    },
+    "iPad4,4": {
+      "presetName": "medium",
+      "type": 3
+    },
+    "iPad4,5": {
+      "presetName": "medium",
+      "type": 3
+    },
+    "iPad4,6": {
+      "presetName": "medium",
+      "type": 3
+    },
+    "iPad4,7": {
+      "presetName": "medium",
+      "type": 3
+    },
+    "iPad4,8": {
+      "presetName": "medium",
+      "type": 3
+    },
+    "iPad4,9": {
+      "presetName": "medium",
+      "type": 3
+    },
+    "iPad5,3": {
+      "presetName": "high",
+      "type": 3
+    },
+    "iPad5,4": {
+      "presetName": "high",
+      "type": 3
+    },
+    "iPad6,3": {
+      "presetName": "ultra",
+      "type": 3
+    },
+    "iPad6,4": {
+      "presetName": "ultra",
+      "type": 3
+    },
+    "iPad6,7": {
+      "presetName": "ultra",
+      "type": 3
+    },
+    "iPad6,8": {
+      "presetName": "ultra",
+      "type": 3
+    },
+    
+    "nvidia shield android tv": {
+      "presetName": "ultra",
+      "type": 1
+    },
+    "macmini7,1": {
+      "presetName": "high",
+      "type": 2
+    },    
+  },
+  "Conditions": {
+    "defaultcoreslow": {
+      "presetName": "medium",
+      "priority": 1,
+      "platform": "",
+      "core": 1,
+      "memory": 0,
+      "resoluitonX": 0,
+      "resoluitonY": 0
+    },
+    "defaultcoresmedium": {
+      "presetName": "medium",
+      "priority": 2,
+      "platform": "",
+      "core": 2,
+      "memory": 0,
+      "resoluitonX": 0,
+      "resoluitonY": 0
+    },
+    "defaultmemorymedium": {
+      "presetName": "medium",
+      "priority": 2,
+      "platform": "",
+      "core": 0,
+      "memory": 1024,
+      "resoluitonX": 0,
+      "resoluitonY": 0
+    },
+    "defaultmemoryhigh": {
+      "presetName": "high",
+      "priority": 3,
+      "platform": "",
+      "core": 0,
+      "memory": 2048,
+      "resoluitonX": 0,
+      "resoluitonY": 0
+    },
+    "defaultwindows": {
+      "presetName": "high",
+      "priority": 4,
+      "platform": "windows",
+      "core": 0,
+      "memory": 0,
+      "resoluitonX": 0,
+      "resoluitonY": 0
+    }
+  }
+}

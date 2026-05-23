@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+	<Bones>
+		<Bone Name="magic_joint_root" ID="400" Mass="0.2"/>
+		<Bone Name="magic_joint_right" ID="401" Mass="0.2"/>
+		<Bone Name="magic_joint_left" ID="402" Mass="0.2"/>
+		<Bone Name="magic_joint_top" ID="403" Mass="0.2"/>
+		<Bone Name="magic_joint_bottom" ID="404" Mass="0.2"/>
+	</Bones>
+    <Vertexes>
+    <Vertex Name="root" BoneName="magic_joint_root" LocalPosition="0 0 0" />
+    <Vertex Name="right" BoneName="magic_joint_right" LocalPosition="0 0 0" />
+    <Vertex Name="left" BoneName="magic_joint_left" LocalPosition="0 0 0" />
+    <Vertex Name="top" BoneName="magic_joint_top" LocalPosition="0 50 0" />
+    <Vertex Name="bottom" BoneName="magic_joint_bottom" LocalPosition="0 -50 0" />
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="Shadow_attacking_edge" Vertex1="bottom" Vertex2="top" Radius="20"/>
+  </Capsules>
+</BonesData>
+   

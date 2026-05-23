@@ -1,0 +1,5 @@
+{
+  "defaultBalancer": "prod",
+  "forceBalancer": "prod",
+  "logIgnoreCmd": [ "ping" ]
+}

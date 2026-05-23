@@ -1,0 +1,33 @@
+ShopRoot:
+    ShopConfiguration:
+        LastGenerationTime: -1
+        SelectedCategory: Equipment
+        SelectedItem: 400
+    CategoriesAndItems:
+      - Category: Equipment
+        NewItemNotification: 0
+        Items:
+          - ID: 400
+            StackLevel: 10
+            PurchaseCount: 0
+            ShadowMark: SHADOW_MIND_THROW
+          - ID: 416
+            StackLevel: 10
+            PurchaseCount: 0
+            ShadowMark: SHADOW_MIND_THROW
+          - ID: 406
+            StackLevel: 10
+            PurchaseCount: 0
+            ShadowMark: SHADOW_MIND_THROW
+          - ID: 407
+            StackLevel: 10 
+            PurchaseCount: 0
+            ShadowMark: SHADOW_UPPERCUT
+          - ID: 408
+            StackLevel: 10
+            PurchaseCount: 0
+            ShadowMark: SHADOW_MIND_THROW
+          - ID: 411
+            StackLevel: 10
+            PurchaseCount: 0
+            ShadowMark: SHADOW_UPPERCUT

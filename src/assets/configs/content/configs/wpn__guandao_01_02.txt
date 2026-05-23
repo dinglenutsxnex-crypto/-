@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn-guandao_01_02">
+  <Prefabs>
+    <Prefab Name="w_guandao_01_l" ConfigName="weapon_guandao" MirroringDuplicate="0" Droppable="1" />
+    <Prefab Name="w_guandao_01_r" ConfigName="weapon_guandao" MirroringDuplicate="1" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__guandao_01_02__l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__guandao_01_02__r" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__guandao_01_02__tie_l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__guandao_01_02__tie_r" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__guandao_01_02__trail_l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__guandao_01_02__trail_r" MirroringDuplicate="1" Droppable="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="wood" CapsuleName="Guandao_Attacking_Edge_l">
+      <Vertex Name="guandao_bottom_l" />
+      <Vertex Name="guandao_top_l" />
+    </Material>
+    <Material Name="wood" CapsuleName="Guandao_Attacking_Edge_r">
+      <Vertex Name="guandao_bottom_r" />
+      <Vertex Name="guandao_top_r" />
+    </Material>
+  </Materials>
+</ModelObject>

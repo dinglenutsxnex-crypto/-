@@ -1,0 +1,12 @@
+<BonesData>
+	<Bones>
+		<Bone Name="helm_agl_01_f_hair1" ID="501"/>
+		<Bone Name="helm_agl_01_f_hair2" ID="502"/>
+		<Bone Name="helm_agl_01_f_hair3" ID="503"/>
+		<Bone Name="helm_agl_01_f_hair4" ID="504"/>
+		<Bone Name="helm_agl_01_f_hair5" ID="505"/>
+		<Bone Name="helm_agl_01_f_hair6" ID="506"/>
+	</Bones>
+  <Vertexes>
+  </Vertexes>
+</BonesData>

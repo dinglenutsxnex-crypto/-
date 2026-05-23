@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: bamboo_FX_rays_sprite
+  m_Rect:
+    serializedVersion: 2
+    x: 39.076122
+    y: 0
+    width: 86.84776
+    height: 256
+  m_Offset: {x: 1.499998, y: -0.20000458}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 24
+  m_Pivot: {x: 0.5172716, y: 0.49921873}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RD:
+    texture: {fileID: 2800000, guid: f11a03eb57e83624e9f600f9738dd66e, type: 3}
+    alphaTexture: {fileID: 0}
+    vertices:
+    - serializedVersion: 2
+      pos: {x: 1.75, y: 5.3333335, z: 0}
+    - serializedVersion: 2
+      pos: {x: 0.75, y: -5.3333335, z: 0}
+    - serializedVersion: 2
+      pos: {x: 1.75, y: -4.875, z: 0}
+    - serializedVersion: 2
+      pos: {x: -1.375, y: -5.3333335, z: 0}
+    - serializedVersion: 2
+      pos: {x: -1.4583334, y: -4.9583335, z: 0}
+    - serializedVersion: 2
+      pos: {x: -1.625, y: -2.625, z: 0}
+    - serializedVersion: 2
+      pos: {x: -1.875, y: 5.3333335, z: 0}
+    - serializedVersion: 2
+      pos: {x: -1.875, y: 3.875, z: 0}
+    indices:
+    - 7
+    - 6
+    - 5
+    - 0
+    - 5
+    - 6
+    - 4
+    - 5
+    - 0
+    - 3
+    - 4
+    - 0
+    - 1
+    - 3
+    - 0
+    - 2
+    - 1
+    - 0
+    textureRect:
+      serializedVersion: 2
+      x: 39.076122
+      y: 0
+      width: 86.84776
+      height: 256
+    textureRectOffset: {x: 0, y: 0}
+    settingsRaw: 64
+    uvTransform: {x: 24, y: 84, z: 24, w: 128}

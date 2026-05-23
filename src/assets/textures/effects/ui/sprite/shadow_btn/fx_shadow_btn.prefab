@@ -1,0 +1,1021 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1868833125032243
+GameObject:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - component: {fileID: 4792365638766235}
+  - component: {fileID: 114870683193248204}
+  m_Layer: 0
+  m_Name: fx_shadow_btn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4792365638766235
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868833125032243}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114870683193248204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868833125032243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9f040b2b6bd4bf069e31e0ace12f73, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  material: {fileID: 2100000, guid: 9112d5be7a914cb4fa3dce131cbf2fa6, type: 2}
+  mSprites:
+  - name: sf_button_0001
+    x: 97
+    y: 635
+    width: 94
+    height: 93
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 18
+    paddingTop: 19
+    paddingBottom: 16
+  - name: sf_button_0002
+    x: 0
+    y: 832
+    width: 94
+    height: 94
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 18
+    paddingTop: 18
+    paddingBottom: 16
+  - name: sf_button_0003
+    x: 291
+    y: 305
+    width: 98
+    height: 98
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 16
+    paddingTop: 16
+    paddingBottom: 14
+  - name: sf_button_0004
+    x: 503
+    y: 694
+    width: 106
+    height: 106
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 10
+    paddingRight: 12
+    paddingTop: 13
+    paddingBottom: 9
+  - name: sf_button_0005
+    x: 391
+    y: 693
+    width: 112
+    height: 112
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 7
+    paddingRight: 9
+    paddingTop: 10
+    paddingBottom: 6
+  - name: sf_button_0006
+    x: 705
+    y: 593
+    width: 118
+    height: 118
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 6
+    paddingTop: 7
+    paddingBottom: 3
+  - name: sf_button_0007
+    x: 398
+    y: 902
+    width: 122
+    height: 122
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 4
+    paddingTop: 5
+    paddingBottom: 1
+  - name: sf_button_0008
+    x: 520
+    y: 800
+    width: 125
+    height: 124
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 3
+    paddingTop: 4
+    paddingBottom: 0
+  - name: sf_button_0009
+    x: 798
+    y: 382
+    width: 125
+    height: 123
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 3
+    paddingTop: 4
+    paddingBottom: 1
+  - name: sf_button_0010
+    x: 810
+    y: 811
+    width: 118
+    height: 118
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 6
+    paddingTop: 7
+    paddingBottom: 3
+  - name: sf_button_0011
+    x: 823
+    y: 505
+    width: 112
+    height: 112
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 7
+    paddingRight: 9
+    paddingTop: 10
+    paddingBottom: 6
+  - name: sf_button_0012
+    x: 645
+    y: 722
+    width: 106
+    height: 106
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 10
+    paddingRight: 12
+    paddingTop: 13
+    paddingBottom: 9
+  - name: sf_button_0013
+    x: 751
+    y: 711
+    width: 98
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 16
+    paddingTop: 16
+    paddingBottom: 12
+  - name: sf_button_0014
+    x: 293
+    y: 727
+    width: 98
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 15
+    paddingTop: 15
+    paddingBottom: 13
+  - name: sf_button_0015
+    x: 295
+    y: 498
+    width: 97
+    height: 101
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 17
+    paddingRight: 14
+    paddingTop: 14
+    paddingBottom: 13
+  - name: sf_button_0016
+    x: 196
+    y: 429
+    width: 96
+    height: 102
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 18
+    paddingRight: 14
+    paddingTop: 13
+    paddingBottom: 13
+  - name: sf_button_0017
+    x: 699
+    y: 492
+    width: 99
+    height: 101
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 13
+    paddingTop: 13
+    paddingBottom: 14
+  - name: sf_button_0018
+    x: 392
+    y: 401
+    width: 101
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 13
+    paddingTop: 13
+    paddingBottom: 15
+  - name: sf_button_0019
+    x: 0
+    y: 926
+    width: 101
+    height: 98
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 14
+    paddingTop: 13
+    paddingBottom: 17
+  - name: sf_button_0020
+    x: 690
+    y: 302
+    width: 101
+    height: 95
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 15
+    paddingTop: 14
+    paddingBottom: 19
+  - name: sf_button_0021
+    x: 849
+    y: 714
+    width: 101
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 15
+    paddingTop: 14
+    paddingBottom: 17
+  - name: sf_button_0022
+    x: 875
+    y: 110
+    width: 99
+    height: 98
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 17
+    paddingTop: 15
+    paddingBottom: 15
+  - name: sf_button_0023
+    x: 503
+    y: 597
+    width: 99
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 17
+    paddingTop: 17
+    paddingBottom: 14
+  - name: sf_button_0024
+    x: 396
+    y: 805
+    width: 101
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 15
+    paddingTop: 18
+    paddingBottom: 13
+  - name: sf_button_0025
+    x: 0
+    y: 438
+    width: 100
+    height: 94
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 15
+    paddingTop: 21
+    paddingBottom: 13
+  - name: sf_button_0026
+    x: 298
+    y: 926
+    width: 100
+    height: 98
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 14
+    paddingTop: 18
+    paddingBottom: 12
+  - name: sf_button_0027
+    x: 94
+    y: 728
+    width: 100
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 13
+    paddingTop: 17
+    paddingBottom: 12
+  - name: sf_button_0028
+    x: 101
+    y: 924
+    width: 98
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 17
+    paddingRight: 13
+    paddingTop: 15
+    paddingBottom: 13
+  - name: sf_button_0029
+    x: 780
+    y: 182
+    width: 95
+    height: 101
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 19
+    paddingRight: 14
+    paddingTop: 14
+    paddingBottom: 13
+  - name: sf_button_0030
+    x: 0
+    y: 732
+    width: 94
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 19
+    paddingRight: 15
+    paddingTop: 14
+    paddingBottom: 14
+  - name: sf_button_0031
+    x: 580
+    y: 132
+    width: 96
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 17
+    paddingRight: 15
+    paddingTop: 14
+    paddingBottom: 15
+  - name: sf_button_0032
+    x: 602
+    y: 524
+    width: 97
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 16
+    paddingTop: 13
+    paddingBottom: 16
+  - name: sf_button_0033
+    x: 0
+    y: 629
+    width: 97
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 17
+    paddingTop: 13
+    paddingBottom: 16
+  - name: sf_button_0034
+    x: 889
+    y: 208
+    width: 96
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 19
+    paddingTop: 13
+    paddingBottom: 15
+  - name: sf_button_0035
+    x: 928
+    y: 830
+    width: 96
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 20
+    paddingTop: 14
+    paddingBottom: 14
+  - name: sf_button_0036
+    x: 389
+    y: 300
+    width: 93
+    height: 101
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 23
+    paddingTop: 14
+    paddingBottom: 13
+  - name: sf_button_0037
+    x: 0
+    y: 238
+    width: 96
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 20
+    paddingTop: 15
+    paddingBottom: 13
+  - name: sf_button_0038
+    x: 791
+    y: 283
+    width: 98
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 18
+    paddingTop: 16
+    paddingBottom: 13
+  - name: sf_button_0039
+    x: 493
+    y: 329
+    width: 100
+    height: 98
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 16
+    paddingTop: 18
+    paddingBottom: 12
+  - name: sf_button_0040
+    x: 692
+    y: 397
+    width: 100
+    height: 95
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 15
+    paddingTop: 20
+    paddingBottom: 13
+  - name: sf_button_0041
+    x: 910
+    y: 930
+    width: 100
+    height: 94
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 15
+    paddingTop: 21
+    paddingBottom: 13
+  - name: sf_button_0042
+    x: 292
+    y: 403
+    width: 100
+    height: 95
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 14
+    paddingTop: 19
+    paddingBottom: 14
+  - name: sf_button_0043
+    x: 711
+    y: 927
+    width: 99
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 14
+    paddingTop: 17
+    paddingBottom: 14
+  - name: sf_button_0044
+    x: 923
+    y: 408
+    width: 98
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 14
+    paddingTop: 16
+    paddingBottom: 15
+  - name: sf_button_0045
+    x: 193
+    y: 332
+    width: 98
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 15
+    paddingTop: 15
+    paddingBottom: 16
+  - name: sf_button_0046
+    x: 389
+    y: 599
+    width: 99
+    height: 94
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 15
+    paddingTop: 15
+    paddingBottom: 19
+  - name: sf_button_0047
+    x: 196
+    y: 531
+    width: 99
+    height: 95
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 16
+    paddingTop: 15
+    paddingBottom: 18
+  - name: sf_button_0048
+    x: 199
+    y: 827
+    width: 98
+    height: 98
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 17
+    paddingTop: 14
+    paddingBottom: 16
+  - name: sf_button_0049
+    x: 593
+    y: 328
+    width: 97
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 18
+    paddingTop: 14
+    paddingBottom: 15
+  - name: sf_button_0050
+    x: 199
+    y: 925
+    width: 99
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 17
+    paddingTop: 14
+    paddingBottom: 15
+  - name: sf_button_0051
+    x: 923
+    y: 308
+    width: 98
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 18
+    paddingTop: 14
+    paddingBottom: 14
+  - name: sf_button_0052
+    x: 0
+    y: 338
+    width: 96
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 19
+    paddingTop: 15
+    paddingBottom: 13
+  - name: sf_button_0053
+    x: 520
+    y: 924
+    width: 97
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 17
+    paddingTop: 16
+    paddingBottom: 12
+  - name: sf_button_0054
+    x: 298
+    y: 827
+    width: 98
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 15
+    paddingTop: 16
+    paddingBottom: 13
+  - name: sf_button_0055
+    x: 482
+    y: 229
+    width: 98
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 14
+    paddingTop: 15
+    paddingBottom: 13
+  - name: sf_button_0056
+    x: 772
+    y: 81
+    width: 96
+    height: 101
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 18
+    paddingRight: 14
+    paddingTop: 14
+    paddingBottom: 13
+  - name: sf_button_0057
+    x: 290
+    y: 626
+    width: 99
+    height: 101
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 13
+    paddingTop: 13
+    paddingBottom: 14
+  - name: sf_button_0058
+    x: 680
+    y: 202
+    width: 100
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 13
+    paddingTop: 13
+    paddingBottom: 15
+  - name: sf_button_0059
+    x: 392
+    y: 501
+    width: 101
+    height: 98
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 14
+    paddingTop: 13
+    paddingBottom: 17
+  - name: sf_button_0060
+    x: 645
+    y: 828
+    width: 102
+    height: 96
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 14
+    paddingTop: 13
+    paddingBottom: 19
+  - name: sf_button_0061
+    x: 94
+    y: 827
+    width: 101
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 15
+    paddingTop: 14
+    paddingBottom: 17
+  - name: sf_button_0062
+    x: 592
+    y: 427
+    width: 100
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 16
+    paddingTop: 15
+    paddingBottom: 16
+  - name: sf_button_0063
+    x: 194
+    y: 730
+    width: 99
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 17
+    paddingTop: 16
+    paddingBottom: 15
+  - name: sf_button_0064
+    x: 580
+    y: 231
+    width: 100
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 16
+    paddingTop: 18
+    paddingBottom: 13
+  - name: sf_button_0065
+    x: 810
+    y: 929
+    width: 100
+    height: 95
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 15
+    paddingTop: 20
+    paddingBottom: 13
+  - name: sf_button_0066
+    x: 849
+    y: 617
+    width: 100
+    height: 97
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 14
+    paddingRight: 14
+    paddingTop: 19
+    paddingBottom: 12
+  - name: sf_button_0067
+    x: 493
+    y: 498
+    width: 99
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 14
+    paddingTop: 17
+    paddingBottom: 12
+  - name: sf_button_0068
+    x: 97
+    y: 532
+    width: 99
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 13
+    paddingTop: 15
+    paddingBottom: 13
+  - name: sf_button_0069
+    x: 100
+    y: 432
+    width: 96
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 18
+    paddingRight: 14
+    paddingTop: 15
+    paddingBottom: 13
+  - name: sf_button_0070
+    x: 617
+    y: 924
+    width: 94
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 20
+    paddingRight: 14
+    paddingTop: 14
+    paddingBottom: 14
+  - name: sf_button_0071
+    x: 609
+    y: 623
+    width: 96
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 17
+    paddingRight: 15
+    paddingTop: 14
+    paddingBottom: 15
+  - name: sf_button_0072
+    x: 676
+    y: 103
+    width: 96
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 16
+    paddingTop: 13
+    paddingBottom: 16
+  - name: sf_button_0073
+    x: 194
+    y: 632
+    width: 96
+    height: 98
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 15
+    paddingRight: 17
+    paddingTop: 13
+    paddingBottom: 17
+  - name: sf_button_0074
+    x: 96
+    y: 332
+    width: 97
+    height: 100
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 13
+    paddingRight: 18
+    paddingTop: 13
+    paddingBottom: 15
+  mPixelSize: 1
+  mReplacement: {fileID: 0}
+  mCoordinates: 0
+  sprites: []
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1868833125032243}
+  m_IsPrefabParent: 1

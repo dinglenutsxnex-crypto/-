@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="helm__agl_05_f">
+  <Meshes>
+    <Mesh Name="helm__agl_05_m" />
+  </Meshes>
+  <Materials>
+    <Material Name="flesh" CapsuleName="Head">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_head_top" />
+    </Material>
+    <Material Name="flesh" CapsuleName="Neck">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_chest" />
+    </Material>
+  </Materials>
+</ModelObject>

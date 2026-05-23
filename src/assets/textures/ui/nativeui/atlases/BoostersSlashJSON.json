@@ -1,0 +1,36 @@
+{"frames": {
+
+"slash_1.png":
+{
+	"frame": {"x":1,"y":1,"w":865,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":865,"h":70},
+	"sourceSize": {"w":865,"h":70}
+},
+"slash_2.png":
+{
+	"frame": {"x":1,"y":72,"w":858,"h":161},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":858,"h":161},
+	"sourceSize": {"w":858,"h":161}
+},
+"slash_3.png":
+{
+	"frame": {"x":1,"y":234,"w":716,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":716,"h":85},
+	"sourceSize": {"w":716,"h":85}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "BoostersSlashJSON.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:325761cc508d68a4da984abb934717d7:acfd043a496ff4276f81f5b8d4821055:d2d3bd522e1d9c2bef1dda6f5805f8ba$"
+}
+}

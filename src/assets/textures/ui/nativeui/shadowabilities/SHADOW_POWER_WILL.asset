@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SHADOW_POWER_WILL
+  m_Rect:
+    serializedVersion: 2
+    x: 8.07612
+    y: 0
+    width: 47.847755
+    height: 64
+  m_Offset: {x: 2.8519485E-06, y: 0}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32.32323
+  m_Pivot: {x: 0.50000006, y: 0.5}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RD:
+    texture: {fileID: 2800000, guid: 71faaaf93fc84004a9131cc73ddf39a3, type: 3}
+    alphaTexture: {fileID: 0}
+    vertices:
+    - serializedVersion: 2
+      pos: {x: 0.7425, y: 0.99000007, z: 0}
+    - serializedVersion: 2
+      pos: {x: 0.15468751, y: -0.99000007, z: 0}
+    - serializedVersion: 2
+      pos: {x: 0.7425, y: -0.37125, z: 0}
+    - serializedVersion: 2
+      pos: {x: -0.12375001, y: -0.99000007, z: 0}
+    - serializedVersion: 2
+      pos: {x: -0.7425, y: 0.99000007, z: 0}
+    - serializedVersion: 2
+      pos: {x: -0.7425, y: -0.3403125, z: 0}
+    indices:
+    - 5
+    - 4
+    - 3
+    - 0
+    - 3
+    - 4
+    - 1
+    - 3
+    - 0
+    - 2
+    - 1
+    - 0
+    textureRect:
+      serializedVersion: 2
+      x: 8.07612
+      y: 0
+      width: 47.847755
+      height: 64
+    textureRectOffset: {x: 0, y: 0}
+    settingsRaw: 64
+    uvTransform: {x: 32.32323, y: 32, z: 32.32323, w: 32}

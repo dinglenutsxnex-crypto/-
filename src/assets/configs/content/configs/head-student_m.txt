@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="head__student">
+  <Meshes>
+    <Mesh Name="head__student" />
+  </Meshes>
+  <Materials>
+    <Material Name="flesh" CapsuleName="Head">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_head_top" />
+    </Material>
+    <Material Name="flesh" CapsuleName="Neck">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_chest" />
+    </Material>
+  </Materials>
+</ModelObject>

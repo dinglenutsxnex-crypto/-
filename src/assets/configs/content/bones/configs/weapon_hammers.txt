@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+	<Bones>
+		<Bone Name="w_hammer_01_l" ID="200"/>
+		<Bone Name="w_hammer_02_l" ID="201"/>
+		<Bone Name="w_hammer_01_r" ID="210"/>
+		<Bone Name="w_hammer_02_r" ID="211"/>
+	    <Bone Name="w_hammer_trail1_l" ID="260"/>
+	    <Bone Name="w_hammer_trail2_l" ID="261"/>
+	    <Bone Name="w_hammer_trail3_l" ID="262"/>
+	    <Bone Name="w_hammer_trail4_l" ID="263"/>
+	    <Bone Name="w_hammer_trail1_r" ID="264"/>
+	    <Bone Name="w_hammer_trail2_r" ID="265"/>
+	    <Bone Name="w_hammer_trail3_r" ID="266"/>
+	    <Bone Name="w_hammer_trail4_r" ID="267"/>
+		</Bones>
+  <Vertexes>
+    <Vertex Name="hammer_top_l" BoneName="w_hammer_02_l" LocalPosition="-10.00000 0.00000 -4.00000" />
+    <Vertex Name="hammer_bottom_l" BoneName="w_hammer_01_l" LocalPosition="-10.00000 0.00000 -4.00000" />
+    <Vertex Name="hammer_bottom_r" BoneName="w_hammer_01_r" LocalPosition="10.00000 0.00000 4.00000" />
+    <Vertex Name="hammer_top_r" BoneName="w_hammer_02_r" LocalPosition="10.00000 0.00000 4.00000" />
+  </Vertexes>
+  <Mirroring>
+    <DualMirrorers>
+      <Mirrorer MirrorAxis="None">
+        <Bone Name="w_hammer_01_l" MirrorBone="w_hammer_01_r" />
+        <Bone Name="w_hammer_02_l" MirrorBone="w_hammer_02_r" />
+        <Bone Name="w_hammer_trail1_l" MirrorBone="w_hammer_trail1_r" />
+        <Bone Name="w_hammer_trail2_l" MirrorBone="w_hammer_trail2_r" />
+        <Bone Name="w_hammer_trail3_l" MirrorBone="w_hammer_trail3_r" />
+        <Bone Name="w_hammer_trail4_l" MirrorBone="w_hammer_trail4_r" />
+      </Mirrorer>
+    </DualMirrorers>
+  </Mirroring>
+  <Capsules>
+    <Capsule Name="Hammers_Attacking_Edge_l" Vertex1="hammer_top_l" Vertex2="hammer_bottom_l" Radius="6.3"/>
+    <Capsule Name="Hammers_Attacking_Edge_r" Vertex1="hammer_top_r" Vertex2="hammer_bottom_r" Radius="6.3" LeftMirrorCapsule="Hammers_Attacking_Edge_l"/>
+  </Capsules>
+</BonesData>

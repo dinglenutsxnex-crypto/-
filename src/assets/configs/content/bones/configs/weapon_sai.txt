@@ -1,0 +1,18 @@
+<BonesData>
+  <Vertexes>
+    <Vertex Name="sai_bottom_l" BoneName="w_sai_01_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="sai_top_l" BoneName="w_sai_02_l" LocalPosition="0.00000 0.00000 -5.00000" />
+    <Vertex Name="sai_bottom_r" BoneName="w_sai_01_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="sai_top_r" BoneName="w_sai_02_r" LocalPosition="0.00000 0.00000 -5.00000" />
+  </Vertexes>
+	<Bones>
+		<Bone Name="w_sai_01_l" ID="200"/>
+		<Bone Name="w_sai_02_l" ID="201"/>
+		<Bone Name="w_sai_01_r" ID="210"/>
+		<Bone Name="w_sai_02_r" ID="211"/>
+	</Bones>
+  <Capsules>
+    <Capsule Name="Sai_Attacking_Edge_l" Vertex1="sai_top_l" Vertex2="sai_bottom_l" Radius="4"/>
+    <Capsule Name="Sai_Attacking_Edge_r" Vertex1="sai_top_r" Vertex2="sai_bottom_r" Radius="4" LeftMirrorCapsule="Sai_Attacking_Edge_l"/>
+  </Capsules>
+</BonesData>

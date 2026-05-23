@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject>
+  <Prefabs>
+    <Prefab Name="w_staff_01_l" ConfigName="weapon_staff" MirroringDuplicate="0" Droppable="1" />
+    <Prefab Name="w_staff_01_r" ConfigName="weapon_staff"  MirroringDuplicate="1" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__staff_01_03__l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__staff_01_03__l_tie" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__staff_01_03__r" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__staff_01_03__r_tie" MirroringDuplicate="1" Droppable="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="wood" CapsuleName="Staff_Attacking_Edge_l">
+      <Vertex Name="staff_bottom_l" />
+      <Vertex Name="staff_top_l" />
+    </Material>
+    <Material Name="wood" CapsuleName="Staff_Attacking_Edge_r">
+      <Vertex Name="staff_bottom_r" />
+      <Vertex Name="staff_top_r" />
+    </Material>
+  </Materials>
+</ModelObject>

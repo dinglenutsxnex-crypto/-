@@ -1,0 +1,10 @@
+<BonesData>
+	<Bones>
+		<Bone Name="agl_04_m_tie_1" ID="100"/>
+		<Bone Name="agl_04_m_tie_2" ID="101"/>
+		<Bone Name="agl_04_m_tie_3" ID="102"/>
+		<Bone Name="agl_04_m_tie_4" ID="103"/>
+	</Bones>
+  <Vertexes>
+  </Vertexes>
+</BonesData>

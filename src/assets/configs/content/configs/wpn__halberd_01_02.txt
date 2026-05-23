@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn-halberd_01_02">
+  <Prefabs>
+    <Prefab Name="w_halberd_01_l" ConfigName="weapon_halberd" MirroringDuplicate="0" Droppable="1" />
+    <Prefab Name="w_halberd_01_r" ConfigName="weapon_halberd" MirroringDuplicate="1" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__halberd_01_02__l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__halberd_01_02__r" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__halberd_01_02__trail_l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__halberd_01_02__trail_r" MirroringDuplicate="1" Droppable="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="wood" CapsuleName="halberd_Attacking_Edge_l">
+      <Vertex Name="halberd_bottom_l" />
+      <Vertex Name="halberd_top_l" />
+    </Material>
+    <Material Name="wood" CapsuleName="halberd_Attacking_Edge_r">
+      <Vertex Name="halberd_bottom_r" />
+      <Vertex Name="halberd_top_r" />
+    </Material>
+  </Materials>
+</ModelObject>

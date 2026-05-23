@@ -1,0 +1,180 @@
+{"frames": {
+
+"back_card.png":
+{
+	"frame": {"x":485,"y":223,"w":487,"h":668},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":487,"h":668},
+	"sourceSize": {"w":487,"h":668}
+},
+"booster_card_back.png":
+{
+	"frame": {"x":1,"y":223,"w":483,"h":668},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":483,"h":668},
+	"sourceSize": {"w":483,"h":668}
+},
+"button_black.png":
+{
+	"frame": {"x":1323,"y":1,"w":200,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":55},
+	"sourceSize": {"w":200,"h":55}
+},
+"buy_icon.png":
+{
+	"frame": {"x":1,"y":1,"w":52,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":82},
+	"sourceSize": {"w":52,"h":82}
+},
+"card_background.png":
+{
+	"frame": {"x":973,"y":223,"w":500,"h":688},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":688},
+	"sourceSize": {"w":500,"h":688}
+},
+"common_card.png":
+{
+	"frame": {"x":1,"y":912,"w":500,"h":688},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":688},
+	"sourceSize": {"w":500,"h":688}
+},
+"dynasty.png":
+{
+	"frame": {"x":307,"y":1,"w":120,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"epic_card.png":
+{
+	"frame": {"x":1003,"y":912,"w":500,"h":688},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":688},
+	"sourceSize": {"w":500,"h":688}
+},
+"fitting_icon.png":
+{
+	"frame": {"x":107,"y":1,"w":78,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":44},
+	"sourceSize": {"w":78,"h":44}
+},
+"heralds.png":
+{
+	"frame": {"x":428,"y":1,"w":120,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"legendary_card.png":
+{
+	"frame": {"x":502,"y":912,"w":500,"h":688},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":688},
+	"sourceSize": {"w":500,"h":688}
+},
+"legion.png":
+{
+	"frame": {"x":186,"y":1,"w":120,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"rare_card.png":
+{
+	"frame": {"x":1474,"y":223,"w":500,"h":688},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":688},
+	"sourceSize": {"w":500,"h":688}
+},
+"sale.png":
+{
+	"frame": {"x":1524,"y":1,"w":372,"h":221},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":372,"h":221},
+	"sourceSize": {"w":372,"h":221}
+},
+"SHADOW_BLINK.png":
+{
+	"frame": {"x":678,"y":1,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"shadow_placeholder.png":
+{
+	"frame": {"x":549,"y":1,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"SHADOW_PUSH.png":
+{
+	"frame": {"x":1194,"y":1,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"SHADOW_STAFF_SPINNING_SLASH.png":
+{
+	"frame": {"x":936,"y":1,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"SHADOW_THUD.png":
+{
+	"frame": {"x":1065,"y":1,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"SHADOW_TWOHANDED_SWORD_SLASH.png":
+{
+	"frame": {"x":807,"y":1,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"up-icon.png":
+{
+	"frame": {"x":54,"y":1,"w":52,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":82},
+	"sourceSize": {"w":52,"h":82}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ItemCards.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2dc729c5e19a6c09f7ab3b33f9867cea:ba24b5ecacae027ac6e0a2efa7241168:13e8660776f2ae8d7df962a9e634fe4e$"
+}
+}

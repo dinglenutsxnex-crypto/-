@@ -1,0 +1,45 @@
+{
+  "ExternalPaths": {
+    "QualityPresets": "assets/gamedata/resources/Configs/qualitySettings.json",
+    "DevicesQuality": "assets/gamedata/resources/Configs/devices.xml",
+    "debug": "assets/gamedata/resources/Debug/",
+    "ExternalUIPath": "assets/gamedata/resources/UI",
+    "ExternalUITexturesPath": "assets/gamedata/resources/UI/CURRENT_RESOLUTION/UITextures",
+    "ExternalUISpritesPath": "assets/gamedata/resources/UI/CURRENT_RESOLUTION/UISprites",
+    "character_creation_settings": "assets/gamedata/resources/GameSettings/character_creation_settings.yaml",
+    "StoreURL": "http://nekki.com/",
+    "TestUserURL": "http://192.168.1.200:83/SF3",
+    "Localization": "assets/gamedata/resources/Localizations/",
+    "animations": "assets/gamedata/resources/Content/animations/",
+    "models_folder": "assets/gamedata/resources/Content/Models/",
+    "locations": "assets/gamedata/resources/Content/Locations/",
+    "avatars": "assets/gamedata/resources/Content/Avatars/",
+    "audios": "assets/gamedata/resources/Audio/",
+    "sounds": "assets/gamedata/resources/Audio/Sounds/",
+    "music": "assets/gamedata/resources/Audio/Music/",
+    "GameSettings": "assets/gamedata/resources/GameSettings/",
+    "quests_triggers": "assets/gamedata/resources/GameSettings/Results/quests_triggers_result.yaml",
+    "moves_triggers": "assets/gamedata/resources/GameSettings/Results/moves_triggers_result.yaml",
+    "moves_settings": "assets/gamedata/resources/GameSettings/Results/moves_settings_result.yaml",
+    "fight_settings": "assets/gamedata/resources/GameSettings/fight_settings.yaml",
+    "tactics_settings": "assets/gamedata/resources/GameSettings/tactics_settings.yaml",
+    "results_tables": "assets/gamedata/resources/Tactics/ResultsTables/",
+    "battlesDefault": "assets/gamedata/resources/GameSettings/battlesDefault.yaml",
+    "shadowPerksIcons": "assets/gamedata/resources/NativeUI/ShadowAbilities/"
+  },
+  "StoreURLs": {
+    "iOS": "https://beta.itunes.apple.com/v1/app/964827011",
+    "Android": "market://details?id=com.nekki.shadowfight3"
+  },
+  "LocalSettings": {
+    "Debug": false,
+    "BundlesPath": "stable",
+    "HandleLogWarnings": false,
+    "NoImageTexture": "assets/gamedata/resources/Images/no_image.png"
+  },
+  "ServerSettings": {
+    "Balancers": {
+      "prod": "https://sf3lb.nekkimobile.ru/balance"
+    }
+  }
+}

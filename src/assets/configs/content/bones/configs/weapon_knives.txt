@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+	<Bones>
+		<Bone Name="w_knives_l_1" ID="200"/>
+		<Bone Name="w_knives_l_2" ID="201"/>
+		<Bone Name="w_knives_r_1" ID="202"/>
+		<Bone Name="w_knives_r_2" ID="203"/>
+		</Bones>
+    <Vertexes>
+    <Vertex Name="knife_bottom_l" BoneName="w_knives_l_1" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="knife_top_l" BoneName="w_knives_l_2" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="knife_bottom_r" BoneName="w_knives_r_1" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="knife_top_r" BoneName="w_knives_r_2" LocalPosition="0.00000 0.00000 0.00000" />
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="Knife_Attacking_Edge_l" Vertex1="knife_top_l" Vertex2="knife_bottom_l" Radius="3"/>
+    <Capsule Name="Knife_Attacking_Edge_r" Vertex1="knife_top_r" Vertex2="knife_bottom_r" Radius="3" LeftMirrorCapsule="Knife_Attacking_Edge_l"/>
+  </Capsules>
+</BonesData>

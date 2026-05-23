@@ -1,0 +1,38 @@
+<BonesData>
+  <Bones>
+    <Bone Name="w_nunchaku_01_l" ID="200"/>
+    <Bone Name="w_nunchaku_02_l" ID="201" Pseudo-physics="1"/>
+    <Bone Name="w_nunchaku_03_l" ID="202" Pseudo-physics="1"/>
+    <Bone Name="w_nunchaku_04_l" ID="203" Pseudo-physics="1"/>
+    <Bone Name="w_nunchaku_01_r" ID="209"/>
+    <Bone Name="w_nunchaku_02_r" ID="210" Pseudo-physics="1"/>
+    <Bone Name="w_nunchaku_03_r" ID="211" Pseudo-physics="1"/>
+    <Bone Name="w_nunchaku_04_r" ID="212" Pseudo-physics="1"/>
+  </Bones>
+  <Mirroring>
+    <DualMirrorers>
+      <Mirrorer MirrorAxis="None">
+        <Bone Name="w_nunchaku_01_r" MirrorBone="w_nunchaku_01_l" />
+        <Bone Name="w_nunchaku_02_r" MirrorBone="w_nunchaku_02_l" />
+        <Bone Name="w_nunchaku_03_r" MirrorBone="w_nunchaku_03_l" />
+        <Bone Name="w_nunchaku_04_r" MirrorBone="w_nunchaku_04_l" />
+      </Mirrorer>
+    </DualMirrorers>
+  </Mirroring>
+  <Vertexes>
+    <Vertex Name="nunchaku_bottom_1_l" BoneName="w_nunchaku_01_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="nunchaku_top_1_l" BoneName="w_nunchaku_02_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="nunchaku_bottom_1_r" BoneName="w_nunchaku_01_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="nunchaku_top_1_r" BoneName="w_nunchaku_02_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="nunchaku_bottom_2_l" BoneName="w_nunchaku_03_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="nunchaku_top_2_l" BoneName="w_nunchaku_04_l" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="nunchaku_bottom_2_r" BoneName="w_nunchaku_03_r" LocalPosition="0.00000 0.00000 0.00000" />
+    <Vertex Name="nunchaku_top_2_r" BoneName="w_nunchaku_04_r" LocalPosition="0.00000 0.00000 0.00000" />
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="Nunchaku_Attacking_Edge_1_l" Vertex1="nunchaku_bottom_1_l" Vertex2="nunchaku_top_1_l" Radius="3"/>
+    <Capsule Name="Nunchaku_Attacking_Edge_1_r" Vertex1="nunchaku_bottom_1_r" Vertex2="nunchaku_top_1_r" Radius="3" LeftMirrorCapsule="Nunchaku_Attacking_Edge_1_l"/>
+    <Capsule Name="Nunchaku_Attacking_Edge_2_l" Vertex1="nunchaku_bottom_2_l" Vertex2="nunchaku_top_2_l" Radius="3"/>
+    <Capsule Name="Nunchaku_Attacking_Edge_2_r" Vertex1="nunchaku_bottom_2_r" Vertex2="nunchaku_top_2_r" Radius="3" LeftMirrorCapsule="Nunchaku_Attacking_Edge_2_l"/>
+  </Capsules>
+</BonesData>

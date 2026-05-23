@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="hair-01_m">
+  <Prefabs>
+    <Prefab Name="hairl_01_m_tie1" ConfigName="hair_01_m_bones" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="hair__01_m" />
+    <Mesh Name="hair__01_m__tie" />
+  </Meshes>
+</ModelObject>

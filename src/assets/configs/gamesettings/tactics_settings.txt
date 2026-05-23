@@ -1,0 +1,138 @@
+Settings:
+  # Период вызова тактических решений
+  TacticsPeriod: 1
+  # Кость в анимации, относительно которой мы считаем таблицы рёбер
+  TacticsPivot: foot_l
+  # Зеркальная кость к TacticsPivot
+  TacticsMirroredPivot: foot_r
+  
+  MovesExceptions:
+    - Groups:
+        - STANCE_IDLE
+      Properties:
+      # Принудительные реакции, которые не отбираются из-за основных критериев
+        - ForcedReaction: 1
+    - Groups:
+        - STANCE_START_BIRTH
+        - STANCE_START_ROUND
+        - STANCE_WIN_POSE
+        - STANCE_WIN_IDLE
+        - STANCE_TIMEOUT
+        - STANCE_TIMEOUT_IDLE
+        - LOSS
+        - LOSS_IDLE
+        - TRY_ON
+        - STANCE_INVENTORY
+        - THROW_FALL
+        - THROW
+        - STANCE_LOSS
+      Properties:
+       # Эту группу бот игнорирует на своём противнике и для нее не создаются таблицы ребер
+        - NonProvocation: 1
+
+    - Groups:
+        - LOW_STANCE
+        - LOW_STANCE_IN
+        - LOW_STANCE_OUT
+        - LOW_STANCE_LOOP
+        - BLOCK
+        - HIT
+        - STANCE_START_IDLE
+        - STANCE_IDLE
+        - TRANSITION
+      Properties:
+       # Cоздаются таблицы рёбер, но бот на них не реагирует
+        - IgnoreProvocation: 1
+       # Эти анимации не могут быть использованы в качестве реакций
+        - NonReaction: 1
+    - Names:
+        - STAND_UP
+      Properties:
+        - ReverseResult: 1
+
+  #настройки задержки вызова тактики
+  Delay:
+    #сбрасывать таймер задержки при событиях
+    ResetOnEvents:
+      SenseiMode:
+        - AnimationStart: {Player: Enemy}
+      RegularMode:
+        - AnimationStart: {Player: Enemy}
+        - AnimationStart: {Player: Me, Name: STANCE_IDLE}
+        - IntervalEnd: {Player: Me, Name: Uninterrupt}
+        - AnimationEnd: {Player: Me}
+        - EveryFrame: {Step: 10}
+        - StageChange: {Stage: RoundFightStart}
+      DojoMode:
+        - AnimationStart: {Player: Enemy}
+        - AnimationStart: {Player: Me, Name: STANCE_IDLE}
+        - IntervalEnd: {Player: Me, Name: Uninterrupt}
+        - AnimationEnd: {Player: Me}
+        - StageChange: {Stage: RoundFightStart}
+      #NoneMode:       
+      #  - StageChange: {Stage: RoundFightStart}
+      #  - IntervalEnd: {Player: Me, Name: Uninterrupt}
+      #  - AnimationEnd: {Player: Me}
+      #  - AnimationStart: {Player: Enemy}
+
+  GroupNoReactions:
+    RegularMode:
+      #- STANCE_IDLE
+      #- STANCE_START_BIRTH
+      #- STANCE_START_ROUND
+      #- STANCE_WIN_POSE
+      #- STANCE_WIN_IDLE
+      #- STANCE_TIMEOUT
+      #- STANCE_TIMEOUT_IDLE
+      #- LOSS
+      #- LOSS_IDLE
+      #- TRY_ON
+      #- STANCE_INVENTORY
+      #- THROW_FALL
+      #- THROW
+      #- STANCE_LOSS
+      - FAKE_CRUTCH
+    DojoMode:
+      #- STANCE_IDLE
+      #- STANCE_START_IDLE
+      #- STANCE_START_BIRTH
+      #- STANCE_START_ROUND
+      #- STANCE_WIN_POSE
+      #- STANCE_WIN_IDLE
+      #- STANCE_TIMEOUT
+      #- STANCE_TIMEOUT_IDLE
+      #- LOSS
+      #- LOSS_IDLE
+      #- TRY_ON
+      #- STANCE_INVENTORY
+      #- THROW_FALL
+      #- THROW
+      #- STANCE_LOSS
+      - FAKE_CRUTCH
+
+  TacticsModes:
+    - SenseiMode:
+      - Delay: 0
+      # Are not implemented in new AI model
+      - Chances:
+          - Counterattack:
+              Base: 1
+              Limit: 1
+    - RegularMode:
+      - Delay: 0
+      - Chances:
+          - Initiative:
+              Base: 1
+              Limit: 1
+    - NoneMode:
+      - Delay: -1
+      - Chances:
+          - Block:
+              Base: 1
+              Limit: 1
+    - DojoMode:
+      - Delay: 0
+      - Chances:
+          - Initiative:
+              Base: 1
+              Limit: 1

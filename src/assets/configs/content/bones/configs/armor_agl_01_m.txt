@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+	<Bones>
+		<Bone Name="agl_01_m_tie_0" ID="100"/>
+		<Bone Name="agl_01_m_tie_1" ID="101"/>
+		<Bone Name="agl_01_m_tie_2" ID="102"/>
+		<Bone Name="agl_01_m_tie_3" ID="103"/>
+		<Bone Name="agl_01_m_tie_4" ID="104"/>
+		<Bone Name="agl_01_m_tie_5" ID="105"/>
+		<Bone Name="agl_01_m_tie_6" ID="106"/>
+		<Bone Name="agl_01_m_tie_7" ID="107"/>
+	</Bones>
+  <Vertexes>
+  </Vertexes>
+</BonesData>

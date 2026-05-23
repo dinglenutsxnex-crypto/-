@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+	<Bones>
+		<Bone Name="bullet_joint" ID="333" Mass="1"/>
+	</Bones>
+    <Vertexes>
+    <Vertex Name="bottom" BoneName="bullet_joint"/>
+    <Vertex Name="top" BoneName="bullet_joint"/>
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="Shuriken_attacking_edge" Vertex1="top" Vertex2="bottom" Radius="6"/>
+  </Capsules>
+</BonesData>
+   

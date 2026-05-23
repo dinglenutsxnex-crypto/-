@@ -1,0 +1,59 @@
+Settings:
+  Events:
+    - Name: Slowdown
+      Params:
+        # Порог по скорости, после которого наступает эвент (если моделька в физике).
+        SpeedThreshold: 2
+        Min: 40
+        Max: 120
+    - Name: FloorHit
+      Params:
+        # Порог по высоте от пола. Учитывается его прохождение сверху вниз.
+        Height: 30
+    - Name: EveryFrame
+      Params:
+        # Шаг (интервал) проверки
+        Step: 10
+    - Name: KeyPress
+      Params:
+        HoldFrames: 10
+        ClearFrames: 15
+    - Name: BlockCheck
+      Params:
+        StartFrames: 8
+  Actions:
+    - Name: WallReaction
+      Params:
+        # Коэффициент импульса "отскока" от стены. Импульс зависит и от массы rigidbody тоже.
+        Coefficient: 450
+    - Name: HotGround
+      Params:
+        Height: 30
+    - Name: Disarm
+      Params:
+        DirectionMin: [2.4, 2.8, 0]
+        DirectionMax: [2.9, 3.1, 0]
+        ImpulseMin: 700
+        ImpulseMax: 1100
+        TorqueMin: [450, 450, 450]
+        TorqueMax: [600, 600, 600]
+
+  ShadowForm:
+    BurnDownPerFrame: 0.0017
+
+  DefaultItems:
+    - ID: 1000001
+      Tags:
+          - WEAPON
+          - FISTS
+      Model: wpn-fists
+      Type: Weapon
+      Hidden: 1
+  
+  DefaultStageIcon: Debug_back_short
+  
+  DefaultSkeleton: skeleton
+  
+  DefaultTags:
+    - SKELETON
+    - HEAD

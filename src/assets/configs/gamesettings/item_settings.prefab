@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1796767478782357
+GameObject:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - component: {fileID: 4708112619904118}
+  - component: {fileID: 114066735919714406}
+  m_Layer: 0
+  m_Name: item_settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4708112619904118
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796767478782357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114066735919714406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796767478782357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f94c012ac6f0b758067992c8bc2c35, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  _itemsRaritySettings:
+  - rarity: 1
+    cardBorder: common_card
+    descriptionLine: rarityline_common
+    alias: rarity_common
+    spriteName: common_line
+    color: {r: 0.19607843, g: 0.19215687, b: 0.18431373, a: 1}
+    boosterSpriteName:
+    boosterTextColor: {r: 0, g: 0, b: 0, a: 1}
+  - rarity: 2
+    cardBorder: rare_card
+    descriptionLine: rarityline_rare
+    alias: rarity_rare
+    spriteName: rare_line
+    color: {r: 0.38039216, g: 0.41568628, b: 0.49411765, a: 1}
+    boosterSpriteName: booster_rare
+    boosterTextColor: {r: 0.77254903, g: 0.85882354, b: 1, a: 1}
+  - rarity: 3
+    cardBorder: epic_card
+    descriptionLine: rarityline_epic
+    alias: rarity_epic
+    spriteName: epic_line
+    color: {r: 0.6666667, g: 0.4627451, b: 0.2784314, a: 1}
+    boosterSpriteName: booster_epic
+    boosterTextColor: {r: 1, g: 0.6431373, b: 0.36078432, a: 1}
+  - rarity: 4
+    cardBorder: legendary_card
+    descriptionLine: rarityline_legendary
+    alias: rarity_legendary
+    spriteName: legendary_line
+    color: {r: 0.85490197, g: 0.7411765, b: 0.30980393, a: 1}
+    boosterSpriteName: booster_legendary
+    boosterTextColor: {r: 1, g: 0.827451, b: 0.33333334, a: 1}
+  _itemsFactionSettings:
+  - faction: 1
+    alias: legion
+  - faction: 2
+    alias: heralds
+  - faction: 3
+    alias: dynasty
+  lowerAttributeColor: {r: 0.79607844, g: 0.42352942, b: 0.3019608, a: 1}
+  higherAttributeColor: {r: 0.49411765, g: 0.6, b: 0.41568628, a: 1}
+  normalAttributeColor: {r: 0.7882353, g: 0.7882353, b: 0.7882353, a: 1}
+  upgradeAttributeColor: {r: 0.654902, g: 0.5529412, b: 0.27450982, a: 1}
+  upgradeArrowAttributeColor: {r: 0.654902, g: 0.5529412, b: 0.27450982, a: 1}
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1796767478782357}
+  m_IsPrefabParent: 1

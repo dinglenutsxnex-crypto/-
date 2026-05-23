@@ -1,0 +1,9 @@
+<BonesData>
+	<Bones>
+		<Bone Name="hair_f_02_tie1" ID="501"/>
+		<Bone Name="hair_f_02_tie2" ID="502"/>
+		<Bone Name="hair_f_02_tie3" ID="503"/>
+	</Bones>
+  <Vertexes>
+  </Vertexes>
+</BonesData>

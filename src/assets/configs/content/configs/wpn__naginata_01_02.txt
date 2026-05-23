@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn-naginata_01_02">
+  <Prefabs>
+    <Prefab Name="w_naginata_01_l" ConfigName="weapon_naginata" MirroringDuplicate="0" Droppable="1" />
+    <Prefab Name="w_naginata_01_r" ConfigName="weapon_naginata" MirroringDuplicate="1" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__naginata_01_02__l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__naginata_01_02__r" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__naginata_01_02__trail_l" MirroringDuplicate="0" Droppable="1" />
+    <Mesh Name="wpn__naginata_01_02__trail_r" MirroringDuplicate="1" Droppable="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="wood" CapsuleName="naginata_Attacking_Edge_l">
+      <Vertex Name="naginata_bottom_l" />
+      <Vertex Name="naginata_top_l" />
+    </Material>
+    <Material Name="wood" CapsuleName="naginata_Attacking_Edge_r">
+      <Vertex Name="naginata_bottom_r" />
+      <Vertex Name="naginata_top_r" />
+    </Material>
+  </Materials>
+</ModelObject>

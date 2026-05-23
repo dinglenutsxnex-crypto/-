@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn-nunchaku_02">
+  <Prefabs>
+    <Prefab Name="w_nunchaku_01_l" ConfigName="weapon_nunchaku" MirroringDuplicate="1" Droppable="1" />
+    <Prefab Name="w_nunchaku_01_r" ConfigName="weapon_nunchaku" MirroringDuplicate="0" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__nunchaku_01_02__l" MirroringDuplicate="1" Droppable="1" />
+    <Mesh Name="wpn__nunchaku_01_02__r" MirroringDuplicate="0" Droppable="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="nunchaku" CapsuleName="Nunchaku_Attacking_Edge_l">
+      <Vertex Name="nunchaku_bottom_l" />
+      <Vertex Name="nunchaku_top_l" />
+    </Material>
+    <Material Name="nunchaku" CapsuleName="Nunchaku_Attacking_Edge_r">
+      <Vertex Name="nunchaku_bottom_r" />
+      <Vertex Name="nunchaku_top_r" />
+    </Material>
+  </Materials>
+</ModelObject>

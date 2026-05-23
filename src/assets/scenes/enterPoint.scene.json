@@ -1,0 +1,2545 @@
+{
+  "format": "sf3-scene-v1",
+  "source": "enterPoint.unity",
+  "sceneName": "enterPoint",
+  "renderSettings": {
+    "fog": 0,
+    "fogColor": {
+      "r": 1,
+      "g": 0,
+      "b": 0,
+      "a": 1
+    },
+    "fogMode": 1,
+    "fogDensity": 0.01,
+    "linearFogStart": 0,
+    "linearFogEnd": 300,
+    "ambientSkyColor": {
+      "r": 3.14,
+      "g": 3.14,
+      "b": 3.14,
+      "a": 3.14
+    },
+    "ambientIntensity": 3.14,
+    "ambientMode": 3
+  },
+  "lightmapSettings": {
+    "bakeResolution": 40,
+    "textureWidth": 1024,
+    "textureHeight": 1024
+  },
+  "hierarchy": [
+    {
+      "name": "UI Root",
+      "layer": 31,
+      "isActive": 1,
+      "tag": "Untagged",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 0.0027777778,
+          "y": 0.0027777778,
+          "z": 0.0027777778
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "18655a7572bf97abcb6cb6553c941e5e",
+              "_indent": 2
+            }
+          }
+        },
+        {
+          "type": "uiPanel",
+          "data": {
+            "depth": 0,
+            "alpha": 1,
+            "clipping": 0,
+            "clipRange": {
+              "x": 0,
+              "y": 0,
+              "z": null
+            },
+            "clipSoftness": {
+              "x": 4,
+              "y": 4
+            },
+            "renderQueue": 0,
+            "startingRenderQueue": 3000,
+            "sortingOrder": 0
+          }
+        },
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "1dabedb14a774383259a071b3c88e016",
+              "_indent": 2
+            }
+          }
+        },
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "e0064e27976e4a711e5a3c2cbbb90ec3",
+              "_indent": 2
+            }
+          }
+        },
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "150161c4cf3b151d963e45c9682bfff0",
+              "_indent": 2
+            }
+          }
+        },
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "71f21f66b550eff40be2c05124c6c21e",
+              "_indent": 2
+            }
+          }
+        },
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "56ec6c25ac577afeb80be7acb7b0702d",
+              "_indent": 2
+            }
+          }
+        },
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "c864ac25342a8a57842ec81b90061920",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Camera",
+          "layer": 31,
+          "isActive": 1,
+          "tag": "Untagged",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": null,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "eulerHint": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "components": [
+            {
+              "type": "camera",
+              "data": {
+                "type": "orthographic",
+                "enabled": 1,
+                "clearFlags": 3,
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 1
+                },
+                "nearClip": -10,
+                "farClip": 10,
+                "fieldOfView": 60,
+                "orthographicSize": 1,
+                "depth": 1,
+                "cullingMask": 3489660960,
+                "targetTexture": null,
+                "viewport": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1,
+                  "height": 1
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "bf20f65731d2ed87924501dc83d2c6a5",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "8a9944fe38943b54418e0568fedfaaaa",
+                  "_indent": 2
+                }
+              }
+            }
+          ],
+          "children": [
+            {
+              "name": "BlockContainer",
+              "layer": 31,
+              "isActive": 0,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": -0.78775406,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "uiPanel",
+                  "data": {
+                    "depth": 100,
+                    "alpha": 1,
+                    "clipping": 0,
+                    "clipRange": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null
+                    },
+                    "clipSoftness": {
+                      "x": 4,
+                      "y": 4
+                    },
+                    "renderQueue": 0,
+                    "startingRenderQueue": 3000,
+                    "sortingOrder": 0
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "Container",
+                  "layer": 31,
+                  "isActive": 1,
+                  "tag": "Untagged",
+                  "transform": {
+                    "position": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null,
+                      "w": 1
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "eulerHint": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "uiWidget",
+                      "data": {
+                        "width": 100,
+                        "height": 100,
+                        "depth": 0,
+                        "pivot": 4,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "aspectRatio": 1,
+                        "keepAspectRatio": 0,
+                        "autoResizeBoxCollider": 0,
+                        "hideIfOffScreen": 0,
+                        "anchors": {
+                          "left": {
+                            "target": 0,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "right": {
+                            "target": 0,
+                            "relative": 1,
+                            "absolute": 0
+                          },
+                          "bottom": {
+                            "target": 0,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "top": {
+                            "target": 0,
+                            "relative": 1,
+                            "absolute": 0
+                          }
+                        },
+                        "updateAnchors": 1
+                      }
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "Left",
+                  "layer": 31,
+                  "isActive": 1,
+                  "tag": "block",
+                  "transform": {
+                    "position": {
+                      "x": -285.7874,
+                      "y": 0,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null,
+                      "w": 1
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "eulerHint": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "uiWidget",
+                      "data": {
+                        "width": 472,
+                        "height": 720,
+                        "depth": 0,
+                        "pivot": 4,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "aspectRatio": 0.65555555,
+                        "keepAspectRatio": 0,
+                        "autoResizeBoxCollider": 1,
+                        "hideIfOffScreen": 0,
+                        "anchors": {
+                          "left": {
+                            "target": 63,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "right": {
+                            "target": 48,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "bottom": {
+                            "target": 63,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "top": {
+                            "target": 63,
+                            "relative": 1,
+                            "absolute": 0
+                          }
+                        },
+                        "updateAnchors": 1
+                      }
+                    },
+                    {
+                      "type": "boxCollider",
+                      "data": {
+                        "size": {
+                          "x": 472,
+                          "y": 720,
+                          "z": 0
+                        },
+                        "center": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        },
+                        "isTrigger": 1,
+                        "enabled": 1
+                      }
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "Top",
+                  "layer": 31,
+                  "isActive": 1,
+                  "tag": "block",
+                  "transform": {
+                    "position": {
+                      "x": -0.7086792,
+                      "y": 205,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null,
+                      "w": 1
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "eulerHint": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "uiWidget",
+                      "data": {
+                        "width": 1042,
+                        "height": 310,
+                        "depth": 0,
+                        "pivot": 4,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "aspectRatio": 3.3612902,
+                        "keepAspectRatio": 0,
+                        "autoResizeBoxCollider": 1,
+                        "hideIfOffScreen": 0,
+                        "anchors": {
+                          "left": {
+                            "target": 63,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "right": {
+                            "target": 63,
+                            "relative": 1,
+                            "absolute": 0
+                          },
+                          "bottom": {
+                            "target": 48,
+                            "relative": 1,
+                            "absolute": 0
+                          },
+                          "top": {
+                            "target": 63,
+                            "relative": 1,
+                            "absolute": 0
+                          }
+                        },
+                        "updateAnchors": 1
+                      }
+                    },
+                    {
+                      "type": "boxCollider",
+                      "data": {
+                        "size": {
+                          "x": 1042,
+                          "y": 310,
+                          "z": 0
+                        },
+                        "center": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        },
+                        "isTrigger": 1,
+                        "enabled": 1
+                      }
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "Right",
+                  "layer": 31,
+                  "isActive": 1,
+                  "tag": "block",
+                  "transform": {
+                    "position": {
+                      "x": 285.07874,
+                      "y": 0,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null,
+                      "w": 1
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "eulerHint": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "uiWidget",
+                      "data": {
+                        "width": 470,
+                        "height": 720,
+                        "depth": 0,
+                        "pivot": 4,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "aspectRatio": 0.6527778,
+                        "keepAspectRatio": 0,
+                        "autoResizeBoxCollider": 1,
+                        "hideIfOffScreen": 0,
+                        "anchors": {
+                          "left": {
+                            "target": 48,
+                            "relative": 1,
+                            "absolute": 0
+                          },
+                          "right": {
+                            "target": 63,
+                            "relative": 1,
+                            "absolute": 0
+                          },
+                          "bottom": {
+                            "target": 63,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "top": {
+                            "target": 63,
+                            "relative": 1,
+                            "absolute": 0
+                          }
+                        },
+                        "updateAnchors": 1
+                      }
+                    },
+                    {
+                      "type": "boxCollider",
+                      "data": {
+                        "size": {
+                          "x": 470,
+                          "y": 720,
+                          "z": 0
+                        },
+                        "center": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        },
+                        "isTrigger": 1,
+                        "enabled": 1
+                      }
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "Bottom",
+                  "layer": 31,
+                  "isActive": 1,
+                  "tag": "block",
+                  "transform": {
+                    "position": {
+                      "x": -0.7086792,
+                      "y": -205,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null,
+                      "w": 1
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "eulerHint": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "uiWidget",
+                      "data": {
+                        "width": 1042,
+                        "height": 310,
+                        "depth": 0,
+                        "pivot": 4,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "aspectRatio": 3.3612902,
+                        "keepAspectRatio": 0,
+                        "autoResizeBoxCollider": 1,
+                        "hideIfOffScreen": 0,
+                        "anchors": {
+                          "left": {
+                            "target": 63,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "right": {
+                            "target": 63,
+                            "relative": 1,
+                            "absolute": 0
+                          },
+                          "bottom": {
+                            "target": 63,
+                            "relative": 0,
+                            "absolute": 0
+                          },
+                          "top": {
+                            "target": 48,
+                            "relative": 0,
+                            "absolute": 0
+                          }
+                        },
+                        "updateAnchors": 1
+                      }
+                    },
+                    {
+                      "type": "boxCollider",
+                      "data": {
+                        "size": {
+                          "x": 1042,
+                          "y": 310,
+                          "z": 0
+                        },
+                        "center": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        },
+                        "isTrigger": 1,
+                        "enabled": 1
+                      }
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "Description",
+                  "layer": 31,
+                  "isActive": 1,
+                  "tag": "Untagged",
+                  "transform": {
+                    "position": {
+                      "x": 0,
+                      "y": -50.3,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null,
+                      "w": 1
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "eulerHint": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "uiLabel",
+                      "data": {
+                        "text": null,
+                        "fontSize": 16,
+                        "fontStyle": 0,
+                        "alignment": 0,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "depth": 0,
+                        "pivot": 4,
+                        "width": 100,
+                        "height": 100,
+                        "trueTypeFont": null,
+                        "font": null,
+                        "encoding": 1,
+                        "maxLineCount": 0,
+                        "effectStyle": 0,
+                        "effectColor": {
+                          "r": 0,
+                          "g": 0,
+                          "b": 0,
+                          "a": 1
+                        },
+                        "effectDistance": {
+                          "x": 1,
+                          "y": 1
+                        },
+                        "overflow": 0,
+                        "applyGradient": 0,
+                        "gradientTop": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "gradientBottom": {
+                          "r": 0.7,
+                          "g": 0.7,
+                          "b": 0.7,
+                          "a": 1
+                        },
+                        "spacingX": 0,
+                        "spacingY": 0,
+                        "multiline": 1,
+                        "shrinkToFit": 0,
+                        "keepCrispWhenShrunk": 1
+                      }
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "Sprite",
+                      "layer": 31,
+                      "isActive": 1,
+                      "tag": "Untagged",
+                      "transform": {
+                        "position": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        },
+                        "rotation": {
+                          "x": 0,
+                          "y": 0,
+                          "z": null,
+                          "w": 1
+                        },
+                        "scale": {
+                          "x": 1,
+                          "y": 1,
+                          "z": 1
+                        },
+                        "eulerHint": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        }
+                      },
+                      "components": [
+                        {
+                          "type": "uiSprite",
+                          "data": {
+                            "type": 0,
+                            "spriteName": "back_card",
+                            "atlas": {
+                              "fileID": 114236306763726270,
+                              "guid": "0cd24ef338fd6ff4aaf285185bd30366",
+                              "_indent": 2
+                            },
+                            "color": {
+                              "r": 1,
+                              "g": 1,
+                              "b": 1,
+                              "a": 1
+                            },
+                            "width": 100,
+                            "height": 100,
+                            "depth": -1,
+                            "pivot": 4,
+                            "fillCenter": 1,
+                            "fillDirection": 4,
+                            "fillAmount": 1,
+                            "flip": 0,
+                            "centerType": 1,
+                            "leftType": 1,
+                            "rightType": 1,
+                            "bottomType": 1,
+                            "topType": 1,
+                            "texture": null,
+                            "shader": null,
+                            "border": {
+                              "x": 0,
+                              "y": 0,
+                              "z": 0,
+                              "w": 0
+                            },
+                            "keepAspectRatio": 0,
+                            "aspectRatio": 1
+                          }
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "anchor_Left",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": -640,
+                  "y": 0,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "anchor_BottomLeft",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": -640,
+                  "y": -360,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "anchor_TopLeft",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": -640,
+                  "y": 360,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "anchor_Top",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": 360,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "anchor_Right",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 640,
+                  "y": 0,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "anchor_TopRight",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 640,
+                  "y": 360,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "anchor_Bottom",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": -360,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "anchor_Center",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "anchor_BottomRight",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 640,
+                  "y": -360,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 11500000,
+                      "guid": "b57cefd5b275d0d5648f3834cd062398",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "Panel",
+                  "layer": 31,
+                  "isActive": 1,
+                  "tag": "Untagged",
+                  "transform": {
+                    "position": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null,
+                      "w": 1
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "eulerHint": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "uiPanel",
+                      "data": {
+                        "depth": 3000,
+                        "alpha": 1,
+                        "clipping": 0,
+                        "clipRange": {
+                          "x": 0,
+                          "y": 0,
+                          "z": null
+                        },
+                        "clipSoftness": {
+                          "x": 4,
+                          "y": 4
+                        },
+                        "renderQueue": 0,
+                        "startingRenderQueue": 3000,
+                        "sortingOrder": 0
+                      }
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "AlphaVersionLbl",
+                      "layer": 31,
+                      "isActive": 1,
+                      "tag": "Untagged",
+                      "transform": {
+                        "position": {
+                          "x": -21,
+                          "y": 5,
+                          "z": 0
+                        },
+                        "rotation": {
+                          "x": 0,
+                          "y": 0,
+                          "z": null,
+                          "w": 1
+                        },
+                        "scale": {
+                          "x": 1,
+                          "y": 1,
+                          "z": 1
+                        },
+                        "eulerHint": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        }
+                      },
+                      "components": [
+                        {
+                          "type": "uiLabel",
+                          "data": {
+                            "text": "Player",
+                            "fontSize": 15,
+                            "fontStyle": 1,
+                            "alignment": 0,
+                            "color": {
+                              "r": 1,
+                              "g": 1,
+                              "b": 1,
+                              "a": 1
+                            },
+                            "depth": 0,
+                            "pivot": 8,
+                            "width": 198,
+                            "height": 100,
+                            "trueTypeFont": {
+                              "fileID": 12800000,
+                              "guid": "15a084f36e61ba1489430e31ca3e60f5",
+                              "_indent": 2
+                            },
+                            "font": null,
+                            "encoding": 1,
+                            "maxLineCount": 0,
+                            "effectStyle": 0,
+                            "effectColor": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            },
+                            "effectDistance": {
+                              "x": 1,
+                              "y": 1
+                            },
+                            "overflow": 0,
+                            "applyGradient": 0,
+                            "gradientTop": {
+                              "r": 1,
+                              "g": 1,
+                              "b": 1,
+                              "a": 1
+                            },
+                            "gradientBottom": {
+                              "r": 0.7,
+                              "g": 0.7,
+                              "b": 0.7,
+                              "a": 1
+                            },
+                            "spacingX": 0,
+                            "spacingY": 0,
+                            "multiline": 1,
+                            "shrinkToFit": 0,
+                            "keepCrispWhenShrunk": 2
+                          }
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "AlphaVersionLbl",
+                      "layer": 31,
+                      "isActive": 1,
+                      "tag": "Untagged",
+                      "transform": {
+                        "position": {
+                          "x": -233.35,
+                          "y": 5,
+                          "z": 0
+                        },
+                        "rotation": {
+                          "x": 0,
+                          "y": 0,
+                          "z": null,
+                          "w": 1
+                        },
+                        "scale": {
+                          "x": 1,
+                          "y": 1,
+                          "z": 1
+                        },
+                        "eulerHint": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        }
+                      },
+                      "components": [
+                        {
+                          "type": "uiLabel",
+                          "data": {
+                            "text": "BETA VERSION (CBT#1f2)",
+                            "fontSize": 15,
+                            "fontStyle": 1,
+                            "alignment": 0,
+                            "color": {
+                              "r": 1,
+                              "g": 1,
+                              "b": 1,
+                              "a": 1
+                            },
+                            "depth": 0,
+                            "pivot": 8,
+                            "width": 198,
+                            "height": 100,
+                            "trueTypeFont": {
+                              "fileID": 12800000,
+                              "guid": "15a084f36e61ba1489430e31ca3e60f5",
+                              "_indent": 2
+                            },
+                            "font": null,
+                            "encoding": 1,
+                            "maxLineCount": 0,
+                            "effectStyle": 0,
+                            "effectColor": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            },
+                            "effectDistance": {
+                              "x": 1,
+                              "y": 1
+                            },
+                            "overflow": 0,
+                            "applyGradient": 0,
+                            "gradientTop": {
+                              "r": 1,
+                              "g": 1,
+                              "b": 1,
+                              "a": 1
+                            },
+                            "gradientBottom": {
+                              "r": 0.7,
+                              "g": 0.7,
+                              "b": 0.7,
+                              "a": 1
+                            },
+                            "spacingX": 0,
+                            "spacingY": 0,
+                            "multiline": 1,
+                            "shrinkToFit": 0,
+                            "keepCrispWhenShrunk": 2
+                          }
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Overlay_controller",
+          "layer": 31,
+          "isActive": 1,
+          "tag": "Untagged",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": null,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "eulerHint": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "components": [
+            {
+              "type": "uiPanel",
+              "data": {
+                "depth": 9999,
+                "alpha": 1,
+                "clipping": 0,
+                "clipRange": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null
+                },
+                "clipSoftness": {
+                  "x": 4,
+                  "y": 4
+                },
+                "renderQueue": 0,
+                "startingRenderQueue": 3001,
+                "sortingOrder": 0
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "ec3b153c931ef04a84edd0e3e5437684",
+                  "_indent": 2
+                }
+              }
+            }
+          ],
+          "children": [
+            {
+              "name": "screen_texture",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "uiWidget",
+                  "data": {
+                    "width": 1280,
+                    "height": 720,
+                    "depth": 0,
+                    "pivot": 4,
+                    "color": {
+                      "r": 1,
+                      "g": 1,
+                      "b": 1,
+                      "a": 1
+                    },
+                    "aspectRatio": 1.7777778,
+                    "keepAspectRatio": 0,
+                    "autoResizeBoxCollider": 0,
+                    "hideIfOffScreen": 0,
+                    "anchors": {
+                      "left": {
+                        "target": 0,
+                        "relative": 0,
+                        "absolute": 0
+                      },
+                      "right": {
+                        "target": 0,
+                        "relative": 1,
+                        "absolute": 0
+                      },
+                      "bottom": {
+                        "target": 0,
+                        "relative": 0,
+                        "absolute": 0
+                      },
+                      "top": {
+                        "target": 0,
+                        "relative": 1,
+                        "absolute": 0
+                      }
+                    },
+                    "updateAnchors": 1
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "label",
+                  "layer": 31,
+                  "isActive": 0,
+                  "tag": "Untagged",
+                  "transform": {
+                    "position": {
+                      "x": 0,
+                      "y": -195,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null,
+                      "w": 1
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "eulerHint": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "uiLabel",
+                      "data": {
+                        "text": null,
+                        "fontSize": 25,
+                        "fontStyle": 0,
+                        "alignment": 0,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "depth": 2,
+                        "pivot": 4,
+                        "width": 554,
+                        "height": 100,
+                        "trueTypeFont": {
+                          "fileID": 12800000,
+                          "guid": "dc1789626d0921a4aa53683ca95ec5db",
+                          "_indent": 2
+                        },
+                        "font": null,
+                        "encoding": 1,
+                        "maxLineCount": 0,
+                        "effectStyle": 0,
+                        "effectColor": {
+                          "r": 0,
+                          "g": 0,
+                          "b": 0,
+                          "a": 1
+                        },
+                        "effectDistance": {
+                          "x": 1,
+                          "y": 1
+                        },
+                        "overflow": 0,
+                        "applyGradient": 0,
+                        "gradientTop": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        },
+                        "gradientBottom": {
+                          "r": 0.7,
+                          "g": 0.7,
+                          "b": 0.7,
+                          "a": 1
+                        },
+                        "spacingX": 0,
+                        "spacingY": 0,
+                        "multiline": 1,
+                        "shrinkToFit": 0,
+                        "keepCrispWhenShrunk": 1
+                      }
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "block",
+              "layer": 31,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "boxCollider",
+                  "data": {
+                    "size": {
+                      "x": 1280,
+                      "y": 720,
+                      "z": 0
+                    },
+                    "center": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    },
+                    "isTrigger": 0,
+                    "enabled": 1
+                  }
+                },
+                {
+                  "type": "uiWidget",
+                  "data": {
+                    "width": 1280,
+                    "height": 720,
+                    "depth": 0,
+                    "pivot": 4,
+                    "color": {
+                      "r": 1,
+                      "g": 1,
+                      "b": 1,
+                      "a": 1
+                    },
+                    "aspectRatio": 1.7777778,
+                    "keepAspectRatio": 0,
+                    "autoResizeBoxCollider": 1,
+                    "hideIfOffScreen": 0,
+                    "anchors": {
+                      "left": {
+                        "target": 50,
+                        "relative": 0,
+                        "absolute": 0
+                      },
+                      "right": {
+                        "target": 50,
+                        "relative": 1,
+                        "absolute": 0
+                      },
+                      "bottom": {
+                        "target": 50,
+                        "relative": 0,
+                        "absolute": 0
+                      },
+                      "top": {
+                        "target": 50,
+                        "relative": 1,
+                        "absolute": 0
+                      }
+                    },
+                    "updateAnchors": 1
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NativeRoot",
+      "layer": 0,
+      "isActive": 1,
+      "tag": "Untagged",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -70
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "83641da967711f5f36aa051d7b602436",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Camera",
+          "layer": 0,
+          "isActive": 1,
+          "tag": "Untagged",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": null,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "eulerHint": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "components": [
+            {
+              "type": "camera",
+              "data": {
+                "type": "orthographic",
+                "enabled": 1,
+                "clearFlags": 3,
+                "backgroundColor": {
+                  "r": 0.19215687,
+                  "g": 0.3019608,
+                  "b": 0.4745098,
+                  "a": 0
+                },
+                "nearClip": 0.3,
+                "farClip": 1000,
+                "fieldOfView": 60,
+                "orthographicSize": 5,
+                "depth": 100,
+                "cullingMask": 32,
+                "targetTexture": null,
+                "viewport": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1,
+                  "height": 1
+                }
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "name": "Canvas",
+          "layer": 5,
+          "isActive": 1,
+          "tag": "Untagged",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 100
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": null
+            },
+            "scale": {
+              "x": 0.006510417,
+              "y": 0.006510417,
+              "z": 0.006510417
+            }
+          },
+          "components": [
+            {
+              "type": "rectTransform",
+              "data": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 100
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null
+                },
+                "scale": {
+                  "x": 0.006510417,
+                  "y": 0.006510417,
+                  "z": 0.006510417
+                },
+                "anchorMin": {
+                  "x": 0,
+                  "y": 0
+                },
+                "anchorMax": {
+                  "x": 0,
+                  "y": 0
+                },
+                "anchoredPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "sizeDelta": {
+                  "x": 2048,
+                  "y": 1536
+                },
+                "pivot": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "father": {
+                  "fileID": 64,
+                  "guid": null,
+                  "_indent": 2
+                },
+                "children": [
+                  {
+                    "fileID": 89,
+                    "guid": null
+                  }
+                ]
+              }
+            },
+            {
+              "type": "uiCanvas",
+              "data": {
+                "renderMode": 1,
+                "camera": {
+                  "fileID": 71,
+                  "guid": null,
+                  "_indent": 2
+                },
+                "planeDistance": 100,
+                "sortingOrder": 0,
+                "overrideSorting": 0,
+                "pixelPerfect": 0
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 1980459831,
+                  "guid": "f70555f144d8491a825f0804e09c671c",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 1301386320,
+                  "guid": "f70555f144d8491a825f0804e09c671c",
+                  "_indent": 2
+                }
+              }
+            }
+          ],
+          "children": [
+            {
+              "name": "Panel",
+              "layer": 5,
+              "isActive": 0,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "components": [
+                {
+                  "type": "rectTransform",
+                  "data": {
+                    "position": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    },
+                    "anchorMin": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "anchorMax": {
+                      "x": 1,
+                      "y": 1
+                    },
+                    "anchoredPosition": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "sizeDelta": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "pivot": {
+                      "x": 0.5,
+                      "y": 0.5
+                    },
+                    "father": {
+                      "fileID": 91,
+                      "guid": null,
+                      "_indent": 2
+                    },
+                    "children": [
+                      {
+                        "fileID": 90,
+                        "guid": null
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "canvasRenderer"
+                },
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": -765806418,
+                      "guid": "f70555f144d8491a825f0804e09c671c",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "NekkiLogo",
+                  "layer": 5,
+                  "isActive": 1,
+                  "tag": "Untagged",
+                  "transform": {
+                    "position": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null
+                    },
+                    "scale": {
+                      "x": 1,
+                      "y": 1,
+                      "z": 1
+                    }
+                  },
+                  "components": [
+                    {
+                      "type": "rectTransform",
+                      "data": {
+                        "position": {
+                          "x": 0,
+                          "y": 0,
+                          "z": 0
+                        },
+                        "rotation": {
+                          "x": 0,
+                          "y": 0,
+                          "z": null
+                        },
+                        "scale": {
+                          "x": 1,
+                          "y": 1,
+                          "z": 1
+                        },
+                        "anchorMin": {
+                          "x": 0.5,
+                          "y": 0
+                        },
+                        "anchorMax": {
+                          "x": 0.5,
+                          "y": 1
+                        },
+                        "anchoredPosition": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "sizeDelta": {
+                          "x": 3072,
+                          "y": 0
+                        },
+                        "pivot": {
+                          "x": 0.5,
+                          "y": 0.5
+                        },
+                        "father": {
+                          "fileID": 89,
+                          "guid": null,
+                          "_indent": 2
+                        },
+                        "children": []
+                      }
+                    },
+                    {
+                      "type": "canvasRenderer"
+                    },
+                    {
+                      "type": "script",
+                      "data": {
+                        "script": {
+                          "fileID": -765806418,
+                          "guid": "f70555f144d8491a825f0804e09c671c",
+                          "_indent": 2
+                        }
+                      }
+                    },
+                    {
+                      "type": "script",
+                      "data": {
+                        "script": {
+                          "fileID": -1254083943,
+                          "guid": "f70555f144d8491a825f0804e09c671c",
+                          "_indent": 2
+                        }
+                      }
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "EventSystem",
+          "layer": 0,
+          "isActive": 1,
+          "tag": "Untagged",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 70
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": null,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "eulerHint": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "components": [
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": -619905303,
+                  "guid": "f70555f144d8491a825f0804e09c671c",
+                  "_indent": 2
+                }
+              }
+            },
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 1077351063,
+                  "guid": "f70555f144d8491a825f0804e09c671c",
+                  "_indent": 2
+                }
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "name": "TutorialMaskGenerator",
+          "layer": 0,
+          "isActive": 1,
+          "tag": "Untagged",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": null,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "eulerHint": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "components": [
+            {
+              "type": "script",
+              "data": {
+                "script": {
+                  "fileID": 11500000,
+                  "guid": "ba1738831cb86dbaab1c4ddf6a6b4507",
+                  "_indent": 2
+                }
+              }
+            }
+          ],
+          "children": [
+            {
+              "name": "Canvas",
+              "layer": 23,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 100
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null
+                },
+                "scale": {
+                  "x": 0.006510417,
+                  "y": 0.006510417,
+                  "z": 0.006510417
+                }
+              },
+              "components": [
+                {
+                  "type": "rectTransform",
+                  "data": {
+                    "position": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 100
+                    },
+                    "rotation": {
+                      "x": 0,
+                      "y": 0,
+                      "z": null
+                    },
+                    "scale": {
+                      "x": 0.006510417,
+                      "y": 0.006510417,
+                      "z": 0.006510417
+                    },
+                    "anchorMin": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "anchorMax": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "anchoredPosition": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "sizeDelta": {
+                      "x": 2048,
+                      "y": 1536
+                    },
+                    "pivot": {
+                      "x": 0.5,
+                      "y": 0.5
+                    },
+                    "father": {
+                      "fileID": 66,
+                      "guid": null,
+                      "_indent": 2
+                    },
+                    "children": []
+                  }
+                },
+                {
+                  "type": "uiCanvas",
+                  "data": {
+                    "renderMode": 1,
+                    "camera": {
+                      "fileID": 72,
+                      "guid": null,
+                      "_indent": 2
+                    },
+                    "planeDistance": 100,
+                    "sortingOrder": 0,
+                    "overrideSorting": 0,
+                    "pixelPerfect": 0
+                  }
+                },
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 1980459831,
+                      "guid": "f70555f144d8491a825f0804e09c671c",
+                      "_indent": 2
+                    }
+                  }
+                },
+                {
+                  "type": "script",
+                  "data": {
+                    "script": {
+                      "fileID": 1301386320,
+                      "guid": "f70555f144d8491a825f0804e09c671c",
+                      "_indent": 2
+                    }
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "name": "Camera",
+              "layer": 0,
+              "isActive": 1,
+              "tag": "Untagged",
+              "transform": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": null,
+                  "w": 1
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "eulerHint": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              "components": [
+                {
+                  "type": "camera",
+                  "data": {
+                    "type": "orthographic",
+                    "enabled": 1,
+                    "clearFlags": 1,
+                    "backgroundColor": {
+                      "r": 1,
+                      "g": 1,
+                      "b": 1,
+                      "a": 0
+                    },
+                    "nearClip": 0.3,
+                    "farClip": 1000,
+                    "fieldOfView": 60,
+                    "orthographicSize": 5,
+                    "depth": 0,
+                    "cullingMask": 8388608,
+                    "targetTexture": null,
+                    "viewport": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1,
+                      "height": 1
+                    }
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "root",
+      "layer": 0,
+      "isActive": 1,
+      "tag": "MainCamera",
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -70
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": null,
+          "w": 1
+        },
+        "scale": {
+          "x": 0.004716981,
+          "y": 0.004716981,
+          "z": 0.004716981
+        },
+        "eulerHint": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      "components": [
+        {
+          "type": "camera",
+          "data": {
+            "type": "perspective",
+            "enabled": 1,
+            "clearFlags": 1,
+            "backgroundColor": {
+              "r": 0.97647065,
+              "g": 0.77647066,
+              "b": 0.18431373,
+              "a": 0.019607844
+            },
+            "nearClip": 0.3,
+            "farClip": 1000,
+            "fieldOfView": 60,
+            "orthographicSize": 5,
+            "depth": -1,
+            "cullingMask": 2147483646,
+            "targetTexture": null,
+            "viewport": {
+              "x": 0,
+              "y": 0,
+              "width": 1,
+              "height": 1
+            }
+          }
+        },
+        {
+          "type": "script",
+          "data": {
+            "script": {
+              "fileID": 11500000,
+              "guid": "73efedb37d569962a93a8b4cae56dcea",
+              "_indent": 2
+            }
+          }
+        }
+      ],
+      "children": []
+    }
+  ]
+}

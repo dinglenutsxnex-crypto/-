@@ -1,0 +1,99 @@
+{ 
+  "User": { 
+    "Name": "PLAYER", 
+    "Gender": "Male", 
+    "Level": 1, 
+    "Experience": 0, 
+    "LevelExperience": 100, 
+    "CurrentDojo": 1.1, 
+    "Currency": { 
+      "Bonus": 150, 
+      "Coin": 150, 
+      "Shadow": 0
+      }, 
+    "Appearance": {
+        "Head": "head__01a",
+        "HairColor": {
+          "Color": 5,
+          "Value": 0.05
+        },
+        "SkinColor": {
+          "Color": 1,
+          "Value": 0.05
+        }
+    },
+    "Tags": [ 
+      "SKELETON", 
+      "HEAD", 
+      "PLAYER"
+      ], 
+    "ShopRefreshTime": -1, 
+    "MapScale": 0.7, 
+    "GlobalVariables": { 
+      "Server": [ 
+        { 
+          "TUTORIAL": 1
+          }
+        ], 
+      "Local": [ 
+        { 
+          "SelectedBattle": 10
+          }
+        ]
+      }, 
+    "Equipments": [ 
+      { 
+        "ID": 1000000, 
+        "Model": "wpn-fists", 
+        "Equipped": 1, 
+        "Default": 1, 
+        "Type": "Weapon", 
+        "Tags": [ 
+          "WEAPON", 
+          "FISTS"
+          ], 
+        "Hidden": 1
+        }, 
+      { 
+        "ID": 1000002, 
+        "Level": 1, 
+        "Hidden": 1, 
+        "Type": "Armor", 
+        "Tags": [ 
+          "ARMOR", 
+          "STRONG"
+          ], 
+        "Equipped": 1, 
+        "Default": 1, 
+        "StackLevel": 20, 
+        "Model": "arm-base"
+        }, 
+      { 
+        "ID": 1000003, 
+        "Type": "Helmet", 
+        "Default": 1, 
+        "Hidden": 1, 
+        "Tags": [ 
+          "HELM"
+          ], 
+        "Model": "hair-01", 
+        "Equipped": 1, 
+        "StackLevel": 20
+        }, 
+      { 
+        "ID": 214, 
+        "StackLevel": 20
+        }, 
+      { 
+        "ID": 27, 
+        "StackLevel": 20
+        }
+      ], 
+    "Perks": [ 
+      { 
+        "ID": 3503, 
+        "StackLevel": 5
+        }
+      ]
+    }
+  }

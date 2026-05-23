@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn-axes01">
+  <Prefabs>
+    <Prefab Name="w_axe_01_l" ConfigName="weapon_axes" Droppable="1" />
+    <Prefab Name="w_axe_01_r" ConfigName="weapon_axes" Droppable="1" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__axe_01_03__l" Droppable="1" />
+    <Mesh Name="wpn__axe_01_03__r" Droppable="1" />
+    <Mesh Name="wpn__axe_01_03__trail_l" Droppable="1" />
+    <Mesh Name="wpn__axe_01_03__trail_r" Droppable="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="axe" CapsuleName="Axes_Attacking_Edge_l">
+      <Vertex Name="axe_top_l" />
+      <Vertex Name="axe_bottom_l" />
+    </Material>
+    <Material Name="axe" CapsuleName="Axes_Attacking_Edge_l">
+      <Vertex Name="axe_top_r" />
+      <Vertex Name="axe_bottom_r" />
+    </Material>
+  </Materials>
+</ModelObject>

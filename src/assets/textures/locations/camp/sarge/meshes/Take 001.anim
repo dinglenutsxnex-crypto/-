@@ -1,0 +1,240 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Take 001
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -0.06423855, y: -4.547201E-05, z: 0.0006980698, w: 0.99793434}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: -0.023424268, y: -1.6385573E-05, z: -1.0756776E-06, w: -0.0015192032}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 1.7916667
+        value: {x: -0.12220947, y: -8.6022614E-05, z: 0.00069424004, w: 0.99250406}
+        inSlope: {x: 0.039059237, y: 2.7321339E-05, z: 3.3834972E-06, w: 0.0048065227}
+        outSlope: {x: 0.03905926, y: 2.7321363E-05, z: 3.383498E-06, w: 0.004806523}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 3.4166667
+        value: {x: -0.05215909, y: -3.7022208E-05, z: 0.0006985689, w: 0.9986386}
+        inSlope: {x: -0.0037613483, y: -2.6311304E-06, z: -1.3969857E-07, w: -0.00019669549}
+        outSlope: {x: -0.0037613562, y: -2.6311354E-06, z: -1.3969859E-07, w: -0.00019669559}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 4.0833335
+        value: {x: -0.062914886, y: -4.4546083E-05, z: 0.0006981291, w: 0.99801815}
+        inSlope: {x: -0.030710293, y: -2.1482423E-05, z: -1.3668049E-06, w: -0.0019301802}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: sarge_Armature/sarge_pelvis/sarge_spine
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.117922306, y: -0.00011606484, z: 0.0104307, w: 0.992968}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0.035736144, y: 0.00037542684, z: 3.911555E-06, w: -0.0042700768}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 2
+        value: {x: 0.12941928, y: 4.796754E-06, z: 0.010431346, w: 0.9915351}
+        inSlope: {x: -0.057686158, y: -0.00060687936, z: 2.6822045E-07, w: 0.007528052}
+        outSlope: {x: -0.057686158, y: -0.0006068795, z: 2.682204E-07, w: 0.007528052}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 3.5833333
+        value: {x: 0.08838573, y: -0.00042573645, z: 0.010422654, w: 0.9960317}
+        inSlope: {x: 0.051334135, y: 0.0005371729, z: 2.1915906E-05, w: -0.004558329}
+        outSlope: {x: 0.051334128, y: 0.0005371729, z: 2.1915905E-05, w: -0.0045583285}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 4.0833335
+        value: {x: 0.11597294, y: -0.00013653608, z: 0.010430426, w: 0.99319506}
+        inSlope: {x: 0.048320927, y: 0.000507361, z: 7.4087384E-06, w: -0.005567826}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: sarge_Armature/sarge_pelvis/sarge_spine/sarge_neck
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0.0038002986, y: 0.102542534, z: 0.9945914, w: 0.016080765}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 2.289936E-05, y: 0.0014162064, z: -0.00014591217, w: -5.4091215E-06}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 1.9583334
+        value: {x: 0.004211497, y: 0.12801865, z: 0.99163413, w: 0.015978001}
+        inSlope: {x: -0.0001383573, y: -0.008586824, z: 0.001108646, w: 3.6455676E-05}
+        outSlope: {x: -0.00013835721, y: -0.008586819, z: 0.0011086458, w: 3.645567E-05}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 4.0000005
+        value: {x: 0.0038032974, y: 0.10272802, z: 0.9945723, w: 0.016080057}
+        inSlope: {x: -4.7215122E-05, y: -0.002920376, z: 0.00030183696, w: 1.1198167E-05}
+        outSlope: {x: -4.721513E-05, y: -0.0029203808, z: 0.00030183705, w: 1.1198191E-05}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 4.0833335
+        value: {x: 0.0038007887, y: 0.10257284, z: 0.9945883, w: 0.016080651}
+        inSlope: {x: -1.6249722E-05, y: -0.0010050533, z: 0.00010395054, w: 3.8295984E-06}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: sarge_Armature/sarge_pelvis/sarge_spine/sarge_breast
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 4.0833335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: sarge_Armature/sarge_pelvis/sarge_spine
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 4.0833335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: sarge_Armature/sarge_pelvis/sarge_spine/sarge_neck
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 1
+      - serializedVersion: 2
+        time: 4.0833335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 1
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: sarge_Armature/sarge_pelvis/sarge_spine/sarge_breast
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 24
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - path: 3349588174
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3309548192
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 339048198
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3349588174
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3309548192
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 339048198
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 4.0833335
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_GenerateMotionCurves: 0
+  m_IsEmpty: 0
+  m_Events: []

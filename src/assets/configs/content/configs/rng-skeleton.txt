@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject>
+  <Prefabs>
+    <Prefab Name="rng__skeleton" ConfigName="rng__skeleton"/>
+  </Prefabs>
+</ModelObject>

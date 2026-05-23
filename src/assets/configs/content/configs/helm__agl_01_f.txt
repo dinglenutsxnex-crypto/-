@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="helm-agl_01_f">
+  <Prefabs>
+    <Prefab Name="helm_agl_01_f_hair1" ConfigName="helm_agl_01_f_bones" />
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="helm__agl_01_f__hair" />
+    <Mesh Name="helm__agl_01_f__helmet" />
+  </Meshes>
+  <Materials>
+    <Material Name="flesh" CapsuleName="Head">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_head_top" />
+    </Material>
+    <Material Name="flesh" CapsuleName="Neck">
+      <Vertex Name="vert_head_bottom" />
+      <Vertex Name="vert_chest" />
+    </Material>
+  </Materials>
+</ModelObject>

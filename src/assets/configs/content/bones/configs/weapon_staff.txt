@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BonesData>
+  <Bones>
+    <Bone Name="w_staff_01_l" ID="200"/>
+    <Bone Name="w_staff_02_l" ID="201"/>
+    <Bone Name="w_staff_03_l" ID="202"/>
+    <Bone Name="w_staff_04_l" ID="203"/>
+    <Bone Name="w_staff_05_l" ID="204"/>
+    <Bone Name="w_staff_06_l" ID="205"/>
+    <Bone Name="w_staff_07_l" ID="206"/>
+    <Bone Name="w_staff_08_l" ID="207"/>
+    <Bone Name="w_staff_01_r" ID="290"/>
+    <Bone Name="w_staff_02_r" ID="291"/>
+    <Bone Name="w_staff_03_r" ID="292"/>
+    <Bone Name="w_staff_04_r" ID="293"/>
+    <Bone Name="w_staff_05_r" ID="294"/>
+    <Bone Name="w_staff_06_r" ID="295"/>
+    <Bone Name="w_staff_07_r" ID="296"/>
+    <Bone Name="w_staff_08_r" ID="297"/>
+  </Bones>
+  <Mirroring>
+    <DualMirrorers>
+      <Mirrorer MirrorAxis="None">
+        <Bone Name="w_staff_01_l" MirrorBone="w_staff_01_r" />
+        <Bone Name="w_staff_02_l" MirrorBone="w_staff_02_r" />
+        <Bone Name="w_staff_03_l" MirrorBone="w_staff_03_r" />
+        <Bone Name="w_staff_04_l" MirrorBone="w_staff_04_r" />
+        <Bone Name="w_staff_05_l" MirrorBone="w_staff_05_r" />
+        <Bone Name="w_staff_06_l" MirrorBone="w_staff_06_r" />
+        <Bone Name="w_staff_07_l" MirrorBone="w_staff_07_r" />
+        <Bone Name="w_staff_08_l" MirrorBone="w_staff_08_r" />
+      </Mirrorer>
+    </DualMirrorers>
+  </Mirroring>
+  <Vertexes>
+    <Vertex Name="staff_bottom_l" BoneName="w_staff_08_l" LocalPosition="0.00000 0.00000 3.75000" />
+    <Vertex Name="staff_top_l" BoneName="w_staff_02_l" LocalPosition="0.00000 0.00000 -28.00000" />
+    <Vertex Name="staff_bottom_r" BoneName="w_staff_08_r" LocalPosition="0.00000 0.00000 -3.75000" />
+    <Vertex Name="staff_top_r" BoneName="w_staff_02_r" LocalPosition="0.00000 0.00000 28.00000" />
+  </Vertexes>
+  <Capsules>
+    <Capsule Name="Staff_Attacking_Edge_l" Vertex1="staff_bottom_l" Vertex2="staff_top_l" Radius="3"/>
+    <Capsule Name="Staff_Attacking_Edge_r" Vertex1="staff_bottom_r" Vertex2="staff_top_r" Radius="3" LeftMirrorCapsule="Staff_Attacking_Edge_l"/>
+  </Capsules>
+</BonesData>

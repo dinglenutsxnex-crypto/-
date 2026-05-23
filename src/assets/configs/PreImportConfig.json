@@ -1,0 +1,74 @@
+{
+	"Settings": {
+	    "Assets/gamedata/Resources/Content/Models/Skins/Textures/Armor/":
+	    {
+          "mipmapEnabled": false,
+	        "isReadable": false,
+	        "maxTextureSize": 512
+	    },
+	    "Assets/gamedata/Resources/Content/Models/Skins/Textures/Hair/":
+	    {
+          "mipmapEnabled": false,
+	        "isReadable": false,
+	        "maxTextureSize": 256
+	    },
+	    "Assets/gamedata/Resources/Content/Models/Skins/Textures/Head/":
+	    {
+          "mipmapEnabled": false,
+	        "isReadable": false,
+	        "maxTextureSize": 256
+	    },
+	    "Assets/gamedata/Resources/Content/Models/Skins/Textures/Helm/":
+	    {
+          "mipmapEnabled": false,
+	        "isReadable": false,
+	        "maxTextureSize": 256
+	    },
+	    "Assets/gamedata/Resources/Content/Models/Skins/Textures/Masks/":
+	    {
+          "mipmapEnabled": false,
+	        "isReadable": false,
+	        "maxTextureSize": 256
+	    },
+	    "Assets/gamedata/Resources/Content/Models/Skins/Textures/Ranged/":
+	    {
+          "mipmapEnabled": false,
+	        "isReadable": false,
+	        "maxTextureSize": 128
+	    },
+	    "Assets/gamedata/Resources/Content/Models/Skins/Textures/Weapon/":
+	    {
+          "mipmapEnabled": false,
+	        "isReadable": false,
+	        "maxTextureSize": 256
+	    },
+      
+	    "Assets/gamedata/Resources/Content/Models/":
+	    {
+          "mipmapEnabled": false,
+	        "isReadable": false,
+	        "maxTextureSize": 512
+	    },
+
+
+	    "Assets/gamedata/Resources/Content/Avatars/":
+	    {
+	        "maxTextureSize": 1024,
+          "sRGBTexture": true,
+          "alphaIsTransparency": true
+	    },
+      
+      
+      
+	    "Assets/gamedata/Resources/Audio/Sounds/":
+	    {
+	        "loadInBackground": false,
+          "forceToMono": true
+	    },
+	    "Assets/gamedata/Resources/Audio/Music/":
+	    {
+	        "loadInBackground": true,
+          "forceToMono": false
+	    } 
+	}
+}

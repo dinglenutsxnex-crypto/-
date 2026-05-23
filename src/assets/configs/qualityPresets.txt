@@ -1,0 +1,155 @@
+QualitySettings:  
+  Presets:
+    LOW:
+      Priority: 1
+      Shadows: Off
+      BlendBonesCount: 4
+      ShadowFormGlow: Off
+      TextureResolution: 2
+      PhysicsTimeStep: 0.0166666
+      AnisotropicFiltering: Off
+      AntiAliasing: Off
+      Saturation: Off
+      Dissolve: Off
+      Gamma: off
+      Matcap: On
+	  FpsCap:0
+
+    MEDIUM:
+      Priority: 2
+      Shadows: Simple
+      BlendBonesCount: 4
+      ShadowFormGlow: On
+      TextureResolution: 1
+      PhysicsTimeStep: 0.0166666
+      AnisotropicFiltering: Off
+      AntiAliasing: Off
+      Saturation: Off
+      Dissolve: Off
+      Gamma: off
+      Matcap: On
+	  FpsCap:0
+
+    HIGH:
+      Priority: 3
+      Shadows: Real
+      BlendBonesCount: 4
+      ShadowFormGlow: On
+      TextureResolution: 0
+      PhysicsTimeStep: 0.0166666
+      AnisotropicFiltering: Off
+      AntiAliasing: Off
+      Saturation: Off
+      Gamma: Off
+      Dissolve: On
+      Matcap: On
+	  FpsCap:0
+
+    ULTRA:
+      Priority: 4
+      Shadows: Real
+      BlendBonesCount: 4
+      ShadowFormGlow: On
+      TextureResolution: 0
+      PhysicsTimeStep: 0.0166666
+      AnisotropicFiltering: On
+      AntiAliasing: On
+      Saturation: Off
+      Dissolve: On
+      Gamma: Off
+      Matcap: On
+	  FpsCap:0
+
+###################### Defaults
+  Defaults:
+    - Device: DefaultCoresLow
+      Priority: 1
+      Preset: LOW
+      Core: 1
+  
+    - Device: DefaultCoresMedium
+      Priority: 2
+      Preset: MEDIUM
+      Core: 2
+
+    - Device: DefaultMemoryMedium
+      Priority: 2
+      Preset: MEDIUM
+      Memory: 1024
+
+    - Device: DefaultMemoryHigh
+      Priority: 3
+      Preset: HIGH
+      Memory: 2048
+
+    - Device: DefaultWindows
+      Priority: 4
+      Preset: HIGH
+      Platform: Windows
+
+  Devices:
+###################### DEVICE SPECIFIC
+    # 4s
+    - Device: iPhone4,1
+      Preset: LOW
+      DeviceType: Phone
+    # 5
+    - Device: iPhone5,1
+      Preset: LOW
+      DeviceType: Phone
+    - Device: iPhone5,2
+      Preset: LOW
+      DeviceType: Phone
+    # 5c
+    - Device: iPhone5,3
+      Preset: LOW
+      DeviceType: Phone
+    - Device: iPhone5,4
+      Preset: LOW
+      DeviceType: Phone
+    # 5S
+    - Device: iPhone6,1
+      Preset: MEDIUM
+      DeviceType: Phone
+    - Device: iPhone6,2
+      Preset: MEDIUM
+      DeviceType: Phone
+    # 6+
+    - Device: iPhone7,1
+      Preset: HIGH
+      DeviceType: Phone
+    # 6
+    - Device: iPhone7,2
+      Preset: HIGH
+      DeviceType: Phone
+    # 6s
+    - Device: iPhone8,1
+      Preset: HIGH
+      DeviceType: Phone
+    # 6s+
+    - Device: iPhone8,2
+      Preset: HIGH
+      DeviceType: Phone
+    # 6 SE
+    - Device: iPhone8,4
+      Preset: HIGH
+      DeviceType: Phone
+    # 7
+    - Device: iPhone9,1
+      Preset: ULTRA
+      DeviceType: Phone
+    - Device: iPhone9,3
+      Preset: ULTRA
+      DeviceType: Phone
+    # 7+
+    - Device: iPhone9,2
+      Preset: ULTRA
+      DeviceType: Phone
+    - Device: iPhone9,4
+      Preset: ULTRA
+      DeviceType: Phone
+      
+      
+    - Device: NVIDIA SHIELD Android TV
+      Preset: HIGH
+      DeviceType: Console

@@ -1,0 +1,16 @@
+AvailableItems:
+  Heads:
+    Male:
+      - head-01
+      #- head-galen
+    Female:
+      - head-01
+      #- head-02
+  Hairs:
+    Male:
+      - hair-01
+      #- helm-agl_01
+    Female:
+      - hair-01
+      #- helm-prc_01
+      #- helm-str_01

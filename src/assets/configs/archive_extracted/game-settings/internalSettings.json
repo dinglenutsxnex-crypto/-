@@ -1,0 +1,44 @@
+{
+  "ExternalPaths": {
+    "QualityPresets": "EXTERNAL_PATH/Configs/qualitySettings.json",
+    "DevicesQuality": "EXTERNAL_PATH/Configs/devices.xml",
+    "debug": "EXTERNAL_PATH/Debug/",
+    "ExternalUIPath": "EXTERNAL_PATH/UI",
+    "ExternalUITexturesPath": "EXTERNAL_PATH/UI/CURRENT_RESOLUTION/UITextures",
+    "ExternalUISpritesPath": "EXTERNAL_PATH/UI/CURRENT_RESOLUTION/UISprites",
+    "character_creation_settings": "EXTERNAL_PATH/GameSettings/character_creation_settings.yaml",
+    "StoreURL": "http://nekki.com/",
+    "TestUserURL": "http://192.168.1.200:83/SF3",
+    "Localization": "EXTERNAL_PATH/Localizations/",
+    "animations": "EXTERNAL_PATH/Content/animations/",
+    "models_folder": "EXTERNAL_PATH/Content/Models/",
+    "locations": "EXTERNAL_PATH/Content/Locations/",
+    "avatars": "EXTERNAL_PATH/Content/Avatars/",
+    "audios": "EXTERNAL_PATH/Audio/",
+    "sounds": "EXTERNAL_PATH/Audio/Sounds/",
+    "music": "EXTERNAL_PATH/Audio/Music/",
+    "GameSettings": "EXTERNAL_PATH/GameSettings/",
+    "quests_triggers": "EXTERNAL_PATH/GameSettings/Results/quests_triggers_result.yaml",
+    "moves_triggers": "EXTERNAL_PATH/GameSettings/Results/moves_triggers_result.yaml",
+    "moves_settings": "EXTERNAL_PATH/GameSettings/Results/moves_settings_result.yaml",
+    "fight_settings": "EXTERNAL_PATH/GameSettings/fight_settings.yaml",
+    "tactics_settings": "EXTERNAL_PATH/GameSettings/tactics_settings.yaml",
+    "results_tables": "EXTERNAL_PATH/Tactics/ResultsTables/",
+    "battlesDefault": "EXTERNAL_PATH/GameSettings/battlesDefault.yaml",
+    "shadowPerksIcons": "EXTERNAL_PATH/NativeUI/ShadowAbilities/"
+  },
+  "StoreURLs": {
+    "iOS": "https://beta.itunes.apple.com/v1/app/964827011",
+    "Android": "market://details?id=com.nekki.shadowfight3"
+  },
+  "LocalSettings": {
+		"Debug": false,
+		"BundlesPath": "stable",
+    "NoImageTexture": "EXTERNAL_PATH/Images/no_image.png"
+  },
+  "ServerSettings": {
+    "Balancers": {
+      "prod": "https://sf3lb.nekkimobile.ru/balance"
+    }
+  }
+}

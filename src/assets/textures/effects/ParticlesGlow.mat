@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ParticlesGlow
+  m_Shader: {fileID: 4800000, guid: 4d7fe337bc1f38f459bd0f4c2b7df57b, type: 3}
+  m_ShaderKeywords:
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 502824d2fddc2c649ac943b20699836d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _CoreStrength
+      second: 2.8035715
+    - first:
+        name: _CutOutLightCore
+      second: 0.084
+    - first:
+        name: _TintStrength
+      second: 1.1607144
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.31615874, g: 0.27205884, b: 1, a: 0.11764706}
+    - first:
+        name: _CoreColor
+      second: {r: 1, g: 0.43448275, b: 0, a: 1}
+    - first:
+        name: _TintColor
+      second: {r: 1, g: 0.79553753, b: 0.53676474, a: 0.803}

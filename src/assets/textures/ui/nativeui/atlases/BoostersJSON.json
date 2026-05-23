@@ -1,0 +1,36 @@
+{"frames": {
+
+"booster_epic.png":
+{
+	"frame": {"x":1,"y":1,"w":336,"h":570},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":336,"h":570},
+	"sourceSize": {"w":336,"h":570}
+},
+"booster_legendary.png":
+{
+	"frame": {"x":338,"y":1,"w":336,"h":570},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":336,"h":570},
+	"sourceSize": {"w":336,"h":570}
+},
+"booster_rare.png":
+{
+	"frame": {"x":675,"y":1,"w":336,"h":570},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":336,"h":570},
+	"sourceSize": {"w":336,"h":570}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "BoostersJSON.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "0.69",
+	"smartupdate": "$TexturePacker:SmartUpdate:72d11345360b564e78a661d6b6d54fb5:dfccb94ad1472d6b034465291a0ad4e4:42a2874b078990850a62ebc2585526ab$"
+}
+}

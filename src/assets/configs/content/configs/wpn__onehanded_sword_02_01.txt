@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject Name="wpn__onehanded_sword_02">
+  <Prefabs>
+    <Prefab Name="w_onehanded_sword_01_l" ConfigName="weapon_onehanded" MirroringDuplicate="0" Droppable="1" />
+    <Prefab Name="w_onehanded_sword_01_r" ConfigName="weapon_onehanded" MirroringDuplicate="1" Droppable="1" />
+    <Prefab Name="w_onehanded_sword_02_01_scabbard_l"/>
+  </Prefabs>
+  <Meshes>
+    <Mesh Name="wpn__onehanded_sword_02_01__l"          Droppable="1" MirroringDuplicate="0" />
+    <Mesh Name="wpn__onehanded_sword_02_01__r"          Droppable="1" MirroringDuplicate="1" />
+    <Mesh Name="wpn__onehanded_sword_02_01__scabbard_l" />
+    <Mesh Name="wpn__onehanded_sword_02_01__trail_l"    Droppable="1" MirroringDuplicate="0" />
+    <Mesh Name="wpn__onehanded_sword_02_01__trail_r"    Droppable="1" MirroringDuplicate="1" />
+  </Meshes>
+  <Materials>
+    <Material Name="steel" CapsuleName="Sword_Attacking_Edge_l">
+      <Vertex Name="saber_top_l" />
+      <Vertex Name="saber_bottom_l" />
+    </Material>
+    <Material Name="steel" CapsuleName="Sword_Attacking_Edge_r">
+      <Vertex Name="saber_top_r" />
+      <Vertex Name="saber_bottom_r" />
+    </Material>
+  </Materials>
+</ModelObject>

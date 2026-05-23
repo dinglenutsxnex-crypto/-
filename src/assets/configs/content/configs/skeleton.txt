@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelObject>
+  <Prefabs ConfigName="skeleton">
+    <Prefab Name="skeleton" ConfigName="skeleton"/>
+  </Prefabs>
+</ModelObject>
+

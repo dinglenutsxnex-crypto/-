@@ -1,4 +1,4 @@
-import { Vector3, Quaternion, FreeCamera, HemisphericLight, DirectionalLight, Scene, Skeleton, TransformNode } from "@babylonjs/core";
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
@@ -50,6 +50,8 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
   ]);
 
   const idToName = parseSkeletonIds(skeletonXml);
+  const nameToId = new Map<string, number>();
+  for (const [id, name] of idToName) nameToId.set(name, id);
   const anim = AnimationBinaries.LoadFromBytes(animBytes, "agl_super_1_kick_1.bytes");
   if (!anim) {
     console.error("Failed to parse animation");
@@ -69,24 +71,23 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     return;
   }
 
-  // Build TransformNode lookup by name — scan ALL TransformNodes in the scene
-  // (multi-glb assembly means bones can live under different armatures)
-  const tnByName = new Map<string, TransformNode>();
-  for (const tn of scene.transformNodes) {
-    if (!tnByName.has(tn.name)) tnByName.set(tn.name, tn);
+  // Build bone lookup by ID — use skeleton bones which handle dirty invalidation
+  const boneById = new Map<number, Bone>();
+  for (const sk of scene.skeletons) {
+    for (const b of sk.bones) {
+      const boneId = nameToId.get(b.name);
+      if (boneId !== undefined && !boneById.has(boneId)) boneById.set(boneId, b);
+    }
   }
 
-  // Debug: log which animation bone IDs we can actually find TNs for
+  // Debug: log which animation bone IDs we match against skeleton bones
   let matchedBones = 0;
   const unmatched: number[] = [];
   for (const id of anim.bonesIDs) {
-    const bname = idToName.get(id);
-    if (bname && tnByName.has(bname)) matchedBones++;
+    if (boneById.has(id)) matchedBones++;
     else unmatched.push(id);
   }
   console.log(`Animation bone match: ${matchedBones}/${anim.bonesIDs.length} matched, ${unmatched.length} unmatched:`, unmatched);
-  // Log all TransformNode names for debugging
-  console.log("All scene TransformNodes:", [...tnByName.keys()]);
 
   // Track frame timing
   let currentFrame = 0;
@@ -105,18 +106,12 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     const frame = anim.frames[frameIdx];
     for (let i = 0; i < anim.bonesIDs.length; i++) {
       const boneID = anim.bonesIDs[i];
-      const boneName = idToName.get(boneID);
-      if (!boneName) continue;
-
-      const tn = tnByName.get(boneName);
-      if (!tn) continue;
+      const bone = boneById.get(boneID);
+      if (!bone) continue;
 
       const t = frame.bonesAnimation[i];
-      tn.position = t.position;
-      // Negate Z on quaternion to convert from Unity left-handed to BabylonJS left-handed
-      // (glb bone rotations were converted during glTF export/import, but raw animation data wasn't)
-      const r = t.rotation;
-      tn.rotationQuaternion = new Quaternion(r.x, r.y, -r.z, r.w);
+      bone.setPosition(t.position);
+      bone.setRotationQuaternion(t.rotation);
     }
   });
 }

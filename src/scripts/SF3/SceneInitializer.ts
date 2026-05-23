@@ -1,4 +1,4 @@
-import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, TransformNode } from "@babylonjs/core";
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
@@ -58,23 +58,24 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     hasTangents: !!anim.animationTangents,
   });
 
-  // Map all scene TransformNodes by name (covers all parts: body, head, hair, etc.)
-  const tnByName = new Map<string, TransformNode>();
-  for (const tn of scene.transformNodes) {
-    if (!tnByName.has(tn.name)) tnByName.set(tn.name, tn);
+  // Build boneName → BabylonJS bone from ALL skeletons (covers body + head + equipment)
+  const boneByName = new Map<string, Bone>();
+  for (const sk of scene.skeletons) {
+    for (const b of sk.bones) {
+      if (!boneByName.has(b.name)) boneByName.set(b.name, b);
+    }
   }
 
-  // Debug bone match rate
+  // Debug match rate
   let matched = 0;
   const unmatched: number[] = [];
   for (const id of anim.bonesIDs) {
     const bname = idToName.get(id);
-    if (bname && tnByName.has(bname)) matched++;
+    if (bname && boneByName.has(bname)) matched++;
     else unmatched.push(id);
   }
   console.log(`Animation bone match: ${matched}/${anim.bonesIDs.length} matched, ${unmatched.length} unmatched:`, unmatched);
 
-  // Force skeleton to recompute matrices each frame after we update TNs
   const skel = result.skeleton;
   if (!skel) {
     console.error("No skeleton");
@@ -100,14 +101,15 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
       const boneName = idToName.get(boneID);
       if (!boneName) continue;
 
-      const tn = tnByName.get(boneName);
+      const bone = boneByName.get(boneName);
+      if (!bone) continue;
+
+      const tn = bone.getTransformNode();
       if (!tn) continue;
 
       const t = frame.bonesAnimation[i];
       tn.position = t.position;
-      const q = t.rotation.clone();
-      q.normalize();
-      tn.rotationQuaternion = q;
+      tn.rotationQuaternion = t.rotation;
     }
   });
 }

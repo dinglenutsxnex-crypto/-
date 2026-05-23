@@ -1,4 +1,4 @@
-import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode } from "@babylonjs/core";
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode, Quaternion } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
@@ -108,8 +108,8 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
       if (!tn) continue;
 
       const t = frame.bonesAnimation[i];
-      tn.position = t.position;
-      tn.rotationQuaternion = t.rotation;
+      tn.position = new Vector3(t.position.x, t.position.y, -t.position.z);
+      tn.rotationQuaternion = new Quaternion(t.rotation.x, t.rotation.y, -t.rotation.z, t.rotation.w);
     }
 
     // Force skeleton matrix recompute — TN changes don't always dirty the skeleton

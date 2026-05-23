@@ -1,4 +1,4 @@
-import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Skeleton, TransformNode } from "@babylonjs/core";
+import { Vector3, Quaternion, FreeCamera, HemisphericLight, DirectionalLight, Scene, Skeleton, TransformNode } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
@@ -113,7 +113,10 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
 
       const t = frame.bonesAnimation[i];
       tn.position = t.position;
-      tn.rotationQuaternion = t.rotation;
+      // Negate Z on quaternion to convert from Unity left-handed to BabylonJS left-handed
+      // (glb bone rotations were converted during glTF export/import, but raw animation data wasn't)
+      const r = t.rotation;
+      tn.rotationQuaternion = new Quaternion(r.x, r.y, -r.z, r.w);
     }
   });
 }

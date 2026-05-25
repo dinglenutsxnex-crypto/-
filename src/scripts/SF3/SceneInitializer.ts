@@ -34,11 +34,11 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
 
   const [skeletonXml, animBytes] = await Promise.all([
     loadBytes("assets/configs/content/bones/configs/skeleton.txt").then(b => new TextDecoder().decode(b)),
-    loadBytes("assets/animations/m_idle.bytes"),
+    loadBytes("assets/animations/agl_super_2_kick_1.bytes"),
   ]);
 
   const idToName = parseSkeletonIds(skeletonXml);
-  const anim = AnimationBinaries.LoadFromBytes(animBytes, "m_idle.bytes");
+  const anim = AnimationBinaries.LoadFromBytes(animBytes, "agl_super_2_kick_1.bytes);
   if (!anim) { console.error("Failed to parse animation"); return; }
 
   // Build bone map

@@ -120,24 +120,37 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
       (sk as any).prepare(true);
     }
 
-    // One-shot debug: inverse bind, local anim, and final skinning matrix for pelvis
     if (!debugged) {
       debugged = true;
-      const pb = boneByName.get("pelvis");
-      if (pb) {
-        const q = new Quaternion();
-        pb.getAbsoluteInverseBindMatrix().decompose(undefined, q, undefined);
-        const tn = pb.getTransformNode();
-        const tnq = tn?.rotationQuaternion;
-        // Read shader matrix from skeleton transform matrices
-        const sk = result.skeleton!;
-        const mats = (sk as any)._transformMatrices as Float32Array;
-        const idx = (pb as any)._index ?? sk.bones.indexOf(pb);
-        const sm = Matrix.FromArray(mats, idx * 16);
-        const sq = new Quaternion();
-        const sv = new Vector3();
-        sm.decompose(sv, sq, undefined);
-        console.log(`PELVIS inverseBindRot=(${q.x.toFixed(4)},${q.y.toFixed(4)},${q.z.toFixed(4)},${q.w.toFixed(4)}) tnLocal=(${tnq?.x.toFixed(4)},${tnq?.y.toFixed(4)},${tnq?.z.toFixed(4)},${tnq?.w.toFixed(4)}) skinMatRot=(${sq.x.toFixed(4)},${sq.y.toFixed(4)},${sq.z.toFixed(4)},${sq.w.toFixed(4)}) skinMatPos=(${sv.x.toFixed(2)},${sv.y.toFixed(2)},${sv.z.toFixed(2)})`);
+      const chain = ["pelvis","stomach","chest","neck","head"];
+      for (const name of chain) {
+        const bone = boneByName.get(name);
+        if (!bone) { console.log(name + ': NO BONE'); continue; }
+        const tn = bone.getTransformNode();
+        if (!tn) { console.log(name + ': NO TN'); continue; }
+        // Read ALL data
+        const b = bone as any;
+        const ibq = new Quaternion(); b.getAbsoluteInverseBindMatrix().decompose(undefined, ibq, undefined);
+        const tnq = tn.rotationQuaternion!;
+        tn.computeWorldMatrix(true);
+        const wq = new Quaternion(); tn.getWorldMatrix().decompose(undefined, wq, undefined);
+        const fq = new Quaternion(); b.getFinalMatrix().decompose(undefined, fq, undefined);
+        // Skinning matrix from _transformMatrices
+        let sq = "N/A"; let sv = "N/A";
+        const sk = result.skeleton as any;
+        if (sk._transformMatrices) {
+          const idx = b._index ?? sk.bones.indexOf(bone);
+          if (idx >= 0 && idx * 16 + 16 <= sk._transformMatrices.length) {
+            const sm = Matrix.FromArray(sk._transformMatrices, idx * 16);
+            const sqq = new Quaternion(); const svv = new Vector3();
+            sm.decompose(svv, sqq, undefined);
+            sq = `(${sqq.x.toFixed(4)},${sqq.y.toFixed(4)},${sqq.z.toFixed(4)},${sqq.w.toFixed(4)})`;
+            sv = `(${svv.x.toFixed(2)},${svv.y.toFixed(2)},${svv.z.toFixed(2)})`;
+          }
+        }
+        // Parent chain for bone
+        let par = ""; let p = bone.getParent(); while (p) { par = p.name + "→" + par; p = p.getParent(); }
+        console.log(`${name} invBind=(${ibq.x.toFixed(4)},${ibq.y.toFixed(4)},${ibq.z.toFixed(4)},${ibq.w.toFixed(4)}) tnLocal=(${tnq.x.toFixed(4)},${tnq.y.toFixed(4)},${tnq.z.toFixed(4)},${tnq.w.toFixed(4)}) tnWorld=(${wq.x.toFixed(4)},${wq.y.toFixed(4)},${wq.z.toFixed(4)},${wq.w.toFixed(4)}) boneFinal=(${fq.x.toFixed(4)},${fq.y.toFixed(4)},${fq.z.toFixed(4)},${fq.w.toFixed(4)}) skinMat=${sq} pos=${sv} parent=[${par}]`);
       }
     }
   });

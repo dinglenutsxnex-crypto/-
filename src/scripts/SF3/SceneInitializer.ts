@@ -38,7 +38,7 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
   ]);
 
   const idToName = parseSkeletonIds(skeletonXml);
-  const anim = AnimationBinaries.LoadFromBytes(animBytes, "agl_super_2_kick_1.bytes);
+  const anim = AnimationBinaries.LoadFromBytes(animBytes, "agl_super_2_kick_1.bytes");
   if (!anim) { console.error("Failed to parse animation"); return; }
 
   // Build bone map

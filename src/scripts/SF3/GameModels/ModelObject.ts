@@ -6,7 +6,6 @@ import {
   PBRMaterial,
   Texture,
   Scene,
-  Vector3,
 } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { Gender } from "../../sf3DTO/Gender";
@@ -70,7 +69,6 @@ export async function loadSkinGlb(
   const result = await SceneLoader.ImportMeshAsync("", part.glbDir, "mesh.glb", scene);
   for (const m of result.meshes) {
     applySkinTexture(m, scene, part.textureBase, part.glbDir);
-    m.rotation = new Vector3(0, Math.PI, 0);
   }
   const armature = result.transformNodes.find((n: TransformNode) => n.name === "Armature") ?? null;
   return { meshes: result.meshes, skeletons: result.skeletons, armature };

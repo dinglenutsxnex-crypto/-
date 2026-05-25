@@ -51,7 +51,7 @@ export class FightScene {
   }
 
   private _setupScene(): void {
-    this._scene.clearColor = new Color4(0.32, 0.32, 0.32, 1);
+    this._scene.clearColor = new Color4(0.32, 0.32, 0.32, 0.02);
     this._scene.ambientColor = new Color3(0.6, 0.6, 0.6);
 
     const hemi = new HemisphericLight("hemi", new Vector3(0, 1, 0.5), this._scene);
@@ -81,10 +81,7 @@ export class FightScene {
     this._mainCamera = cam;
     this._scene.activeCamera = cam;
 
-    this._scene.fogEnabled = true;
-    this._scene.fogMode = Scene.FOGMODE_EXP2;
-    this._scene.fogColor = new Color3(1, 0.14, 0.14);
-    this._scene.fogDensity = 0.01;
+    this._scene.fogEnabled = false;
   }
 
   private _createDefaultCameraConfig(): CameraConfiguration {
@@ -112,9 +109,8 @@ export class FightScene {
   }
 
   private async _loadLocation(locationName: string): Promise<void> {
-    const path = `assets/locations/${locationName}.glb`;
     try {
-      const result = await SceneLoader.ImportMeshAsync("", path, "", this._scene);
+      const result = await SceneLoader.ImportMeshAsync("", "assets/locations/", `${locationName}.glb`, this._scene);
       this._locationMeshes = result.meshes;
       for (const mesh of this._locationMeshes) {
         if (mesh.getClassName() === "Mesh" || mesh.getClassName() === "InstancedMesh") {

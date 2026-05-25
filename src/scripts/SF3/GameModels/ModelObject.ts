@@ -19,6 +19,7 @@ export interface SkinPart {
 const SKIN_CONFIG: Record<string, { skinType: string; parts: string[]; textureBase: string }> = {
   "arm__base_m": { skinType: "arm", parts: ["body", "pants_l", "pants_r"], textureBase: "arm__base_m" },
   "arm__base_f": { skinType: "arm", parts: ["body", "pants_l", "pants_r"], textureBase: "arm__base_f" },
+  "arm__str_15_m": { skinType: "arm", parts: ["body", "hand_l", "hand_r", "shoulders", "tie"], textureBase: "arm__str_15_m" },
   "head__01a_m": { skinType: "head", parts: ["head__01a_m"], textureBase: "head__01a_m" },
   "head__01a_f": { skinType: "head", parts: ["head__01a_f"], textureBase: "head__01a_f" },
   "hair__01_m":  { skinType: "hair", parts: ["hair__01_m"], textureBase: "hair__m_01" },

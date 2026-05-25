@@ -5,6 +5,7 @@ import { BattleCamera } from "../BattleCamera";
 import { EffectsManager } from "../EffectsManager";
 import { FightController, IFightInfo } from "../FightController";
 import { CameraConfiguration } from "../CameraConfiguration";
+import { ModelsManager } from "../SF3/ModelsManager";
 
 export class FightScene {
   private readonly _scene: Scene;
@@ -31,6 +32,13 @@ export class FightScene {
     this._setupScene();
 
     await this._loadLocation(locationName);
+
+    const modelsManager = new ModelsManager(this._scene);
+    await modelsManager.loadModels();
+    await Promise.all([
+      modelsManager.spawnPlayer(),
+      modelsManager.spawnEnemy(),
+    ]);
 
     this._cameraConfig = this._createDefaultCameraConfig();
     this._battleCamera = BattleCamera.createInstance(

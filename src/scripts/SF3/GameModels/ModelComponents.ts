@@ -38,7 +38,7 @@ export async function assembleCharacter(
   equipped: { type: EquipmentType; model: string }[],
 ): Promise<ModelAssemblyResult> {
   const armor = equipped.find(e => e.type === EquipmentType.Armor);
-  const bodyModel = armor?.model ?? "arm__str_15";
+  const bodyModel = armor?.model ?? "arm__base";
 
   let masterSkeleton: Skeleton | null = null;
   let masterArmature: TransformNode | null = null;

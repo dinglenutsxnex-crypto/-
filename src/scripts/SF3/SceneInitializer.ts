@@ -82,6 +82,21 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     return;
   }
 
+  // Capture GLB rest rotation for every animated bone.
+  // Animation data is in Unity local space; GLB may have a different rest pose
+  // (especially torso bones which have near-identity GLB rots but non-trivial Unity rots).
+  // We remap: finalRot = glbRest * animRot * glbRest^-1
+  // This re-expresses the Unity local delta in GLB local space.
+  const glbRestRot = new Map<string, Quaternion>();
+  const glbRestRotInv = new Map<string, Quaternion>();
+  for (const [boneName, bone] of boneByName) {
+    const tn = bone.getTransformNode();
+    if (!tn) continue;
+    const rest = (tn.rotationQuaternion ?? Quaternion.Identity()).clone();
+    glbRestRot.set(boneName, rest);
+    glbRestRotInv.set(boneName, rest.conjugate());
+  }
+
   let debugged = false;
 
   // Track frame timing
@@ -111,7 +126,15 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
 
       const t = frame.bonesAnimation[i];
       tn.position = t.position;
-      tn.rotationQuaternion = t.rotation;
+
+      // Remap animation rotation from Unity local space → GLB local space
+      const rest = glbRestRot.get(boneName);
+      const restInv = glbRestRotInv.get(boneName);
+      if (rest && restInv) {
+        tn.rotationQuaternion = rest.multiply(t.rotation).multiply(restInv);
+      } else {
+        tn.rotationQuaternion = t.rotation;
+      }
     }
 
     // Force skeleton matrix recompute — TN changes don't always dirty the skeleton

@@ -28,7 +28,7 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
   setupLights(scene);
 
   const result = await assembleCharacter(scene, Gender.Male, "head__01a", [
-    { type: EquipmentType.Armor, model: "arm__str_15" },
+    { type: EquipmentType.Armor, model: "arm__base" },
     { type: EquipmentType.Helmet, model: "hair-01" },
   ]);
 

@@ -1,4 +1,4 @@
-import { AbstractMesh, Skeleton, Scene, TransformNode, Vector3 } from "@babylonjs/core";
+import { AbstractMesh, Skeleton, Scene, TransformNode } from "@babylonjs/core";
 import { Gender } from "../../sf3DTO/Gender";
 import { EquipmentType } from "../Items/EquipmentType";
 import { resolveModelConfig, loadSkinGlb } from "./ModelObject";
@@ -51,10 +51,7 @@ export async function assembleCharacter(
     if (!masterSkeleton && bp.skeletons.length > 0) {
       masterSkeleton = bp.skeletons[0];
       masterArmature = bp.armature;
-      if (masterArmature) {
-        masterArmature.rotation = new Vector3(0, 2 * Math.PI / 3, 0);
-        masterNodeMap = buildNodeMap(masterArmature);
-      }
+      if (masterArmature) masterNodeMap = buildNodeMap(masterArmature);
       allMeshes.push(...bp.meshes);
     } else if (masterSkeleton && masterArmature) {
       for (let i = 0; i < bp.meshes.length; i++) {

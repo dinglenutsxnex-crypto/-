@@ -1,4 +1,4 @@
-import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode, Quaternion } from "@babylonjs/core";
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode, Quaternion, Matrix } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
@@ -82,6 +82,9 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     return;
   }
 
+  let debugged = false;
+
+  // Track frame timing
   let currentFrame = 0;
   const frameCount = anim.frames.length;
   let lastTime = performance.now();
@@ -107,19 +110,48 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
       if (!tn) continue;
 
       const t = frame.bonesAnimation[i];
-      // Unity is left-handed (Z-forward); glTF / BabylonJS bone TN local space is
-      // right-handed (Z-backward).  The glTF loader applies the handedness fix only
-      // at the __root__ level, so individual TN local transforms still live in
-      // right-handed glTF space.  We must convert Unity → glTF before writing:
-      //   position : negate Z
-      //   quaternion: negate X and Y  (reflects the Z-axis flip onto the rotation)
-      tn.position = new Vector3(t.position.x, t.position.y, -t.position.z);
-      tn.rotationQuaternion = new Quaternion(-t.rotation.x, -t.rotation.y, t.rotation.z, t.rotation.w);
+      tn.position = t.position;
+      tn.rotationQuaternion = t.rotation;
     }
 
+    // Force skeleton matrix recompute — TN changes don't always dirty the skeleton
     for (const sk of scene.skeletons) {
       (sk as any)._isDirty = true;
       (sk as any).prepare(true);
+    }
+
+    if (!debugged) {
+      debugged = true;
+      const chain = ["pelvis","stomach","chest","neck","head"];
+      for (const name of chain) {
+        const bone = boneByName.get(name);
+        if (!bone) { console.log(name + ': NO BONE'); continue; }
+        const tn = bone.getTransformNode();
+        if (!tn) { console.log(name + ': NO TN'); continue; }
+        // Read ALL data
+        const b = bone as any;
+        const ibq = new Quaternion(); b.getAbsoluteInverseBindMatrix().decompose(undefined, ibq, undefined);
+        const tnq = tn.rotationQuaternion!;
+        tn.computeWorldMatrix(true);
+        const wq = new Quaternion(); tn.getWorldMatrix().decompose(undefined, wq, undefined);
+        const fq = new Quaternion(); b.getFinalMatrix().decompose(undefined, fq, undefined);
+        // Skinning matrix from _transformMatrices
+        let sq = "N/A"; let sv = "N/A";
+        const sk = result.skeleton as any;
+        if (sk._transformMatrices) {
+          const idx = b._index ?? sk.bones.indexOf(bone);
+          if (idx >= 0 && idx * 16 + 16 <= sk._transformMatrices.length) {
+            const sm = Matrix.FromArray(sk._transformMatrices, idx * 16);
+            const sqq = new Quaternion(); const svv = new Vector3();
+            sm.decompose(svv, sqq, undefined);
+            sq = `(${sqq.x.toFixed(4)},${sqq.y.toFixed(4)},${sqq.z.toFixed(4)},${sqq.w.toFixed(4)})`;
+            sv = `(${svv.x.toFixed(2)},${svv.y.toFixed(2)},${svv.z.toFixed(2)})`;
+          }
+        }
+        // Parent chain for bone
+        let par = ""; let p = bone.getParent(); while (p) { par = p.name + "→" + par; p = p.getParent(); }
+        console.log(`${name} invBind=(${ibq.x.toFixed(4)},${ibq.y.toFixed(4)},${ibq.z.toFixed(4)},${ibq.w.toFixed(4)}) tnLocal=(${tnq.x.toFixed(4)},${tnq.y.toFixed(4)},${tnq.z.toFixed(4)},${tnq.w.toFixed(4)}) tnWorld=(${wq.x.toFixed(4)},${wq.y.toFixed(4)},${wq.z.toFixed(4)},${wq.w.toFixed(4)}) boneFinal=(${fq.x.toFixed(4)},${fq.y.toFixed(4)},${fq.z.toFixed(4)},${fq.w.toFixed(4)}) skinMat=${sq} pos=${sv} parent=[${par}]`);
+      }
     }
   });
 }

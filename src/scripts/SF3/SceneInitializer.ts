@@ -1,4 +1,4 @@
-import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode } from "@babylonjs/core";
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode, Quaternion, Matrix } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
@@ -82,6 +82,8 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     return;
   }
 
+  let debugged = false;
+
   // Track frame timing
   let currentFrame = 0;
   const frameCount = anim.frames.length;
@@ -113,7 +115,31 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     }
 
     // Force skeleton matrix recompute — TN changes don't always dirty the skeleton
-    for (const sk of scene.skeletons) (sk as any)._isDirty = true;
+    for (const sk of scene.skeletons) {
+      (sk as any)._isDirty = true;
+      (sk as any).prepare(true);
+    }
+
+    // One-shot debug: inverse bind, local anim, and final skinning matrix for pelvis
+    if (!debugged) {
+      debugged = true;
+      const pb = boneByName.get("pelvis");
+      if (pb) {
+        const q = new Quaternion();
+        pb.getAbsoluteInverseBindMatrix().decompose(undefined, q, undefined);
+        const tn = pb.getTransformNode();
+        const tnq = tn?.rotationQuaternion;
+        // Read shader matrix from skeleton transform matrices
+        const sk = result.skeleton!;
+        const mats = (sk as any)._transformMatrices as Float32Array;
+        const idx = (pb as any)._index ?? sk.bones.indexOf(pb);
+        const sm = Matrix.FromArray(mats, idx * 16);
+        const sq = new Quaternion();
+        const sv = new Vector3();
+        sm.decompose(sv, sq, undefined);
+        console.log(`PELVIS inverseBindRot=(${q.x.toFixed(4)},${q.y.toFixed(4)},${q.z.toFixed(4)},${q.w.toFixed(4)}) tnLocal=(${tnq?.x.toFixed(4)},${tnq?.y.toFixed(4)},${tnq?.z.toFixed(4)},${tnq?.w.toFixed(4)}) skinMatRot=(${sq.x.toFixed(4)},${sq.y.toFixed(4)},${sq.z.toFixed(4)},${sq.w.toFixed(4)}) skinMatPos=(${sv.x.toFixed(2)},${sv.y.toFixed(2)},${sv.z.toFixed(2)})`);
+      }
+    }
   });
 }
 

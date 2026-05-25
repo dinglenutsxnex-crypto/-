@@ -1,64 +1,94 @@
-import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode, Quaternion, Matrix } from "@babylonjs/core";
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, Quaternion } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
 import { EquipmentType } from "./Items/EquipmentType";
 import { assembleCharacter } from "./GameModels/ModelComponents";
-import { AnimationBinaries } from "./Moves/AnimationBinaries";
 
-async function loadBytes(path: string): Promise<Uint8Array> {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`Failed to load ${path}`);
-  return new Uint8Array(await res.arrayBuffer());
-}
-
-function parseSkeletonIds(xmlText: string): Map<number, string> {
-  const map = new Map<number, string>();
-  const regex = /<Bone\s+Name="([^"]+)"\s+ID="(\d+)"/g;
-  let match: RegExpExecArray | null;
-  while ((match = regex.exec(xmlText)) !== null) {
-    map.set(parseInt(match[2], 10), match[1]);
-  }
-  return map;
-}
+// Hardcoded bind pose — global rotations from Unity skeleton dump
+// Format: boneName -> [x, y, z, w]
+const BIND_POSE: Record<string, [number,number,number,number]> = {
+  "pelvis":               [ 0.0196, -0.2812, -0.0333,  0.9589],
+  "zero_joint_pelvis_l":  [ 0.0196, -0.2812, -0.0333,  0.9589],
+  "thigh_l":              [ 0.0530, -0.6905, -0.0457,  0.7199],
+  "calf_l":               [ 0.0499,  0.5731,  0.0009,  0.8180],
+  "foot_l":               [ 0.0001, -0.3406, -0.0001,  0.9402],
+  "toe_l":                [-0.0032, -0.3406, -0.0013,  0.9402],
+  "thigh_twist_l":        [-0.0305,  0.8869, -0.0166, -0.4607],
+  "back_l":               [ 0.0238, -0.1512, -0.0304,  0.9878],
+  "stomach":              [-0.0167, -0.3092, -0.0043,  0.9508],
+  "chest":                [-0.0174, -0.2968,  0.0531,  0.9533],
+  "zero_joint_hand_l":    [-0.0174, -0.2968,  0.0531,  0.9533],
+  "chest_l":              [-0.0174, -0.2968,  0.0531,  0.9533],
+  "clavicle_l":           [ 0.0262, -0.3800,  0.0353,  0.9240],
+  "arm_l":                [-0.0359, -0.7193,  0.0311,  0.6930],
+  "biceps_twist_l":       [ 0.0489, -0.4303,  0.0512,  0.8999],
+  "forearm_l":            [-0.0730,  0.6346, -0.1745,  0.7493],
+  "hand_l":               [-0.3415,  0.1696, -0.1750,  0.9077],
+  "f_big1_l":             [-0.4253,  0.1070, -0.0275,  0.8983],
+  "f_big2_l":             [-0.0922, -0.2801,  0.2271,  0.9282],
+  "f_big3_l":             [ 0.4373, -0.3483,  0.4819,  0.6747],
+  "f_pointer1_l":         [-0.4550,  0.6761, -0.1906,  0.5473],
+  "f_pointer2_l":         [-0.1801, -0.2028,  0.5427,  0.7949],
+  "f_pointer3_l":         [-0.2902,  0.1603,  0.5199,  0.7872],
+  "weapon_l":             [-0.3776, -0.2048, -0.0341,  0.9024],
+  "f_main1_l":            [-0.1470,  0.8267, -0.5047, -0.2005],
+  "f_main2_l":            [-0.3344, -0.2478,  0.4239,  0.8044],
+  "f_main3_l":            [-0.2708,  0.2120,  0.7529,  0.5612],
+  "forearm_twist_l":      [-0.2090,  0.6352, -0.2051,  0.7146],
+  "scapular_l":           [ 0.0315, -0.5236,  0.0307,  0.8508],
+  "zero_joint_hand_r":    [-0.0229, -0.1942,  0.0510,  0.9794],
+  "clavicle_r":           [-0.1124,  0.8897,  0.2182,  0.3851],
+  "arm_r":                [ 0.0140,  0.6780,  0.0231,  0.7345],
+  "biceps_twist_r":       [-0.0157,  0.8573,  0.2003,  0.4740],
+  "forearm_r":            [-0.0542,  0.6369,  0.1581,  0.7527],
+  "hand_r":               [-0.1796,  0.7584,  0.0593,  0.6237],
+  "weapon_r":             [-0.1882,  0.9609, -0.0300,  0.2009],
+  "f_pointer1_r":         [-0.1277,  0.2454,  0.2590,  0.9254],
+  "f_pointer2_r":         [ 0.1165, -0.4460,  0.2506,  0.8513],
+  "f_pointer3_r":         [-0.2326,  0.8326, -0.1492, -0.4800],
+  "f_big1_r":             [-0.0521, -0.2608,  0.3611,  0.8938],
+  "f_big2_r":             [-0.0098, -0.2876,  0.4809,  0.8282],
+  "f_big3_r":             [-0.1364, -0.1250,  0.9134,  0.3627],
+  "f_main1_r":            [-0.0124, -0.0000,  0.2680,  0.9633],
+  "f_main2_r":            [ 0.1957, -0.5238,  0.1873,  0.8076],
+  "f_main3_r":            [-0.3849,  0.9121, -0.0674, -0.1245],
+  "forearm_twist_r":      [-0.1882,  0.8120,  0.0961,  0.5441],
+  "scapular_r":           [-0.1059,  0.8780,  0.2213,  0.4110],
+  "chest_r":              [-0.0229, -0.1942,  0.0510,  0.9794],
+  "neck":                 [ 0.0133, -0.3673,  0.0633,  0.9279],
+  "head":                 [-0.0088, -0.6652, -0.0368,  0.7457],
+  "hair":                 [-0.0088, -0.6652, -0.0368,  0.7457],
+  "zero_joint_pelvis_r":  [ 0.0295,  0.0545, -0.0249,  0.9978],
+  "thigh_r":              [-0.2016, -0.0074, -0.0294,  0.9790],
+  "thigh_twist_r":        [-0.1614, -0.1410,  0.0105,  0.9767],
+  "calf_r":               [-0.0734,  0.2060, -0.0685,  0.9734],
+  "foot_r":               [-0.0060, -0.8463,  0.0119,  0.5326],
+  "toe_r":                [ 0.0453,  0.6014,  0.0107,  0.7976],
+  "back_r":               [ 0.0335,  0.9567,  0.0193,  0.2886],
+};
 
 export async function initializeScene(mgr: SceneManager): Promise<void> {
   const scene = mgr.scene;
-  setupCamera(scene);
-  setupLights(scene);
+
+  // Camera
+  const cam = new FreeCamera("cam", new Vector3(0, 155, -950), scene);
+  cam.setTarget(Vector3.Zero());
+  cam.minZ = 10; cam.maxZ = 5000;
+  cam.fov = 30 * Math.PI / 180;
+  scene.activeCamera = cam;
+
+  // Lights
+  new HemisphericLight("hemi", new Vector3(0, 1, 0), scene);
+  const dir = new DirectionalLight("dir", new Vector3(-0.5, -1, -0.3), scene);
+  dir.position.set(300, 500, 300);
 
   const result = await assembleCharacter(scene, Gender.Male, "head__01a", [
     { type: EquipmentType.Armor, model: "arm__base" },
     { type: EquipmentType.Helmet, model: "hair-01" },
   ]);
 
-  console.log("Character assembled:", {
-    meshes: result.meshes.map(m => m.name),
-    skeleton: result.skeleton?.name,
-    roots: result.rootNodes.map(n => n.name),
-  });
-
-  // Load animation data
-  const [skeletonXml, animBytes] = await Promise.all([
-    loadBytes("assets/configs/content/bones/configs/skeleton.txt").then(b => new TextDecoder().decode(b)),
-    loadBytes("assets/animations/m_idle.bytes"),
-  ]);
-
-  const idToName = parseSkeletonIds(skeletonXml);
-  const anim = AnimationBinaries.LoadFromBytes(animBytes, "agl_super_1_kick_1.bytes");
-  if (!anim) {
-    console.error("Failed to parse animation");
-    return;
-  }
-
-  console.log("Animation loaded:", {
-    frames: anim.frames.length,
-    bones: anim.bonesIDs.length,
-    boneIds: anim.bonesIDs,
-    hasTangents: !!anim.animationTangents,
-  });
-
-  // Build boneName → BabylonJS bone from ALL skeletons (covers body + head + equipment)
+  // Build bone map
   const boneByName = new Map<string, Bone>();
   for (const sk of scene.skeletons) {
     for (const b of sk.bones) {
@@ -66,131 +96,20 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
     }
   }
 
-  // Debug match rate
-  let matched = 0;
-  const unmatched: number[] = [];
-  for (const id of anim.bonesIDs) {
-    const bname = idToName.get(id);
-    if (bname && boneByName.has(bname)) matched++;
-    else unmatched.push(id);
-  }
-  console.log(`Animation bone match: ${matched}/${anim.bonesIDs.length} matched, ${unmatched.length} unmatched:`, unmatched);
-
-  const skel = result.skeleton;
-  if (!skel) {
-    console.error("No skeleton");
-    return;
-  }
-
-  // Capture GLB rest rotation for every animated bone.
-  // Animation data is in Unity local space; GLB may have a different rest pose
-  // (especially torso bones which have near-identity GLB rots but non-trivial Unity rots).
-  // We remap: finalRot = glbRest * animRot * glbRest^-1
-  // This re-expresses the Unity local delta in GLB local space.
-  const glbRestRot = new Map<string, Quaternion>();
-  const glbRestRotInv = new Map<string, Quaternion>();
-  for (const [boneName, bone] of boneByName) {
+  // Slam the hardcoded global rotations directly onto every bone's TN
+  for (const [boneName, q] of Object.entries(BIND_POSE)) {
+    const bone = boneByName.get(boneName);
+    if (!bone) continue;
     const tn = bone.getTransformNode();
     if (!tn) continue;
-    const rest = (tn.rotationQuaternion ?? Quaternion.Identity()).clone();
-    glbRestRot.set(boneName, rest);
-    glbRestRotInv.set(boneName, rest.conjugate());
+    tn.rotationQuaternion = new Quaternion(q[0], q[1], q[2], q[3]);
   }
 
-  let debugged = false;
+  // Force recompute
+  for (const sk of scene.skeletons) {
+    (sk as any)._isDirty = true;
+    (sk as any).prepare(true);
+  }
 
-  // Track frame timing
-  let currentFrame = 0;
-  const frameCount = anim.frames.length;
-  let lastTime = performance.now();
-
-  scene.onBeforeRenderObservable.add(() => {
-    const now = performance.now();
-    const dt = (now - lastTime) / 1000;
-    lastTime = now;
-
-    currentFrame = (currentFrame + dt * 30) % frameCount;
-    const frameIdx = Math.floor(currentFrame);
-
-    const frame = anim.frames[frameIdx];
-    for (let i = 0; i < anim.bonesIDs.length; i++) {
-      const boneID = anim.bonesIDs[i];
-      const boneName = idToName.get(boneID);
-      if (!boneName) continue;
-
-      const bone = boneByName.get(boneName);
-      if (!bone) continue;
-
-      const tn = bone.getTransformNode();
-      if (!tn) continue;
-
-      const t = frame.bonesAnimation[i];
-      tn.position = t.position;
-
-      // Pelvis has a 90° Y rest rotation baked into the GLB from Unity export.
-      // All other bones are near-identity so overwriting is fine.
-      // For pelvis we must preserve the GLB rest: finalRot = glbRest * animRot
-      const rest = glbRestRot.get(boneName);
-      if (boneName === "pelvis" && rest) {
-        tn.rotationQuaternion = rest.multiply(t.rotation);
-      } else {
-        tn.rotationQuaternion = t.rotation;
-      }
-    }
-
-    // Force skeleton matrix recompute — TN changes don't always dirty the skeleton
-    for (const sk of scene.skeletons) {
-      (sk as any)._isDirty = true;
-      (sk as any).prepare(true);
-    }
-
-    if (!debugged) {
-      debugged = true;
-      const chain = ["pelvis","stomach","chest","neck","head"];
-      for (const name of chain) {
-        const bone = boneByName.get(name);
-        if (!bone) { console.log(name + ': NO BONE'); continue; }
-        const tn = bone.getTransformNode();
-        if (!tn) { console.log(name + ': NO TN'); continue; }
-        // Read ALL data
-        const b = bone as any;
-        const ibq = new Quaternion(); b.getAbsoluteInverseBindMatrix().decompose(undefined, ibq, undefined);
-        const tnq = tn.rotationQuaternion!;
-        tn.computeWorldMatrix(true);
-        const wq = new Quaternion(); tn.getWorldMatrix().decompose(undefined, wq, undefined);
-        const fq = new Quaternion(); b.getFinalMatrix().decompose(undefined, fq, undefined);
-        // Skinning matrix from _transformMatrices
-        let sq = "N/A"; let sv = "N/A";
-        const sk = result.skeleton as any;
-        if (sk._transformMatrices) {
-          const idx = b._index ?? sk.bones.indexOf(bone);
-          if (idx >= 0 && idx * 16 + 16 <= sk._transformMatrices.length) {
-            const sm = Matrix.FromArray(sk._transformMatrices, idx * 16);
-            const sqq = new Quaternion(); const svv = new Vector3();
-            sm.decompose(svv, sqq, undefined);
-            sq = `(${sqq.x.toFixed(4)},${sqq.y.toFixed(4)},${sqq.z.toFixed(4)},${sqq.w.toFixed(4)})`;
-            sv = `(${svv.x.toFixed(2)},${svv.y.toFixed(2)},${svv.z.toFixed(2)})`;
-          }
-        }
-        // Parent chain for bone
-        let par = ""; let p = bone.getParent(); while (p) { par = p.name + "→" + par; p = p.getParent(); }
-        console.log(`${name} invBind=(${ibq.x.toFixed(4)},${ibq.y.toFixed(4)},${ibq.z.toFixed(4)},${ibq.w.toFixed(4)}) tnLocal=(${tnq.x.toFixed(4)},${tnq.y.toFixed(4)},${tnq.z.toFixed(4)},${tnq.w.toFixed(4)}) tnWorld=(${wq.x.toFixed(4)},${wq.y.toFixed(4)},${wq.z.toFixed(4)},${wq.w.toFixed(4)}) boneFinal=(${fq.x.toFixed(4)},${fq.y.toFixed(4)},${fq.z.toFixed(4)},${fq.w.toFixed(4)}) skinMat=${sq} pos=${sv} parent=[${par}]`);
-      }
-    }
-  });
-}
-
-function setupCamera(scene: Scene): void {
-  const cam = new FreeCamera("cam", new Vector3(0, 155, -950), scene);
-  cam.setTarget(Vector3.Zero());
-  cam.minZ = 10;
-  cam.maxZ = 5000;
-  cam.fov = 30 * Math.PI / 180;
-  scene.activeCamera = cam;
-}
-
-function setupLights(scene: Scene): void {
-  new HemisphericLight("hemi", new Vector3(0, 1, 0), scene);
-  const dir = new DirectionalLight("dir", new Vector3(-0.5, -1, -0.3), scene);
-  dir.position.set(300, 500, 300);
+  console.log("Bind pose applied. Bones set:", Object.keys(BIND_POSE).length);
 }

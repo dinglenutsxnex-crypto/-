@@ -1,10 +1,40 @@
-import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode, Quaternion, Matrix } from "@babylonjs/core";
+import { Vector3, FreeCamera, HemisphericLight, DirectionalLight, Scene, Bone, TransformNode, Quaternion, Matrix, Skeleton } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { SceneManager } from "../core/SceneManager";
 import { Gender } from "../sf3DTO/Gender";
 import { EquipmentType } from "./Items/EquipmentType";
 import { assembleCharacter } from "./GameModels/ModelComponents";
 import { AnimationBinaries } from "./Moves/AnimationBinaries";
+
+// glTF spec: jointMatrix = nodeWorldMatrix * inverseBindMatrix
+// BabylonJS computes invBind * finalMatrix — swap to finalMatrix * invBind
+if (!(Skeleton.prototype as any)._fixPatched) {
+  const orig = (Skeleton.prototype as any)._computeTransformMatrices as Function;
+  (Skeleton.prototype as any)._computeTransformMatrices = function (targetMatrix: Float32Array, initialSkinMatrix: Matrix | null) {
+    this.onBeforeComputeObservable.notifyObservers(this);
+    const bones = this.bones;
+    for (let i = 0; i < bones.length; i++) {
+      const bone = bones[i];
+      bone._childUpdateId++;
+      const p = bone.getParent();
+      if (p) {
+        bone.getLocalMatrix().multiplyToRef(p.getFinalMatrix(), bone.getFinalMatrix());
+      } else {
+        if (initialSkinMatrix) {
+          bone.getLocalMatrix().multiplyToRef(initialSkinMatrix, bone.getFinalMatrix());
+        } else {
+          bone.getFinalMatrix().copyFrom(bone.getLocalMatrix());
+        }
+      }
+      if (bone._index !== -1) {
+        const mi = bone._index === null ? i : bone._index;
+        bone.getFinalMatrix().multiplyToArray(bone.getAbsoluteInverseBindMatrix(), targetMatrix, mi * 16);
+      }
+    }
+    this._identity.copyToArray(targetMatrix, bones.length * 16);
+  };
+  (Skeleton.prototype as any)._fixPatched = true;
+}
 
 async function loadBytes(path: string): Promise<Uint8Array> {
   const res = await fetch(path);

@@ -10,7 +10,7 @@
  *   5. Run InitBattle
  */
 
-import { Scene, SceneLoader, AbstractMesh } from "@babylonjs/core";
+import { Scene, SceneLoader, AbstractMesh, Vector3 } from "@babylonjs/core";
 import { BattleController } from "./BattleController";
 import { BattleCamera } from "./BattleCamera";
 import { EffectsManager } from "./EffectsManager";
@@ -43,7 +43,7 @@ export class SceneInitializer {
   private _getInitObjects(): ISceneInitializationObject[] {
     return [
       BattleController.instance,
-      BattleCamera.instance,
+      { initialize: () => BattleCamera.instance.initialize(new Vector3(0, 0, 0)), disposePreviousLocation: () => BattleCamera.instance.disposePreviousLocation() },
       EffectsManager.instance,
       // ModelsManager, BattleInterface – added when implemented
     ];

@@ -127,11 +127,12 @@ export async function initializeScene(mgr: SceneManager): Promise<void> {
       const t = frame.bonesAnimation[i];
       tn.position = t.position;
 
-      // Remap animation rotation from Unity local space → GLB local space
+      // Pelvis has a 90° Y rest rotation baked into the GLB from Unity export.
+      // All other bones are near-identity so overwriting is fine.
+      // For pelvis we must preserve the GLB rest: finalRot = glbRest * animRot
       const rest = glbRestRot.get(boneName);
-      const restInv = glbRestRotInv.get(boneName);
-      if (rest && restInv) {
-        tn.rotationQuaternion = rest.multiply(t.rotation).multiply(restInv);
+      if (boneName === "pelvis" && rest) {
+        tn.rotationQuaternion = rest.multiply(t.rotation);
       } else {
         tn.rotationQuaternion = t.rotation;
       }

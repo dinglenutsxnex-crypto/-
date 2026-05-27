@@ -12,7 +12,7 @@ export class LoadScreen {
     if (bg) {
       bg.style.background = "url('assets/textures/ui/loadingGame.png') center / cover no-repeat #000";
     }
-    el.style.removeProperty("display");
+    el.style.display = "flex";
     el.classList.add("active");
     el.style.opacity = "1";
     el.style.pointerEvents = "all";
@@ -63,6 +63,7 @@ export class LoadScreen {
   static show(): void {
     if (!this._el) this.mount();
     this._visible = true;
+    this._el!.style.display = "flex";
     this._el!.style.opacity = "1";
     this._el!.style.pointerEvents = "all";
   }
@@ -73,7 +74,10 @@ export class LoadScreen {
     this._el.style.opacity = "0";
     this._el.style.pointerEvents = "none";
     setTimeout(() => {
-      this._el?.classList.remove("active");
+      if (this._el) {
+        this._el.style.display = "none";
+        this._el.classList.remove("active");
+      }
       this._el = null;
       this._tipEl = null;
       onDone?.();

@@ -15,6 +15,108 @@ html, body {
   touch-action: none;
 }
 
+/* ── Enter Point Screen ─────────────────────── */
+
+#enter-point {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+
+#enter-point.active {
+  display: block;
+}
+
+#ep-bg {
+  position: absolute;
+  inset: 0;
+  background: url('assets/textures/ui/dojomenu/dojo_menu.png') center / cover no-repeat #1a1a2e;
+}
+
+#ep-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+}
+
+#ep-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 8px;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+#ep-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#ep-title {
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  letter-spacing: 4px;
+}
+
+#ep-bottom {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 8px;
+}
+
+.ep-btn {
+  flex: 1;
+  max-width: 140px;
+  padding: 12px 8px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #e8a838, #c47a1a);
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.ep-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(196,122,26,0.5);
+}
+
+.ep-btn:active {
+  transform: translateY(0);
+}
+
+#ep-version {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  z-index: 2;
+  color: rgba(255,255,255,0.6);
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
 /* ── Loading Screen ─────────────────────────── */
 
 #load-screen {

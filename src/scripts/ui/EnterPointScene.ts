@@ -1,6 +1,7 @@
 import { Vector3 } from "@babylonjs/core";
 import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera";
 import { SceneManager, SceneConfig, SceneNode } from "../core/SceneManager";
+import { UserDataController } from "../SF3/UserData/UserDataController";
 
 function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
   const camComponent = node.components?.find((c: { type: string }) => c.type === "camera");
@@ -33,7 +34,7 @@ function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
 export class EnterPointScene {
   private _mgr: SceneManager;
   private _config: SceneConfig;
-  private _rootEl: HTMLDivElement | null = null;
+  private _el: HTMLDivElement | null = null;
 
   constructor(mgr: SceneManager, config: SceneConfig) {
     this._mgr = mgr;
@@ -41,8 +42,7 @@ export class EnterPointScene {
   }
 
   mount(): void {
-    console.log("[EnterPointScene] mounting hierarchy:", 
-      this._config.hierarchy?.map(h => h.name));
+    console.log("[EnterPointScene] mounting UI");
 
     if (this._config.hierarchy) {
       for (const node of this._config.hierarchy) {
@@ -50,38 +50,34 @@ export class EnterPointScene {
         if (node.components?.some((c: { type: string }) => c.type === "camera")) {
           createBabylonCamera(this._mgr, node);
         }
-        this._mountRecursive(node);
       }
     }
-
-    const root = document.createElement("div");
-    root.id = "enter-point-ui";
-    Object.assign(root.style, {
-      position: "fixed", inset: "0", zIndex: "100",
-      pointerEvents: "none",
-    });
-    document.body.appendChild(root);
-    this._rootEl = root;
 
     if (!this._mgr.scene.activeCamera) {
-      const fallbackCam = new FreeCamera("fallback", new Vector3(0, 0, -10), this._mgr.scene);
-      this._mgr.scene.activeCamera = fallbackCam;
+      new FreeCamera("fallback", new Vector3(0, 0, -10), this._mgr.scene);
     }
-  }
 
-  private _mountRecursive(node: SceneNode): void {
-    if (!node.isActive || !node.children) return;
-    for (const child of node.children) {
-      if (!child.isActive) continue;
-        if (child.components?.some((c: { type: string }) => c.type === "camera")) {
-        createBabylonCamera(this._mgr, child);
-      }
-      this._mountRecursive(child);
-    }
+    const el = document.getElementById("enter-point") as HTMLDivElement | null;
+    if (!el) return;
+    el.style.display = "block";
+    el.classList.add("active");
+    this._el = el;
+
+    const player = UserDataController.player;
+    const nameEl = document.getElementById("ep-player-name");
+    const lvlEl = document.getElementById("ep-player-level");
+    if (nameEl) nameEl.textContent = player?.Name ?? "Player";
+    if (lvlEl) lvlEl.textContent = player ? `Lv.${player.Level}` : "";
+
+    const verEl = document.getElementById("ep-version");
+    if (verEl) verEl.textContent = "BETA VERSION (CBT#1f2)";
   }
 
   unmount(): void {
-    this._rootEl?.remove();
-    this._rootEl = null;
+    if (this._el) {
+      this._el.style.display = "none";
+      this._el.classList.remove("active");
+    }
+    this._el = null;
   }
 }

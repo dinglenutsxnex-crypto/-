@@ -36,7 +36,7 @@ html, body {
 #load-screen-bg {
   position: absolute;
   inset: 0;
-  background: url('assets/textures/ui/loadingGame.png') center / cover no-repeat #000;
+  background: #000;
 }
 
 #load-screen-spinner {

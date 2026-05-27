@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -22,6 +23,10 @@ module.exports = {
       "@assets":  path.resolve(__dirname, "src/assets"),
       "@plugins": path.resolve(__dirname, "src/plugins"),
     },
+    fallback: {
+      "fs": false,
+      "path": false,
+    },
   },
 
   module: {
@@ -35,12 +40,20 @@ module.exports = {
         test: /\.css$/,
         use: isDev
           ? ["style-loader", "css-loader"]
-          : [MiniCssExtractPlugin.loader, "css-loader"],
+          : [
+              { loader: MiniCssExtractPlugin.loader, options: { publicPath: "../" } },
+              { loader: "css-loader", options: { url: false } },
+            ],
       },
     ],
   },
 
   plugins: [
+    new webpack.NormalModuleReplacementPlugin(
+      /@babylonjs\/core\/Bones\/skeleton\.js/,
+      path.resolve(__dirname, "src/stubs/babylon-skeleton.js"),
+    ),
+
     new HtmlWebpackPlugin({
       template: "./src/ui/index.html",
       filename: "index.html",

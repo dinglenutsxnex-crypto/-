@@ -8,6 +8,10 @@ export class LoadScreen {
     if (this._el) return;
     const el = document.getElementById("load-screen") as HTMLDivElement | null;
     if (!el) return;
+    const bg = document.getElementById("load-screen-bg") as HTMLElement | null;
+    if (bg) {
+      bg.style.background = "url('assets/textures/ui/loadingGame.png') center / cover no-repeat #000";
+    }
     el.style.removeProperty("display");
     el.classList.add("active");
     el.style.opacity = "1";

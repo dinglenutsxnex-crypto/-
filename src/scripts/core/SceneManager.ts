@@ -1,6 +1,17 @@
 import { Engine, Scene, Color3, Color4, Vector3, AbstractMesh } from "@babylonjs/core";
 import "@babylonjs/loaders";
 
+export interface SceneNode {
+  name: string;
+  isActive?: number;
+  layer?: number;
+  tag?: string;
+  transform?: { position: { x: number; y: number; z?: number }; rotation?: any; scale?: any };
+  components?: Array<{ type: string; data?: any }>;
+  children?: SceneNode[];
+  [key: string]: any;
+}
+
 export interface SceneConfig {
   renderSettings?: {
     fog: number;

@@ -1,0 +1,172 @@
+/* Home Menu — slide-out navigation */
+
+#home-menu {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+}
+
+/* Home Button — top-left toggle */
+#home-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 190px;
+  height: 138px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 210;
+}
+
+.home-icon {
+  width: 50px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+
+#home-button:hover .home-icon {
+  opacity: 1;
+}
+
+/* Screen background — click to close */
+#home-screen-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  cursor: pointer;
+  display: none;
+}
+
+/* Backplane — dark overlay */
+#home-backplane {
+  position: absolute;
+  inset: 0;
+  background: #1C1C1C;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Sub-menu panel — slides in from left */
+#home-sub-menu {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 842px;
+  max-width: 85vw;
+  pointer-events: auto;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+  z-index: 205;
+}
+
+/* Open state — applied via JS class */
+#home-menu.open #home-sub-menu {
+  transform: translateX(0);
+}
+
+#home-menu.open #home-backplane {
+  opacity: 0.5;
+  pointer-events: auto;
+}
+
+#home-menu.open #home-screen-background {
+  display: block;
+}
+
+/* Buttons holder */
+#home-buttons-holder {
+  position: absolute;
+  top: 138px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 24px 20px;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+/* Menu button */
+.menu-btn {
+  position: relative;
+  width: 152px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.57;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+.menu-btn.selected,
+.menu-btn:hover {
+  opacity: 1;
+}
+
+.menu-btn-bg {
+  position: absolute;
+  inset: 0;
+  background: #141414;
+  border-radius: 2px;
+}
+
+.menu-btn-icon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.menu-btn-label {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* Badge — red circle with number */
+.menu-btn-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.badge-circle {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.badge-text {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 1;
+  line-height: 30px;
+  text-align: center;
+  min-width: 30px;
+}

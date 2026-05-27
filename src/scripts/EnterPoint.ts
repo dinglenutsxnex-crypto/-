@@ -34,6 +34,6 @@ export class EnterPoint {
     const config = await this._mgr.loadSceneJSON("assets/scenes/enterPoint.scene.json");
     this._mgr.applyConfig(config);
     const epScene = new EnterPointScene(this._mgr, config);
-    epScene.mount();
+    await epScene.mount();
   }
 }

@@ -40,9 +40,9 @@ interface ScaledSprite {
   h: number;
 }
 
-const MENU_ICON_SIZE = { w: 60, h: 60 };
+const MENU_ICON_SIZE = { w: 48, h: 48 };
 const HOME_ICON_SIZE = { w: 50, h: 32 };
-const BADGE_ICON_SIZE = { w: 30, h: 30 };
+const BADGE_ICON_SIZE = { w: 24, h: 24 };
 
 const SCALED_SPRITES: Record<string, ScaledSprite> = {
   "sp-menu_icon bg-only": { name: "menu_icon", ...HOME_ICON_SIZE },

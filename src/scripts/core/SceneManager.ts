@@ -15,7 +15,9 @@ export interface SceneConfig {
   };
   hierarchy?: Array<{
     name: string;
+    isActive?: number;
     children: any[];
+    [key: string]: any;
   }>;
 }
 

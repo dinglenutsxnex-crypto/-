@@ -20,6 +20,7 @@ export class GameLoad {
   private _showLogo(): void {
     const el = document.getElementById("nekki-logo");
     if (!el) return;
+    el.style.removeProperty("display");
     el.classList.add("active");
     requestAnimationFrame(() => { el.style.opacity = "1"; });
     this._logoEl = el;

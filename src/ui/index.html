@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SF3 Web</title>
+  <style>
+    html,body,#render-canvas{width:100%;height:100%;margin:0;padding:0;overflow:hidden;display:block;background:#000}
+    #render-canvas{position:fixed;inset:0;touch-action:none}
+    #load-screen{position:fixed;inset:0;z-index:9999;display:none;opacity:1}
+    #load-screen.active{display:flex;flex-direction:column;align-items:center;justify-content:center}
+    #load-screen-bg{position:absolute;inset:0;background:#000}
+    #load-screen-spinner{position:relative;z-index:1;width:48px;height:48px;border:4px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%}
+    #load-screen-tip{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);z-index:1}
+    #nekki-logo{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;pointer-events:none;opacity:0}
+    #nekki-logo.active{display:block;opacity:1}
+    #nekki-logo img{width:180px;display:block}
+    @keyframes ls-spin{to{transform:rotate(360deg)}}
+  </style>
 </head>
 <body>
   <canvas id="render-canvas"></canvas>

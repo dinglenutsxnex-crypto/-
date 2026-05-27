@@ -66,26 +66,4 @@ html, body {
   z-index: 1;
 }
 
-/* ── Nekki Logo (GameLoad) ──────────────────── */
 
-#nekki-logo {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10000;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-#nekki-logo.active {
-  display: block;
-  opacity: 1;
-}
-
-#nekki-logo img {
-  width: 180px;
-  display: block;
-}

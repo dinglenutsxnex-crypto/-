@@ -4,7 +4,7 @@ import { EnterPoint } from "./EnterPoint";
 
 export class GameLoad {
   private _mgr: SceneManager;
-  private _logoEl: HTMLImageElement | null = null;
+  private _logoEl: HTMLElement | null = null;
 
   constructor(mgr: SceneManager) {
     this._mgr = mgr;
@@ -18,25 +18,21 @@ export class GameLoad {
   }
 
   private _showLogo(): void {
-    const img = document.createElement("img");
-    img.src = "assets/textures/ui/logSF3.png";
-    img.id = "nekki-logo";
-    Object.assign(img.style, {
-      position: "fixed", top: "50%", left: "50%",
-      transform: "translate(-50%, -50%)",
-      width: "180px", zIndex: "10000", pointerEvents: "none",
-      opacity: "0", transition: "opacity 0.3s ease",
-    });
-    document.body.appendChild(img);
-    this._logoEl = img;
-    requestAnimationFrame(() => { img.style.opacity = "1"; });
+    const el = document.getElementById("nekki-logo");
+    if (!el) return;
+    el.classList.add("active");
+    requestAnimationFrame(() => { el.style.opacity = "1"; });
+    this._logoEl = el;
   }
 
   private _hideLogo(): void {
     if (!this._logoEl) return;
     const el = this._logoEl;
     el.style.opacity = "0";
-    setTimeout(() => el.remove(), 320);
+    setTimeout(() => {
+      el.classList.remove("active");
+      el.style.opacity = "0";
+    }, 320);
     this._logoEl = null;
   }
 }

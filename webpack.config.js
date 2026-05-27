@@ -63,6 +63,7 @@ module.exports = {
       patterns: [
         { from: "src/assets", to: "assets" },
         { from: "src/plugins", to: "plugins" },
+        { from: "src/ui/screens", to: "ui/screens" },
       ],
     }),
 

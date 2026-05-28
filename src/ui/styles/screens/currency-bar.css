@@ -1,148 +1,149 @@
+/* ═══════════════════════════════════════════════
+   Currency Bar  —  top strip, 1280 × 108 px (design coords)
+   Unity CurrencyUI: bonusLbl / coinsLbl / shadowsLbl / level / userName / levelProgress
+   ═══════════════════════════════════════════════ */
+
 #currency-bar {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 138px;
+  height: 108px;
   background: #0B0B0C;
   display: flex;
   flex-direction: row;
   align-items: center;
-  z-index: 100;
   pointer-events: auto;
+  z-index: 100;
+  /* subtle bottom separator */
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
+/* ── Hamburger button ── */
 #home-button {
-  width: 190px;
-  height: 138px;
+  width: 160px;
+  height: 108px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  pointer-events: auto;
+  opacity: 0.8;
+  transition: opacity 0.15s, background 0.15s;
+}
+#home-button:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.05);
+}
+
+/* sp-menu_icon is applied by AtlasManager — just ensure flex doesn't squish it */
+#home-button .sp-menu_icon {
   flex-shrink: 0;
 }
 
-.home-icon {
-  width: 50px;
-  height: 32px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.85;
-  transition: opacity 0.15s;
-}
-
-#home-button:hover .home-icon {
-  opacity: 1;
-}
-
+/* ── Player info block ── */
 #currency-player-info {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 138px;
-  gap: 12px;
+  gap: 10px;
   flex-shrink: 0;
+  padding-right: 10px;
 }
 
 #currency-name {
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 600;
   color: #fff;
   white-space: nowrap;
+  letter-spacing: 0.5px;
   line-height: 1;
 }
 
 #currency-level {
   font-family: sans-serif;
-  font-size: 18px;
-  color: #877832;
+  font-size: 17px;
+  color: #C8A83C;
   white-space: nowrap;
   line-height: 1;
+  min-width: 20px;
 }
 
-#currency-progress {
+/* XP bar — uses Currency atlas progress_empty / progress_full sprites */
+#currency-xp-bar {
   position: relative;
-  width: 160px;
-  height: 16px;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.progress-bg {
-  position: absolute;
-  inset: 0;
-  background: #737373;
-  border-radius: 2px;
-}
-
-.progress-fill {
-  position: absolute;
-  inset: 0;
-  background: #D5D5D5;
-  border-radius: 2px;
-  transition: width 0.3s ease;
-}
-
-#currency-chat {
-  width: 36px;
-  height: 36px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  opacity: 0.8;
+  width: 180px;
+  height: 19px;
   flex-shrink: 0;
 }
 
-#currency-chat:hover {
-  opacity: 1;
+.xp-bg {
+  position: absolute;
+  top: 0; left: 0;
+  /* sprite size set by AtlasManager; we constrain display */
+  width: 180px !important;
+  height: 19px !important;
+  background-size: 180px 19px !important;
 }
 
+.xp-fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 19px !important;
+  /* width overridden by JS to clip fill amount */
+  overflow: hidden;
+  transition: width 0.4s ease;
+}
+
+/* chat icon */
+#currency-chat {
+  flex-shrink: 0;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.15s;
+}
+#currency-chat:hover { opacity: 1; }
+
+/* ── Currency pills (right-aligned) ── */
 #currency-coins {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: auto;
-  height: 138px;
-  padding-right: 20px;
-  gap: 8px;
+  padding-right: 24px;
+  gap: 6px;
+  height: 108px;
 }
 
 .currency-item {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 4px;
-  height: 100px;
-  padding: 0 8px;
+  gap: 5px;
+  padding: 0 10px;
+  height: 68px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 2px;
 }
 
 .currency-icon {
-  width: 30px;
-  height: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   flex-shrink: 0;
 }
 
-.currency-btn-add {
-  width: 18px;
-  height: 18px;
-  background-size: contain;
-  background-repeat: no-repeat;
+.currency-add {
+  flex-shrink: 0;
   cursor: pointer;
-  opacity: 0.6;
-  flex-shrink: 0;
+  opacity: 0.55;
+  transition: opacity 0.15s;
 }
-
-.currency-btn-add:hover {
-  opacity: 1;
-}
+.currency-add:hover { opacity: 1; }
 
 .currency-value {
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: #fff;
   white-space: nowrap;
   line-height: 1;
+  min-width: 40px;
 }
+
+.pointer { cursor: pointer; }

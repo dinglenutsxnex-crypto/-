@@ -1,30 +1,37 @@
 <div id="currency-bar">
-  <div id="home-button">
-    <div class="home-icon sp-menu_icon bg-only"></div>
+
+  <!-- Hamburger / home button -->
+  <div id="home-button" class="pointer">
+    <div class="sp-menu_icon"></div>
   </div>
+
+  <!-- Player info: name · level · XP bar · chat -->
   <div id="currency-player-info">
     <span id="currency-name">PLAYER</span>
     <span id="currency-level">2</span>
-    <div id="currency-progress">
-      <div class="progress-bg"></div>
-      <div class="progress-fill" style="width:87%"></div>
+    <div id="currency-xp-bar">
+      <div class="sp-progress_empty xp-bg"></div>
+      <div class="sp-progress_full xp-fill" id="currency-xp-fill"></div>
     </div>
-    <div id="currency-chat" class="sp-chat"></div>
+    <div class="sp-chat" id="currency-chat"></div>
   </div>
+
+  <!-- Currency: bonus · coin · shadow -->
   <div id="currency-coins">
     <div class="currency-item bonus">
-      <div class="currency-icon sp-bonus"></div>
-      <div class="currency-btn-add sp-cross"></div>
-      <span class="currency-value">400</span>
+      <div class="sp-bonus currency-icon"></div>
+      <div class="sp-cross currency-add pointer"></div>
+      <span class="currency-value" id="val-bonus">400</span>
     </div>
     <div class="currency-item coin">
-      <div class="currency-icon sp-coin"></div>
-      <div class="currency-btn-add sp-cross"></div>
-      <span class="currency-value">269</span>
+      <div class="sp-coin currency-icon"></div>
+      <div class="sp-cross currency-add pointer"></div>
+      <span class="currency-value" id="val-coin">269</span>
     </div>
     <div class="currency-item shadow">
-      <div class="currency-icon sp-shadow"></div>
-      <span class="currency-value">0</span>
+      <div class="sp-shadow_currency currency-icon"></div>
+      <span class="currency-value" id="val-shadow">0</span>
     </div>
   </div>
+
 </div>

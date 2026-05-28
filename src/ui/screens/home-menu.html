@@ -1,32 +1,47 @@
 <div id="home-menu">
-  <div id="home-screen-background"></div>
+
+  <!-- Semi-transparent backplane behind the slide panel -->
   <div id="home-backplane"></div>
+  <!-- Click outside to close -->
+  <div id="home-screen-background"></div>
+
+  <!-- Slide-in panel -->
   <div id="home-sub-menu">
+    <!-- top portion matches the currency bar height so it doesn't overlap -->
+    <div id="home-menu-header"></div>
+
     <div id="home-buttons-holder">
+
       <div class="menu-btn" data-menu="map">
         <div class="menu-btn-bg"></div>
-        <div class="menu-btn-icon sp-map_icon bg-only"></div>
+        <div class="sp-map_icon menu-btn-icon"></div>
         <div class="menu-btn-badge">
-          <div class="badge-circle sp-circle bg-only"></div>
+          <div class="sp-circle menu-badge-circle"></div>
           <span class="badge-text">20</span>
         </div>
       </div>
+
       <div class="menu-btn" data-menu="shop">
         <div class="menu-btn-bg"></div>
-        <div class="menu-btn-icon sp-shop_icon bg-only"></div>
+        <div class="sp-shop_icon menu-btn-icon"></div>
       </div>
+
       <div class="menu-btn" data-menu="dojo">
         <div class="menu-btn-bg"></div>
-        <div class="menu-btn-icon sp-dojo_icon bg-only"></div>
+        <div class="sp-dojo_icon menu-btn-icon"></div>
       </div>
+
       <div class="menu-btn" data-menu="inventory">
         <div class="menu-btn-bg"></div>
-        <div class="menu-btn-icon sp-inventory_icon bg-only"></div>
+        <div class="sp-inventory_icon menu-btn-icon"></div>
       </div>
+
       <div class="menu-btn" data-menu="boosterpacks">
         <div class="menu-btn-bg"></div>
         <span class="menu-btn-label">BOOSTERS</span>
       </div>
+
     </div>
   </div>
+
 </div>

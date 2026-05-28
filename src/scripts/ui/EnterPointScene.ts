@@ -99,6 +99,9 @@ export class EnterPointScene {
     this._wireHomeMenu();
 
     console.log("[EnterPointScene] mounted");
+
+    // Auto-start in training
+    this._launchDojo();
   }
 
   // ─────────────────────────────────────────────────────────────────────────

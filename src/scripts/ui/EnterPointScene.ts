@@ -2,21 +2,26 @@ import { Vector3 }    from "@babylonjs/core";
 import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera";
 import { SceneManager, SceneConfig, SceneNode } from "../core/SceneManager";
 import { AtlasManager }       from "./AtlasManager";
+import { FightHUD }           from "./FightHUD";
+import { LoadScreen }         from "../LoadScreen";
 import { UserDataController } from "../SF3/UserData/UserDataController";
+import { FightScene as BattleFightScene } from "../battle/FightScene";
+import type { IFightInfo }    from "../FightController";
 import "../../ui/styles/screens/currency-bar.css";
 import "../../ui/styles/screens/home-menu.css";
+import "../../ui/styles/screens/fight-hud.css";
 
 interface SpriteSpec { w: number; h: number; stretch?: boolean; }
 
 const SPRITE_SIZES: Record<string, SpriteSpec> = {
   // DojoMenu atlas
   "menu_icon":      { w: 44,  h: 28  },
-  "dojo_icon":      { w: 52,  h: 40  },   // tent = TRAINING
-  "shop_icon":      { w: 46,  h: 52  },   // bag = INVENTORY
-  "map_icon":       { w: 56,  h: 40  },   // mountains = MAP
-  "inventory_icon": { w: 52,  h: 52  },   // coin-ring = STORE
-  "booster_icon":   { w: 42,  h: 56  },   // cards = BOOSTERS
-  "settings_icon":  { w: 52,  h: 52  },   // gear = SETTINGS
+  "dojo_icon":      { w: 52,  h: 40  },
+  "shop_icon":      { w: 46,  h: 52  },
+  "map_icon":       { w: 56,  h: 40  },
+  "inventory_icon": { w: 52,  h: 52  },
+  "booster_icon":   { w: 42,  h: 56  },
+  "settings_icon":  { w: 52,  h: 52  },
 
   // Currency atlas
   "chat":           { w: 36,  h: 24  },
@@ -30,8 +35,6 @@ const SPRITE_SIZES: Record<string, SpriteSpec> = {
   "shadow_currency":{ w: 34,  h: 34  },
   "circle":         { w: 24,  h: 24  },
 };
-
-
 
 function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
   const cam = node.components?.find((c: { type: string }) => c.type === "camera");
@@ -56,6 +59,9 @@ export class EnterPointScene {
   private _config: SceneConfig;
   private _root:   HTMLDivElement | null = null;
   private _atlas:  AtlasManager;
+  private _hud:    FightHUD | null = null;
+  private _fightScene: BattleFightScene | null = null;
+  private _inFight = false;
 
   constructor(mgr: SceneManager, config: SceneConfig) {
     this._mgr    = mgr;
@@ -86,6 +92,7 @@ export class EnterPointScene {
 
     await this._inject("screens/currency-bar.html");
     await this._inject("screens/home-menu.html");
+    await this._inject("screens/fight-hud.html");
 
     this._applySprites();
     this._injectPlayerData();
@@ -93,6 +100,79 @@ export class EnterPointScene {
 
     console.log("[EnterPointScene] mounted");
   }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  //  Fight launch (mirrors DojoHolderModule + FightHolderModule)
+  // ─────────────────────────────────────────────────────────────────────────
+
+  private async _launchDojo(): Promise<void> {
+    if (this._inFight) return;
+    this._inFight = true;
+
+    // Show loading screen during scene bootstrap
+    LoadScreen.show();
+
+    // Build a minimal training FightInfo (no server needed)
+    const trainingFightInfo: IFightInfo = {
+      battleID:    "training_dojo",
+      fightID:     "training_0",
+      roundsToWin: 2,
+      roundsToLose:2,
+    };
+
+    try {
+      // Dispose previous fight scene if any
+      this._fightScene?.dispose();
+
+      // Initialize the fight scene (loads location + models + camera + BattleController)
+      this._fightScene = new BattleFightScene(this._mgr.scene);
+      await this._fightScene.initialize("dojo_Legion", trainingFightInfo);
+
+      // Hide currency bar while in fight (mirrors CurrencyUI.SetActive(true) on dojo)
+      const currBar = document.getElementById("currency-bar");
+      if (currBar) currBar.style.display = "none";
+
+      LoadScreen.hide(() => {
+        // Activate fight HUD and run the round-start sequence
+        this._activateFightHUD(trainingFightInfo);
+      });
+
+    } catch (err) {
+      console.error("[EnterPointScene] Fight launch failed:", err);
+      LoadScreen.hide();
+      this._inFight = false;
+    }
+  }
+
+  private _activateFightHUD(info: IFightInfo): void {
+    if (!this._root) return;
+
+    // Create HUD controller and bind to DOM
+    this._hud = new FightHUD();
+    this._hud.bind(this._root);
+
+    // Set names from user data
+    const player = UserDataController.player;
+    this._hud.setPlayerName(player?.Name ?? "PLAYER");
+    this._hud.setEnemyName("ENEMY");
+
+    // Init round state
+    this._hud.initRound(1, info.roundsToWin, 99);
+    this._hud.show();
+
+    // ── Sequence: ROUND 1 → FIGHT! → start timer ──
+    // Mirrors BattleInterface.ShowStartRound + ShowStartRoundFight
+    this._hud.showRoundStart(() => {
+      this._hud!.showFightStart(() => {
+        this._hud!.startTimer();
+        console.log("[EnterPointScene] Fight active – RoundFightStart");
+      });
+    });
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  //  Private helpers (unchanged from original)
+  // ─────────────────────────────────────────────────────────────────────────
 
   private async _inject(path: string): Promise<void> {
     try {
@@ -157,8 +237,14 @@ export class EnterPointScene {
       btn.addEventListener("click", e => {
         e.stopPropagation();
         const menu = btn.dataset.menu ?? "";
-        if (menu) console.log(`[SlideMenu] OpenMenu("${menu}")`);
         close();
+
+        // ── Route menu buttons ──
+        if (menu === "dojo") {
+          this._launchDojo();
+        } else {
+          console.log(`[SlideMenu] OpenMenu("${menu}") – not yet implemented`);
+        }
       });
       btn.addEventListener("mouseenter", () => { this._deselectMenuBtns(); btn.classList.add("selected"); });
       btn.addEventListener("mouseleave", () => btn.classList.remove("selected"));

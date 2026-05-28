@@ -1,0 +1,223 @@
+/* ══ Fight HUD ════════════════════════════════════════════════════════════ */
+
+#fight-hud, #fight-hud * {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#fight-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  display: none;
+}
+
+#fight-hud.active { display: block; }
+
+/* ── Sides ── */
+.hud-side {
+  position: absolute;
+  top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hud-left  { left: 12px;  width: 480px; }
+.hud-right { right: 12px; width: 480px; }
+
+/* ── Name ── */
+.hud-name {
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+.hud-right .hud-name { text-align: right; }
+
+/* ── HP Bar ── */
+.hud-bar-wrap {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.hud-bar-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* The fade (orange/yellow behind) */
+.hud-bar-fade {
+  position: absolute;
+  top: 0; left: 0; height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #c87000, #ffaa00);
+  transform-origin: left center;
+  transition: transform 0.6s ease;
+}
+.hud-bar-wrap--right .hud-bar-fade {
+  transform-origin: right center;
+}
+
+/* The main HP fill */
+.hud-bar-fill {
+  position: absolute;
+  top: 0; left: 0; height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transition: transform 0.15s ease;
+}
+.hud-bar-fill--player {
+  background: linear-gradient(180deg, #6ade4f 0%, #2eaa18 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+.hud-bar-fill--enemy {
+  background: linear-gradient(180deg, #de4f4f 0%, #aa1818 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* Right-side bars grow from right */
+.hud-bar-wrap--right .hud-bar-fill { transform-origin: right center; }
+
+/* ── Round dots ── */
+.hud-rounds {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  margin-top: 2px;
+}
+.hud-rounds--right { justify-content: flex-end; }
+
+.hud-round-dot {
+  width: 18px;
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: background 0.3s;
+}
+.hud-round-dot.won {
+  background: #ffe066;
+  border-color: #ffca00;
+  box-shadow: 0 0 4px rgba(255,200,0,0.6);
+}
+.hud-round-dot.lost {
+  background: rgba(255,80,80,0.6);
+  border-color: rgba(255,80,80,0.8);
+}
+
+/* ── Center ── */
+#hud-center {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  pointer-events: none;
+}
+
+#hud-timer {
+  font-family: sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.6);
+  letter-spacing: -1px;
+  min-width: 60px;
+  text-align: center;
+  padding-top: 4px;
+}
+
+/* ── Banner (ROUND 1 / FIGHT! / KO / etc) ── */
+.hud-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.hud-banner.hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  pointer-events: none;
+}
+
+#hud-banner-text {
+  font-family: sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 30px rgba(255,200,0,0.8),
+    0 3px 0 rgba(0,0,0,0.8),
+    0 0 60px rgba(255,160,0,0.4);
+  white-space: nowrap;
+}
+
+.hud-banner--fight #hud-banner-text {
+  color: #ffe066;
+  text-shadow:
+    0 0 40px rgba(255,220,0,1),
+    0 3px 0 rgba(0,0,0,0.9),
+    0 0 80px rgba(255,180,0,0.6);
+}
+.hud-banner--ko #hud-banner-text {
+  font-size: 96px;
+  color: #fff;
+  text-shadow:
+    0 0 40px rgba(255,60,0,0.9),
+    0 4px 0 rgba(0,0,0,0.9),
+    0 0 80px rgba(255,0,0,0.5);
+}
+
+/* ── Pause button ── */
+#hud-pause-btn {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 32px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+  margin-top: 72px;
+}
+#hud-pause-btn:hover { opacity: 1; }
+
+/* ── Entrance animation ── */
+@keyframes hud-slide-left {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes hud-slide-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+#fight-hud.active #hud-player { animation: hud-slide-left  0.4s ease forwards; }
+#fight-hud.active #hud-enemy  { animation: hud-slide-right 0.4s ease forwards; }

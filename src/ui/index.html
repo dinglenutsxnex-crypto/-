@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>SF3 Web</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: #000;
+      overflow: hidden;
+      /* Kill the blue tap flash on every element */
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
 
     #render-canvas {
       position: fixed; inset: 0;
@@ -15,12 +24,8 @@
     }
 
     /*
-      #ui-viewport is a 1280×720 design-space container.
-      The inline script below scales + positions it to fill the window
-      (like Unity Canvas Scaler "Scale With Screen Size").
-      By default it FILLS the screen (like cover), clipping the sides if
-      the aspect doesn't match — keeps the bar full-width on widescreen.
-      Change Math.max → Math.min if you want letterbox instead.
+      #ui-viewport: 1280×720 design canvas, scaled to fill the SAFE area.
+      We offset by the browser chrome (address bar) using dvh / safe-area-inset.
     */
     #ui-viewport {
       position: fixed;
@@ -29,6 +34,8 @@
       transform-origin: top left;
       pointer-events: none;
       z-index: 10;
+      /* prevent tap highlights inside */
+      -webkit-tap-highlight-color: transparent;
     }
 
     #enter-point-ui {
@@ -39,7 +46,7 @@
       height: 720px;
     }
 
-    /* Loading screen — lives outside the scaler, fills real screen */
+    /* Loading screen — real screen size, outside scaler */
     #load-screen {
       display: none;
       position: fixed; inset: 0; z-index: 9999; opacity: 1;
@@ -83,29 +90,34 @@
       var W = 1280, H = 720;
 
       function resize() {
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
+        // Use visualViewport if available — accounts for browser chrome (address bar)
+        var vvp = window.visualViewport;
+        var winW = vvp ? vvp.width  : window.innerWidth;
+        var winH = vvp ? vvp.height : window.innerHeight;
 
-        // "expand" mode: scale up to fill the screen on the dominant axis.
-        // This means 16:9 = perfect fill; wider = top/bottom bars fill fine;
-        // taller = left/right overflow hidden (like mobile portrait).
-        // Swap Math.max for Math.min to get letterbox instead.
+        // Fill mode: scales to cover — no black bars on the dominant axis
         var scale = Math.max(winW / W, winH / H);
 
-        // Centre the scaled canvas
         var offsetX = (winW - W * scale) / 2;
         var offsetY = (winH - H * scale) / 2;
+
+        // If visualViewport, also account for its offset (chrome bar scroll)
+        if (vvp) {
+          offsetX += vvp.offsetLeft;
+          offsetY += vvp.offsetTop;
+        }
 
         vp.style.transform = 'scale(' + scale + ')';
         vp.style.left = offsetX + 'px';
         vp.style.top  = offsetY + 'px';
-
-        // Also clip overflow so nothing bleeds outside the browser window
-        document.body.style.overflow = 'hidden';
       }
 
       resize();
       window.addEventListener('resize', resize);
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', resize);
+        window.visualViewport.addEventListener('scroll', resize);
+      }
     })();
   </script>
 </body>

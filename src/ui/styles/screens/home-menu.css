@@ -1,4 +1,12 @@
-/* SlideMenu — mirrors Unity SlideMenu.cs at 1280×720 design space */
+/* ══ SlideMenu ════════════════════════════════════════════════════
+   Matches real SF3: icon on left + label text on right, full-height panel
+   ════════════════════════════════════════════════════════════════= */
+
+#home-menu, #home-menu * {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
 
 #home-menu {
   position: absolute;
@@ -7,17 +15,15 @@
   z-index: 200;
 }
 
-/* Backplane fades to 0.5 opacity when open (Unity _backplaneAlpha = 0.5) */
 #home-backplane {
   position: absolute;
   inset: 0;
-  background: #1C1C1C;
+  background: #000;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
 
-/* Click-outside catcher */
 #home-screen-background {
   position: absolute;
   inset: 0;
@@ -30,90 +36,87 @@
 #home-sub-menu {
   position: absolute;
   top: 0; left: 0; bottom: 0;
-  width: 200px;
+  width: 320px;
   pointer-events: auto;
   transform: translateX(-100%);
-  transition: transform 0.2s ease;   /* _expandingMenuDuration = 0.2f */
+  transition: transform 0.2s ease;
   z-index: 210;
-  background: linear-gradient(to right, #0d0d0e 0%, #141416 80%, rgba(14,14,16,0.9) 100%);
-  border-right: 1px solid rgba(255,255,255,0.07);
+  background: #0d0d0e;
+  border-right: 1px solid rgba(255,255,255,0.08);
   overflow: hidden;
 }
 
-/* Open state */
 #home-menu.open #home-sub-menu          { transform: translateX(0); }
 #home-menu.open #home-backplane         { opacity: 0.5; pointer-events: auto; }
 #home-menu.open #home-screen-background { display: block; }
 
-/* Spacer — same height as currency bar so buttons start below it */
-#home-menu-header { height: 108px; }
+/* Spacer = currency bar height */
+#home-menu-header { height: 90px; }
 
-/* ── Buttons list ── */
+/* ── Button list ── */
 #home-buttons-holder {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 16px 0;
-  gap: 6px;
+  align-items: stretch;
   overflow-y: auto;
 }
 
-/* ── Button — opacity 0.57 deselected, 1.0 selected (SlideMenuButton) ── */
+/* ── Each button: full width row, icon left, label right ── */
 .menu-btn {
   position: relative;
-  width: 160px;
-  height: 90px;
+  height: 80px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
   cursor: pointer;
-  opacity: 0.57;
+  opacity: 0.6;
   transition: opacity 0.15s;
-  flex-shrink: 0;
-  border-radius: 3px;
-  /* Extra padding so sprites don't clip against edge */
-  padding: 8px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
+.menu-btn:last-child { border-bottom: none; }
 .menu-btn.selected,
-.menu-btn:hover { opacity: 1; }
+.menu-btn:hover  { opacity: 1; background: rgba(255,255,255,0.04); }
+.menu-btn:active { opacity: 1; background: rgba(255,255,255,0.06); }
 
-.menu-btn-bg {
-  position: absolute;
-  inset: 0;
-  background: #141414;
-  border-radius: 3px;
-  border: 1px solid rgba(255,255,255,0.05);
+.menu-btn-bg { display: none; } /* not needed — plain bg from parent */
+
+/* Icon + label in a flex row */
+.menu-btn-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  padding: 0 28px;
+  width: 100%;
+  position: relative;
 }
 
-/* Icon sprite — AtlasManager sets width/height, we just need it centered */
 .menu-btn-icon {
-  position: relative;
-  /* no fixed w/h here — AtlasManager sets those */
+  flex-shrink: 0;
+  /* width/height set by AtlasManager */
 }
 
 .menu-btn-label {
-  position: relative;
   font-family: sans-serif;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   color: #fff;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  line-height: 1;
 }
 
 /* ── Badge ── */
 .menu-btn-badge {
   position: absolute;
-  top: 4px; right: 4px;
-  width: 28px; height: 28px;
+  top: 8px; left: 52px;
+  width: 24px; height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
 }
-
 .menu-badge-circle {
   position: absolute;
   inset: 0;
@@ -121,11 +124,10 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .badge-text {
   position: relative;
   font-family: sans-serif;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   color: #fff;
   z-index: 1;

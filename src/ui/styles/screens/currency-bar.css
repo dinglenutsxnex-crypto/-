@@ -1,120 +1,72 @@
-/* Currency Bar — top strip, design height 108px at 1280×720 */
+#currency-bar, #currency-bar * {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
 
 #currency-bar {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 108px;
+  height: 90px;
   background: #0d0d0e;
   display: flex;
   flex-direction: row;
   align-items: center;
   pointer-events: auto;
   z-index: 100;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
-/* ── Hamburger / home button ── */
 #home-button {
-  width: 140px;
-  height: 108px;
+  width: 120px;
+  height: 90px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  /* Subtle visible bg so the button is findable */
-  background: rgba(255,255,255,0.06);
-  border-right: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.07);
   transition: background 0.15s;
 }
-#home-button:hover { background: rgba(255,255,255,0.12); }
-/* sp-menu_icon sprite sized by AtlasManager */
+#home-button:hover,
+#home-button:active { background: rgba(255,255,255,0.12); }
 
-/* ── Player info ── */
-#currency-player-info {
+#currency-chat-btn {
+  width: 72px;
+  height: 90px;
+  flex-shrink: 0;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 10px;
-  padding: 0 12px;
-  flex-shrink: 0;
-}
-
-#currency-name {
-  font-family: sans-serif;
-  font-size: 17px;
-  font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
-  line-height: 1;
-}
-
-#currency-level {
-  font-family: sans-serif;
-  font-size: 17px;
-  color: #C8A83C;
-  white-space: nowrap;
-  line-height: 1;
-}
-
-/* XP bar — progress_empty/full sprites are 460×19 in atlas, displayed at 180×19 */
-#currency-xp-bar {
-  position: relative;
-  width: 180px;
-  height: 19px;
-  flex-shrink: 0;
-}
-.xp-bg {
-  position: absolute;
-  top: 0; left: 0;
-}
-.xp-fill {
-  position: absolute;
-  top: 0; left: 0;
-  overflow: hidden;  /* clips the bar at its current width */
-}
-
-/* Chat icon */
-#currency-chat {
-  flex-shrink: 0;
+  justify-content: center;
   cursor: pointer;
   opacity: 0.75;
   transition: opacity 0.15s;
 }
-#currency-chat:hover { opacity: 1; }
+#currency-chat-btn:hover,
+#currency-chat-btn:active { opacity: 1; }
 
-/* ── Currency pills ── */
 #currency-coins {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: auto;
-  padding-right: 20px;
+  padding-right: 16px;
   gap: 4px;
-  height: 108px;
 }
 
 .currency-item {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   padding: 0 12px;
   height: 64px;
-  background: rgba(255,255,255,0.04);
   border-radius: 3px;
+  cursor: pointer;
 }
+.currency-item:hover { background: rgba(255,255,255,0.05); }
 
 .currency-icon { flex-shrink: 0; }
-
-/* + button — the "cross" sprite from Currency atlas is the gold + circle */
-.currency-add {
-  flex-shrink: 0;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.15s;
-}
-.currency-add:hover { opacity: 1; }
 
 .currency-value {
   font-family: sans-serif;
@@ -123,7 +75,13 @@
   color: #fff;
   white-space: nowrap;
   line-height: 1;
-  min-width: 36px;
+  min-width: 32px;
 }
 
-.pointer { cursor: pointer; }
+.currency-add {
+  flex-shrink: 0;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+.currency-add:hover { opacity: 1; }

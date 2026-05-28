@@ -6,32 +6,32 @@ import { UserDataController } from "../SF3/UserData/UserDataController";
 import "../../ui/styles/screens/currency-bar.css";
 import "../../ui/styles/screens/home-menu.css";
 
-// Maps sp-<name> class → how to draw the sprite.
-// w/h = display size in design-space pixels.
-// stretch: true → applyStretched (for bars), otherwise applyScaled (fit, keep aspect).
 interface SpriteSpec { w: number; h: number; stretch?: boolean; }
 
 const SPRITE_SIZES: Record<string, SpriteSpec> = {
-  // DojoMenu (corrected coords — verified by pixel inspection)
-  "menu_icon":      { w: 50,  h: 28  },   // hamburger ≡
-  "dojo_icon":      { w: 56,  h: 44  },   // tent
-  "shop_icon":      { w: 50,  h: 56  },   // bag
-  "map_icon":       { w: 60,  h: 42  },   // mountains
-  "inventory_icon": { w: 56,  h: 56  },   // coin-circle
-  "booster_icon":   { w: 44,  h: 58  },   // cards
+  // DojoMenu atlas
+  "menu_icon":      { w: 44,  h: 28  },
+  "dojo_icon":      { w: 52,  h: 40  },   // tent = TRAINING
+  "shop_icon":      { w: 46,  h: 52  },   // bag = INVENTORY
+  "map_icon":       { w: 56,  h: 40  },   // mountains = MAP
+  "inventory_icon": { w: 52,  h: 52  },   // coin-ring = STORE
+  "booster_icon":   { w: 42,  h: 56  },   // cards = BOOSTERS
+  "settings_icon":  { w: 52,  h: 52  },   // gear = SETTINGS
 
   // Currency atlas
-  "chat":           { w: 34,  h: 23  },
-  "cross":          { w: 22,  h: 22  },   // + add button
-  "progress_empty": { w: 180, h: 19,  stretch: true },
-  "progress_full":  { w: 180, h: 19,  stretch: true },
+  "chat":           { w: 36,  h: 24  },
+  "cross":          { w: 22,  h: 22  },
+  "progress_empty": { w: 180, h: 14, stretch: true },
+  "progress_full":  { w: 180, h: 14, stretch: true },
 
   // Common atlas
   "coin":           { w: 34,  h: 34  },
   "bonus":          { w: 26,  h: 31  },
   "shadow_currency":{ w: 34,  h: 34  },
-  "circle":         { w: 28,  h: 28  },
+  "circle":         { w: 24,  h: 24  },
 };
+
+
 
 function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
   const cam = node.components?.find((c: { type: string }) => c.type === "camera");
@@ -52,10 +52,10 @@ function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
 }
 
 export class EnterPointScene {
-  private _mgr:   SceneManager;
+  private _mgr:    SceneManager;
   private _config: SceneConfig;
-  private _root:  HTMLDivElement | null = null;
-  private _atlas: AtlasManager;
+  private _root:   HTMLDivElement | null = null;
+  private _atlas:  AtlasManager;
 
   constructor(mgr: SceneManager, config: SceneConfig) {
     this._mgr    = mgr;
@@ -64,7 +64,6 @@ export class EnterPointScene {
   }
 
   async mount(): Promise<void> {
-    // Babylon cameras
     if (this._config.hierarchy) {
       for (const node of this._config.hierarchy) {
         if (!node.isActive) continue;
@@ -118,7 +117,7 @@ export class EnterPointScene {
         } else {
           this._atlas.applyScaled(el, name, spec.w, spec.h);
         }
-        return; // only process first sp- class per element
+        return;
       }
     });
   }
@@ -132,14 +131,6 @@ export class EnterPointScene {
     const lvEl = document.getElementById("currency-level");
     if (lvEl) lvEl.textContent = String(p?.Level ?? 1);
 
-    // XP fill: sprite is applied at 180px wide; we clip by overriding width
-    const xpFill = document.getElementById("currency-xp-fill") as HTMLElement | null;
-    if (xpFill) {
-      const pct = (p && p.LevelExperience > 0)
-        ? Math.min(1, p.Experience / p.LevelExperience) : 0;
-      xpFill.style.width = `${Math.round(pct * 180)}px`;
-    }
-
     const cur = p?.Currency;
     const b = document.getElementById("val-bonus");
     const c = document.getElementById("val-coin");
@@ -149,7 +140,6 @@ export class EnterPointScene {
     if (s) s.textContent = String(cur?.Shadow ?? 0);
   }
 
-  // Mirrors Unity SlideMenu.cs MenuMoveController (open/close, 0.2s, backplane 0.5 alpha)
   private _wireHomeMenu(): void {
     const homeBtn  = document.getElementById("home-button");
     const homeMenu = document.getElementById("home-menu");

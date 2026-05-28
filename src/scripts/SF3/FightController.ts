@@ -1,4 +1,4 @@
-import { ModelInfo } from "./GameModels/ModelInfo";
+import { ModelInfo } from "./SF3/GameModels/ModelInfo";
 
 export enum EFightStage {
   None           = 0,

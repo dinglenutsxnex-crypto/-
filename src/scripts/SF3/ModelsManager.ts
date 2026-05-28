@@ -7,7 +7,6 @@ import {
 } from "@babylonjs/core";
 
 import { Gender } from "../sf3DTO/Gender";
-import { EquipmentType } from "./Items/EquipmentType";
 import { assembleCharacter } from "./GameModels/ModelComponents";
 import { ModelInfo } from "./GameModels/ModelInfo";
 
@@ -21,20 +20,33 @@ export class ModelsManager {
 
   private static _instance: ModelsManager;
 
-  static get instance(): ModelsManager {
+  static get instance():
+    ModelsManager {
+
     return ModelsManager._instance;
   }
 
+  readonly playerInfo =
+    new ModelInfo();
+
+  readonly enemyInfo =
+    new ModelInfo();
+
   private readonly _scene: Scene;
 
-  private _player?: IPlayerModel;
-  private _enemy?: IPlayerModel;
+  private _player?:
+    IPlayerModel;
+
+  private _enemy?:
+    IPlayerModel;
 
   constructor(scene: Scene) {
 
-    ModelsManager._instance = this;
+    ModelsManager._instance =
+      this;
 
-    this._scene = scene;
+    this._scene =
+      scene;
   }
 
   get player():
@@ -50,10 +62,7 @@ export class ModelsManager {
   }
 
   async loadModels():
-    Promise<void> {
-
-    // preload hook
-  }
+    Promise<void> {}
 
   async createBattleModels(
     playerInfo: ModelInfo,
@@ -71,38 +80,39 @@ export class ModelsManager {
     );
   }
 
+  async spawnPlayer():
+    Promise<void> {
+
+    await this._spawnFromModelInfo(
+      this.playerInfo,
+      true
+    );
+  }
+
+  async spawnEnemy():
+    Promise<void> {
+
+    await this._spawnFromModelInfo(
+      this.enemyInfo,
+      false
+    );
+  }
+
   private async _spawnFromModelInfo(
     info: ModelInfo,
     isPlayer: boolean
   ): Promise<void> {
 
-    const armorModel =
-      info.getEquippedModel(
-        EquipmentType.Armor
-      ) ?? "arm__base";
+    const result =
+      await assembleCharacter(
+        this._scene,
+        info.gender ?? Gender.Male,
+        info.head ?? "head__01a",
+        []
+      );
 
-    const helmetModel =
-      info.getEquippedModel(
-        EquipmentType.Helmet
-      ) ?? "hair-01";
-
-    const result = await assembleCharacter(
-      this._scene,
-      info.gender ?? Gender.Male,
-      info.head || "head__01a",
-      [
-        {
-          type: EquipmentType.Armor,
-          model: armorModel,
-        },
-        {
-          type: EquipmentType.Helmet,
-          model: helmetModel,
-        },
-      ],
-    );
-
-    const root = result.rootNodes[0];
+    const root =
+      result.rootNodes[0];
 
     if (!root) {
       return;
@@ -118,21 +128,18 @@ export class ModelsManager {
         ? Math.PI / 2
         : -Math.PI / 2;
 
+    const model = {
+      root,
+      skeleton:
+        result.skeleton,
+      meshes:
+        result.meshes,
+    };
+
     if (isPlayer) {
-
-      this._player = {
-        root,
-        skeleton: result.skeleton,
-        meshes: result.meshes,
-      };
-
+      this._player = model;
     } else {
-
-      this._enemy = {
-        root,
-        skeleton: result.skeleton,
-        meshes: result.meshes,
-      };
+      this._enemy = model;
     }
   }
 }

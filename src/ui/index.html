@@ -14,25 +14,38 @@
       display: block; touch-action: none;
     }
 
-    /* ── Viewport scaler ─────────────────────────── */
-    /* All UI lives inside here at 1280×720 design coords */
+    /*
+      #ui-viewport is a 1280×720 design-space container.
+      The inline script below scales + positions it to fill the window
+      (like Unity Canvas Scaler "Scale With Screen Size").
+      By default it FILLS the screen (like cover), clipping the sides if
+      the aspect doesn't match — keeps the bar full-width on widescreen.
+      Change Math.max → Math.min if you want letterbox instead.
+    */
     #ui-viewport {
       position: fixed;
-      top: 0; left: 0;
-      width: 1280px; height: 720px;
+      width: 1280px;
+      height: 720px;
       transform-origin: top left;
-      /* js sets transform: scale(...) */
       pointer-events: none;
       z-index: 10;
     }
 
-    /* ── Loading screen (lives outside viewport scaler so it fills screen) */
+    #enter-point-ui {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      width: 1280px;
+      height: 720px;
+    }
+
+    /* Loading screen — lives outside the scaler, fills real screen */
     #load-screen {
       display: none;
       position: fixed; inset: 0; z-index: 9999; opacity: 1;
       transition: opacity 0.4s ease;
     }
-    #load-screen.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    #load-screen.active { display: flex; align-items: center; justify-content: center; }
     #load-screen-bg { position: absolute; inset: 0; background: #000; }
     #load-screen-spinner {
       position: relative; z-index: 1;
@@ -48,13 +61,6 @@
       color: #aaa; font-size: 14px;
       max-width: 420px; text-align: center;
       font-family: sans-serif; line-height: 1.5; z-index: 1;
-    }
-
-    /* enter-point-ui fills the design canvas */
-    #enter-point-ui {
-      position: absolute; inset: 0;
-      pointer-events: none;
-      width: 1280px; height: 720px;
     }
   </style>
 </head>
@@ -72,19 +78,32 @@
   </div>
 
   <script>
-    (function scaleViewport() {
+    (function () {
       var vp = document.getElementById('ui-viewport');
+      var W = 1280, H = 720;
+
       function resize() {
-        var scaleX = window.innerWidth  / 1280;
-        var scaleY = window.innerHeight / 720;
-        var scale  = Math.min(scaleX, scaleY);
+        var winW = window.innerWidth;
+        var winH = window.innerHeight;
+
+        // "expand" mode: scale up to fill the screen on the dominant axis.
+        // This means 16:9 = perfect fill; wider = top/bottom bars fill fine;
+        // taller = left/right overflow hidden (like mobile portrait).
+        // Swap Math.max for Math.min to get letterbox instead.
+        var scale = Math.max(winW / W, winH / H);
+
+        // Centre the scaled canvas
+        var offsetX = (winW - W * scale) / 2;
+        var offsetY = (winH - H * scale) / 2;
+
         vp.style.transform = 'scale(' + scale + ')';
-        // Centre if letterboxed
-        var offsetX = (window.innerWidth  - 1280 * scale) / 2;
-        var offsetY = (window.innerHeight - 720  * scale) / 2;
         vp.style.left = offsetX + 'px';
         vp.style.top  = offsetY + 'px';
+
+        // Also clip overflow so nothing bleeds outside the browser window
+        document.body.style.overflow = 'hidden';
       }
+
       resize();
       window.addEventListener('resize', resize);
     })();

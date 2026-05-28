@@ -1,8 +1,4 @@
-/* ═══════════════════════════════════════════════
-   SlideMenu  —  mirrors Unity SlideMenu.cs
-   Panel slides in from left, backplane fades in at 0.5 alpha
-   Animation: 0.2 s (same as _expandingMenuDuration)
-   ═══════════════════════════════════════════════ */
+/* SlideMenu — mirrors Unity SlideMenu.cs at 1280×720 design space */
 
 #home-menu {
   position: absolute;
@@ -11,7 +7,7 @@
   z-index: 200;
 }
 
-/* Darkened overlay behind the panel */
+/* Backplane fades to 0.5 opacity when open (Unity _backplaneAlpha = 0.5) */
 #home-backplane {
   position: absolute;
   inset: 0;
@@ -21,86 +17,80 @@
   transition: opacity 0.2s ease;
 }
 
-/* Transparent click-catcher shown while menu is open */
+/* Click-outside catcher */
 #home-screen-background {
   position: absolute;
   inset: 0;
   display: none;
   pointer-events: auto;
-  cursor: pointer;
+  cursor: default;
 }
 
 /* ── Slide panel ── */
 #home-sub-menu {
   position: absolute;
   top: 0; left: 0; bottom: 0;
-  width: 220px;        /* fits 5 menu buttons + padding at 1280px design width */
+  width: 200px;
   pointer-events: auto;
   transform: translateX(-100%);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease;   /* _expandingMenuDuration = 0.2f */
   z-index: 210;
-  /* panel background: dark gradient matching Unity backplane_1 asset */
-  background: linear-gradient(to right, #0d0d0e 0%, #141416 70%, rgba(14,14,16,0.92) 100%);
+  background: linear-gradient(to right, #0d0d0e 0%, #141416 80%, rgba(14,14,16,0.9) 100%);
   border-right: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
 }
 
 /* Open state */
-#home-menu.open #home-sub-menu      { transform: translateX(0); }
-#home-menu.open #home-backplane     { opacity: 0.5; pointer-events: auto; }
+#home-menu.open #home-sub-menu          { transform: translateX(0); }
+#home-menu.open #home-backplane         { opacity: 0.5; pointer-events: auto; }
 #home-menu.open #home-screen-background { display: block; }
 
-/* Header spacer = currency bar height so buttons start below it */
-#home-menu-header {
-  height: 108px;
-  width: 100%;
-  flex-shrink: 0;
-}
+/* Spacer — same height as currency bar so buttons start below it */
+#home-menu-header { height: 108px; }
 
 /* ── Buttons list ── */
 #home-buttons-holder {
-  position: absolute;
-  top: 108px; left: 0; right: 0; bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 18px 0;
-  gap: 8px;
+  padding: 16px 0;
+  gap: 6px;
   overflow-y: auto;
 }
 
-/* ── Individual button ── */
+/* ── Button — opacity 0.57 deselected, 1.0 selected (SlideMenuButton) ── */
 .menu-btn {
   position: relative;
   width: 160px;
-  height: 88px;
+  height: 90px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   cursor: pointer;
-  opacity: 0.57;              /* Deselected = SlideMenuButton._regularAlpha ~0.57 */
+  opacity: 0.57;
   transition: opacity 0.15s;
   flex-shrink: 0;
   border-radius: 3px;
+  /* Extra padding so sprites don't clip against edge */
+  padding: 8px;
 }
-
 .menu-btn.selected,
-.menu-btn:hover {
-  opacity: 1;                 /* Selected = SlideMenuButton._onSelectAlpha = 1.0 */
-}
+.menu-btn:hover { opacity: 1; }
 
 .menu-btn-bg {
   position: absolute;
   inset: 0;
   background: #141414;
   border-radius: 3px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
-/* icon sprite — AtlasManager fills background-image etc. */
+/* Icon sprite — AtlasManager sets width/height, we just need it centered */
 .menu-btn-icon {
   position: relative;
-  flex-shrink: 0;
-  /* natural size comes from AtlasManager.apply() */
+  /* no fixed w/h here — AtlasManager sets those */
 }
 
 .menu-btn-label {
@@ -113,21 +103,23 @@
   text-transform: uppercase;
 }
 
-/* ── Notification badge ── */
+/* ── Badge ── */
 .menu-btn-badge {
   position: absolute;
   top: 4px; right: 4px;
+  width: 28px; height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  width: 28px; height: 28px;
 }
 
 .menu-badge-circle {
   position: absolute;
   inset: 0;
-  /* sprite applied by AtlasManager */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .badge-text {

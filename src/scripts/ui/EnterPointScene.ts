@@ -1,16 +1,3 @@
-/* EnterPointScene — mirrors Unity SlideMenu + CurrencyUI logic in HTML/CSS.
-   
-   Layout (1280×720 design space):
-   ┌──────────────────────────────────────────────┐
-   │  [☰] │ name · lv · xp ░░░░░░░░░ [💬] │ B C S│  ← currency-bar  108px
-   ├──────┼───────────────────────────────────────┤
-   │slide │                                       │
-   │menu  │       (babylon 3D canvas)             │
-   │panel │                                       │
-   └──────┴───────────────────────────────────────┘
-   The slide menu panel (220px wide) slides in from the left on hamburger click.
-*/
-
 import { Vector3 }    from "@babylonjs/core";
 import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera";
 import { SceneManager, SceneConfig, SceneNode } from "../core/SceneManager";
@@ -19,41 +6,31 @@ import { UserDataController } from "../SF3/UserData/UserDataController";
 import "../../ui/styles/screens/currency-bar.css";
 import "../../ui/styles/screens/home-menu.css";
 
-/* ─── Atlas sprite → display-size map ─── */
-interface SpriteSpec { atlas: string; w?: number; h?: number; stretch?: boolean; }
+// Maps sp-<name> class → how to draw the sprite.
+// w/h = display size in design-space pixels.
+// stretch: true → applyStretched (for bars), otherwise applyScaled (fit, keep aspect).
+interface SpriteSpec { w: number; h: number; stretch?: boolean; }
 
-/** Elements whose class starts with sp-<name> get sprite applied automatically.
- *  If w/h are provided  → applyScaled (fit)
- *  If stretch:true      → applyStretched
- *  Otherwise            → apply (native size)
- */
-const SPRITE_MAP: Record<string, SpriteSpec> = {
-  // ── DojoMenu atlas (512×512, hard-coded frames) ──────────────────────
-  "menu_icon":      { atlas: "DojoMenu", w: 50,  h: 32  },  // hamburger icon
-  "dojo_icon":      { atlas: "DojoMenu", w: 56,  h: 44  },
-  "map_icon":       { atlas: "DojoMenu", w: 56,  h: 40  },
-  "shop_icon":      { atlas: "DojoMenu", w: 56,  h: 56  },
-  "inventory_icon": { atlas: "DojoMenu", w: 52,  h: 58  },
+const SPRITE_SIZES: Record<string, SpriteSpec> = {
+  // DojoMenu (corrected coords — verified by pixel inspection)
+  "menu_icon":      { w: 50,  h: 28  },   // hamburger ≡
+  "dojo_icon":      { w: 56,  h: 44  },   // tent
+  "shop_icon":      { w: 50,  h: 56  },   // bag
+  "map_icon":       { w: 60,  h: 42  },   // mountains
+  "inventory_icon": { w: 56,  h: 56  },   // coin-circle
+  "booster_icon":   { w: 44,  h: 58  },   // cards
 
-  // ── Currency atlas (512×512, CurrencyJSON) ───────────────────────────
-  // chat.png          → 101×67  displayed at roughly half
-  "chat":           { atlas: "Currency", w: 34,  h: 23  },
-  // cross.png         → 51×52   the + add button
-  "cross":          { atlas: "Currency", w: 18,  h: 18  },
-  // progress_empty    → 460×19  XP bar background
-  "progress_empty": { atlas: "Currency", w: 180, h: 19, stretch: true },
-  // progress_full     → 460×19  XP bar fill
-  "progress_full":  { atlas: "Currency", w: 180, h: 19, stretch: true },
+  // Currency atlas
+  "chat":           { w: 34,  h: 23  },
+  "cross":          { w: 22,  h: 22  },   // + add button
+  "progress_empty": { w: 180, h: 19,  stretch: true },
+  "progress_full":  { w: 180, h: 19,  stretch: true },
 
-  // ── Common atlas (2048×2048, CommonJSON) ─────────────────────────────
-  // coin.png          → 90×90
-  "coin":           { atlas: "Common",   w: 32,  h: 32  },
-  // bonus.png         → 60×72
-  "bonus":          { atlas: "Common",   w: 26,  h: 31  },
-  // shadow_currency   → 99×98
-  "shadow_currency":{ atlas: "Common",   w: 32,  h: 32  },
-  // circle.png        → 52×52  used for badge
-  "circle":         { atlas: "Common",   w: 28,  h: 28  },
+  // Common atlas
+  "coin":           { w: 34,  h: 34  },
+  "bonus":          { w: 26,  h: 31  },
+  "shadow_currency":{ w: 34,  h: 34  },
+  "circle":         { w: 28,  h: 28  },
 };
 
 function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
@@ -75,10 +52,10 @@ function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
 }
 
 export class EnterPointScene {
-  private _mgr:    SceneManager;
+  private _mgr:   SceneManager;
   private _config: SceneConfig;
-  private _root:   HTMLDivElement | null = null;
-  private _atlas:  AtlasManager;
+  private _root:  HTMLDivElement | null = null;
+  private _atlas: AtlasManager;
 
   constructor(mgr: SceneManager, config: SceneConfig) {
     this._mgr    = mgr;
@@ -87,7 +64,7 @@ export class EnterPointScene {
   }
 
   async mount(): Promise<void> {
-    // 1. Set up Babylon camera from scene JSON
+    // Babylon cameras
     if (this._config.hierarchy) {
       for (const node of this._config.hierarchy) {
         if (!node.isActive) continue;
@@ -98,14 +75,11 @@ export class EnterPointScene {
       }
     }
     if (!this._mgr.scene.activeCamera) {
-      const fb = new FreeCamera("fallback", new Vector3(0, 0, -10), this._mgr.scene);
-      this._mgr.scene.activeCamera = fb;
+      this._mgr.scene.activeCamera = new FreeCamera("fallback", new Vector3(0, 0, -10), this._mgr.scene);
     }
 
-    // 2. Load sprite atlases
     await this._atlas.load();
 
-    // 3. Inject HTML templates
     const root = document.getElementById("enter-point-ui") as HTMLDivElement | null;
     if (!root) return;
     this._root = root;
@@ -114,56 +88,41 @@ export class EnterPointScene {
     await this._inject("screens/currency-bar.html");
     await this._inject("screens/home-menu.html");
 
-    // 4. Apply atlas sprites to all sp-* elements
     this._applySprites();
-
-    // 5. Wire live player data
     this._injectPlayerData();
-
-    // 6. Wire interactivity (SlideMenu behaviour)
     this._wireHomeMenu();
 
     console.log("[EnterPointScene] mounted");
   }
 
-  // ── Template loader ──────────────────────────────────────────────
   private async _inject(path: string): Promise<void> {
     try {
-      const res  = await fetch(`ui/${path}`);
-      const html = await res.text();
+      const html = await (await fetch(`ui/${path}`)).text();
       this._root!.insertAdjacentHTML("beforeend", html);
     } catch (e) {
       console.warn(`[EnterPointScene] failed to load ${path}`, e);
     }
   }
 
-  // ── Atlas sprite application ──────────────────────────────────────
-  /** Scan all elements with class sp-<name> and apply the matching sprite. */
   private _applySprites(): void {
     if (!this._root) return;
-
     this._root.querySelectorAll<HTMLElement>("[class]").forEach(el => {
       for (const cls of el.classList) {
         if (!cls.startsWith("sp-")) continue;
         const name = cls.replace("sp-", "");
-        const spec = SPRITE_MAP[name];
+        const spec = SPRITE_SIZES[name];
         if (!spec) {
           this._atlas.apply(el, name);
-          return;
-        }
-        if (spec.stretch && spec.w && spec.h) {
+        } else if (spec.stretch) {
           this._atlas.applyStretched(el, name, spec.w, spec.h);
-        } else if (spec.w && spec.h) {
-          this._atlas.applyScaled(el, name, spec.w, spec.h);
         } else {
-          this._atlas.apply(el, name);
+          this._atlas.applyScaled(el, name, spec.w, spec.h);
         }
-        return;
+        return; // only process first sp- class per element
       }
     });
   }
 
-  // ── Player data ───────────────────────────────────────────────────
   private _injectPlayerData(): void {
     const p = UserDataController.player;
 
@@ -173,29 +132,24 @@ export class EnterPointScene {
     const lvEl = document.getElementById("currency-level");
     if (lvEl) lvEl.textContent = String(p?.Level ?? 1);
 
-    // XP bar: the .xp-fill sprite is 180px wide but we clip it via its parent
-    // #currency-xp-bar already has position:relative + overflow:hidden via CSS;
-    // the .xp-fill sprite is 180px wide, we just mask it using a wrapper approach:
-    // easier to just set the fill element width directly (it has overflow hidden on parent)
+    // XP fill: sprite is applied at 180px wide; we clip by overriding width
     const xpFill = document.getElementById("currency-xp-fill") as HTMLElement | null;
     if (xpFill) {
       const pct = (p && p.LevelExperience > 0)
-        ? Math.min(1, p.Experience / p.LevelExperience)
-        : 0;
-      // override the width that AtlasManager set (180px) to clip the bar
-      xpFill.style.width = `${pct * 180}px`;
+        ? Math.min(1, p.Experience / p.LevelExperience) : 0;
+      xpFill.style.width = `${Math.round(pct * 180)}px`;
     }
 
     const cur = p?.Currency;
-    const bonusEl  = document.getElementById("val-bonus");
-    const coinEl   = document.getElementById("val-coin");
-    const shadowEl = document.getElementById("val-shadow");
-    if (bonusEl)  bonusEl.textContent  = String(cur?.Bonus  ?? 0);
-    if (coinEl)   coinEl.textContent   = String(cur?.Coin   ?? 0);
-    if (shadowEl) shadowEl.textContent = String(cur?.Shadow ?? 0);
+    const b = document.getElementById("val-bonus");
+    const c = document.getElementById("val-coin");
+    const s = document.getElementById("val-shadow");
+    if (b) b.textContent = String(cur?.Bonus  ?? 0);
+    if (c) c.textContent = String(cur?.Coin   ?? 0);
+    if (s) s.textContent = String(cur?.Shadow ?? 0);
   }
 
-  // ── SlideMenu wiring (mirrors Unity SlideMenu.cs MenuMoveController) ──
+  // Mirrors Unity SlideMenu.cs MenuMoveController (open/close, 0.2s, backplane 0.5 alpha)
   private _wireHomeMenu(): void {
     const homeBtn  = document.getElementById("home-button");
     const homeMenu = document.getElementById("home-menu");
@@ -203,31 +157,20 @@ export class EnterPointScene {
     if (!homeBtn || !homeMenu || !screenBg) return;
 
     const open  = () => homeMenu.classList.add("open");
-    const close = () => {
-      homeMenu.classList.remove("open");
-      this._deselectMenuBtns();
-    };
+    const close = () => { homeMenu.classList.remove("open"); this._deselectMenuBtns(); };
 
     homeBtn.addEventListener("click", open);
     screenBg.addEventListener("click", close);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
 
-    // Escape key = CloseWithoutCooldown
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") close();
-    });
-
-    // Menu buttons
     homeMenu.querySelectorAll<HTMLElement>(".menu-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
+      btn.addEventListener("click", e => {
         e.stopPropagation();
         const menu = btn.dataset.menu ?? "";
         if (menu) console.log(`[SlideMenu] OpenMenu("${menu}")`);
         close();
       });
-      btn.addEventListener("mouseenter", () => {
-        this._deselectMenuBtns();
-        btn.classList.add("selected");
-      });
+      btn.addEventListener("mouseenter", () => { this._deselectMenuBtns(); btn.classList.add("selected"); });
       btn.addEventListener("mouseleave", () => btn.classList.remove("selected"));
     });
   }
@@ -236,7 +179,6 @@ export class EnterPointScene {
     document.querySelectorAll(".menu-btn.selected").forEach(el => el.classList.remove("selected"));
   }
 
-  // ── Babylon hierarchy walker ──────────────────────────────────────
   private _mountRecursive(node: SceneNode): void {
     if (!node.isActive || !node.children) return;
     for (const child of node.children) {
@@ -248,8 +190,5 @@ export class EnterPointScene {
     }
   }
 
-  unmount(): void {
-    this._root?.remove();
-    this._root = null;
-  }
+  unmount(): void { this._root?.remove(); this._root = null; }
 }

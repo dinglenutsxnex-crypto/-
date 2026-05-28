@@ -79,9 +79,9 @@ export class FightScene {
     const parentNode = new TransformNode("battle_camera", this._scene);
     this._cameraNode = parentNode;
 
-    const cam = new FreeCamera("Main Camera", new Vector3(0, 155, -950), this._scene);
+    const cam = new FreeCamera("Main Camera", new Vector3(0, 98.5, -562), this._scene);
     cam.parent = parentNode;
-    cam.setTarget(Vector3.Zero());
+    cam.setTarget(new Vector3(0, 98.5, 0));
     cam.minZ = 10;
     cam.maxZ = 5000;
     cam.fov = 30 * Math.PI / 180;
@@ -121,9 +121,14 @@ export class FightScene {
       const result = await SceneLoader.ImportMeshAsync("", "assets/locations/", `${locationName}.glb`, this._scene);
       this._locationMeshes = result.meshes;
       for (const mesh of this._locationMeshes) {
-        if (mesh.getClassName() === "Mesh" || mesh.getClassName() === "InstancedMesh") {
-          this._shadowGenerator.addShadowCaster(mesh, true);
+        // Hide the Unity shadow receiver plane — it's a Unity-only shadow catcher
+        // with no texture, shows up as white/grey in BabylonJS
+        if (mesh.name === "ShadowReciever" || mesh.name === "ShadowReceiver") {
+          mesh.isVisible = false;
+          continue;
         }
+        // Location meshes receive shadows but shouldn't be casters themselves
+        mesh.receiveShadows = true;
       }
     } catch (err) {
       console.warn(`[FightScene] Could not load location "${locationName}": ${err}`);

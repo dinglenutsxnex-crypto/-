@@ -1,22 +1,16 @@
 import { Scene } from "@babylonjs/core";
-import { ModelsManager } from "../SF3/ModelsManager";
 
 export class FightScene {
 
   constructor(
-    private readonly _scene: Scene
+    private readonly _scene: Scene,
+    private readonly _location?: string,
+    private readonly _fightInfo?: any,
   ) {}
 
-  async initialize(): Promise<void> {
+  async initialize():
+    Promise<void> {}
 
-    const manager =
-      ModelsManager.instance;
-
-    if (!manager) {
-      return;
-    }
-
-    await manager.spawnPlayer();
-    await manager.spawnEnemy();
-  }
+  dispose():
+    void {}
 }

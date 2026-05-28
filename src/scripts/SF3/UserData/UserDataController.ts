@@ -1,9 +1,14 @@
 export class UserDataController {
 
   static player = {
-    coins: 9999,
-    gems: 999,
-    level: 1,
+    Name: "PLAYER",
+    Level: 1,
+
+    Currency: {
+      Coins: 9999,
+      Gems: 999,
+      ShadowEnergy: 100,
+    },
   };
 
   static async create():

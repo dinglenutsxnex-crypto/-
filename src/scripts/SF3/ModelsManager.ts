@@ -3,6 +3,7 @@ import { Gender } from "../sf3DTO/Gender";
 import { EquipmentType } from "./Items/EquipmentType";
 import { assembleCharacter } from "./GameModels/ModelComponents";
 import { ModelInfo } from "./GameModels/ModelInfo";
+import { UserDataController } from "./UserData/UserDataController";
 
 export interface IPlayerModel {
   root:     TransformNode;
@@ -30,84 +31,165 @@ export class ModelsManager {
   async loadModels(): Promise<void> {
     const xml = await fetch("assets/configs/content/bones/configs/skeleton.txt")
       .then(r => r.text());
+
     this._skeletonIdToBoneName = parseSkeletonIds(xml);
   }
 
-  async createBattleModels(playerInfo: ModelInfo, enemyInfo: ModelInfo): Promise<void> {
+  async createBattleModels(
+    playerInfo?: ModelInfo,
+    enemyInfo?: ModelInfo
+  ): Promise<void> {
+
+    const finalPlayer =
+      playerInfo ?? UserDataController.getPlayerModelInfo();
+
+    const finalEnemy =
+      enemyInfo ?? UserDataController.getDefaultEnemyModelInfo();
+
     await Promise.all([
-      this._spawnFromModelInfo(playerInfo, true),
-      this._spawnFromModelInfo(enemyInfo, false),
+      this._spawnFromModelInfo(finalPlayer, true),
+      this._spawnFromModelInfo(finalEnemy, false),
     ]);
   }
 
   async spawnPlayer(
-    gender:      Gender = Gender.Male,
-    headModel   = "head__01a",
-    armorModel  = "arm__str_15",
-    helmetModel = "hair-01",
+    gender?: Gender,
+    headModel?: string,
+    armorModel?: string,
+    helmetModel?: string,
   ): Promise<void> {
+
+    if (
+      gender === undefined &&
+      headModel === undefined &&
+      armorModel === undefined &&
+      helmetModel === undefined
+    ) {
+      await this._spawnFromModelInfo(
+        UserDataController.getPlayerModelInfo(),
+        true
+      );
+
+      return;
+    }
+
     const info = new ModelInfo();
-    info.gender = gender;
-    info.head   = headModel;
-    info.setEquipment(EquipmentType.Armor,  armorModel);
-    info.setEquipment(EquipmentType.Helmet, helmetModel);
+
+    info.gender = gender ?? Gender.Male;
+    info.head = headModel ?? "head__01a";
+
+    info.setEquipment(
+      EquipmentType.Armor,
+      armorModel ?? "arm-base"
+    );
+
+    info.setEquipment(
+      EquipmentType.Helmet,
+      helmetModel ?? "hair-01"
+    );
+
     await this._spawnFromModelInfo(info, true);
   }
 
   async spawnEnemy(
-    gender:      Gender = Gender.Male,
-    headModel   = "head__01a",
-    armorModel  = "arm__base",
-    helmetModel = "hair-01",
+    gender?: Gender,
+    headModel?: string,
+    armorModel?: string,
+    helmetModel?: string,
   ): Promise<void> {
+
+    if (
+      gender === undefined &&
+      headModel === undefined &&
+      armorModel === undefined &&
+      helmetModel === undefined
+    ) {
+      await this._spawnFromModelInfo(
+        UserDataController.getDefaultEnemyModelInfo(),
+        false
+      );
+
+      return;
+    }
+
     const info = new ModelInfo();
-    info.gender = gender;
-    info.head   = headModel;
-    info.setEquipment(EquipmentType.Armor,  armorModel);
-    info.setEquipment(EquipmentType.Helmet, helmetModel);
+
+    info.gender = gender ?? Gender.Male;
+    info.head = headModel ?? "head__01a";
+
+    info.setEquipment(
+      EquipmentType.Armor,
+      armorModel ?? "arm-base"
+    );
+
+    info.setEquipment(
+      EquipmentType.Helmet,
+      helmetModel ?? "hair-01"
+    );
+
     await this._spawnFromModelInfo(info, false);
   }
 
-  private async _spawnFromModelInfo(info: ModelInfo, isPlayer: boolean): Promise<void> {
-    const armorModel  = info.getEquippedModel(EquipmentType.Armor)  ?? (isPlayer ? "arm__str_15" : "arm__base");
-    const helmetModel = info.getEquippedModel(EquipmentType.Helmet) ?? "hair-01";
+  private async _spawnFromModelInfo(
+    info: ModelInfo,
+    isPlayer: boolean
+  ): Promise<void> {
+
+    const armorModel =
+      info.getEquippedModel(EquipmentType.Armor)
+      ?? "arm-base";
+
+    const helmetModel =
+      info.getEquippedModel(EquipmentType.Helmet)
+      ?? "hair-01";
 
     const result = await assembleCharacter(
       this._scene,
       info.gender,
       info.head || "head__01a",
       [
-        { type: EquipmentType.Armor,  model: armorModel  },
+        { type: EquipmentType.Armor, model: armorModel },
         { type: EquipmentType.Helmet, model: helmetModel },
       ],
     );
 
     const root = result.rootNodes[0];
-    if (!root) return;
+
+    if (!root) {
+      return;
+    }
 
     if (isPlayer) {
       root.position = new Vector3(-250, 0, 0);
-      root.scaling  = new Vector3(-1, 1, 1);
-      this._player  = { root, skeleton: result.skeleton, meshes: result.meshes };
+      root.scaling = new Vector3(-1, 1, 1);
+
+      this._player = {
+        root,
+        skeleton: result.skeleton,
+        meshes: result.meshes,
+      };
     } else {
       root.position = new Vector3(250, 0, 0);
-      this._enemy   = { root, skeleton: result.skeleton, meshes: result.meshes };
+
+      this._enemy = {
+        root,
+        skeleton: result.skeleton,
+        meshes: result.meshes,
+      };
     }
   }
 }
 
-async function loadBytes(path: string): Promise<Uint8Array> {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`Failed to load ${path}`);
-  return new Uint8Array(await res.arrayBuffer());
-}
-
 function parseSkeletonIds(xmlText: string): Map<number, string> {
-  const map   = new Map<number, string>();
+  const map = new Map<number, string>();
+
   const regex = /<Bone\s+Name="([^"]+)"\s+ID="(\d+)"/g;
+
   let match: RegExpExecArray | null;
+
   while ((match = regex.exec(xmlText)) !== null) {
     map.set(parseInt(match[2], 10), match[1]);
   }
+
   return map;
 }

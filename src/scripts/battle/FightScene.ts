@@ -6,6 +6,7 @@ import { EffectsManager } from "../EffectsManager";
 import { FightController, IFightInfo } from "../FightController";
 import { CameraConfiguration } from "../CameraConfiguration";
 import { ModelsManager } from "../SF3/ModelsManager";
+import { UserDataController } from "../SF3/UserData/UserDataController";
 
 export class FightScene {
   private readonly _scene: Scene;
@@ -33,26 +34,49 @@ export class FightScene {
 
     await this._loadLocation(locationName);
 
+    if (!UserDataController.isReady) {
+      await UserDataController.create();
+      UserDataController.initPlayer();
+    }
+
     const modelsManager = new ModelsManager(this._scene);
+
     await modelsManager.loadModels();
-    await Promise.all([
-      modelsManager.spawnPlayer(),
-      modelsManager.spawnEnemy(),
-    ]);
+
+    const playerInfo =
+      UserDataController.getPlayerModelInfo();
+
+    const enemyInfo =
+      UserDataController.getDefaultEnemyModelInfo();
+
+    await modelsManager.createBattleModels(
+      playerInfo,
+      enemyInfo
+    );
 
     this._cameraConfig = this._createDefaultCameraConfig();
+
     this._battleCamera = BattleCamera.createInstance(
       this._cameraNode,
       this._mainCamera,
       this._cameraConfig,
       this._scene
     );
-    this._battleController = BattleController.createInstance(this._scene);
+
+    this._battleController =
+      BattleController.createInstance(this._scene);
+
     this._fightController = new FightController();
-    this._effectsManager = EffectsManager.createInstance(this._scene);
+
+    this._effectsManager =
+      EffectsManager.createInstance(this._scene);
 
     this._battleController.initialize();
-    this._battleCamera.initialize(new Vector3(0, 0, 0));
+
+    this._battleCamera.initialize(
+      new Vector3(0, 0, 0)
+    );
+
     this._effectsManager.initialize();
 
     await this._battleController.initBattle(fightInfo);
@@ -120,14 +144,13 @@ export class FightScene {
     try {
       const result = await SceneLoader.ImportMeshAsync("", "assets/locations/", `${locationName}.glb`, this._scene);
       this._locationMeshes = result.meshes;
+
       for (const mesh of this._locationMeshes) {
-        // Hide the Unity shadow receiver plane — it's a Unity-only shadow catcher
-        // with no texture, shows up as white/grey in BabylonJS
         if (mesh.name === "ShadowReciever" || mesh.name === "ShadowReceiver") {
           mesh.isVisible = false;
           continue;
         }
-        // Location meshes receive shadows but shouldn't be casters themselves
+
         mesh.receiveShadows = true;
       }
     } catch (err) {
@@ -139,6 +162,7 @@ export class FightScene {
     for (const mesh of this._locationMeshes) {
       mesh.dispose();
     }
+
     this._locationMeshes = [];
   }
 }

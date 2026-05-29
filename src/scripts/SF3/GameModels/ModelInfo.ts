@@ -20,18 +20,18 @@ export interface IEquipmentSlot {
 }
 
 export class ModelInfo {
-  alias:       string = "";
-  gender:      Gender = Gender.Male;
-  head:        string = "head__01a";
-  skeleton:    string = "default";
-  skinColor:   IColorPreset = { colorId: 0, value: 0 };
-  hairColor:   IColorPreset = { colorId: 0, value: 0 };
-  isControl:   boolean = false;
-  isPlayer:    boolean = false;
-  aiMode:      AiMode = AiMode.Regular;
+  alias:        string = "";
+  gender:       Gender = Gender.Male;
+  head:         string = "head__01a";
+  skeleton:     string = "default";
+  skinColor:    IColorPreset = { colorId: 1, value: 0.05 };
+  hairColor:    IColorPreset = { colorId: 0, value: 0.05 };
+  isControl:    boolean = false;
+  isPlayer:     boolean = false;
+  aiMode:       AiMode = AiMode.Regular;
   warriorPower: number = 0;
-  maxLife:     number = 1;
-  tags:        string[] = [];
+  maxLife:      number = 1;
+  tags:         string[] = [];
 
   private _equipment: Map<EquipmentType, string> = new Map();
 

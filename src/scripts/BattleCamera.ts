@@ -229,6 +229,11 @@ export class BattleCamera {
 
   // ─── Model binding ───────────────────────────────────────────────────────
 
+  /** Static wrapper — mirrors Unity's BattleCamera.SetModels(player, enemy). */
+  static setModels(player: ICameraModel, enemy: ICameraModel): void {
+    BattleCamera._instance.setModels(player, enemy);
+  }
+
   setModels(player: ICameraModel, enemy: ICameraModel): void {
     this._player = player;
     this._enemy = enemy;

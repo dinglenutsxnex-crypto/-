@@ -1,6 +1,7 @@
 import { Gender }        from "../../sf3DTO/Gender";
 import { ModelInfo }     from "../GameModels/ModelInfo";
 import { EquipmentType } from "../Items/EquipmentType";
+import { buildTrainingEnemyModelInfo } from "../TrainingEnemyConfig";
 
 // ─── Raw JSON shapes ──────────────────────────────────────────────────────────
 
@@ -133,22 +134,9 @@ export class UserDataController {
 
   /**
    * Default enemy ModelInfo used when there is no server fight data.
-   * Mirrors the simplest BrawlerEnemy the Unity backend would send for dojo.
+   * Delegates to TrainingEnemyConfig so gear is defined in one place.
    */
   static getDefaultEnemyModelInfo(): ModelInfo {
-    const info = new ModelInfo();
-
-    info.isPlayer  = false;
-    info.isControl = false;
-    info.alias     = "ENEMY";
-    info.gender    = Gender.Male;
-    info.head      = "head__01a";
-
-    info.setEquipment(EquipmentType.Armor,  "arm__base");
-    info.setEquipment(EquipmentType.Helmet, "hair-01");
-    info.setEquipment(EquipmentType.Weapon, "wpn-fists");
-
-    console.log("[UserDataController] defaultEnemyModelInfo created");
-    return info;
+    return buildTrainingEnemyModelInfo();
   }
 }

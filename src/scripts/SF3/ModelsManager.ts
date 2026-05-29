@@ -1,8 +1,9 @@
 import { Scene, TransformNode, Vector3, Skeleton, AbstractMesh } from "@babylonjs/core";
-import { EquipmentType }      from "./Items/EquipmentType";
-import { assembleCharacter }  from "./GameModels/ModelComponents";
-import { ModelInfo }          from "./GameModels/ModelInfo";
-import { UserDataController } from "./UserData/UserDataController";
+import { EquipmentType }                from "./Items/EquipmentType";
+import { assembleCharacter }            from "./GameModels/ModelComponents";
+import { ModelInfo }                    from "./GameModels/ModelInfo";
+import { UserDataController }           from "./UserData/UserDataController";
+import { buildTrainingEnemyModelInfo }  from "./TrainingEnemyConfig";
 
 export interface IPlayerModel {
   root:     TransformNode;
@@ -68,13 +69,13 @@ export class ModelsManager {
   }
 
   /**
-   * Spawn just the enemy — always uses the default enemy config
-   * (no server needed).
+   * Spawn just the enemy — reads from UserDataController if loaded,
+   * otherwise uses the offline training enemy config (no server needed).
    */
   async spawnEnemy(): Promise<void> {
     const info = UserDataController.isReady
       ? UserDataController.getDefaultEnemyModelInfo()
-      : ModelInfo.createEnemy();
+      : buildTrainingEnemyModelInfo();
     await this._spawnFromModelInfo(info, false);
   }
 

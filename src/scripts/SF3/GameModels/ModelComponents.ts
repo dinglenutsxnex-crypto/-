@@ -59,7 +59,17 @@ export async function assembleCharacter(
         bindToMaster(bp.meshes[i], bp.skeletons[i] ?? masterSkeleton, masterNodeMap, masterArmature);
       }
       allMeshes.push(...bp.meshes);
+    } else {
+      // No skeleton — still keep meshes
+      allMeshes.push(...bp.meshes);
     }
+  }
+
+  // If no armature was found, create a synthetic root at origin
+  if (!masterArmature && allMeshes.length > 0) {
+    const root = new TransformNode("character_root", scene);
+    for (const m of allMeshes) m.parent = root;
+    masterArmature = root;
   }
 
   // Load head — bind to master
@@ -85,10 +95,8 @@ export async function assembleCharacter(
     }
   }
 
-  const rootNodes: TransformNode[] = [];
-  if (masterArmature) {
-    rootNodes.push(masterArmature);
-  }
+  // Always return at least one root node so spawn never silently drops
+  const rootNodes: TransformNode[] = masterArmature ? [masterArmature] : [];
 
   return { rootNodes, meshes: allMeshes, skeleton: masterSkeleton };
 }

@@ -1,145 +1,128 @@
-import {
-  Scene,
-  TransformNode,
-  Vector3,
-  Skeleton,
-  AbstractMesh
-} from "@babylonjs/core";
-
-import { Gender } from "../sf3DTO/Gender";
-import { assembleCharacter } from "./GameModels/ModelComponents";
-import { ModelInfo } from "./GameModels/ModelInfo";
+import { Scene, TransformNode, Vector3, Skeleton, AbstractMesh } from "@babylonjs/core";
+import { EquipmentType }      from "./Items/EquipmentType";
+import { assembleCharacter }  from "./GameModels/ModelComponents";
+import { ModelInfo }          from "./GameModels/ModelInfo";
+import { UserDataController } from "./UserData/UserDataController";
 
 export interface IPlayerModel {
-  root: TransformNode;
+  root:     TransformNode;
   skeleton: Skeleton | null;
-  meshes: AbstractMesh[];
+  meshes:   AbstractMesh[];
+  info:     ModelInfo;          // keep a ref so BattleController can read it later
 }
 
 export class ModelsManager {
-
   private static _instance: ModelsManager;
-
-  static get instance():
-    ModelsManager {
-
-    return ModelsManager._instance;
-  }
-
-  readonly playerInfo =
-    new ModelInfo();
-
-  readonly enemyInfo =
-    new ModelInfo();
+  static get instance(): ModelsManager { return ModelsManager._instance; }
 
   private readonly _scene: Scene;
-
-  private _player?:
-    IPlayerModel;
-
-  private _enemy?:
-    IPlayerModel;
+  private _player?: IPlayerModel;
+  private _enemy?:  IPlayerModel;
+  private _skeletonIdToBoneName: Map<number, string> = new Map();
 
   constructor(scene: Scene) {
-
-    ModelsManager._instance =
-      this;
-
-    this._scene =
-      scene;
+    ModelsManager._instance = this;
+    this._scene = scene;
   }
 
-  get player():
-    IPlayerModel | undefined {
+  get player(): IPlayerModel | undefined { return this._player; }
+  get enemy():  IPlayerModel | undefined { return this._enemy; }
 
-    return this._player;
+  // ── Skeleton config ────────────────────────────────────────────────────────
+
+  async loadModels(): Promise<void> {
+    const xml = await fetch("assets/configs/content/bones/configs/skeleton.txt")
+      .then(r => r.text());
+    this._skeletonIdToBoneName = parseSkeletonIds(xml);
   }
 
-  get enemy():
-    IPlayerModel | undefined {
-
-    return this._enemy;
+  get skeletonIdToBoneName(): Map<number, string> {
+    return this._skeletonIdToBoneName;
   }
 
-  async loadModels():
-    Promise<void> {}
+  // ── Primary spawn path (used by FightScene) ────────────────────────────────
 
-  async createBattleModels(
-    playerInfo: ModelInfo,
-    enemyInfo: ModelInfo
-  ): Promise<void> {
+  /**
+   * Spawn both characters from explicit ModelInfo objects.
+   * This is the main path — FightScene always calls this.
+   */
+  async createBattleModels(playerInfo: ModelInfo, enemyInfo: ModelInfo): Promise<void> {
+    await Promise.all([
+      this._spawnFromModelInfo(playerInfo, true),
+      this._spawnFromModelInfo(enemyInfo,  false),
+    ]);
+    console.log("[ModelsManager] player + enemy spawned");
+  }
 
-    await this._spawnFromModelInfo(
-      playerInfo,
-      true
+  // ── Convenience spawns (fall back to UserDataController) ──────────────────
+
+  /**
+   * Spawn just the player — reads from UserDataController if loaded,
+   * otherwise uses safe hardcoded defaults.
+   */
+  async spawnPlayer(): Promise<void> {
+    const info = UserDataController.isReady
+      ? UserDataController.getPlayerModelInfo()
+      : ModelInfo.createPlayer();
+    await this._spawnFromModelInfo(info, true);
+  }
+
+  /**
+   * Spawn just the enemy — always uses the default enemy config
+   * (no server needed).
+   */
+  async spawnEnemy(): Promise<void> {
+    const info = UserDataController.isReady
+      ? UserDataController.getDefaultEnemyModelInfo()
+      : ModelInfo.createEnemy();
+    await this._spawnFromModelInfo(info, false);
+  }
+
+  // ── Internal ───────────────────────────────────────────────────────────────
+
+  private async _spawnFromModelInfo(info: ModelInfo, isPlayer: boolean): Promise<void> {
+    const armor  = info.getEquippedModel(EquipmentType.Armor)  ?? "arm__base";
+    const helmet = info.getEquippedModel(EquipmentType.Helmet) ?? "hair-01";
+    const head   = info.head || "head__01a";
+
+    console.log(
+      `[ModelsManager] spawning ${isPlayer ? "player" : "enemy"} — ` +
+      `head:${head} armor:${armor} helmet:${helmet}`,
     );
 
-    await this._spawnFromModelInfo(
-      enemyInfo,
-      false
+    const result = await assembleCharacter(
+      this._scene,
+      info.gender,
+      head,
+      [
+        { type: EquipmentType.Armor,  model: armor  },
+        { type: EquipmentType.Helmet, model: helmet },
+      ],
     );
-  }
 
-  async spawnPlayer():
-    Promise<void> {
-
-    await this._spawnFromModelInfo(
-      this.playerInfo,
-      true
-    );
-  }
-
-  async spawnEnemy():
-    Promise<void> {
-
-    await this._spawnFromModelInfo(
-      this.enemyInfo,
-      false
-    );
-  }
-
-  private async _spawnFromModelInfo(
-    info: ModelInfo,
-    isPlayer: boolean
-  ): Promise<void> {
-
-    const result =
-      await assembleCharacter(
-        this._scene,
-        info.gender ?? Gender.Male,
-        info.head ?? "head__01a",
-        []
-      );
-
-    const root =
-      result.rootNodes[0];
-
+    const root = result.rootNodes[0];
     if (!root) {
+      console.error(`[ModelsManager] assembleCharacter returned no root node for ${isPlayer ? "player" : "enemy"}`);
       return;
     }
 
-    root.position =
-      isPlayer
-        ? new Vector3(-180, 0, 0)
-        : new Vector3(180, 0, 0);
-
-    root.rotation.y =
-      isPlayer
-        ? Math.PI / 2
-        : -Math.PI / 2;
-
-    const model = {
-      root,
-      skeleton:
-        result.skeleton,
-      meshes:
-        result.meshes,
-    };
-
     if (isPlayer) {
-      this._player = model;
+      root.position        = new Vector3(-250, 0, 0);
+      root.scaling         = new Vector3(-1, 1, 1);   // mirror to face right
+      this._player         = { root, skeleton: result.skeleton, meshes: result.meshes, info };
     } else {
-      this._enemy = model;
+      root.position        = new Vector3(250, 0, 0);
+      this._enemy          = { root, skeleton: result.skeleton, meshes: result.meshes, info };
     }
   }
+}
+
+function parseSkeletonIds(xmlText: string): Map<number, string> {
+  const map   = new Map<number, string>();
+  const regex = /<Bone\s+Name="([^"]+)"\s+ID="(\d+)"/g;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(xmlText)) !== null) {
+    map.set(parseInt(match[2], 10), match[1]);
+  }
+  return map;
 }

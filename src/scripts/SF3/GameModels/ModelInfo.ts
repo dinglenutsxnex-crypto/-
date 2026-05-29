@@ -55,7 +55,7 @@ export class ModelInfo {
     info.isPlayer  = true;
     info.isControl = true;
     info.aiMode    = AiMode.None;
-    info.setEquipment(EquipmentType.Armor,   "arm__str_15");
+    info.setEquipment(EquipmentType.Armor,   "arm__base");
     info.setEquipment(EquipmentType.Helmet,  "hair-01");
     if (overrides) Object.assign(info, overrides);
     return info;

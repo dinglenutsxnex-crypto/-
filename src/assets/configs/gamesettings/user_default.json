@@ -66,7 +66,7 @@
         "Equipped": 1, 
         "Default": 1, 
         "StackLevel": 20, 
-        "Model": "arm-base"
+        "Model": "arm__base"
         }, 
       { 
         "ID": 1000003, 

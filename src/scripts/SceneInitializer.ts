@@ -3,12 +3,9 @@ import "@babylonjs/loaders";
 import { BattleController } from "./BattleController";
 import { BattleCamera, ICameraModel } from "./BattleCamera";
 import { EffectsManager } from "./EffectsManager";
-import { FightController, IFightInfo } from "./FightController";
+import { IFightInfo } from "./FightController";
 import { CameraConfiguration } from "./CameraConfiguration";
 import { ModelsManager } from "./SF3/ModelsManager";
-import { UserDataController } from "./SF3/UserData/UserDataController";
-import { buildTrainingEnemyModelInfo } from "./SF3/TrainingEnemyConfig";
-import { ModelInfo } from "./SF3/GameModels/ModelInfo";
 
 const SPAWN_PLAYER = new Vector3(-250, 0, 0);
 const SPAWN_ENEMY  = new Vector3( 250, 0, 0);
@@ -33,7 +30,6 @@ export class SceneInitializer {
   private _shadowGenerator!: ShadowGenerator;
   private _cameraNode!: TransformNode;
   private _mainCamera!: FreeCamera;
-  private _modelsManager!: ModelsManager;
 
   constructor(scene: Scene) { this._scene = scene; }
 
@@ -47,15 +43,8 @@ export class SceneInitializer {
     this._setupScene();
     await this._loadLocation(locationName);
 
-    this._modelsManager = new ModelsManager(this._scene);
-    await this._modelsManager.loadModels();
-
-    const playerInfo: ModelInfo = UserDataController.isReady
-      ? UserDataController.getPlayerModelInfo()
-      : ModelInfo.createPlayer();
-    const enemyInfo: ModelInfo = buildTrainingEnemyModelInfo();
-
-    await this._modelsManager.createBattleModels(playerInfo, enemyInfo);
+    new ModelsManager(this._scene);
+    await ModelsManager.instance.Initialize();
     this._positionModels();
 
     this._initCamera();
@@ -137,8 +126,8 @@ export class SceneInitializer {
   }
 
   private _positionModels(): void {
-    const player = this._modelsManager.player;
-    const enemy  = this._modelsManager.enemy;
+    const player = ModelsManager.instance.player;
+    const enemy  = ModelsManager.instance.enemy;
     if (player?.root) {
       player.root.position.copyFrom(SPAWN_PLAYER);
       player.root.scaling = new Vector3(-1, 1, 1);
@@ -167,8 +156,8 @@ export class SceneInitializer {
   }
 
   private _wireCameraTrackers(): void {
-    const player = this._modelsManager.player;
-    const enemy  = this._modelsManager.enemy;
+    const player = ModelsManager.instance.player;
+    const enemy  = ModelsManager.instance.enemy;
     if (!player?.root || !enemy?.root) return;
     BattleCamera.setModels(new ModelTracker(player.root), new ModelTracker(enemy.root));
   }

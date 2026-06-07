@@ -262,7 +262,11 @@ export class BattleCamera {
     this.fixedOffset = Vector3.Zero();
     this.lookAtPlayerPos = true;
     this._calculatedPosition = Vector3.Zero();
-    if (instantly) {
+    // Only snap the camera to the calculated position when models are already
+    // wired. Without models _calculateBattleCameraPosition() returns early and
+    // _calculatedPosition stays at (0,0,0) — snapping would put the camera
+    // inside the scene looking up at the ceiling.
+    if (instantly && this._player && this._enemy) {
       this._calculateBattleCameraPosition();
       this.camera.position.copyFrom(this._calculatedPosition);
     }

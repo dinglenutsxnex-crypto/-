@@ -8,9 +8,16 @@ import { CameraConfiguration } from "./CameraConfiguration";
 import { ModelsManager } from "./SF3/ModelsManager";
 import { FightHUD } from "./ui/FightHUD";
 
-// Fallback spawn positions (Unity dojo_Legion: ~2.5 Unity units = 250 Babylon units apart)
-const FALLBACK_SPAWN_PLAYER = new Vector3(-250, 0, 0);
-const FALLBACK_SPAWN_ENEMY  = new Vector3( 250, 0, 0);
+// Fallback spawn positions.
+// The GLTF loader converts right-hand→left-hand by negating Z, which (combined
+// with the 270° Y rotation baked into the dojo root) makes the arena load
+// facing backwards from the camera.  We compensate by flipping the location
+// mesh root on X (see _loadLocation) and swapping the spawn sides so characters
+// end up on the same sides as in Unity: player LEFT (+X screen-right is X+
+// world, but after the root X-flip the visual is corrected → player appears
+// LEFT, enemy appears RIGHT).
+const FALLBACK_SPAWN_PLAYER = new Vector3( 250, 0, 0);
+const FALLBACK_SPAWN_ENEMY  = new Vector3(-250, 0, 0);
 const SPAWN_POINT           = new Vector3(   0, 0, 0);
 
 class ModelTracker implements ICameraModel {
@@ -137,6 +144,11 @@ export class SceneInitializer {
         if (nm === "SpawnPointA" || nm === "SpawnPoint_Player" || nm === "spawn_point_a") {
           const pos = node.getAbsolutePosition();
           if (pos.x !== 0 || pos.y !== 0 || pos.z !== 0) {
+            // Negate X: Unity→GLTF→BabylonJS preserves X, but the GLTF loader's
+            // Z-flip + the dojo root's baked Y-rotation effectively inverts the
+            // visual X axis — so the player spawn (left in Unity) arrives as
+            // right in BabylonJS and needs to be mirrored back.
+            pos.x *= -1;
             this._spawnPlayer.copyFrom(pos);
             console.log("[SceneInitializer] SpawnPointA from GLB:", pos.toString());
           }
@@ -144,11 +156,25 @@ export class SceneInitializer {
         } else if (nm === "SpawnPointB" || nm === "SpawnPoint_Enemy" || nm === "spawn_point_b") {
           const pos = node.getAbsolutePosition();
           if (pos.x !== 0 || pos.y !== 0 || pos.z !== 0) {
+            pos.x *= -1;
             this._spawnEnemy.copyFrom(pos);
             console.log("[SceneInitializer] SpawnPointB from GLB:", pos.toString());
           }
           node.setEnabled(false);
         }
+      }
+
+      // ── Correct GLTF→BabylonJS X-mirror ───────────────────────────────────
+      // The loader negates Z to convert right-hand→left-hand.  The dojo root's
+      // baked 270° Y rotation means the arena ends up X-flipped from what the
+      // Unity camera sees.  Negate X on the GLB root to restore the correct
+      // orientation.  After negating X the mesh normals are reversed, so
+      // disable backface culling so arena walls remain visible from inside.
+      const locationRoot =
+        result.transformNodes.find((n: TransformNode) => n.name === "__root__") ??
+        result.transformNodes.filter((n: TransformNode) => !n.parent)[0];
+      if (locationRoot) {
+        locationRoot.scaling.x *= -1;
       }
 
       for (const mesh of this._locationMeshes) {
@@ -157,6 +183,7 @@ export class SceneInitializer {
           continue;
         }
         mesh.receiveShadows = true;
+        if (mesh.material) mesh.material.backFaceCulling = false;
       }
     } catch (err) {
       console.warn(`[SceneInitializer] Could not load location "${locationName}": ${err}`);

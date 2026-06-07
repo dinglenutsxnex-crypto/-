@@ -40,7 +40,7 @@
 }
 .hud-right .hud-name { text-align: right; }
 
-/* ── HP Bar ── */
+/* ── HP Bar wrap ── */
 .hud-bar-wrap {
   position: relative;
   width: 100%;
@@ -49,71 +49,72 @@
   border-radius: 2px;
 }
 
+/* Dark track behind the atlas sprites */
 .hud-bar-bg {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* The fade (orange/yellow behind) */
+/* Fade layer — atlas hp_bar_fade sprite applied inline by FightHUD.bind() */
 .hud-bar-fade {
   position: absolute;
-  top: 0; left: 0; height: 100%;
-  width: 100%;
-  background: linear-gradient(90deg, #c87000, #ffaa00);
+  top: 0; left: 0;
+  height: 100%; width: 100%;
   transform-origin: left center;
   transition: transform 0.6s ease;
 }
+
+/* Enemy fade drains from left → transform-origin right */
 .hud-bar-wrap--right .hud-bar-fade {
   transform-origin: right center;
 }
 
-/* The main HP fill */
+/* HP fill layer — atlas hp_bar sprite applied inline by FightHUD.bind() */
 .hud-bar-fill {
   position: absolute;
-  top: 0; left: 0; height: 100%;
-  width: 100%;
+  top: 0; left: 0;
+  height: 100%; width: 100%;
   transform-origin: left center;
   transition: transform 0.15s ease;
 }
-.hud-bar-fill--player {
-  background: linear-gradient(180deg, #6ade4f 0%, #2eaa18 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-}
-.hud-bar-fill--enemy {
-  background: linear-gradient(180deg, #de4f4f 0%, #aa1818 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+
+/* Enemy fill drains from left */
+.hud-bar-wrap--right .hud-bar-fill {
+  transform-origin: right center;
 }
 
-/* Right-side bars grow from right */
-.hud-bar-wrap--right .hud-bar-fill { transform-origin: right center; }
+/*
+ * Enemy bars: hue-rotate green atlas sprite → red.
+ * Mirrors Unity's Color tint applied to the enemy HUD bar.
+ */
+.hud-bar-fill--enemy,
+.hud-bar-fade--enemy {
+  filter: hue-rotate(240deg) saturate(2) brightness(1.1);
+}
 
-/* ── Round dots ── */
+/* ── Round dots — atlas round_full / round_empty applied inline by FightHUD ── */
 .hud-rounds {
   display: flex;
   flex-direction: row;
   gap: 6px;
   margin-top: 2px;
+  align-items: center;
 }
 .hud-rounds--right { justify-content: flex-end; }
 
+/* Fallback dot style (shown if atlas fails to load) */
 .hud-round-dot {
   width: 18px;
   height: 8px;
   border-radius: 2px;
   background: rgba(255,255,255,0.15);
   border: 1px solid rgba(255,255,255,0.25);
-  transition: background 0.3s;
 }
 .hud-round-dot.won {
   background: #ffe066;
   border-color: #ffca00;
-  box-shadow: 0 0 4px rgba(255,200,0,0.6);
-}
-.hud-round-dot.lost {
-  background: rgba(255,80,80,0.6);
-  border-color: rgba(255,80,80,0.8);
 }
 
 /* ── Center ── */
@@ -158,7 +159,6 @@
 .hud-banner.hidden {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.8);
-  pointer-events: none;
 }
 
 #hud-banner-text {
@@ -197,16 +197,11 @@
   top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 56px;
-  height: 32px;
   cursor: pointer;
   pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: opacity 0.15s;
-  margin-top: 72px;
+  margin-top: 68px;
 }
 #hud-pause-btn:hover { opacity: 1; }
 

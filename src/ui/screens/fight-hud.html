@@ -5,7 +5,9 @@
     <div class="hud-name" id="hud-name-player">PLAYER</div>
     <div class="hud-bar-wrap">
       <div class="hud-bar-bg"></div>
+      <!-- Fade layer: Fight atlas hp_bar_fade applied by FightHUD.bind() -->
       <div class="hud-bar-fade" id="hud-hp-fade-player"></div>
+      <!-- Fill layer: Fight atlas hp_bar applied by FightHUD.bind() -->
       <div class="hud-bar-fill hud-bar-fill--player" id="hud-hp-player"></div>
     </div>
     <div class="hud-rounds" id="hud-rounds-player"></div>
@@ -24,15 +26,17 @@
     <div class="hud-name" id="hud-name-enemy">ENEMY</div>
     <div class="hud-bar-wrap hud-bar-wrap--right">
       <div class="hud-bar-bg"></div>
-      <div class="hud-bar-fade" id="hud-hp-fade-enemy"></div>
+      <!-- Fade layer: Fight atlas hp_bar_fade applied by FightHUD.bind(), tinted red via CSS -->
+      <div class="hud-bar-fade hud-bar-fade--enemy" id="hud-hp-fade-enemy"></div>
+      <!-- Fill layer: Fight atlas hp_bar applied by FightHUD.bind(), tinted red via CSS -->
       <div class="hud-bar-fill hud-bar-fill--enemy" id="hud-hp-enemy"></div>
     </div>
     <div class="hud-rounds hud-rounds--right" id="hud-rounds-enemy"></div>
   </div>
 
-  <!-- ── Pause button ── -->
+  <!-- ── Pause button: Fight atlas pause_button applied by _applySprites() ── -->
   <div id="hud-pause-btn">
-    <div class="sp-pause_button"></div>
+    <div id="hud-pause-sprite"></div>
   </div>
 
 </div>

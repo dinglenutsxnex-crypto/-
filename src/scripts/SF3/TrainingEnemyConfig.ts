@@ -57,7 +57,7 @@ export interface ITrainingEnemyConfig {
 
 export const TRAINING_ENEMY: ITrainingEnemyConfig = {
   alias:        "CHAR_GIZMO",
-  aiMode:       AiMode.DojoMode,   // ModelAi.cs: DojoMode → TacticsBehaviorRegular
+  aiMode:       AiMode.Dojo,   // ModelAi.cs: DojoMode → TacticsBehaviorRegular
   warriorPower: 1.0,
   appearance: {
     head:      "head-gizmo",        // Heads.HEAD_GIZMO → head: "head-gizmo"

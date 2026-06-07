@@ -30,10 +30,13 @@ const SPRITE_SIZES: Record<string, SpriteSpec> = {
   "progress_full":  { w: 180, h: 14, stretch: true },
 
   // Common atlas
-  "coin":           { w: 34,  h: 34  },
-  "bonus":          { w: 26,  h: 31  },
-  "shadow_currency":{ w: 34,  h: 34  },
-  "circle":         { w: 24,  h: 24  },
+  "coin":            { w: 34,  h: 34  },
+  "bonus":           { w: 26,  h: 31  },
+  "shadow_currency": { w: 34,  h: 34  },
+  "circle":          { w: 24,  h: 24  },
+
+  // Fight atlas — pause button (HP bars + round dots handled by FightHUD directly)
+  "pause_button":    { w: 80,  h: 32, stretch: true },
 };
 
 function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
@@ -104,18 +107,16 @@ export class EnterPointScene {
     this._launchDojo();
   }
 
-  // ─────────────────────────────────────────────────────────────────────────
-  //  Fight launch (mirrors DojoHolderModule + FightHolderModule)
-  // ─────────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────────────────────────────────
+  //  Fight launch
+  // ──────────────────────────────────────────────────────────────────────────────
 
   private async _launchDojo(): Promise<void> {
     if (this._inFight) return;
     this._inFight = true;
 
-    // Show loading screen during scene bootstrap
     LoadScreen.show();
 
-    // Build a minimal training FightInfo (no server needed)
     const trainingFightInfo: IFightInfo = {
       battleID:    "training_dojo",
       fightID:     "training_0",
@@ -124,21 +125,20 @@ export class EnterPointScene {
     };
 
     try {
-      // Dispose previous fight scene if any
       this._fightScene?.dispose();
-
-      // Initialize the fight scene (loads location + models + camera + BattleController)
       this._fightScene = new BattleFightScene(this._mgr.scene);
       await this._fightScene.initialize("dojo_Legion", trainingFightInfo);
 
-      // Hide currency bar while in fight (mirrors CurrencyUI.SetActive(true) on dojo)
-      const currBar = document.getElementById("currency-bar");
-      if (currBar) currBar.style.display = "none";
+      // ── Activate fight HUD BEFORE hiding the load screen ──────────────────
+      // This prevents the gray-canvas flash: the HUD is already rendered
+      // underneath the load screen as it fades out.
+      this._activateFightHUD(trainingFightInfo);
 
-      LoadScreen.hide(() => {
-        // Activate fight HUD and run the round-start sequence
-        this._activateFightHUD(trainingFightInfo);
-      });
+      // Hide all non-fight UI elements so nothing bleeds through
+      this._hideDojoUI();
+
+      // Now fade the load screen away (420 ms) — fight scene is ready beneath it
+      LoadScreen.hide();
 
     } catch (err) {
       console.error("[EnterPointScene] Fight launch failed:", err);
@@ -147,35 +147,40 @@ export class EnterPointScene {
     }
   }
 
+  /** Hide the dojo-menu / currency-bar elements that would show through the fight HUD */
+  private _hideDojoUI(): void {
+    const ids = ["currency-bar", "home-menu", "home-button", "home-screen-background"];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = "none";
+    });
+  }
+
   private _activateFightHUD(info: IFightInfo): void {
     if (!this._root) return;
 
-    // Create HUD controller and bind to DOM
-    this._hud = new FightHUD();
+    this._hud = new FightHUD(this._atlas);
     this._hud.bind(this._root);
 
-    // Set names from user data
     const player = UserDataController.player;
     this._hud.setPlayerName(player?.Name ?? "PLAYER");
     this._hud.setEnemyName("ENEMY");
 
-    // Init round state
     this._hud.initRound(1, info.roundsToWin, 99);
     this._hud.show();
 
-    // ── Sequence: ROUND 1 → FIGHT! → start timer ──
-    // Mirrors BattleInterface.ShowStartRound + ShowStartRoundFight
+    // ROUND 1 → FIGHT! → start timer  (mirrors BattleInterface sequence)
     this._hud.showRoundStart(() => {
       this._hud!.showFightStart(() => {
         this._hud!.startTimer();
-        console.log("[EnterPointScene] Fight active – RoundFightStart");
+        console.log("[EnterPointScene] Fight active — RoundFightStart");
       });
     });
   }
 
-  // ─────────────────────────────────────────────────────────────────────────
-  //  Private helpers (unchanged from original)
-  // ─────────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────────────────────────────────
+  //  Private helpers
+  // ──────────────────────────────────────────────────────────────────────────────
 
   private async _inject(path: string): Promise<void> {
     try {
@@ -241,12 +246,10 @@ export class EnterPointScene {
         e.stopPropagation();
         const menu = btn.dataset.menu ?? "";
         close();
-
-        // ── Route menu buttons ──
         if (menu === "dojo") {
           this._launchDojo();
         } else {
-          console.log(`[SlideMenu] OpenMenu("${menu}") – not yet implemented`);
+          console.log(`[SlideMenu] OpenMenu("${menu}") — not yet implemented`);
         }
       });
       btn.addEventListener("mouseenter", () => { this._deselectMenuBtns(); btn.classList.add("selected"); });

@@ -5,26 +5,7 @@
  * The Unity server would normally send enemy loadout; here we bake it in so
  * training always works without a network.
  *
- * Source of truth: battles.js → Warriors.Gizmo + warrior-appearences.js → Gizmo
- *
- * Warriors.Gizmo = {
- *   Alias:       "CHAR_GIZMO",
- *   Gender:      GENDER.MALE,
- *   Appearance:  WarriorAppearences.Gizmo,          // Head: "head-gizmo", HairColor: Hair_01/0.05, SkinColor: Skin_01/0.05
- *   Equipments:  [WPN_TWOHANDEDSWORD_01,             // model: "wpn__twohanded_sword_01_01"
- *                 HLM_FAKE,                           // model: "helm__fake"  (no visible helm — Gizmo's own hair)
- *                 ARM_STR_05],                        // model: "arm__str_05"
- * }
- *
- * Dojo sequence (from FightController.cs → DojoRound()):
- *   1. Models spawn at SceneConfig.SpawnPointPlayer / SpawnPointEnemy
- *   2. ThrowBirth() fires EVENT_BIRTH → plays birth animation
- *      Gizmo birth anim: gizmo_stance.bytes  (walk-in / stance-enter, plays once)
- *      Gizmo idle  anim: gizmo_stance_idle.bytes (loops during fight)
- *   3. Camera snaps instantly (InitBattleCamera instant=true) — no cinematic pan
- *   4. Load screen hides
- *   5. Immediately RoundFightStart — NO "ROUND 1", NO "FIGHT!" banner, NO timer
- *      Players can fight straight away.
+ * To swap enemy drip, change the TRAINING_ENEMY constant below.
  */
 
 import { Gender }        from "../sf3DTO/Gender";
@@ -46,32 +27,31 @@ export interface ITrainingEnemyEquipment {
 }
 
 export interface ITrainingEnemyConfig {
-  alias:        string;
-  aiMode:       AiMode;
+  alias:       string;
+  aiMode:      AiMode;
   warriorPower: number;
-  appearance:   ITrainingEnemyAppearance;
-  equipment:    ITrainingEnemyEquipment[];
+  appearance:  ITrainingEnemyAppearance;
+  equipment:   ITrainingEnemyEquipment[];
 }
 
-// ─── Gizmo — LegionDojo opponent (dojos.js: Dojos.LegionDojo → Warriors.Gizmo) ──
+// ─── Default training enemy ───────────────────────────────────────────────────
+// Mirrors the default BrawlerEnemy the Unity server sends for the starter Dojo.
+// Change gear here to reskin the training dummy.
 
 export const TRAINING_ENEMY: ITrainingEnemyConfig = {
-  alias:        "CHAR_GIZMO",
-  aiMode:       AiMode.Dojo,   // ModelAi.cs: DojoMode → TacticsBehaviorRegular
+  alias:        "DUMMY",
+  aiMode:       AiMode.Regular,
   warriorPower: 1.0,
   appearance: {
-    head:      "head-gizmo",        // Heads.HEAD_GIZMO → head: "head-gizmo"
+    head:      "head__01a",
     gender:    Gender.Male,
-    hairColor: { colorId: 1, value: 0.05 },  // Colors.Hair_01
-    skinColor: { colorId: 1, value: 0.05 },  // Colors.Skin_01
+    hairColor: { colorId: 3, value: 0.05 },
+    skinColor: { colorId: 1, value: 0.05 },
   },
   equipment: [
-    // WPN_TWOHANDEDSWORD_01 → Model: "wpn__twohanded_sword_01_01"
-    { type: EquipmentType.Weapon, model: "wpn__twohanded_sword_01_01" },
-    // HLM_FAKE → Model: "helm__fake"  (invisible slot — Gizmo has no helmet)
-    { type: EquipmentType.Helmet, model: "helm__fake"               },
-    // ARM_STR_05 → Model: "arm__str_05"  (Legion heavy armor)
-    { type: EquipmentType.Armor,  model: "arm__str_05"              },
+    { type: EquipmentType.Weapon, model: "wpn-fists"  },
+    { type: EquipmentType.Armor,  model: "arm-base"   },
+    { type: EquipmentType.Helmet, model: "hair__01_m" },
   ],
 };
 
@@ -79,14 +59,7 @@ export const TRAINING_ENEMY: ITrainingEnemyConfig = {
 
 /**
  * Build a ModelInfo from the training enemy config.
- * Called by ModelsManager when spawning the dojo enemy.
- *
- * Birth animation sequence (mirrors Unity ThrowBirth → EVENT_BIRTH):
- *   gizmo_stance.bytes      — plays once on spawn (stance-enter / walk-in)
- *   gizmo_stance_idle.bytes — loops during fight
- *
- * Enemy is auto-mirrored (Model.cs: forceMirrored=true for non-player)
- * so Gizmo naturally faces left toward the player.
+ * Called by ModelsManager / FightScene when spawning the dojo enemy.
  */
 export function buildTrainingEnemyModelInfo(
   cfg: ITrainingEnemyConfig = TRAINING_ENEMY,

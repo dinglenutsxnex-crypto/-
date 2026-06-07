@@ -1,9 +1,0 @@
-using sf3DTO;
-
-namespace SF3.Items
-{
-	public interface IFactionable
-	{
-		Faction GetFactionType();
-	}
-}

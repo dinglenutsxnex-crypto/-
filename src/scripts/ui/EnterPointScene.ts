@@ -6,6 +6,7 @@ import { LoadScreen }         from "../LoadScreen";
 import { UserDataController } from "../SF3/UserData/UserDataController";
 import { FightScene as BattleFightScene } from "../battle/FightScene";
 import type { IFightInfo }    from "../FightController";
+import { FightHUD }           from "./FightHUD";
 import "../../ui/styles/screens/currency-bar.css";
 import "../../ui/styles/screens/home-menu.css";
 
@@ -59,6 +60,7 @@ export class EnterPointScene {
   private _root:   HTMLDivElement | null = null;
   private _atlas:  AtlasManager;
   private _fightScene: BattleFightScene | null = null;
+  private _fightHud:   FightHUD | null = null;
   private _inFight = false;
 
   constructor(mgr: SceneManager, config: SceneConfig) {
@@ -105,25 +107,51 @@ export class EnterPointScene {
   // ──────────────────────────────────────────────────────────────────────────────
 
   private async _launchDojo(): Promise<void> {
-    if (this._inFight) return;
+    if (this._inFight && !this._fightScene) return;
     this._inFight = true;
 
     LoadScreen.show();
 
+    // ── Mirror Unity DojoRound(): isDojo=true skips ROUND/FIGHT banners ─────
+    // Unity: BattlesManager.currentBattleType == BattleType.Dojo
+    //   → FightController.IsDojo() == true
+    //   → DojoRound() path: no intro animation wait, no banners, straight to RoundFightStart.
+    // RoundTime 99 matches battlesDefault.txt dojos (RoundTime: 99).
     const trainingFightInfo: IFightInfo = {
       battleID:    "training_dojo",
       fightID:     "training_0",
-      roundsToWin: 2,
-      roundsToLose:2,
+      roundsToWin:  2,
+      roundsToLose: 2,
+      roundTime:   99,
+      isDojo:      true,
     };
 
     try {
+      // Dispose previous fight + HUD if relaunching
       this._fightScene?.dispose();
-      this._fightScene = new BattleFightScene(this._mgr.scene);
-      await this._fightScene.initialize("dojo_Legion", trainingFightInfo);
+      this._fightHud?.dispose();
+      // Remove the old HUD element so _inject doesn't duplicate it
+      this._root?.querySelector("#fight-hud")?.remove();
 
-      // Dojo: currency bar, hamburger menu, and chat stay visible — exactly
-      // like the real game. No fight HUD, no timer, no banners.
+      // ── Inject fight-hud.html into the UI root ────────────────────────────
+      // In Unity the BattleInterface HUD is always present during a dojo fight
+      // (HP bars visible, timer counting down). Banners are suppressed by isDojo.
+      await this._inject("screens/fight-hud.html");
+
+      // Create and bind the HUD — mirrors BattleInterface.cs awake/init.
+      this._fightHud = new FightHUD(this._atlas);
+      if (this._root) this._fightHud.bind(this._root);
+
+      // Set character names to match Unity aliases
+      this._fightHud.setEnemyName("GIZMO");
+
+      const playerName = UserDataController.player?.Name ?? "PLAYER";
+      this._fightHud.setPlayerName(playerName);
+
+      // ── Initialize the 3-D scene + fight state machine ────────────────────
+      this._fightScene = new BattleFightScene(this._mgr.scene);
+      await this._fightScene.initialize("dojo_Legion", trainingFightInfo, this._fightHud);
+
       LoadScreen.hide();
 
     } catch (err) {

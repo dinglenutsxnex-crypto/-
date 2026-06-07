@@ -10,6 +10,7 @@ import { Scene } from "@babylonjs/core";
 import { FightController, IFightInfo } from "./FightController";
 import { EffectsManager } from "./EffectsManager";
 import { BattleCamera } from "./BattleCamera";
+import { FightHUD } from "./ui/FightHUD";
 
 export class BattleController {
   private static _instance: BattleController;
@@ -50,9 +51,14 @@ export class BattleController {
     this._eventCallbacks.clear();
   }
 
-  async initBattle(fightInfo: IFightInfo): Promise<void> {
+  /**
+   * Mirrors BattleController.InitBattle().
+   * @param hud Optional FightHUD to wire into the fight stage machine.
+   *            For the Dojo this is provided; for scenes without HUD pass undefined.
+   */
+  async initBattle(fightInfo: IFightInfo, hud?: FightHUD): Promise<void> {
     console.log("[BattleController] InitBattle");
-    await this._fightController.initFight(fightInfo);
+    await this._fightController.initFight(fightInfo, hud);
     this._battleEnabled = true;
   }
 

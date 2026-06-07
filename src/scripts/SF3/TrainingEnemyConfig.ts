@@ -34,24 +34,34 @@ export interface ITrainingEnemyConfig {
   equipment:   ITrainingEnemyEquipment[];
 }
 
-// ─── Default training enemy ───────────────────────────────────────────────────
-// Mirrors the default BrawlerEnemy the Unity server sends for the starter Dojo.
-// Change gear here to reskin the training dummy.
+// ─── LegionDojo enemy: Gizmo ─────────────────────────────────────────────────
+// Source: dojos.js  →  LegionDojo.Warriors = [ Warriors.Gizmo ]
+//         battles.js Warriors.Gizmo:
+//           Alias:       "CHAR_GIZMO"
+//           Gender:      MALE
+//           Appearance:  WarriorAppearences.Gizmo
+//             Head:      Heads.HEAD_GIZMO  →  "head-gizmo"
+//             HairColor: Colors.Hair_01 (colorId 1), value 0.05
+//             SkinColor: Colors.Skin_01 (colorId 1), value 0.05
+//           Equipments:
+//             WPN_TWOHANDEDSWORD_01  (ID  4)  model "wpn__twohanded_sword_01_01"
+//             HLM_FAKE               (ID 409) model "helm__fake"
+//             ARM_STR_05             (ID 200) model "arm__str_05"
 
 export const TRAINING_ENEMY: ITrainingEnemyConfig = {
-  alias:        "DUMMY",
+  alias:        "CHAR_GIZMO",
   aiMode:       AiMode.Regular,
   warriorPower: 1.0,
   appearance: {
-    head:      "head__01a",
+    head:      "head-gizmo",
     gender:    Gender.Male,
-    hairColor: { colorId: 3, value: 0.05 },
+    hairColor: { colorId: 1, value: 0.05 },
     skinColor: { colorId: 1, value: 0.05 },
   },
   equipment: [
-    { type: EquipmentType.Weapon, model: "wpn-fists"  },
-    { type: EquipmentType.Armor,  model: "arm-base"   },
-    { type: EquipmentType.Helmet, model: "hair__01_m" },
+    { type: EquipmentType.Weapon, model: "wpn__twohanded_sword_01_01" },
+    { type: EquipmentType.Armor,  model: "arm__str_05"                },
+    { type: EquipmentType.Helmet, model: "helm__fake"                 },
   ],
 };
 

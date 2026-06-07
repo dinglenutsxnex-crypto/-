@@ -6,6 +6,7 @@ import { EffectsManager } from "./EffectsManager";
 import { IFightInfo } from "./FightController";
 import { CameraConfiguration } from "./CameraConfiguration";
 import { ModelsManager } from "./SF3/ModelsManager";
+import { FightHUD } from "./ui/FightHUD";
 
 // Fallback spawn positions (Unity dojo_Legion: ~2.5 Unity units = 250 Babylon units apart)
 const FALLBACK_SPAWN_PLAYER = new Vector3(-250, 0, 0);
@@ -38,9 +39,15 @@ export class SceneInitializer {
 
   constructor(scene: Scene) { this._scene = scene; }
 
+  /**
+   * @param hud  Optional FightHUD to wire into the fight stage machine.
+   *             For the Dojo this should be provided so HP bars and the timer
+   *             activate as soon as RoundFightStart fires.
+   */
   async initializeNewLocationScene(
     locationName: string,
     fightInfo: IFightInfo,
+    hud?: FightHUD,
     onReady?: () => void,
   ): Promise<void> {
     this._disposePrevious();
@@ -59,7 +66,7 @@ export class SceneInitializer {
     EffectsManager.createInstance(this._scene);
     bc.initialize();
 
-    await bc.initBattle(fightInfo);
+    await bc.initBattle(fightInfo, hud);
 
     onReady?.();
   }

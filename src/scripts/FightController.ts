@@ -1,20 +1,26 @@
+/**
+ * FightController.ts
+ * Mirror of SF3/FightController.cs
+ *
+ * Drives the fight state machine:
+ *   None → RoundStart → RoundFightStart ↔ RoundFightEnd → RoundEnd → (loop or FightEnd)
+ */
+
 export enum EFightStage {
-  None           = 0,
-  FightStart     = 1,
-  FightEnd       = 2,
-  RoundStart     = 3,
-  RoundEnd       = 4,
+  None = 0,
+  FightStart = 1,
+  FightEnd = 2,
+  RoundStart = 3,
+  RoundEnd = 4,
   RoundFightStart = 5,
-  RoundFightEnd  = 6,
+  RoundFightEnd = 6,
 }
 
 export interface IFightInfo {
-  battleID:     string;
-  fightID:      string;
-  roundsToWin:  number;
+  battleID: string;
+  fightID: string;
+  roundsToWin: number;
   roundsToLose: number;
-  isDojo?:      boolean;
-  roundTime?:   number;
 }
 
 export type FightStageCallback = (stage: EFightStage) => void;
@@ -27,40 +33,32 @@ export class FightController {
   private _currentFight?: IFightInfo;
   private _onStageChange?: FightStageCallback;
 
-  private _playerWins = 0;
-  private _enemyWins  = 0;
+  get fightStage(): EFightStage { return this._stage; }
+  get currentFight(): IFightInfo | undefined { return this._currentFight; }
 
-  get fightStage():    EFightStage        { return this._stage; }
-  get currentFight():  IFightInfo | undefined { return this._currentFight; }
-  get playerWins():    number             { return this._playerWins; }
-  get enemyWins():     number             { return this._enemyWins; }
-
-  constructor() { FightController._instance = this; }
+  constructor() {
+    FightController._instance = this;
+  }
 
   setStageChangeCallback(cb: FightStageCallback): void {
     this._onStageChange = cb;
   }
 
   initialize(): void {
-    this._stage        = EFightStage.None;
+    this._stage = EFightStage.None;
     this._currentFight = undefined;
-    this._playerWins   = 0;
-    this._enemyWins    = 0;
   }
 
   async initFight(fightInfo: IFightInfo): Promise<void> {
     this._currentFight = fightInfo;
-    this._playerWins   = 0;
-    this._enemyWins    = 0;
     await this._setFightStage(EFightStage.RoundStart);
   }
 
+  update(): void {
+    // Per-frame checks (round timer, health thresholds) triggered externally.
+  }
+
   winCurrentRound(playerWon: boolean): void {
-    if (playerWon) {
-      this._playerWins++;
-    } else if (!this._currentFight?.isDojo) {
-      this._enemyWins++;
-    }
     this._setFightStage(EFightStage.RoundFightEnd);
   }
 
@@ -69,13 +67,15 @@ export class FightController {
   }
 
   static tacticsCanReact(): boolean {
-    return FightController._instance._stage === EFightStage.RoundFightStart;
+    return (
+      FightController._instance._stage === EFightStage.RoundFightStart
+    );
   }
 
   private async _setFightStage(
-    stage:     EFightStage,
-    surrender  = false,
-    winnerId?: number,
+    stage: EFightStage,
+    surrender = false,
+    winnerId?: number
   ): Promise<void> {
     this._stage = stage;
     this._onStageChange?.(stage);
@@ -100,12 +100,13 @@ export class FightController {
   }
 
   private async _roundStart(): Promise<void> {
-    console.log(`[FightController] RoundStart (dojo=${this._currentFight?.isDojo})`);
+    // Notify listeners; models / UI setup happens in BattleController
+    console.log(`[FightController] RoundStart`);
     await this._setFightStage(EFightStage.RoundFightStart);
   }
 
   private _roundFightStart(): void {
-    console.log(`[FightController] RoundFightStart`);
+    console.log(`[FightController] RoundFightStart – fight active`);
   }
 
   private _roundFightEnd(): void {
@@ -114,20 +115,14 @@ export class FightController {
   }
 
   private _roundEnd(): void {
-    console.log(`[FightController] RoundEnd — playerWins=${this._playerWins} enemyWins=${this._enemyWins}`);
-    const f = this._currentFight!;
-    const fightOver = this._playerWins >= f.roundsToWin
-      || (!f.isDojo && this._enemyWins >= f.roundsToLose);
-    if (fightOver) {
-      this._setFightStage(EFightStage.FightEnd);
-    } else {
-      this._setFightStage(EFightStage.RoundStart);
-    }
+    console.log(`[FightController] RoundEnd`);
+    // Determine whether fight is over; for now always start a new round.
+    this._setFightStage(EFightStage.RoundStart);
   }
 
   private _fightEnd(surrender: boolean, winnerId?: number): void {
     console.log(
-      `[FightController] FightEnd — winner: ${winnerId ?? "none"}, surrender: ${surrender}`,
+      `[FightController] FightEnd – winner: ${winnerId ?? "none"}, surrender: ${surrender}`
     );
   }
 }

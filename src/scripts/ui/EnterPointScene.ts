@@ -2,34 +2,17 @@ import { Vector3 }    from "@babylonjs/core";
 import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera";
 import { SceneManager, SceneConfig, SceneNode } from "../core/SceneManager";
 import { AtlasManager }       from "./AtlasManager";
-import { FightHUD }           from "./FightHUD";
 import { LoadScreen }         from "../LoadScreen";
 import { UserDataController } from "../SF3/UserData/UserDataController";
 import { FightScene as BattleFightScene } from "../battle/FightScene";
-import { FightController, EFightStage } from "../FightController";
 import type { IFightInfo }    from "../FightController";
 import "../../ui/styles/screens/currency-bar.css";
 import "../../ui/styles/screens/home-menu.css";
-import "../../ui/styles/screens/fight-hud.css";
-
-/*
- * Dojo fight config — from battles.js:
- *   RoundsToWin: 1   (win once and the round resets)
- *   RoundTime:   99999 → displayed as ∞, timer never counts down
- *   isDojo: true     → player cannot lose, no enemy win tracking
- */
-const DOJO_FIGHT_INFO: IFightInfo = {
-  battleID:     "dojo_Legion",
-  fightID:      "training_0",
-  roundsToWin:  1,
-  roundsToLose: 1,
-  isDojo:       true,
-  roundTime:    99999,
-};
 
 interface SpriteSpec { w: number; h: number; stretch?: boolean; }
 
 const SPRITE_SIZES: Record<string, SpriteSpec> = {
+  // DojoMenu atlas
   "menu_icon":      { w: 44,  h: 28  },
   "dojo_icon":      { w: 52,  h: 40  },
   "shop_icon":      { w: 46,  h: 52  },
@@ -37,15 +20,19 @@ const SPRITE_SIZES: Record<string, SpriteSpec> = {
   "inventory_icon": { w: 52,  h: 52  },
   "booster_icon":   { w: 42,  h: 56  },
   "settings_icon":  { w: 52,  h: 52  },
+
+  // Currency atlas
   "chat":           { w: 36,  h: 24  },
   "cross":          { w: 22,  h: 22  },
   "progress_empty": { w: 180, h: 14, stretch: true },
   "progress_full":  { w: 180, h: 14, stretch: true },
+
+  // Common atlas
   "coin":            { w: 34,  h: 34  },
   "bonus":           { w: 26,  h: 31  },
   "shadow_currency": { w: 34,  h: 34  },
   "circle":          { w: 24,  h: 24  },
-  "pause_button":    { w: 80,  h: 32, stretch: true },
+
 };
 
 function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
@@ -71,10 +58,8 @@ export class EnterPointScene {
   private _config: SceneConfig;
   private _root:   HTMLDivElement | null = null;
   private _atlas:  AtlasManager;
-  private _hud:    FightHUD | null = null;
   private _fightScene: BattleFightScene | null = null;
-  private _inFight     = false;
-  private _roundNumber = 0;
+  private _inFight = false;
 
   constructor(mgr: SceneManager, config: SceneConfig) {
     this._mgr    = mgr;
@@ -105,20 +90,19 @@ export class EnterPointScene {
 
     await this._inject("screens/currency-bar.html");
     await this._inject("screens/home-menu.html");
-    await this._inject("screens/fight-hud.html");
-
     this._applySprites();
     this._injectPlayerData();
     this._wireHomeMenu();
 
     console.log("[EnterPointScene] mounted");
 
+    // Auto-start in dojo
     this._launchDojo();
   }
 
-  // ─────────────────────────────────────────────────────────────────────────
-  //  Fight launch
-  // ─────────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────────────────────────────────
+  //  Dojo launch
+  // ──────────────────────────────────────────────────────────────────────────────
 
   private async _launchDojo(): Promise<void> {
     if (this._inFight) return;
@@ -126,13 +110,20 @@ export class EnterPointScene {
 
     LoadScreen.show();
 
+    const trainingFightInfo: IFightInfo = {
+      battleID:    "training_dojo",
+      fightID:     "training_0",
+      roundsToWin: 2,
+      roundsToLose:2,
+    };
+
     try {
       this._fightScene?.dispose();
       this._fightScene = new BattleFightScene(this._mgr.scene);
-      await this._fightScene.initialize("dojo_Legion", DOJO_FIGHT_INFO);
+      await this._fightScene.initialize("dojo_Legion", trainingFightInfo);
 
-      this._activateFightHUD();
-      this._hideDojoUI();
+      // Dojo: currency bar, hamburger menu, and chat stay visible — exactly
+      // like the real game. No fight HUD, no timer, no banners.
       LoadScreen.hide();
 
     } catch (err) {
@@ -142,115 +133,9 @@ export class EnterPointScene {
     }
   }
 
-  private _hideDojoUI(): void {
-    const ids = ["currency-bar", "home-menu", "home-button", "home-screen-background"];
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = "none";
-    });
-  }
-
-  // ─────────────────────────────────────────────────────────────────────────
-  //  HUD activation and dojo round sequence
-  //
-  //  Unity dojo flow (DojoRound()):
-  //    • No VS screen, no load-screen between rounds
-  //    • No "ROUND X" banner on repeat rounds (first entry only in some builds,
-  //      but the key difference: goes straight to RoundFightStart without
-  //      waiting for a loadscreen animation to finish)
-  //    • No timer (RoundTime = 99999 → ∞)
-  //    • Player cannot lose
-  //    • On round win: GREAT!/PERFECT! banner (optional), then round resets
-  //      immediately via DojoRound() again — NO fight-end screen
-  // ─────────────────────────────────────────────────────────────────────────
-
-  private _activateFightHUD(): void {
-    if (!this._root) return;
-
-    this._hud = new FightHUD(this._atlas);
-    this._hud.bind(this._root);
-
-    const player = UserDataController.player;
-    this._hud.setPlayerName(player?.Name ?? "PLAYER");
-    this._hud.setEnemyName("GIZMO");
-
-    this._roundNumber = 1;
-    this._startDojoRound(true);
-
-    this._hud.show();
-    this._wireHUDToFightController();
-  }
-
-  /**
-   * Start a dojo round:
-   *   • First round: ROUND 1 (1 s delay) → FIGHT!  → fight active (no timer)
-   *   • Subsequent rounds: FIGHT! immediately       → fight active
-   */
-  private _startDojoRound(isFirst: boolean): void {
-    if (!this._hud) return;
-
-    this._hud.initRound(
-      this._roundNumber,
-      DOJO_FIGHT_INFO.roundsToWin,
-      DOJO_FIGHT_INFO.roundTime!,
-      true,
-    );
-
-    if (isFirst) {
-      this._hud.showRoundStart(() => {
-        this._hud!.showFightStart(() => {
-          console.log("[EnterPointScene] Dojo RoundFightStart");
-        });
-      });
-    } else {
-      this._hud.showFightStart(() => {
-        console.log("[EnterPointScene] Dojo RoundFightStart (repeat)");
-      });
-    }
-  }
-
-  /**
-   * Wire FightController stage changes so the HUD updates when a round ends.
-   * In dojo: player wins → GREAT!/PERFECT! (optional) → reset round, no fight-end.
-   */
-  private _wireHUDToFightController(): void {
-    const fc = FightController.instance;
-    if (!fc) return;
-
-    fc.setStageChangeCallback((stage: EFightStage) => {
-      if (!this._hud) return;
-
-      switch (stage) {
-        case EFightStage.RoundFightEnd: {
-          const playerWon = fc.playerWins > (this._roundNumber - 1);
-          if (playerWon) {
-            this._hud.addPlayerWin();
-            this._hud.showGreat(() => {
-              this._nextDojoRound();
-            });
-          } else {
-            this._nextDojoRound();
-          }
-          break;
-        }
-        case EFightStage.FightEnd: {
-          console.log("[EnterPointScene] Dojo fight end — looping back");
-          this._nextDojoRound();
-          break;
-        }
-      }
-    });
-  }
-
-  private _nextDojoRound(): void {
-    if (!this._hud) return;
-    this._roundNumber++;
-    this._startDojoRound(false);
-  }
-
-  // ─────────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────────────────────────────────
   //  Private helpers
-  // ─────────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────────────────────────────────
 
   private async _inject(path: string): Promise<void> {
     try {

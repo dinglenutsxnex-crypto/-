@@ -1,12 +1,25 @@
-import { Vector3 }    from "@babylonjs/core";
-import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera";
+/**
+ * EnterPointScene.ts
+ *
+ * Mounts all HTML UI and bootstraps the Babylon fight scene.
+ *
+ * Key changes from the old version:
+ *  - FightHUD.buildHUDCallbacks() is passed into BattleController before
+ *    initBattle so FightController drives the HUD automatically every frame.
+ *  - _activateFightHUD() no longer manually fires showRoundStart / showFightStart
+ *    or calls startTimer() — all of that is now owned by FightController.
+ *  - EnterPointScene just wires names, shows the HUD, and gets out of the way.
+ */
+
+import { Vector3 }         from "@babylonjs/core";
+import { FreeCamera }      from "@babylonjs/core/Cameras/freeCamera";
 import { SceneManager, SceneConfig, SceneNode } from "../core/SceneManager";
-import { AtlasManager }       from "./AtlasManager";
-import { FightHUD }           from "./FightHUD";
-import { LoadScreen }         from "../LoadScreen";
+import { AtlasManager }    from "./AtlasManager";
+import { FightHUD }        from "./FightHUD";
+import { LoadScreen }      from "../LoadScreen";
 import { UserDataController } from "../SF3/UserData/UserDataController";
 import { FightScene as BattleFightScene } from "../battle/FightScene";
-import type { IFightInfo }    from "../FightController";
+import type { IFightInfo } from "../SF3/FightController";
 import "../../ui/styles/screens/currency-bar.css";
 import "../../ui/styles/screens/home-menu.css";
 import "../../ui/styles/screens/fight-hud.css";
@@ -14,7 +27,6 @@ import "../../ui/styles/screens/fight-hud.css";
 interface SpriteSpec { w: number; h: number; stretch?: boolean; }
 
 const SPRITE_SIZES: Record<string, SpriteSpec> = {
-  // DojoMenu atlas
   "menu_icon":      { w: 44,  h: 28  },
   "dojo_icon":      { w: 52,  h: 40  },
   "shop_icon":      { w: 46,  h: 52  },
@@ -22,21 +34,14 @@ const SPRITE_SIZES: Record<string, SpriteSpec> = {
   "inventory_icon": { w: 52,  h: 52  },
   "booster_icon":   { w: 42,  h: 56  },
   "settings_icon":  { w: 52,  h: 52  },
-
-  // Currency atlas
   "chat":           { w: 36,  h: 24  },
   "cross":          { w: 22,  h: 22  },
   "progress_empty": { w: 180, h: 14, stretch: true },
   "progress_full":  { w: 180, h: 14, stretch: true },
-
-  // Common atlas
-  "coin":            { w: 34,  h: 34  },
-  "bonus":           { w: 26,  h: 31  },
-  "shadow_currency": { w: 34,  h: 34  },
-  "circle":          { w: 24,  h: 24  },
-
-  // Fight atlas — pause button (HP bars + round dots handled by FightHUD directly)
-  "pause_button":    { w: 80,  h: 32, stretch: true },
+  "coin":           { w: 34,  h: 34  },
+  "bonus":          { w: 26,  h: 31  },
+  "shadow_currency":{ w: 34,  h: 34  },
+  "circle":         { w: 24,  h: 24  },
 };
 
 function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
@@ -58,13 +63,13 @@ function createBabylonCamera(mgr: SceneManager, node: SceneNode): void {
 }
 
 export class EnterPointScene {
-  private _mgr:    SceneManager;
-  private _config: SceneConfig;
-  private _root:   HTMLDivElement | null = null;
-  private _atlas:  AtlasManager;
-  private _hud:    FightHUD | null = null;
+  private _mgr:       SceneManager;
+  private _config:    SceneConfig;
+  private _root:      HTMLDivElement | null = null;
+  private _atlas:     AtlasManager;
+  private _hud:       FightHUD | null = null;
   private _fightScene: BattleFightScene | null = null;
-  private _inFight = false;
+  private _inFight    = false;
 
   constructor(mgr: SceneManager, config: SceneConfig) {
     this._mgr    = mgr;
@@ -73,6 +78,7 @@ export class EnterPointScene {
   }
 
   async mount(): Promise<void> {
+    // Process scene hierarchy / cameras from JSON config
     if (this._config.hierarchy) {
       for (const node of this._config.hierarchy) {
         if (!node.isActive) continue;
@@ -83,7 +89,9 @@ export class EnterPointScene {
       }
     }
     if (!this._mgr.scene.activeCamera) {
-      this._mgr.scene.activeCamera = new FreeCamera("fallback", new Vector3(0, 0, -10), this._mgr.scene);
+      this._mgr.scene.activeCamera = new FreeCamera(
+        "fallback", new Vector3(0, 0, -10), this._mgr.scene,
+      );
     }
 
     await this._atlas.load();
@@ -103,13 +111,11 @@ export class EnterPointScene {
 
     console.log("[EnterPointScene] mounted");
 
-    // Auto-start in training
+    // Auto-start training dojo on boot (mirrors Unity's default entry point)
     this._launchDojo();
   }
 
-  // ──────────────────────────────────────────────────────────────────────────────
-  //  Fight launch
-  // ──────────────────────────────────────────────────────────────────────────────
+  // ─── Dojo launch ──────────────────────────────────────────────────────────
 
   private async _launchDojo(): Promise<void> {
     if (this._inFight) return;
@@ -118,27 +124,40 @@ export class EnterPointScene {
     LoadScreen.show();
 
     const trainingFightInfo: IFightInfo = {
-      battleID:    "training_dojo",
-      fightID:     "training_0",
-      roundsToWin: 2,
-      roundsToLose:2,
+      battleID:     "training_dojo",
+      fightID:      "training_0",
+      roundsToWin:  2,
+      roundsToLose: 2,
+      roundTime:    99,
     };
 
     try {
       this._fightScene?.dispose();
+
+      // 1. Create HUD and build callbacks before the scene initialises
+      //    so BattleController.setHUDCallbacks() is called before initBattle.
+      this._hud = new FightHUD();
+      if (this._root) this._hud.bind(this._root);
+      const hudCallbacks = this._hud.buildHUDCallbacks();
+
+      // 2. Boot the fight scene — this creates BattleController internally
       this._fightScene = new BattleFightScene(this._mgr.scene);
-      await this._fightScene.initialize("dojo_Legion", trainingFightInfo);
+      await this._fightScene.initialize("dojo_Legion", trainingFightInfo, hudCallbacks);
 
-      // ── Activate fight HUD BEFORE hiding the load screen ──────────────────
-      // This prevents the gray-canvas flash: the HUD is already rendered
-      // underneath the load screen as it fades out.
-      this._activateFightHUD(trainingFightInfo);
+      // 3. Set player / enemy names
+      const player = UserDataController.player;
+      this._hud.setPlayerName(player?.Name ?? "PLAYER");
+      this._hud.setEnemyName("ENEMY");
 
-      // Hide all non-fight UI elements so nothing bleeds through
-      this._hideDojoUI();
+      // 4. Hide currency bar while in fight (mirrors DojoHolderModule)
+      const currBar = document.getElementById("currency-bar");
+      if (currBar) currBar.style.display = "none";
 
-      // Now fade the load screen away (420 ms) — fight scene is ready beneath it
+      // 5. Show HUD — FightController owns the banner / timer sequence from here
+      this._hud.show();
+
       LoadScreen.hide();
+      console.log("[EnterPointScene] dojo launched — FightController owns HUD from here");
 
     } catch (err) {
       console.error("[EnterPointScene] Fight launch failed:", err);
@@ -147,40 +166,7 @@ export class EnterPointScene {
     }
   }
 
-  /** Hide the dojo-menu / currency-bar elements that would show through the fight HUD */
-  private _hideDojoUI(): void {
-    const ids = ["currency-bar", "home-menu", "home-button", "home-screen-background"];
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = "none";
-    });
-  }
-
-  private _activateFightHUD(info: IFightInfo): void {
-    if (!this._root) return;
-
-    this._hud = new FightHUD(this._atlas);
-    this._hud.bind(this._root);
-
-    const player = UserDataController.player;
-    this._hud.setPlayerName(player?.Name ?? "PLAYER");
-    this._hud.setEnemyName("ENEMY");
-
-    this._hud.initRound(1, info.roundsToWin, 99);
-    this._hud.show();
-
-    // ROUND 1 → FIGHT! → start timer  (mirrors BattleInterface sequence)
-    this._hud.showRoundStart(() => {
-      this._hud!.showFightStart(() => {
-        this._hud!.startTimer();
-        console.log("[EnterPointScene] Fight active — RoundFightStart");
-      });
-    });
-  }
-
-  // ──────────────────────────────────────────────────────────────────────────────
-  //  Private helpers
-  // ──────────────────────────────────────────────────────────────────────────────
+  // ─── Private helpers ─────────────────────────────────────────────────────
 
   private async _inject(path: string): Promise<void> {
     try {
@@ -198,34 +184,25 @@ export class EnterPointScene {
         if (!cls.startsWith("sp-")) continue;
         const name = cls.replace("sp-", "");
         const spec = SPRITE_SIZES[name];
-        if (!spec) {
-          this._atlas.apply(el, name);
-        } else if (spec.stretch) {
-          this._atlas.applyStretched(el, name, spec.w, spec.h);
-        } else {
-          this._atlas.applyScaled(el, name, spec.w, spec.h);
-        }
+        if (!spec)               { this._atlas.apply(el, name); }
+        else if (spec.stretch)   { this._atlas.applyStretched(el, name, spec.w, spec.h); }
+        else                     { this._atlas.applyScaled(el, name, spec.w, spec.h); }
         return;
       }
     });
   }
 
   private _injectPlayerData(): void {
-    const p = UserDataController.player;
-
-    const nameEl = document.getElementById("currency-name");
-    if (nameEl) nameEl.textContent = p?.Name ?? "PLAYER";
-
-    const lvEl = document.getElementById("currency-level");
-    if (lvEl) lvEl.textContent = String(p?.Level ?? 1);
-
-    const cur = p?.Currency;
-    const b = document.getElementById("val-bonus");
-    const c = document.getElementById("val-coin");
-    const s = document.getElementById("val-shadow");
-    if (b) b.textContent = String(cur?.Bonus  ?? 0);
-    if (c) c.textContent = String(cur?.Coin   ?? 0);
-    if (s) s.textContent = String(cur?.Shadow ?? 0);
+    const p   = UserDataController.player;
+    const set = (id: string, val: string) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
+    set("currency-name",  p?.Name  ?? "PLAYER");
+    set("currency-level", String(p?.Level ?? 1));
+    set("val-bonus",  String(p?.Currency?.Bonus  ?? 0));
+    set("val-coin",   String(p?.Currency?.Coin   ?? 0));
+    set("val-shadow", String(p?.Currency?.Shadow ?? 0));
   }
 
   private _wireHomeMenu(): void {
@@ -247,9 +224,10 @@ export class EnterPointScene {
         const menu = btn.dataset.menu ?? "";
         close();
         if (menu === "dojo") {
+          this._inFight = false; // allow re-launch
           this._launchDojo();
         } else {
-          console.log(`[SlideMenu] OpenMenu("${menu}") — not yet implemented`);
+          console.log(`[SlideMenu] OpenMenu("${menu}") – not yet implemented`);
         }
       });
       btn.addEventListener("mouseenter", () => { this._deselectMenuBtns(); btn.classList.add("selected"); });
@@ -258,7 +236,8 @@ export class EnterPointScene {
   }
 
   private _deselectMenuBtns(): void {
-    document.querySelectorAll(".menu-btn.selected").forEach(el => el.classList.remove("selected"));
+    document.querySelectorAll(".menu-btn.selected")
+      .forEach(el => el.classList.remove("selected"));
   }
 
   private _mountRecursive(node: SceneNode): void {

@@ -1,65 +1,68 @@
+/**
+ * FightHUD.ts
+ * Mirror of BattleInterface.cs + RoundsUI.cs + RoundTimer.cs
+ *
+ * Drives all in-fight HTML UI:
+ *  - Player/enemy HP bars (with fade-drain effect)
+ *  - Round-win dots
+ *  - Countdown timer (display only — tick driven by FightController)
+ *  - Centre banners: ROUND N, FIGHT!, KO, PERFECT, GREAT, WIN, LOSE
+ *
+ * Changes from the old version:
+ *  - startTimer() / stopTimer() removed — timer display is now driven by
+ *    FightController via onTimerUpdate(secondsLeft).
+ *  - buildHUDCallbacks() returns an IFightHUDCallbacks object ready to
+ *    hand directly to BattleController.setHUDCallbacks().
+ *  - onRoundEnd handles KO / PERFECT / GREAT banner sequencing.
+ *  - onFightEnd shows WIN / LOSE banner.
+ */
+
 import "../../ui/styles/screens/fight-hud.css";
-import { AtlasManager } from "./AtlasManager";
+import type { IFightHUDCallbacks } from "../SF3/FightController";
 
-// ─── Display sizes (1280×720 design space) ───────────────────────────────────
-const HP_BAR_W    = 480;
-const HP_BAR_H    = 18;
-const ROUND_DOT_W = 26;
-const ROUND_DOT_H = 11;
-const PAUSE_BTN_W = 80;
-const PAUSE_BTN_H = 32;
-
-// Timing constants (ms) — from BattleInterface.cs
-const TIME_ROUND_START  = 2500;
-const TIME_FIGHT_START  = 1500;
-const TIME_KO           = 750;
-const TIME_GREAT        = 750;
-const TIME_PERFECT      = 750;
+// Timing constants (mirrors BattleInterface.cs)
+const TIME_ROUND_START = 2500;
+const TIME_FIGHT_START = 1500;
+const TIME_ROUND_END   = 750;
+const TIME_KO          = 750;
+const TIME_GREAT       = 750;
+const TIME_PERFECT     = 750;
+const TIME_FIGHT_END   = 2000;
 
 const DELAY_FIRST_ROUND = 1000;
-const DELAY_FIGHT_START = 0;
 
 interface HUDState {
-  playerHP:    number;
+  playerHP:    number; // 0–1
   enemyHP:     number;
   playerWins:  number;
   enemyWins:   number;
   roundsToWin: number;
-  roundTime:   number;
   round:       number;
 }
 
 export class FightHUD {
-  private _atlas: AtlasManager | null;
+  private _root:       HTMLElement | null = null;
+  private _banner:     HTMLElement | null = null;
+  private _bannerText: HTMLElement | null = null;
+  private _timer:      HTMLElement | null = null;
 
-  private _root:         HTMLElement | null = null;
-  private _banner:       HTMLElement | null = null;
-  private _bannerText:   HTMLElement | null = null;
-  private _timer:        HTMLElement | null = null;
-  private _playerHP:     HTMLElement | null = null;
-  private _playerHPFade: HTMLElement | null = null;
-  private _enemyHP:      HTMLElement | null = null;
-  private _enemyHPFade:  HTMLElement | null = null;
-  private _playerRounds: HTMLElement | null = null;
-  private _enemyRounds:  HTMLElement | null = null;
+  private _playerHP:      HTMLElement | null = null;
+  private _playerHPFade:  HTMLElement | null = null;
+  private _enemyHP:       HTMLElement | null = null;
+  private _enemyHPFade:   HTMLElement | null = null;
+  private _playerRounds:  HTMLElement | null = null;
+  private _enemyRounds:   HTMLElement | null = null;
 
-  private _timerInterval: number | null = null;
-  private _bannerTimer:   number | null = null;
-  private _timeLeft    = 99;
-  private _timerRunning = false;
+  private _bannerTimer: ReturnType<typeof setTimeout> | null = null;
 
   private _state: HUDState = {
     playerHP: 1, enemyHP: 1,
     playerWins: 0, enemyWins: 0,
-    roundsToWin: 2, roundTime: 99, round: 1,
+    roundsToWin: 2,
+    round: 1,
   };
 
-  /** atlas is optional; falls back to AtlasManager.instance if not provided */
-  constructor(atlas?: AtlasManager | null) {
-    this._atlas = atlas ?? AtlasManager.instance;
-  }
-
-  // ─── Bind ────────────────────────────────────────────────────────────────────
+  // ─── DOM wiring ──────────────────────────────────────────────────────────
 
   bind(container: HTMLElement): void {
     this._root        = container.querySelector("#fight-hud");
@@ -73,44 +76,95 @@ export class FightHUD {
     this._playerRounds= container.querySelector("#hud-rounds-player");
     this._enemyRounds = container.querySelector("#hud-rounds-enemy");
 
-    // Apply Fight atlas sprites to HP bars — real sf3 textures, not CSS gradients
-    const a = this._atlas;
-    if (a) {
-      if (this._playerHP)     a.applyBackground(this._playerHP,     "hp_bar",      HP_BAR_W, HP_BAR_H);
-      if (this._playerHPFade) a.applyBackground(this._playerHPFade, "hp_bar_fade", HP_BAR_W, HP_BAR_H);
-      if (this._enemyHP)      a.applyBackground(this._enemyHP,      "hp_bar",      HP_BAR_W, HP_BAR_H);
-      if (this._enemyHPFade)  a.applyBackground(this._enemyHPFade,  "hp_bar_fade", HP_BAR_W, HP_BAR_H);
-
-      // Pause button
-      const pauseSprite = container.querySelector<HTMLElement>("#hud-pause-sprite");
-      if (pauseSprite) a.applyStretched(pauseSprite, "pause_button", PAUSE_BTN_W, PAUSE_BTN_H);
-    }
-
-    const pauseBtn = container.querySelector("#hud-pause-btn");
-    pauseBtn?.addEventListener("click", () => this._onPause());
+    container.querySelector("#hud-pause-btn")
+      ?.addEventListener("click", () => this._onPause());
   }
 
   show(): void { this._root?.classList.add("active"); }
   hide(): void { this._root?.classList.remove("active"); }
 
-  // ─── Round setup ─────────────────────────────────────────────────────────────
+  // ─── IFightHUDCallbacks factory ──────────────────────────────────────────
 
-  initRound(round: number, roundsToWin: number, roundTime: number): void {
-    this._state.round       = round;
-    this._state.roundsToWin = roundsToWin;
-    this._state.roundTime   = roundTime;
-    this._state.playerHP    = 1;
-    this._state.enemyHP     = 1;
-    this._timeLeft          = roundTime;
+  /**
+   * Returns a callbacks object ready to pass to BattleController.setHUDCallbacks().
+   * This keeps FightHUD decoupled — FightController drives it, not the other way.
+   */
+  buildHUDCallbacks(): IFightHUDCallbacks {
+    return {
+      onRoundStart: (roundNumber, roundsToWin, roundTime) => {
+        this._state.round       = roundNumber;
+        this._state.roundsToWin = roundsToWin;
+        this._state.playerHP    = 1;
+        this._state.enemyHP     = 1;
+        this._setHP("player", 1, false);
+        this._setHP("enemy",  1, false);
+        this._rebuildRoundDots();
+        this._setTimer(roundTime);
+        this.showRoundStart();
+      },
 
-    this._setHP("player", 1, false);
-    this._setHP("enemy",  1, false);
-    this._rebuildRoundDots();
-    this._setTimer(roundTime);
-    this.stopTimer();
+      onFightStart: (cb) => {
+        this.showFightStart(cb);
+      },
+
+      onRoundEnd: (playerWon, isPerfect, isGreat, cb) => {
+        // Sequence: KO / PERFECT / GREAT → then call cb
+        const afterBanner = () => {
+          if (playerWon) {
+            this._state.playerWins++;
+            this._rebuildRoundDots();
+          } else {
+            this._state.enemyWins++;
+            this._rebuildRoundDots();
+          }
+          cb();
+        };
+
+        if (isPerfect) {
+          this.showPerfect(() => this.showKO(afterBanner));
+        } else if (isGreat) {
+          this.showGreat(() => this.showKO(afterBanner));
+        } else {
+          this.showKO(afterBanner);
+        }
+      },
+
+      onFightEnd: (playerWon) => {
+        this._showBanner(
+          playerWon ? "YOU WIN" : "YOU LOSE",
+          playerWon ? "hud-banner--win" : "hud-banner--lose",
+          TIME_FIGHT_END,
+        );
+      },
+
+      onHPUpdate: (playerRatio, enemyRatio) => {
+        if (Math.abs(playerRatio - this._state.playerHP) > 0.001) {
+          this._state.playerHP = playerRatio;
+          this._setHP("player", playerRatio, true);
+        }
+        if (Math.abs(enemyRatio - this._state.enemyHP) > 0.001) {
+          this._state.enemyHP = enemyRatio;
+          this._setHP("enemy", enemyRatio, true);
+        }
+      },
+
+      onTimerUpdate: (secondsLeft) => {
+        this._setTimer(secondsLeft);
+      },
+    };
   }
 
-  // ─── Sequence (mirrors BattleInterface show* methods) ────────────────────────
+  // ─── Banner helpers (mirrors BattleInterface show* methods) ─────────────
+
+  setPlayerName(name: string): void {
+    const el = this._root?.querySelector("#hud-name-player") as HTMLElement | null;
+    if (el) el.textContent = name.toUpperCase();
+  }
+
+  setEnemyName(name: string): void {
+    const el = this._root?.querySelector("#hud-name-enemy") as HTMLElement | null;
+    if (el) el.textContent = name.toUpperCase();
+  }
 
   showRoundStart(cb?: () => void): void {
     const delay = this._state.round === 1 ? DELAY_FIRST_ROUND : 0;
@@ -120,72 +174,29 @@ export class FightHUD {
   }
 
   showFightStart(cb?: () => void): void {
-    setTimeout(() => {
-      this._showBanner("FIGHT!", "hud-banner--fight", TIME_FIGHT_START, cb);
-    }, DELAY_FIGHT_START);
+    this._showBanner("FIGHT!", "hud-banner--fight", TIME_FIGHT_START, cb);
   }
 
-  showKO(cb?: () => void):      void { this._showBanner("KO",      "hud-banner--ko",      TIME_KO,      cb); }
-  showGreat(cb?: () => void):   void { this._showBanner("GREAT!",  "hud-banner--great",   TIME_GREAT,   cb); }
-  showPerfect(cb?: () => void): void { this._showBanner("PERFECT!","hud-banner--perfect", TIME_PERFECT, cb); }
+  showKO(cb?: () => void):      void { this._showBanner("KO",      "hud-banner--ko",     TIME_KO,      cb); }
+  showGreat(cb?: () => void):   void { this._showBanner("GREAT",   "hud-banner--great",  TIME_GREAT,   cb); }
+  showPerfect(cb?: () => void): void { this._showBanner("PERFECT", "hud-banner--perfect",TIME_PERFECT, cb); }
 
-  // ─── HP ──────────────────────────────────────────────────────────────────────
-
-  setPlayerHP(ratio: number): void { this._setHP("player", ratio, true); }
-  setEnemyHP (ratio: number): void { this._setHP("enemy",  ratio, true); }
-
-  // ─── Round wins ──────────────────────────────────────────────────────────────
-
-  addPlayerWin(): void { this._state.playerWins++; this._rebuildRoundDots(); }
-  addEnemyWin():  void { this._state.enemyWins++;  this._rebuildRoundDots(); }
-
-  // ─── Timer ───────────────────────────────────────────────────────────────────
-
-  startTimer(): void {
-    if (this._timerRunning) return;
-    this._timerRunning = true;
-    this._timerInterval = window.setInterval(() => {
-      this._timeLeft = Math.max(0, this._timeLeft - 1);
-      this._setTimer(this._timeLeft);
-      if (this._timeLeft <= 0) this.stopTimer();
-    }, 1000);
-  }
-
-  stopTimer(): void {
-    this._timerRunning = false;
-    if (this._timerInterval !== null) {
-      clearInterval(this._timerInterval);
-      this._timerInterval = null;
-    }
-  }
-
-  setPlayerName(name: string): void {
-    const el = this._root?.querySelector<HTMLElement>("#hud-name-player");
-    if (el) el.textContent = name.toUpperCase();
-  }
-
-  setEnemyName(name: string): void {
-    const el = this._root?.querySelector<HTMLElement>("#hud-name-enemy");
-    if (el) el.textContent = name.toUpperCase();
-  }
-
-  // ─── Private ─────────────────────────────────────────────────────────────────
+  // ─── Private ─────────────────────────────────────────────────────────────
 
   private _setHP(side: "player" | "enemy", ratio: number, animate: boolean): void {
-    const fill = side === "player" ? this._playerHP : this._enemyHP;
-    const fade = side === "player" ? this._playerHPFade : this._enemyHPFade;
+    const fill = side === "player" ? this._playerHP    : this._enemyHP;
+    const fade = side === "player" ? this._playerHPFade: this._enemyHPFade;
     if (!fill || !fade) return;
 
     const pct = Math.max(0, Math.min(1, ratio));
     fill.style.transform = `scaleX(${pct})`;
 
     if (animate) {
-      const prevStr  = fade.style.transform?.replace("scaleX(", "").replace(")", "") ?? "1";
-      const prevFade = parseFloat(prevStr) || 1;
-      if (pct < prevFade) {
-        setTimeout(() => {
-          fade.style.transform = `scaleX(${pct})`;
-        }, 350);
+      const prevPct = parseFloat(
+        (fade.style.transform ?? "scaleX(1)").replace("scaleX(", "")
+      );
+      if (pct < prevPct) {
+        setTimeout(() => { fade.style.transform = `scaleX(${pct})`; }, 350);
       }
     } else {
       fade.style.transform = `scaleX(${pct})`;
@@ -194,13 +205,12 @@ export class FightHUD {
 
   private _setTimer(secs: number): void {
     if (!this._timer) return;
-    this._timer.textContent = String(Math.ceil(secs));
-    this._timer.style.color = secs <= 10 ? "#ff5555" : "#fff";
+    this._timer.textContent  = String(Math.ceil(secs));
+    this._timer.style.color  = secs <= 10 ? "#ff5555" : "#fff";
   }
 
   private _rebuildRoundDots(): void {
     const n = this._state.roundsToWin;
-    const a = this._atlas;
     [
       { el: this._playerRounds, wins: this._state.playerWins, rtl: false },
       { el: this._enemyRounds,  wins: this._state.enemyWins,  rtl: true  },
@@ -209,13 +219,8 @@ export class FightHUD {
       el.innerHTML = "";
       const dots: HTMLElement[] = [];
       for (let i = 0; i < n; i++) {
-        const won = i < wins;
         const dot = document.createElement("div");
-        dot.className = "hud-round-dot" + (won ? " won" : "");
-        if (a) {
-          // Fight atlas round sprites — real sf3 textures
-          a.applyScaled(dot, won ? "round_full" : "round_empty", ROUND_DOT_W, ROUND_DOT_H);
-        }
+        dot.className = "hud-round-dot" + (i < wins ? " won" : "");
         dots.push(dot);
       }
       if (rtl) dots.reverse();
@@ -224,24 +229,22 @@ export class FightHUD {
   }
 
   private _showBanner(
-    text: string,
+    text:       string,
     extraClass: string,
-    duration: number,
-    cb?: () => void,
+    duration:   number,
+    cb?:        () => void,
   ): void {
     if (!this._banner || !this._bannerText) { cb?.(); return; }
     if (this._bannerTimer !== null) clearTimeout(this._bannerTimer);
 
-    this._banner.className = "hud-banner " + extraClass;
+    this._banner.className   = "hud-banner " + extraClass;
     this._bannerText.textContent = text;
 
-    requestAnimationFrame(() => {
-      this._banner!.classList.remove("hidden");
-    });
+    requestAnimationFrame(() => this._banner!.classList.remove("hidden"));
 
-    this._bannerTimer = window.setTimeout(() => {
+    this._bannerTimer = setTimeout(() => {
       this._banner!.classList.add("hidden");
-      this._bannerTimer = window.setTimeout(() => {
+      this._bannerTimer = setTimeout(() => {
         cb?.();
         this._bannerTimer = null;
       }, 300);
@@ -250,11 +253,10 @@ export class FightHUD {
 
   private _onPause(): void {
     console.log("[FightHUD] Pause pressed");
-    // TODO: wire to PauseController
+    // TODO: wire to PauseController / BattleController.pauseGame()
   }
 
   dispose(): void {
-    this.stopTimer();
     if (this._bannerTimer !== null) clearTimeout(this._bannerTimer);
     this._root = null;
   }

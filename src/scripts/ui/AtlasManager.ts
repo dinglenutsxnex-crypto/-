@@ -5,30 +5,25 @@ const ATLAS_DEFS: Record<string, AtlasInfo> = {
   Common:   { path: "assets/textures/ui/nativeui/atlases/Common.png",   width: 2048, height: 2048, json: "CommonJSON"   },
   Currency: { path: "assets/textures/ui/nativeui/atlases/Currency.png", width: 512,  height: 512,  json: "CurrencyJSON" },
   DojoMenu: { path: "assets/textures/ui/nativeui/atlases/DojoMenu.png", width: 512,  height: 512  },
-  Fight:    { path: "assets/textures/ui/nativeui/atlases/Fight.png",    width: 2048, height: 2048, json: "FightJSON"     },
 };
 
-// Correct DojoMenu.png (512×512) frame coords
+// Correct DojoMenu.png (512×512) frame coords — verified by pixel inspection
 const DOJOMENU_FRAMES: Record<string, AtlasFrame> = {
-  menu_icon:      { x: 1,   y: 317, w: 94,  h: 35  },
-  dojo_icon:      { x: 7,   y: 180, w: 138, h: 107 },
-  shop_icon:      { x: 171, y: 174, w: 112, h: 125 },
-  map_icon:       { x: 310, y: 189, w: 137, h: 95  },
-  booster_icon:   { x: 284, y: 13,  w: 98,  h: 130 },
-  settings_icon:  { x: 106, y: 327, w: 129, h: 129 },
-  inventory_icon: { x: 257, y: 325, w: 130, h: 130 },
+  menu_icon:      { x: 1,   y: 317, w: 94,  h: 35  },  // hamburger ≡ lines
+  dojo_icon:      { x: 7,   y: 180, w: 138, h: 107 },  // tent
+  shop_icon:      { x: 171, y: 174, w: 112, h: 125 },  // bag/dress
+  map_icon:       { x: 310, y: 189, w: 137, h: 95  },  // mountains
+  booster_icon:   { x: 284, y: 13,  w: 98,  h: 130 },  // cards
+  settings_icon:  { x: 106, y: 327, w: 129, h: 129 },  // gear
+  inventory_icon: { x: 257, y: 325, w: 130, h: 130 },  // coin circle
 };
 
 interface SpriteRecord { atlasKey: string; frame: AtlasFrame; }
 
 export class AtlasManager {
-  /** Shared singleton — set on first load(), used by FightHUD etc. */
-  static instance: AtlasManager | null = null;
-
   private _sprites = new Map<string, SpriteRecord>();
 
   async load(): Promise<void> {
-    AtlasManager.instance = this;
     for (const [key, def] of Object.entries(ATLAS_DEFS)) {
       if (def.json) await this._loadJSON(key, def.json);
     }
@@ -51,7 +46,7 @@ export class AtlasManager {
     }
   }
 
-  /** Apply sprite at its native pixel size */
+  /** Native atlas pixel size */
   apply(el: HTMLElement, name: string): void {
     const rec = this._sprites.get(name);
     if (!rec) { console.warn(`[AtlasManager] missing: "${name}"`); return; }
@@ -105,26 +100,6 @@ export class AtlasManager {
       height: `${displayH}px`,
       display:    "block",
       flexShrink: "0",
-    });
-  }
-
-  /**
-   * Apply sprite as CSS background ONLY — does NOT set width/height.
-   * Use when element dimensions are controlled by CSS (e.g. HP bar fills).
-   * The sprite is stretched to displayW×displayH for background-size math.
-   */
-  applyBackground(el: HTMLElement, name: string, displayW: number, displayH: number): void {
-    const rec = this._sprites.get(name);
-    if (!rec) { console.warn(`[AtlasManager] missing: "${name}"`); return; }
-    const atlas = ATLAS_DEFS[rec.atlasKey];
-    const f = rec.frame;
-    const sx = displayW / f.w;
-    const sy = displayH / f.h;
-    Object.assign(el.style, {
-      backgroundImage:    `url(${atlas.path})`,
-      backgroundPosition: `${-f.x * sx}px ${-f.y * sy}px`,
-      backgroundSize:     `${atlas.width * sx}px ${atlas.height * sy}px`,
-      backgroundRepeat:   "no-repeat",
     });
   }
 

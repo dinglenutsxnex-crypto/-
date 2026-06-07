@@ -1,0 +1,237 @@
+/* ══ Fight HUD ══════════════════════════════════════════════════════════════ */
+
+#fight-hud, #fight-hud * {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#fight-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  display: none;
+}
+
+#fight-hud.active { display: block; }
+
+/* ── Sides ── */
+.hud-side {
+  position: absolute;
+  top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hud-left  { left: 12px;  width: 480px; }
+.hud-right { right: 12px; width: 480px; }
+
+/* ── Name ── */
+.hud-name {
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+.hud-right .hud-name { text-align: right; }
+
+/* ── HP Bar wrap ── */
+.hud-bar-wrap {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.hud-bar-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/*
+ * Fade layer (hp_bar_fade — pale teal sprite from atlas).
+ * Player: drains left→right  →  transform-origin: left
+ * Enemy:  drains right→left  →  transform-origin: right
+ */
+.hud-bar-fade {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%; width: 100%;
+  transform-origin: left center;
+  transition: transform 0.6s ease;
+}
+
+.hud-bar-wrap--right .hud-bar-fade {
+  transform-origin: right center;
+}
+
+/*
+ * Fill layer (hp_bar — orange/gold gradient sprite from atlas).
+ * Same directional logic as fade.
+ */
+.hud-bar-fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%; width: 100%;
+  transform-origin: left center;
+  transition: transform 0.15s ease;
+}
+
+.hud-bar-wrap--right .hud-bar-fill {
+  transform-origin: right center;
+}
+
+/*
+ * Enemy bars: the Unity HUD tints the enemy bar red.
+ * The atlas hp_bar sprite is orange→yellow (left=bright, right=dim).
+ * hue-rotate(120deg): orange → red/crimson ✓
+ * The fade sprite is near-white so hue-rotate has minimal visible effect.
+ */
+.hud-bar-fill--enemy {
+  filter: hue-rotate(120deg) saturate(1.5) brightness(1.0);
+}
+.hud-bar-fade--enemy {
+  filter: hue-rotate(120deg) saturate(1.2);
+}
+
+/* ── Round dots ── */
+.hud-rounds {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  margin-top: 2px;
+  align-items: center;
+}
+.hud-rounds--right { justify-content: flex-end; }
+
+/* Fallback dot style (when atlas is unavailable) */
+.hud-round-dot {
+  width: 18px;
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.hud-round-dot.won {
+  background: #ffe066;
+  border-color: #ffca00;
+}
+
+/* ── Center ── */
+#hud-center {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  pointer-events: none;
+}
+
+#hud-timer {
+  font-family: sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.6);
+  letter-spacing: -1px;
+  min-width: 60px;
+  text-align: center;
+  padding-top: 4px;
+}
+
+/* ── Banner (ROUND 1 / FIGHT! / KO / etc) ── */
+.hud-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.hud-banner.hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+#hud-banner-text {
+  font-family: sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 30px rgba(255,200,0,0.8),
+    0 3px 0 rgba(0,0,0,0.8),
+    0 0 60px rgba(255,160,0,0.4);
+  white-space: nowrap;
+}
+
+/* "ROUND X" — orange number matches Unity RoundsUI color #FE762B */
+.hud-banner--round #hud-banner-text {
+  color: #fff;
+}
+
+.hud-banner--fight #hud-banner-text {
+  color: #ffe066;
+  text-shadow:
+    0 0 40px rgba(255,220,0,1),
+    0 3px 0 rgba(0,0,0,0.9),
+    0 0 80px rgba(255,180,0,0.6);
+}
+
+.hud-banner--ko #hud-banner-text {
+  font-size: 96px;
+  color: #fff;
+  text-shadow:
+    0 0 40px rgba(255,60,0,0.9),
+    0 4px 0 rgba(0,0,0,0.9),
+    0 0 80px rgba(255,0,0,0.5);
+}
+
+.hud-banner--great #hud-banner-text {
+  color: #a0ff80;
+  text-shadow:
+    0 0 30px rgba(80,255,80,0.8),
+    0 3px 0 rgba(0,0,0,0.9);
+}
+
+.hud-banner--perfect #hud-banner-text {
+  color: #80d8ff;
+  text-shadow:
+    0 0 30px rgba(80,200,255,0.9),
+    0 3px 0 rgba(0,0,0,0.9);
+}
+
+/* ── Pause button ── */
+#hud-pause-btn {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  pointer-events: all;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+#hud-pause-sprite {
+  display: block;
+}

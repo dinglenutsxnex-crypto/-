@@ -1,17 +1,16 @@
 import { Scene } from "@babylonjs/core";
-import { EFightStage } from "../FightController";
 
 export class RoundController {
   private readonly _scene: Scene;
-  private _roundNumber = 0;
-  private _maxRounds = 3;
-  private _roundActive = false;
+  private _roundNumber  = 0;
+  private _maxRounds    = 3;
+  private _roundActive  = false;
 
-  get roundNumber(): number { return this._roundNumber; }
-  get roundActive(): boolean { return this._roundActive; }
+  get roundNumber():  number  { return this._roundNumber; }
+  get roundActive():  boolean { return this._roundActive; }
 
-  constructor(scene: Scene, maxRounds: number = 3) {
-    this._scene = scene;
+  constructor(scene: Scene, maxRounds = 3) {
+    this._scene     = scene;
     this._maxRounds = maxRounds;
   }
 

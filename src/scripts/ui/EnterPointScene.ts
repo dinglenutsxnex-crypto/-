@@ -6,15 +6,30 @@ import { FightHUD }           from "./FightHUD";
 import { LoadScreen }         from "../LoadScreen";
 import { UserDataController } from "../SF3/UserData/UserDataController";
 import { FightScene as BattleFightScene } from "../battle/FightScene";
+import { FightController, EFightStage } from "../FightController";
 import type { IFightInfo }    from "../FightController";
 import "../../ui/styles/screens/currency-bar.css";
 import "../../ui/styles/screens/home-menu.css";
 import "../../ui/styles/screens/fight-hud.css";
 
+/*
+ * Dojo fight config — from battles.js:
+ *   RoundsToWin: 1   (win once and the round resets)
+ *   RoundTime:   99999 → displayed as ∞, timer never counts down
+ *   isDojo: true     → player cannot lose, no enemy win tracking
+ */
+const DOJO_FIGHT_INFO: IFightInfo = {
+  battleID:     "dojo_Legion",
+  fightID:      "training_0",
+  roundsToWin:  1,
+  roundsToLose: 1,
+  isDojo:       true,
+  roundTime:    99999,
+};
+
 interface SpriteSpec { w: number; h: number; stretch?: boolean; }
 
 const SPRITE_SIZES: Record<string, SpriteSpec> = {
-  // DojoMenu atlas
   "menu_icon":      { w: 44,  h: 28  },
   "dojo_icon":      { w: 52,  h: 40  },
   "shop_icon":      { w: 46,  h: 52  },
@@ -22,20 +37,14 @@ const SPRITE_SIZES: Record<string, SpriteSpec> = {
   "inventory_icon": { w: 52,  h: 52  },
   "booster_icon":   { w: 42,  h: 56  },
   "settings_icon":  { w: 52,  h: 52  },
-
-  // Currency atlas
   "chat":           { w: 36,  h: 24  },
   "cross":          { w: 22,  h: 22  },
   "progress_empty": { w: 180, h: 14, stretch: true },
   "progress_full":  { w: 180, h: 14, stretch: true },
-
-  // Common atlas
   "coin":            { w: 34,  h: 34  },
   "bonus":           { w: 26,  h: 31  },
   "shadow_currency": { w: 34,  h: 34  },
   "circle":          { w: 24,  h: 24  },
-
-  // Fight atlas — pause button (HP bars + round dots handled by FightHUD directly)
   "pause_button":    { w: 80,  h: 32, stretch: true },
 };
 
@@ -64,7 +73,8 @@ export class EnterPointScene {
   private _atlas:  AtlasManager;
   private _hud:    FightHUD | null = null;
   private _fightScene: BattleFightScene | null = null;
-  private _inFight = false;
+  private _inFight     = false;
+  private _roundNumber = 0;
 
   constructor(mgr: SceneManager, config: SceneConfig) {
     this._mgr    = mgr;
@@ -103,13 +113,12 @@ export class EnterPointScene {
 
     console.log("[EnterPointScene] mounted");
 
-    // Auto-start in training
     this._launchDojo();
   }
 
-  // ──────────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
   //  Fight launch
-  // ──────────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
 
   private async _launchDojo(): Promise<void> {
     if (this._inFight) return;
@@ -117,27 +126,13 @@ export class EnterPointScene {
 
     LoadScreen.show();
 
-    const trainingFightInfo: IFightInfo = {
-      battleID:    "training_dojo",
-      fightID:     "training_0",
-      roundsToWin: 2,
-      roundsToLose:2,
-    };
-
     try {
       this._fightScene?.dispose();
       this._fightScene = new BattleFightScene(this._mgr.scene);
-      await this._fightScene.initialize("dojo_Legion", trainingFightInfo);
+      await this._fightScene.initialize("dojo_Legion", DOJO_FIGHT_INFO);
 
-      // ── Activate fight HUD BEFORE hiding the load screen ──────────────────
-      // This prevents the gray-canvas flash: the HUD is already rendered
-      // underneath the load screen as it fades out.
-      this._activateFightHUD(trainingFightInfo);
-
-      // Hide all non-fight UI elements so nothing bleeds through
+      this._activateFightHUD();
       this._hideDojoUI();
-
-      // Now fade the load screen away (420 ms) — fight scene is ready beneath it
       LoadScreen.hide();
 
     } catch (err) {
@@ -147,7 +142,6 @@ export class EnterPointScene {
     }
   }
 
-  /** Hide the dojo-menu / currency-bar elements that would show through the fight HUD */
   private _hideDojoUI(): void {
     const ids = ["currency-bar", "home-menu", "home-button", "home-screen-background"];
     ids.forEach(id => {
@@ -156,7 +150,21 @@ export class EnterPointScene {
     });
   }
 
-  private _activateFightHUD(info: IFightInfo): void {
+  // ─────────────────────────────────────────────────────────────────────────
+  //  HUD activation and dojo round sequence
+  //
+  //  Unity dojo flow (DojoRound()):
+  //    • No VS screen, no load-screen between rounds
+  //    • No "ROUND X" banner on repeat rounds (first entry only in some builds,
+  //      but the key difference: goes straight to RoundFightStart without
+  //      waiting for a loadscreen animation to finish)
+  //    • No timer (RoundTime = 99999 → ∞)
+  //    • Player cannot lose
+  //    • On round win: GREAT!/PERFECT! banner (optional), then round resets
+  //      immediately via DojoRound() again — NO fight-end screen
+  // ─────────────────────────────────────────────────────────────────────────
+
+  private _activateFightHUD(): void {
     if (!this._root) return;
 
     this._hud = new FightHUD(this._atlas);
@@ -164,23 +172,85 @@ export class EnterPointScene {
 
     const player = UserDataController.player;
     this._hud.setPlayerName(player?.Name ?? "PLAYER");
-    this._hud.setEnemyName("ENEMY");
+    this._hud.setEnemyName("GIZMO");
 
-    this._hud.initRound(1, info.roundsToWin, 99);
+    this._roundNumber = 1;
+    this._startDojoRound(true);
+
     this._hud.show();
+    this._wireHUDToFightController();
+  }
 
-    // ROUND 1 → FIGHT! → start timer  (mirrors BattleInterface sequence)
-    this._hud.showRoundStart(() => {
-      this._hud!.showFightStart(() => {
-        this._hud!.startTimer();
-        console.log("[EnterPointScene] Fight active — RoundFightStart");
+  /**
+   * Start a dojo round:
+   *   • First round: ROUND 1 (1 s delay) → FIGHT!  → fight active (no timer)
+   *   • Subsequent rounds: FIGHT! immediately       → fight active
+   */
+  private _startDojoRound(isFirst: boolean): void {
+    if (!this._hud) return;
+
+    this._hud.initRound(
+      this._roundNumber,
+      DOJO_FIGHT_INFO.roundsToWin,
+      DOJO_FIGHT_INFO.roundTime!,
+      true,
+    );
+
+    if (isFirst) {
+      this._hud.showRoundStart(() => {
+        this._hud!.showFightStart(() => {
+          console.log("[EnterPointScene] Dojo RoundFightStart");
+        });
       });
+    } else {
+      this._hud.showFightStart(() => {
+        console.log("[EnterPointScene] Dojo RoundFightStart (repeat)");
+      });
+    }
+  }
+
+  /**
+   * Wire FightController stage changes so the HUD updates when a round ends.
+   * In dojo: player wins → GREAT!/PERFECT! (optional) → reset round, no fight-end.
+   */
+  private _wireHUDToFightController(): void {
+    const fc = FightController.instance;
+    if (!fc) return;
+
+    fc.setStageChangeCallback((stage: EFightStage) => {
+      if (!this._hud) return;
+
+      switch (stage) {
+        case EFightStage.RoundFightEnd: {
+          const playerWon = fc.playerWins > (this._roundNumber - 1);
+          if (playerWon) {
+            this._hud.addPlayerWin();
+            this._hud.showGreat(() => {
+              this._nextDojoRound();
+            });
+          } else {
+            this._nextDojoRound();
+          }
+          break;
+        }
+        case EFightStage.FightEnd: {
+          console.log("[EnterPointScene] Dojo fight end — looping back");
+          this._nextDojoRound();
+          break;
+        }
+      }
     });
   }
 
-  // ──────────────────────────────────────────────────────────────────────────────
+  private _nextDojoRound(): void {
+    if (!this._hud) return;
+    this._roundNumber++;
+    this._startDojoRound(false);
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
   //  Private helpers
-  // ──────────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
 
   private async _inject(path: string): Promise<void> {
     try {

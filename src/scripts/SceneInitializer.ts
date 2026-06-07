@@ -1,44 +1,23 @@
-/**
- * SceneInitializer.ts
- * Mirror of SF3/SceneInitializer.cs
- *
- * Changes from the old version:
- *  - initializeNewLocationScene() accepts optional IFightHUDCallbacks.
- *  - Calls bc.setHUDCallbacks(hudCallbacks) before bc.initBattle(fightInfo)
- *    so FightController has the HUD wired before it fires its first stage.
- */
-
-import {
-  Scene,
-  SceneLoader,
-  AbstractMesh,
-  Vector3,
-  Color3,
-  Color4,
-  DirectionalLight,
-  HemisphericLight,
-  ShadowGenerator,
-  FreeCamera,
-  TransformNode,
-} from "@babylonjs/core";
+import { Scene, SceneLoader, AbstractMesh, Vector3, Color3, Color4, DirectionalLight, HemisphericLight, ShadowGenerator, FreeCamera, TransformNode } from "@babylonjs/core";
 import "@babylonjs/loaders";
-import { BattleController }  from "./BattleController";
+import { BattleController } from "./BattleController";
 import { BattleCamera, ICameraModel } from "./BattleCamera";
-import { EffectsManager }    from "./EffectsManager";
+import { EffectsManager } from "./EffectsManager";
+import { IFightInfo } from "./FightController";
 import { CameraConfiguration } from "./CameraConfiguration";
-import { ModelsManager }     from "./SF3/ModelsManager";
-import type { IFightInfo, IFightHUDCallbacks } from "./SF3/FightController";
+import { ModelsManager } from "./SF3/ModelsManager";
 
-const SPAWN_PLAYER = new Vector3(-250, 0, 0);
-const SPAWN_ENEMY  = new Vector3( 250, 0, 0);
-const SPAWN_POINT  = new Vector3(   0, 0, 0);
+// Fallback spawn positions (Unity dojo_Legion: ~2.5 Unity units = 250 Babylon units apart)
+const FALLBACK_SPAWN_PLAYER = new Vector3(-250, 0, 0);
+const FALLBACK_SPAWN_ENEMY  = new Vector3( 250, 0, 0);
+const SPAWN_POINT           = new Vector3(   0, 0, 0);
 
 class ModelTracker implements ICameraModel {
   private readonly _root: TransformNode;
   constructor(root: TransformNode) { this._root = root; }
-  get modelBackPosX():          number  { return this._root.position.x; }
-  get centerOfMassY():          number  { return this._root.position.y + 90; }
-  get centerOfMassPosition():   Vector3 {
+  get modelBackPosX(): number { return this._root.position.x; }
+  get centerOfMassY(): number { return this._root.position.y + 90; }
+  get centerOfMassPosition(): Vector3 {
     return new Vector3(this._root.position.x, this.centerOfMassY, this._root.position.z);
   }
 }
@@ -49,16 +28,20 @@ export class SceneInitializer {
 
   private _directionalLight!: DirectionalLight;
   private _hemisphericLight!: HemisphericLight;
-  private _shadowGenerator!:  ShadowGenerator;
-  private _cameraNode!:       TransformNode;
-  private _mainCamera!:       FreeCamera;
+  private _shadowGenerator!: ShadowGenerator;
+  private _cameraNode!: TransformNode;
+  private _mainCamera!: FreeCamera;
+
+  // Spawn positions — read from GLB nodes, or fallback to defaults
+  private _spawnPlayer = FALLBACK_SPAWN_PLAYER.clone();
+  private _spawnEnemy  = FALLBACK_SPAWN_ENEMY.clone();
 
   constructor(scene: Scene) { this._scene = scene; }
 
   async initializeNewLocationScene(
-    locationName:  string,
-    fightInfo:     IFightInfo,
-    hudCallbacks?: IFightHUDCallbacks,
+    locationName: string,
+    fightInfo: IFightInfo,
+    onReady?: () => void,
   ): Promise<void> {
     this._disposePrevious();
 
@@ -76,12 +59,9 @@ export class SceneInitializer {
     EffectsManager.createInstance(this._scene);
     bc.initialize();
 
-    // Wire HUD BEFORE initBattle so the first stage transition hits the HUD
-    if (hudCallbacks) {
-      bc.setHUDCallbacks(hudCallbacks);
-    }
-
     await bc.initBattle(fightInfo);
+
+    onReady?.();
   }
 
   dispose(): void {
@@ -89,8 +69,6 @@ export class SceneInitializer {
     for (const mesh of this._locationMeshes) mesh.dispose();
     this._locationMeshes = [];
   }
-
-  // ─── Private ─────────────────────────────────────────────────────────────
 
   private _disposePrevious(): void {
     if (this._locationMeshes.length === 0) return;
@@ -125,21 +103,47 @@ export class SceneInitializer {
     const cam = new FreeCamera("Main Camera", new Vector3(0, 155, -950), this._scene);
     cam.parent  = cameraRig;
     cam.setTarget(new Vector3(0, 155, 0));
-    cam.minZ    = 10;
-    cam.maxZ    = 5000;
-    cam.fov     = 30 * (Math.PI / 180);
-    cam.mode    = FreeCamera.PERSPECTIVE_CAMERA;
-    this._mainCamera          = cam;
-    this._scene.activeCamera  = cam;
-    this._scene.fogEnabled    = false;
+    cam.minZ = 10;
+    cam.maxZ = 5000;
+    cam.fov  = 30 * (Math.PI / 180);
+    cam.mode = FreeCamera.PERSPECTIVE_CAMERA;
+    this._mainCamera      = cam;
+    this._scene.activeCamera = cam;
+    this._scene.fogEnabled = false;
   }
 
   private async _loadLocation(locationName: string): Promise<void> {
+    // Reset to fallbacks each load
+    this._spawnPlayer = FALLBACK_SPAWN_PLAYER.clone();
+    this._spawnEnemy  = FALLBACK_SPAWN_ENEMY.clone();
+
     try {
       const result = await SceneLoader.ImportMeshAsync(
         "", "assets/locations/", `${locationName}.glb`, this._scene,
       );
       this._locationMeshes = result.meshes;
+
+      // Read spawn positions from named nodes baked into the GLB by Unity export
+      // Unity exports SpawnPointA (player, left side) and SpawnPointB (enemy, right side)
+      for (const node of result.transformNodes) {
+        const nm = node.name;
+        if (nm === "SpawnPointA" || nm === "SpawnPoint_Player" || nm === "spawn_point_a") {
+          const pos = node.getAbsolutePosition();
+          if (pos.x !== 0 || pos.y !== 0 || pos.z !== 0) {
+            this._spawnPlayer.copyFrom(pos);
+            console.log("[SceneInitializer] SpawnPointA from GLB:", pos.toString());
+          }
+          node.setEnabled(false);
+        } else if (nm === "SpawnPointB" || nm === "SpawnPoint_Enemy" || nm === "spawn_point_b") {
+          const pos = node.getAbsolutePosition();
+          if (pos.x !== 0 || pos.y !== 0 || pos.z !== 0) {
+            this._spawnEnemy.copyFrom(pos);
+            console.log("[SceneInitializer] SpawnPointB from GLB:", pos.toString());
+          }
+          node.setEnabled(false);
+        }
+      }
+
       for (const mesh of this._locationMeshes) {
         if (mesh.name === "ShadowReciever" || mesh.name === "ShadowReceiver") {
           mesh.isVisible = false;
@@ -150,21 +154,26 @@ export class SceneInitializer {
     } catch (err) {
       console.warn(`[SceneInitializer] Could not load location "${locationName}": ${err}`);
     }
+
+    console.log("[SceneInitializer] Final spawn — Player:", this._spawnPlayer.toString(), "Enemy:", this._spawnEnemy.toString());
   }
 
   private _positionModels(): void {
     const player = ModelsManager.instance.player;
     const enemy  = ModelsManager.instance.enemy;
     if (player?.root) {
-      player.root.position.copyFrom(SPAWN_PLAYER);
+      player.root.position.copyFrom(this._spawnPlayer);
+      // Mirror X so the player (on the left) faces right toward the enemy
       player.root.scaling = new Vector3(-1, 1, 1);
     }
     if (enemy?.root) {
-      enemy.root.position.copyFrom(SPAWN_ENEMY);
+      enemy.root.position.copyFrom(this._spawnEnemy);
+      // Enemy naturally faces left (toward the player) — no mirror needed
     }
   }
 
   private _initCamera(): void {
+    // camZOffset: 465 matches dojo_Legion.prefab CamZOffset property
     const config = CameraConfiguration.fromJSON({
       settings: [{
         aspect: 1, minXPosition: -9999, maxXPosition: 9999,
@@ -172,7 +181,7 @@ export class SceneInitializer {
         startFollowYUp: 150, startFollowYBot: 50,
         startRotateYUp: 180, startRotateYBot: 20,
         farClipPlane: 5000, botVerticalAngle: 10, upVerticalAngle: 30,
-        leftHorizontalAngle: 30, rightHorizontalAngle: 30, camZOffset: 0,
+        leftHorizontalAngle: 30, rightHorizontalAngle: 30, camZOffset: 465,
       }],
     });
     const bCam = BattleCamera.createInstance(
@@ -186,9 +195,6 @@ export class SceneInitializer {
     const player = ModelsManager.instance.player;
     const enemy  = ModelsManager.instance.enemy;
     if (!player?.root || !enemy?.root) return;
-    BattleCamera.setModels(
-      new ModelTracker(player.root),
-      new ModelTracker(enemy.root),
-    );
+    BattleCamera.setModels(new ModelTracker(player.root), new ModelTracker(enemy.root));
   }
 }

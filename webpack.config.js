@@ -49,11 +49,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.NormalModuleReplacementPlugin(
-      /@babylonjs\/core\/Bones\/skeleton\.js/,
-      path.resolve(__dirname, "src/stubs/babylon-skeleton.js"),
-    ),
-
     new HtmlWebpackPlugin({
       template: "./src/ui/index.html",
       filename: "index.html",

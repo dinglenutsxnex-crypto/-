@@ -7,9 +7,10 @@ import { IFightInfo } from "./FightController";
 import { CameraConfiguration } from "./CameraConfiguration";
 import { ModelsManager } from "./SF3/ModelsManager";
 
-const SPAWN_PLAYER = new Vector3(-250, 0, 0);
-const SPAWN_ENEMY  = new Vector3( 250, 0, 0);
-const SPAWN_POINT  = new Vector3(   0, 0, 0);
+// Fallback spawn positions (Unity dojo_Legion: ~2.5 Unity units = 250 Babylon units apart)
+const FALLBACK_SPAWN_PLAYER = new Vector3(-250, 0, 0);
+const FALLBACK_SPAWN_ENEMY  = new Vector3( 250, 0, 0);
+const SPAWN_POINT           = new Vector3(   0, 0, 0);
 
 class ModelTracker implements ICameraModel {
   private readonly _root: TransformNode;
@@ -30,6 +31,10 @@ export class SceneInitializer {
   private _shadowGenerator!: ShadowGenerator;
   private _cameraNode!: TransformNode;
   private _mainCamera!: FreeCamera;
+
+  // Spawn positions — read from GLB nodes, or fallback to defaults
+  private _spawnPlayer = FALLBACK_SPAWN_PLAYER.clone();
+  private _spawnEnemy  = FALLBACK_SPAWN_ENEMY.clone();
 
   constructor(scene: Scene) { this._scene = scene; }
 
@@ -108,11 +113,37 @@ export class SceneInitializer {
   }
 
   private async _loadLocation(locationName: string): Promise<void> {
+    // Reset to fallbacks each load
+    this._spawnPlayer = FALLBACK_SPAWN_PLAYER.clone();
+    this._spawnEnemy  = FALLBACK_SPAWN_ENEMY.clone();
+
     try {
       const result = await SceneLoader.ImportMeshAsync(
         "", "assets/locations/", `${locationName}.glb`, this._scene,
       );
       this._locationMeshes = result.meshes;
+
+      // Read spawn positions from named nodes baked into the GLB by Unity export
+      // Unity exports SpawnPointA (player, left side) and SpawnPointB (enemy, right side)
+      for (const node of result.transformNodes) {
+        const nm = node.name;
+        if (nm === "SpawnPointA" || nm === "SpawnPoint_Player" || nm === "spawn_point_a") {
+          const pos = node.getAbsolutePosition();
+          if (pos.x !== 0 || pos.y !== 0 || pos.z !== 0) {
+            this._spawnPlayer.copyFrom(pos);
+            console.log("[SceneInitializer] SpawnPointA from GLB:", pos.toString());
+          }
+          node.setEnabled(false);
+        } else if (nm === "SpawnPointB" || nm === "SpawnPoint_Enemy" || nm === "spawn_point_b") {
+          const pos = node.getAbsolutePosition();
+          if (pos.x !== 0 || pos.y !== 0 || pos.z !== 0) {
+            this._spawnEnemy.copyFrom(pos);
+            console.log("[SceneInitializer] SpawnPointB from GLB:", pos.toString());
+          }
+          node.setEnabled(false);
+        }
+      }
+
       for (const mesh of this._locationMeshes) {
         if (mesh.name === "ShadowReciever" || mesh.name === "ShadowReceiver") {
           mesh.isVisible = false;
@@ -123,21 +154,26 @@ export class SceneInitializer {
     } catch (err) {
       console.warn(`[SceneInitializer] Could not load location "${locationName}": ${err}`);
     }
+
+    console.log("[SceneInitializer] Final spawn — Player:", this._spawnPlayer.toString(), "Enemy:", this._spawnEnemy.toString());
   }
 
   private _positionModels(): void {
     const player = ModelsManager.instance.player;
     const enemy  = ModelsManager.instance.enemy;
     if (player?.root) {
-      player.root.position.copyFrom(SPAWN_PLAYER);
+      player.root.position.copyFrom(this._spawnPlayer);
+      // Mirror X so the player (on the left) faces right toward the enemy
       player.root.scaling = new Vector3(-1, 1, 1);
     }
     if (enemy?.root) {
-      enemy.root.position.copyFrom(SPAWN_ENEMY);
+      enemy.root.position.copyFrom(this._spawnEnemy);
+      // Enemy naturally faces left (toward the player) — no mirror needed
     }
   }
 
   private _initCamera(): void {
+    // camZOffset: 465 matches dojo_Legion.prefab CamZOffset property
     const config = CameraConfiguration.fromJSON({
       settings: [{
         aspect: 1, minXPosition: -9999, maxXPosition: 9999,
@@ -145,7 +181,7 @@ export class SceneInitializer {
         startFollowYUp: 150, startFollowYBot: 50,
         startRotateYUp: 180, startRotateYBot: 20,
         farClipPlane: 5000, botVerticalAngle: 10, upVerticalAngle: 30,
-        leftHorizontalAngle: 30, rightHorizontalAngle: 30, camZOffset: 0,
+        leftHorizontalAngle: 30, rightHorizontalAngle: 30, camZOffset: 465,
       }],
     });
     const bCam = BattleCamera.createInstance(

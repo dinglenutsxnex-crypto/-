@@ -6,22 +6,18 @@
     <div class="hud-bar-wrap">
       <div class="hud-bar-bg"></div>
       <div class="hud-bar-fade" id="hud-hp-fade-player"></div>
-      <div class="hud-bar-fill hud-bar-fill--player" id="hud-hp-player"></div>
+      <div class="hud-bar-fill" id="hud-hp-player"></div>
     </div>
-    <!-- Shadow energy bar (player only) -->
-    <div class="hud-bar-wrap hud-shadow-wrap">
-      <div class="hud-shadow-bg" id="hud-shadow-bg"></div>
-      <div class="hud-shadow-fill" id="hud-shadow-fill"></div>
+    <div class="hud-shadow-wrap">
+      <div id="hud-shadow-bg"></div>
+      <div id="hud-shadow-fill"></div>
     </div>
     <div class="hud-rounds" id="hud-rounds-player"></div>
   </div>
 
-  <!-- ── Center: timer + banner ── -->
+  <!-- ── Center: timer ── -->
   <div id="hud-center">
     <div id="hud-timer">99</div>
-    <div id="hud-banner" class="hud-banner hidden">
-      <span id="hud-banner-text"></span>
-    </div>
   </div>
 
   <!-- ── Enemy HP (right) ── -->
@@ -29,40 +25,59 @@
     <div class="hud-name" id="hud-name-enemy">ENEMY</div>
     <div class="hud-bar-wrap hud-bar-wrap--right">
       <div class="hud-bar-bg"></div>
-      <div class="hud-bar-fade hud-bar-fade--enemy" id="hud-hp-fade-enemy"></div>
-      <div class="hud-bar-fill hud-bar-fill--enemy" id="hud-hp-enemy"></div>
+      <div class="hud-bar-fade hud-bar-fade--right" id="hud-hp-fade-enemy"></div>
+      <div class="hud-bar-fill hud-bar-fill--right" id="hud-hp-enemy"></div>
     </div>
     <div class="hud-rounds hud-rounds--right" id="hud-rounds-enemy"></div>
   </div>
 
-  <!-- ── Pause button ── -->
-  <div id="hud-pause-btn">
-    <div id="hud-pause-sprite"></div>
+  <!-- ── Full-screen banner (ROUND 1 / FIGHT! / KO) ── -->
+  <div id="hud-banner" class="hidden">
+    <span id="hud-banner-text"></span>
   </div>
 
-  <!-- ── Controls overlay ── -->
+  <!-- ════════════════════════════════════════════════════
+       Fight controls — mirrored 1-for-1 from Unity
+       ════════════════════════════════════════════════════ -->
   <div id="hud-controls">
 
-    <!-- Joystick (bottom-left) -->
+    <!-- ── Joystick (bottom-left) ────────────────────────────
+         stick_circle  = outer ring  (152 × 152)
+         stick_btn     = inner knob  (90 × 90)
+         stick_arrow_big_tutor = gold ^ arrow on knob (dojo)
+    ─────────────────────────────────────────────────────── -->
     <div id="hud-joystick">
       <div id="hud-stick-ring"></div>
-      <div id="hud-stick-knob"></div>
+      <div id="hud-stick-knob">
+        <div id="hud-stick-arrow"></div>
+      </div>
     </div>
 
-    <!-- Shadow ability slots (bottom-right, above attack buttons) -->
-    <div id="hud-abilities">
-      <div class="hud-ability-slot" id="hud-ability-0"></div>
-      <div class="hud-ability-slot" id="hud-ability-1"></div>
-      <div class="hud-ability-slot" id="hud-ability-2"></div>
-    </div>
+    <!-- ── Right control panel (bottom-right) ───────────────
+         Row 1 : 4 × arrow.png  = directional attack buttons
+         Row 2 : triangle — shuriken (top-center),
+                             fist (bottom-left),
+                             foot (bottom-right)
+    ─────────────────────────────────────────────────────── -->
+    <div id="hud-right-panel">
 
-    <!-- Attack buttons — triangle: shuriken top, fist bottom-left, foot bottom-right -->
-    <div id="hud-buttons">
-      <div class="hud-atk-btn" id="hud-btn-shuriken" data-action="ranged"></div>
-      <div class="hud-atk-btn" id="hud-btn-fist"     data-action="punch"></div>
-      <div class="hud-atk-btn" id="hud-btn-foot"     data-action="kick"></div>
-    </div>
+      <!-- directional attack row -->
+      <div id="hud-dir-row">
+        <div class="hud-dir-btn" id="hud-dir-0" data-dir="back"></div>
+        <div class="hud-dir-btn" id="hud-dir-1" data-dir="down"></div>
+        <div class="hud-dir-btn" id="hud-dir-2" data-dir="up"></div>
+        <div class="hud-dir-btn" id="hud-dir-3" data-dir="forward"></div>
+      </div>
 
-  </div>
+      <!-- attack triangle -->
+      <div id="hud-attack-area">
+        <div class="hud-atk-btn" id="hud-btn-shuriken" data-action="ranged"></div>
+        <div class="hud-atk-btn" id="hud-btn-fist"     data-action="punch"></div>
+        <div class="hud-atk-btn" id="hud-btn-foot"     data-action="kick"></div>
+      </div>
 
-</div>
+    </div><!-- #hud-right-panel -->
+
+  </div><!-- #hud-controls -->
+
+</div><!-- #fight-hud -->

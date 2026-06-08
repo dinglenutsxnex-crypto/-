@@ -153,7 +153,7 @@ export class FightController {
       // ── Normal fight path: mirrors Round() ──────────────────────────────
       // Show "ROUND X" banner, then wait for both models' intro anim, then "FIGHT!"
       await new Promise<void>(resolve => {
-        this._hud?.showRoundStart(resolve) ?? resolve();
+        this._hud?.showRoundStart(this._currentRound, resolve) ?? resolve();
       });
       await new Promise<void>(resolve => {
         this._hud?.showFightStart(resolve) ?? resolve();

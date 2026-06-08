@@ -2,12 +2,20 @@ import "../../ui/styles/screens/fight-hud.css";
 import { AtlasManager } from "./AtlasManager";
 
 // ─── Display sizes (1280×720 design space) ───────────────────────────────────
-const HP_BAR_W    = 480;
-const HP_BAR_H    = 18;
-const ROUND_DOT_W = 26;
-const ROUND_DOT_H = 11;
-const PAUSE_BTN_W = 80;
-const PAUSE_BTN_H = 32;
+const HP_BAR_W     = 480;
+const HP_BAR_H     = 18;
+const SHADOW_BAR_W = 480;
+const SHADOW_BAR_H = 12;
+const ROUND_DOT_W  = 26;
+const ROUND_DOT_H  = 11;
+const PAUSE_BTN_W  = 80;
+const PAUSE_BTN_H  = 32;
+
+// Control sprite sizes
+const STICK_RING_SIZE  = 160;
+const STICK_KNOB_SIZE  = 100;
+const ATK_BTN_SIZE     = 90;
+const ABILITY_SLOT_SIZE = 60;
 
 // Timing constants (ms) — from BattleInterface.cs
 const TIME_ROUND_START  = 2500;
@@ -27,6 +35,7 @@ interface HUDState {
   roundsToWin: number;
   roundTime:   number;
   round:       number;
+  shadow:      number;
 }
 
 export class FightHUD {
@@ -42,6 +51,7 @@ export class FightHUD {
   private _enemyHPFade:  HTMLElement | null = null;
   private _playerRounds: HTMLElement | null = null;
   private _enemyRounds:  HTMLElement | null = null;
+  private _shadowFill:   HTMLElement | null = null;
 
   private _timerInterval: number | null = null;
   private _bannerTimer:   number | null = null;
@@ -52,6 +62,7 @@ export class FightHUD {
     playerHP: 1, enemyHP: 1,
     playerWins: 0, enemyWins: 0,
     roundsToWin: 2, roundTime: 99, round: 1,
+    shadow: 0,
   };
 
   /** atlas is optional; falls back to AtlasManager.instance if not provided */
@@ -72,18 +83,45 @@ export class FightHUD {
     this._enemyHPFade = container.querySelector("#hud-hp-fade-enemy");
     this._playerRounds= container.querySelector("#hud-rounds-player");
     this._enemyRounds = container.querySelector("#hud-rounds-enemy");
+    this._shadowFill  = container.querySelector("#hud-shadow-fill");
 
-    // Apply Fight atlas sprites to HP bars — real sf3 textures, not CSS gradients
     const a = this._atlas;
+
+    // ── HP bars ──
     if (a) {
       if (this._playerHP)     a.applyBackground(this._playerHP,     "hp_bar",      HP_BAR_W, HP_BAR_H);
       if (this._playerHPFade) a.applyBackground(this._playerHPFade, "hp_bar_fade", HP_BAR_W, HP_BAR_H);
       if (this._enemyHP)      a.applyBackground(this._enemyHP,      "hp_bar",      HP_BAR_W, HP_BAR_H);
       if (this._enemyHPFade)  a.applyBackground(this._enemyHPFade,  "hp_bar_fade", HP_BAR_W, HP_BAR_H);
 
-      // Pause button
+      // ── Shadow energy bar ──
+      const shadowBg   = container.querySelector<HTMLElement>("#hud-shadow-bg");
+      if (shadowBg)          a.applyBackground(shadowBg,           "shadow_bar_empty", SHADOW_BAR_W, SHADOW_BAR_H);
+      if (this._shadowFill)  a.applyBackground(this._shadowFill,   "shadow_bar_full",  SHADOW_BAR_W, SHADOW_BAR_H);
+
+      // ── Pause button ──
       const pauseSprite = container.querySelector<HTMLElement>("#hud-pause-sprite");
       if (pauseSprite) a.applyStretched(pauseSprite, "pause_button", PAUSE_BTN_W, PAUSE_BTN_H);
+
+      // ── Joystick ──
+      const stickRing = container.querySelector<HTMLElement>("#hud-stick-ring");
+      const stickKnob = container.querySelector<HTMLElement>("#hud-stick-knob");
+      if (stickRing) a.applyScaled(stickRing, "stick_circle", STICK_RING_SIZE, STICK_RING_SIZE);
+      if (stickKnob) a.applyScaled(stickKnob, "stick_btn",    STICK_KNOB_SIZE, STICK_KNOB_SIZE);
+
+      // ── Attack buttons ──
+      const btnShuriken = container.querySelector<HTMLElement>("#hud-btn-shuriken");
+      const btnFist     = container.querySelector<HTMLElement>("#hud-btn-fist");
+      const btnFoot     = container.querySelector<HTMLElement>("#hud-btn-foot");
+      if (btnShuriken) a.applyScaled(btnShuriken, "shuriken_button", ATK_BTN_SIZE, ATK_BTN_SIZE);
+      if (btnFist)     a.applyScaled(btnFist,     "fist",            ATK_BTN_SIZE, ATK_BTN_SIZE);
+      if (btnFoot)     a.applyScaled(btnFoot,     "foot",            ATK_BTN_SIZE, ATK_BTN_SIZE);
+
+      // ── Shadow ability slots ──
+      for (let i = 0; i < 3; i++) {
+        const slot = container.querySelector<HTMLElement>(`#hud-ability-${i}`);
+        if (slot) a.applyScaled(slot, "ability_slot", ABILITY_SLOT_SIZE, ABILITY_SLOT_SIZE);
+      }
     }
 
     const pauseBtn = container.querySelector("#hud-pause-btn");
@@ -133,6 +171,15 @@ export class FightHUD {
 
   setPlayerHP(ratio: number): void { this._setHP("player", ratio, true); }
   setEnemyHP (ratio: number): void { this._setHP("enemy",  ratio, true); }
+
+  // ─── Shadow energy ────────────────────────────────────────────────────────────
+
+  setShadow(ratio: number): void {
+    if (!this._shadowFill) return;
+    const pct = Math.max(0, Math.min(1, ratio));
+    this._state.shadow = pct;
+    this._shadowFill.style.transform = `scaleX(${pct})`;
+  }
 
   // ─── Round wins ──────────────────────────────────────────────────────────────
 
@@ -213,7 +260,6 @@ export class FightHUD {
         const dot = document.createElement("div");
         dot.className = "hud-round-dot" + (won ? " won" : "");
         if (a) {
-          // Fight atlas round sprites — real sf3 textures
           a.applyScaled(dot, won ? "round_full" : "round_empty", ROUND_DOT_W, ROUND_DOT_H);
         }
         dots.push(dot);
@@ -250,7 +296,6 @@ export class FightHUD {
 
   private _onPause(): void {
     console.log("[FightHUD] Pause pressed");
-    // TODO: wire to PauseController
   }
 
   dispose(): void {

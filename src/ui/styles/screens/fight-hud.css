@@ -49,7 +49,6 @@
   border-radius: 2px;
 }
 
-/* Dark track behind the atlas sprites */
 .hud-bar-bg {
   position: absolute;
   inset: 0;
@@ -57,7 +56,6 @@
   border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Fade layer — atlas hp_bar_fade sprite applied inline by FightHUD.bind() */
 .hud-bar-fade {
   position: absolute;
   top: 0; left: 0;
@@ -66,12 +64,10 @@
   transition: transform 0.6s ease;
 }
 
-/* Enemy fade drains from left → transform-origin right */
 .hud-bar-wrap--right .hud-bar-fade {
   transform-origin: right center;
 }
 
-/* HP fill layer — atlas hp_bar sprite applied inline by FightHUD.bind() */
 .hud-bar-fill {
   position: absolute;
   top: 0; left: 0;
@@ -80,21 +76,34 @@
   transition: transform 0.15s ease;
 }
 
-/* Enemy fill drains from left */
 .hud-bar-wrap--right .hud-bar-fill {
   transform-origin: right center;
 }
 
-/*
- * Enemy bars: hue-rotate green atlas sprite → red.
- * Mirrors Unity's Color tint applied to the enemy HUD bar.
- */
 .hud-bar-fill--enemy,
 .hud-bar-fade--enemy {
   filter: hue-rotate(240deg) saturate(2) brightness(1.1);
 }
 
-/* ── Round dots — atlas round_full / round_empty applied inline by FightHUD ── */
+/* ── Shadow energy bar (player side only) ── */
+.hud-shadow-wrap {
+  height: 12px;
+}
+
+.hud-shadow-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hud-shadow-fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%; width: 100%;
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+/* ── Round dots ── */
 .hud-rounds {
   display: flex;
   flex-direction: row;
@@ -104,7 +113,6 @@
 }
 .hud-rounds--right { justify-content: flex-end; }
 
-/* Fallback dot style (shown if atlas fails to load) */
 .hud-round-dot {
   width: 18px;
   height: 8px;
@@ -204,6 +212,98 @@
   margin-top: 68px;
 }
 #hud-pause-btn:hover { opacity: 1; }
+
+/* ══ Controls overlay ════════════════════════════════════════════════════ */
+
+#hud-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+}
+
+/* ── Joystick (bottom-left) ── */
+#hud-joystick {
+  position: absolute;
+  bottom: 28px;
+  left: 24px;
+  width: 160px;
+  height: 160px;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+#hud-stick-ring {
+  position: absolute;
+  inset: 0;
+  /* atlas dimensions set inline by FightHUD */
+}
+
+#hud-stick-knob {
+  position: absolute;
+  /* centered: (160 - 100) / 2 = 30px */
+  top: 30px;
+  left: 30px;
+  /* atlas dimensions set inline by FightHUD */
+  transition: transform 0.05s ease;
+}
+
+/* ── Shadow ability slots (bottom-right, above attack buttons) ── */
+#hud-abilities {
+  position: absolute;
+  bottom: 232px;
+  right: 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.hud-ability-slot {
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.1s;
+}
+.hud-ability-slot:active { opacity: 1; transform: scale(0.93); }
+
+/* ── Attack buttons triangle (bottom-right) ── */
+/*
+ *    [shuriken]           ← top-center
+ * [fist]     [foot]      ← bottom row
+ */
+#hud-buttons {
+  position: absolute;
+  bottom: 28px;
+  right: 24px;
+  width: 210px;
+  height: 200px;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.hud-atk-btn {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.08s ease, opacity 0.08s ease;
+  opacity: 0.92;
+  /* atlas sets width/height inline */
+}
+.hud-atk-btn:active {
+  transform: scale(0.88);
+  opacity: 1;
+}
+
+#hud-btn-shuriken {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#hud-btn-shuriken:active {
+  transform: translateX(-50%) scale(0.88);
+}
+
+#hud-btn-fist   { bottom: 0; left: 0; }
+#hud-btn-foot   { bottom: 0; right: 0; }
 
 /* ── Entrance animation ── */
 @keyframes hud-slide-left {

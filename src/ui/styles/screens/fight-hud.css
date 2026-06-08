@@ -40,7 +40,6 @@
 }
 .hud-right .hud-name { text-align: right; }
 
-/* HP bar wrap — height driven by applyBackground display sizes */
 .hud-bar-wrap {
   position: relative;
   width: 100%;
@@ -71,7 +70,6 @@
   transform-origin: left center;
   transition: transform 0.12s ease;
 }
-/* Enemy bars are blue-tinted */
 .hud-bar-fill--right,
 .hud-bar-fade--right {
   filter: hue-rotate(210deg) saturate(1.6) brightness(1.1);
@@ -85,10 +83,7 @@
   overflow: hidden;
   border-radius: 1px;
 }
-#hud-shadow-bg {
-  position: absolute;
-  inset: 0;
-}
+#hud-shadow-bg  { position: absolute; inset: 0; }
 #hud-shadow-fill {
   position: absolute;
   inset: 0;
@@ -170,19 +165,7 @@
   white-space: nowrap;
 }
 
-/* ══ Controls ════════════════════════════════════════════════════════════════
-   Layout mirrors the Unity BattleInterface exactly:
-
-   LEFT side:
-     Joystick — stick_circle ring + stick_btn knob + stick_arrow_big_tutor
-                (gold ^ arrow is the tutor/dojo variant)
-
-   RIGHT side:
-     Row 1: 4 × arrow.png   — directional attack buttons (◇ ◇ ◇ ◇)
-     Row 2: triangle layout
-               [shuriken_button]  ← top-center
-          [fist]            [foot] ← bottom row
-   ═══════════════════════════════════════════════════════════════════════════ */
+/* ══ Controls ════════════════════════════════════════════════════════════════ */
 
 #hud-controls {
   position: absolute;
@@ -191,33 +174,28 @@
   z-index: 60;
 }
 
-/* ─── Joystick ────────────────────────────────────────────────────────────── */
+/* ─── Joystick (bottom-left) ─────────────────────────────────────────────── */
 
 #hud-joystick {
   position: absolute;
   bottom: 20px;
   left: 18px;
-  /* Sized to fit stick_circle at 152×152 */
-  width:  152px;
+  width:  152px;   /* stick_circle sprite */
   height: 152px;
   pointer-events: auto;
   touch-action: none;
 }
 
-/* Outer ring: fills container exactly */
 #hud-stick-ring {
   position: absolute;
   inset: 0;
-  /* applyScaled sets width/height inline */
 }
 
-/* Inner knob: centered inside ring
-   (152 - 90) / 2 = 31px */
+/* centered inside ring: (152 - 90) / 2 = 31px */
 #hud-stick-knob {
   position: absolute;
   top:  31px;
   left: 31px;
-  /* applyScaled sets 90×90 inline */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,33 +203,39 @@
   will-change: transform;
 }
 
-/* Gold arrow overlay on knob — stick_arrow_big_tutor */
 #hud-stick-arrow {
   pointer-events: none;
-  /* applyScaled sets 48×30 inline */
 }
 
-/* ─── Right control panel ─────────────────────────────────────────────────── */
+/* ─── Right control panel (bottom-right) ─────────────────────────────────── */
 
 #hud-right-panel {
   position: absolute;
   bottom: 20px;
   right: 18px;
-  width:  390px;
-  height: 248px;
+  width:  370px;
+  height: 271px;   /* dir row (78) + gap (8) + attack area (185) */
   pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
+  justify-content: flex-end;  /* attack triangle pinned to bottom */
+  gap: 8px;
 }
 
-/* ── Direction row: 4 × arrow.png ── */
+/* ── Directional tutor row — hidden by default, dojo only ── */
 #hud-dir-row {
-  display: flex;
+  display: none;
   flex-direction: row;
   gap: 14px;
   pointer-events: auto;
+  align-self: flex-end;
+  flex-shrink: 0;
+}
+
+/* Add class "dojo-active" to #fight-hud to show dir arrows */
+#fight-hud.dojo-active #hud-dir-row {
+  display: flex;
 }
 
 .hud-dir-btn {
@@ -269,9 +253,10 @@
 /* ── Attack triangle ── */
 #hud-attack-area {
   position: relative;
-  width:  370px;
+  width:  248px;
   height: 185px;
   pointer-events: none;
+  flex-shrink: 0;
 }
 
 .hud-atk-btn {
@@ -282,34 +267,28 @@
   opacity: 0.92;
   transition: transform 0.07s ease, opacity 0.07s ease;
 }
-.hud-atk-btn:active {
-  opacity: 1;
-}
+.hud-atk-btn:active { opacity: 1; }
 
-/* shuriken — top center of triangle */
+/* shuriken — top center */
 #hud-btn-shuriken {
-  top:  8px;
+  top:  0;
   left: 50%;
   transform: translateX(-50%);
   /* applyScaled sets 88×88 inline */
 }
-#hud-btn-shuriken:active {
-  transform: translateX(-50%) scale(0.86);
-}
+#hud-btn-shuriken:active { transform: translateX(-50%) scale(0.86); }
 
 /* fist — bottom-left */
 #hud-btn-fist {
   bottom: 0;
-  left:   24px;
-  /* applyScaled sets 88×88 inline */
+  left:   0;
 }
 #hud-btn-fist:active { transform: scale(0.86); }
 
 /* foot — bottom-right */
 #hud-btn-foot {
   bottom: 0;
-  right:  24px;
-  /* applyScaled sets 88×88 inline */
+  right:  0;
 }
 #hud-btn-foot:active { transform: scale(0.86); }
 

@@ -37,15 +37,11 @@
   </div>
 
   <!-- ════════════════════════════════════════════════════
-       Fight controls — mirrored 1-for-1 from Unity
+       Fight controls
        ════════════════════════════════════════════════════ -->
   <div id="hud-controls">
 
-    <!-- ── Joystick (bottom-left) ────────────────────────────
-         stick_circle  = outer ring  (152 × 152)
-         stick_btn     = inner knob  (90 × 90)
-         stick_arrow_big_tutor = gold ^ arrow on knob (dojo)
-    ─────────────────────────────────────────────────────── -->
+    <!-- ── Joystick (bottom-left) ── -->
     <div id="hud-joystick">
       <div id="hud-stick-ring"></div>
       <div id="hud-stick-knob">
@@ -53,15 +49,14 @@
       </div>
     </div>
 
-    <!-- ── Right control panel (bottom-right) ───────────────
-         Row 1 : 4 × arrow.png  = directional attack buttons
-         Row 2 : triangle — shuriken (top-center),
-                             fist (bottom-left),
-                             foot (bottom-right)
-    ─────────────────────────────────────────────────────── -->
+    <!-- ── Right control panel (bottom-right) ──
+         Normal fight:  shuriken (top) + fist (bottom-left) + foot (bottom-right)
+         Dojo/training: dir arrow row also appears above the triangle
+                        (add class "dojo-active" to #fight-hud to enable)
+    ── -->
     <div id="hud-right-panel">
 
-      <!-- directional attack row -->
+      <!-- directional tutor arrows — dojo/training only, hidden by default -->
       <div id="hud-dir-row">
         <div class="hud-dir-btn" id="hud-dir-0" data-dir="back"></div>
         <div class="hud-dir-btn" id="hud-dir-1" data-dir="down"></div>
@@ -69,15 +64,15 @@
         <div class="hud-dir-btn" id="hud-dir-3" data-dir="forward"></div>
       </div>
 
-      <!-- attack triangle -->
+      <!-- attack triangle — always visible -->
       <div id="hud-attack-area">
         <div class="hud-atk-btn" id="hud-btn-shuriken" data-action="ranged"></div>
         <div class="hud-atk-btn" id="hud-btn-fist"     data-action="punch"></div>
         <div class="hud-atk-btn" id="hud-btn-foot"     data-action="kick"></div>
       </div>
 
-    </div><!-- #hud-right-panel -->
+    </div>
 
-  </div><!-- #hud-controls -->
+  </div>
 
-</div><!-- #fight-hud -->
+</div>

@@ -1,0 +1,1 @@
+- [SF3 viewport scaling](sf3-viewport-scaling.md) — UI overlay must use contain not cover to avoid cropping in webviews/off-ratio screens

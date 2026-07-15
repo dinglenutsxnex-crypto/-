@@ -43,15 +43,7 @@ export class SceneManager {
   get config(): SceneConfig | undefined { return this._loadedConfig; }
 
   constructor(canvas: HTMLCanvasElement) {
-    // adaptToDeviceRatio keeps the render resolution matched to the
-    // device's actual pixel density instead of being locked to whatever
-    // ratio was in effect when the engine was created (fixes blurry /
-    // mismatched framebuffers when a WebView reports its ratio late).
-    this._engine = new Engine(canvas, true, {
-      preserveDrawingBuffer: false,
-      stencil: true,
-      adaptToDeviceRatio: true,
-    });
+    this._engine = new Engine(canvas, true, { preserveDrawingBuffer: false, stencil: true });
     this._scene = new Scene(this._engine);
   }
 
@@ -90,21 +82,6 @@ export class SceneManager {
       for (const cb of this._updates) cb(dt);
       this._scene.render();
     });
-
-    // Multiple triggers because different browsers/WebViews fire different
-    // events when the visible area changes (rotation, browser chrome
-    // show/hide, split-screen, fullscreen toggles). Any one of these missing
-    // is what causes the canvas to get stuck at a stale size and appear
-    // cropped or overflowing until the next full resize.
-    const doResize = () => this._engine.resize();
-    window.addEventListener("resize", doResize);
-    window.addEventListener("orientationchange", doResize);
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", doResize);
-    }
-    const renderCanvas = this._engine.getRenderingCanvas();
-    if (typeof ResizeObserver !== "undefined" && renderCanvas) {
-      new ResizeObserver(doResize).observe(renderCanvas as unknown as Element);
-    }
+    window.addEventListener("resize", () => this._engine.resize());
   }
 }

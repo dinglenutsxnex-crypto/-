@@ -8,12 +8,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
-      width: 100%;
-      height: 100%;
-      /* 100vh can be taller than what's actually visible once mobile browser
-         chrome (address bar) or a WebView's system bars are accounted for.
-         100dvh tracks the real, currently-visible viewport instead. */
-      height: 100dvh;
+      width: 100%; height: 100%;
       background: #000;
       overflow: hidden;
       /* Kill the blue tap flash on every element */
@@ -25,13 +20,13 @@
     #render-canvas {
       position: fixed; inset: 0;
       width: 100%; height: 100%;
-      width: 100dvw; height: 100dvh;
       display: block; touch-action: none;
     }
 
     /*
-      #ui-viewport: 1280×720 design canvas, scaled to fill the SAFE area.
-      We offset by the browser chrome (address bar) using dvh / safe-area-inset.
+      #ui-viewport: 1280×720 design canvas, scaled with letterboxing to FIT
+      inside whatever real viewport it's opened in (see resize() below).
+      Never crops — any leftover space just shows the black background.
     */
     #ui-viewport {
       position: fixed;
@@ -94,38 +89,67 @@
     (function () {
       var vp = document.getElementById('ui-viewport');
       var W = 1280, H = 720;
+      var raf = null;
 
-      function resize() {
-        // Use visualViewport if available — accounts for browser chrome (address bar)
+      function measure() {
+        // visualViewport is the source of truth when present: it excludes
+        // browser chrome (address bar / nav bar) and updates correctly
+        // inside webviews and iOS Safari where innerWidth/innerHeight lag
+        // or include chrome that overlaps the page.
         var vvp = window.visualViewport;
         var winW = vvp ? vvp.width  : window.innerWidth;
         var winH = vvp ? vvp.height : window.innerHeight;
+        var offX = vvp ? vvp.offsetLeft : 0;
+        var offY = vvp ? vvp.offsetTop  : 0;
+        return { winW: winW, winH: winH, offX: offX, offY: offY };
+      }
 
-        // Fit mode: scales to CONTAIN the 1280x720 design canvas inside
-        // whatever viewport we're given, so nothing is ever cropped —
-        // we may get letterbox bars on the non-dominant axis instead.
-        var scale = Math.min(winW / W, winH / H);
+      function resize() {
+        var m = measure();
 
-        var offsetX = (winW - W * scale) / 2;
-        var offsetY = (winH - H * scale) / 2;
+        // FIT mode (contain): scale so the whole 1280x720 design fits
+        // inside the real viewport on BOTH axes. Never crops. Whatever
+        // axis has leftover space just letterboxes with the body's
+        // black background — no hardcoded ratio, works on any device.
+        var scale = Math.min(m.winW / W, m.winH / H);
 
-        // If visualViewport, also account for its offset (chrome bar scroll)
-        if (vvp) {
-          offsetX += vvp.offsetLeft;
-          offsetY += vvp.offsetTop;
-        }
+        var offsetX = (m.winW - W * scale) / 2 + m.offX;
+        var offsetY = (m.winH - H * scale) / 2 + m.offY;
 
         vp.style.transform = 'scale(' + scale + ')';
         vp.style.left = offsetX + 'px';
         vp.style.top  = offsetY + 'px';
       }
 
-      resize();
-      window.addEventListener('resize', resize);
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', resize);
-        window.visualViewport.addEventListener('scroll', resize);
+      // Coalesce bursts of resize/scroll events (webviews + iOS chrome
+      // animating in/out fire many events in a row) into one paint.
+      function scheduleResize() {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () {
+          raf = null;
+          resize();
+        });
       }
+
+      resize();
+      window.addEventListener('resize', scheduleResize);
+      window.addEventListener('orientationchange', function () {
+        // Some browsers report stale innerWidth/Height for a beat right
+        // after rotation, so re-measure a couple more times as it settles.
+        scheduleResize();
+        setTimeout(scheduleResize, 100);
+        setTimeout(scheduleResize, 300);
+      });
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', scheduleResize);
+        window.visualViewport.addEventListener('scroll', scheduleResize);
+      }
+      // Fires once fonts/layout settle after load, and is cheap insurance
+      // for webviews that don't fire resize reliably on init.
+      window.addEventListener('load', scheduleResize);
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) scheduleResize();
+      });
     })();
   </script>
 </body>

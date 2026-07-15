@@ -127,12 +127,12 @@ export class SceneInitializer {
     const cameraRig = new TransformNode("battle_camera_rig", this._scene);
     this._cameraNode = cameraRig;
 
-    const cam = new FreeCamera("Main Camera", new Vector3(0, 155, -950), this._scene);
+    const cam = new FreeCamera("Main Camera", new Vector3(0, 190, -1050), this._scene);
     cam.parent  = cameraRig;
-    cam.setTarget(new Vector3(0, 155, 0));
+    cam.setTarget(new Vector3(0, 160, 0));
     cam.minZ = 10;
     cam.maxZ = 5000;
-    cam.fov  = 30 * (Math.PI / 180);
+    cam.fov  = 26 * (Math.PI / 180);
     cam.mode = FreeCamera.PERSPECTIVE_CAMERA;
     this._mainCamera      = cam;
     this._scene.activeCamera = cam;

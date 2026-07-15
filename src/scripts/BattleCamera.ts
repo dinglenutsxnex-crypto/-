@@ -103,15 +103,15 @@ export class BattleCamera {
   // Camera settings
   moveSmoothTime = 0.1;
   rotationSmoothTime = 0.15;
-  FOV = 30;
+  FOV = 26;
   centerMassK = 0.5;
   private _maxDistance = 500;
   currentMaxDistance = 500;
   private _minDist = 350;
   mapClippingPlane = 290;
 
-  private _camOffset = new Vector3(0, -98.5, 562.6);
-  private _defaultPosition = new Vector3(0, 155, -950);
+  private _camOffset = new Vector3(0, -98.5, 612.6);
+  private _defaultPosition = new Vector3(0, 190, -1050);
 
   lookAtPlayerPos = true;
   lookAtPointOffset = Vector3.Zero();

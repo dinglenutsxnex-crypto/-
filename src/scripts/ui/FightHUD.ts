@@ -9,8 +9,6 @@ const ROUND_DOT_W    = 22;   const ROUND_DOT_H    = 10;
 // Joystick
 const RING_SIZE  = 152;   // stick_circle  165×166 → 152px
 const KNOB_SIZE  = 90;    // stick_btn     165×165 → 90px
-const ARROW_W    = 48;    // stick_arrow_big_tutor  60×37 → 48px wide
-const ARROW_H    = 30;    // → 30px tall (aspect preserved)
 
 // Dir buttons row
 const DIR_BTN_SIZE = 78;  // arrow.png 125×125 → 78px
@@ -102,11 +100,8 @@ export class FightHUD {
 
       // ── Joystick ──
       const ring  = q<HTMLElement>("#hud-stick-ring");
-      const arrow = q<HTMLElement>("#hud-stick-arrow");
-      if (ring)  a.applyScaled(ring,  "stick_circle",          RING_SIZE,  RING_SIZE);
-      if (this._knob) a.applyScaled(this._knob, "stick_btn",   KNOB_SIZE,  KNOB_SIZE);
-      // Gold arrow — dojo uses the tutor variant
-      if (arrow) a.applyScaled(arrow, "stick_arrow_big_tutor", ARROW_W, ARROW_H);
+      if (ring)  a.applyScaled(ring,  "stick_circle", RING_SIZE, RING_SIZE);
+      if (this._knob) a.applyScaled(this._knob, "stick_btn", KNOB_SIZE, KNOB_SIZE);
 
       // ── 4 directional attack buttons ──
       const DIRS = ["back", "down", "up", "forward"] as const;

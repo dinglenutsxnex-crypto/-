@@ -91,6 +91,19 @@ export class SceneInitializer {
     EffectsManager.instance?.disposePreviousLocation();
     for (const mesh of this._locationMeshes) mesh.dispose();
     this._locationMeshes = [];
+
+    // ── Tear down the previous lighting/camera rig ──────────────────────────
+    // _setupScene() always creates NEW HemisphericLight/DirectionalLight/
+    // ShadowGenerator/camera instances. Without disposing the old ones here,
+    // re-entering the dojo (or any location reload) stacks a second set of
+    // lights on top of the first — same geometry, but double ambient +
+    // double directional intensity, which reads as flatter/grayer/lower
+    // contrast and noisier shadows on the second run.
+    this._shadowGenerator?.dispose();
+    this._hemisphericLight?.dispose();
+    this._directionalLight?.dispose();
+    this._mainCamera?.dispose();
+    this._cameraNode?.dispose();
   }
 
   private _setupScene(): void {

@@ -24,30 +24,29 @@
     }
 
     /*
-      #ui-viewport: 1280×720 design canvas, scaled with letterboxing to FIT
-      inside whatever real viewport it's opened in (see resize() below).
-      Never crops — any leftover space just shows the black background.
+      #enter-point-ui: the real UI root. No fixed design canvas, no scale
+      transform — it IS the device viewport, edge to edge, on every
+      aspect ratio. All screens (currency-bar, home-menu, fight-hud) size
+      themselves with %, vw/vh, flex, and safe-area insets so they always
+      reach the true edges instead of a virtual 1280x720 frame.
+
+      JS below keeps --vvw/--vvh/--vv-top/--vv-left in sync with
+      visualViewport, which is the only reliable way to get the REAL
+      visible area on mobile browsers/webviews (excludes address bar,
+      handles Android/iOS chrome show/hide without clipping content).
     */
-    #ui-viewport {
+    #enter-point-ui {
       position: fixed;
-      width: 1280px;
-      height: 720px;
-      transform-origin: top left;
+      left: var(--vv-left, 0px);
+      top: var(--vv-top, 0px);
+      width: var(--vvw, 100vw);
+      height: var(--vvh, 100vh);
       pointer-events: none;
       z-index: 10;
-      /* prevent tap highlights inside */
       -webkit-tap-highlight-color: transparent;
     }
 
-    #enter-point-ui {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      width: 1280px;
-      height: 720px;
-    }
-
-    /* Loading screen — real screen size, outside scaler */
+    /* Loading screen — real screen size, outside the UI root */
     #load-screen {
       display: none;
       position: fixed; inset: 0; z-index: 9999; opacity: 1;
@@ -81,74 +80,52 @@
     <p id="load-screen-tip"></p>
   </div>
 
-  <div id="ui-viewport">
-    <div id="enter-point-ui"></div>
-  </div>
+  <div id="enter-point-ui"></div>
 
   <script>
     (function () {
-      var vp = document.getElementById('ui-viewport');
-      var W = 1280, H = 720;
+      var root = document.documentElement;
       var raf = null;
 
-      function measure() {
-        // visualViewport is the source of truth when present: it excludes
-        // browser chrome (address bar / nav bar) and updates correctly
-        // inside webviews and iOS Safari where innerWidth/innerHeight lag
-        // or include chrome that overlaps the page.
+      function apply() {
         var vvp = window.visualViewport;
-        var winW = vvp ? vvp.width  : window.innerWidth;
-        var winH = vvp ? vvp.height : window.innerHeight;
-        var offX = vvp ? vvp.offsetLeft : 0;
-        var offY = vvp ? vvp.offsetTop  : 0;
-        return { winW: winW, winH: winH, offX: offX, offY: offY };
-      }
+        var w = vvp ? vvp.width  : window.innerWidth;
+        var h = vvp ? vvp.height : window.innerHeight;
+        var l = vvp ? vvp.offsetLeft : 0;
+        var t = vvp ? vvp.offsetTop  : 0;
 
-      function resize() {
-        var m = measure();
-
-        // FIT mode (contain): scale so the whole 1280x720 design fits
-        // inside the real viewport on BOTH axes. Never crops. Whatever
-        // axis has leftover space just letterboxes with the body's
-        // black background — no hardcoded ratio, works on any device.
-        var scale = Math.min(m.winW / W, m.winH / H);
-
-        var offsetX = (m.winW - W * scale) / 2 + m.offX;
-        var offsetY = (m.winH - H * scale) / 2 + m.offY;
-
-        vp.style.transform = 'scale(' + scale + ')';
-        vp.style.left = offsetX + 'px';
-        vp.style.top  = offsetY + 'px';
+        root.style.setProperty('--vvw', w + 'px');
+        root.style.setProperty('--vvh', h + 'px');
+        root.style.setProperty('--vv-left', l + 'px');
+        root.style.setProperty('--vv-top', t + 'px');
       }
 
       // Coalesce bursts of resize/scroll events (webviews + iOS chrome
       // animating in/out fire many events in a row) into one paint.
-      function scheduleResize() {
+      function scheduleApply() {
         if (raf) cancelAnimationFrame(raf);
         raf = requestAnimationFrame(function () {
           raf = null;
-          resize();
+          apply();
         });
       }
 
-      resize();
-      window.addEventListener('resize', scheduleResize);
+      apply();
+      window.addEventListener('resize', scheduleApply);
       window.addEventListener('orientationchange', function () {
         // Some browsers report stale innerWidth/Height for a beat right
         // after rotation, so re-measure a couple more times as it settles.
-        scheduleResize();
-        setTimeout(scheduleResize, 100);
-        setTimeout(scheduleResize, 300);
+        scheduleApply();
+        setTimeout(scheduleApply, 100);
+        setTimeout(scheduleApply, 300);
       });
       if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', scheduleResize);
-        window.visualViewport.addEventListener('scroll', scheduleResize);
+        window.visualViewport.addEventListener('resize', scheduleApply);
+        window.visualViewport.addEventListener('scroll', scheduleApply);
       }
-      // Fires once fonts/layout settle after load, and is cheap insurance
-      // for webviews that don't fire resize reliably on init.
-      window.addEventListener('load', scheduleResize);
+      window.addEventListener('load', scheduleApply);
       document.addEventListener('visibilitychange', function () {
-        if (!document.hidden) scheduleResize();
+        if (!document.hidden) scheduleApply();
       });
     })();
   </script>

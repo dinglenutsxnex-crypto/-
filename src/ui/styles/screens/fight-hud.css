@@ -20,13 +20,14 @@
 
 .hud-side {
   position: absolute;
-  top: 8px;
+  top: calc(8px + env(safe-area-inset-top, 0px));
   display: flex;
   flex-direction: column;
   gap: 3px;
+  width: clamp(160px, 34vw, 480px);
 }
-.hud-left  { left:  12px; width: 480px; }
-.hud-right { right: 12px; width: 480px; }
+.hud-left  { left:  calc(12px + env(safe-area-inset-left, 0px)); }
+.hud-right { right: calc(12px + env(safe-area-inset-right, 0px)); }
 
 .hud-name {
   font-family: sans-serif;
@@ -117,7 +118,8 @@
 
 #hud-center {
   position: absolute;
-  top: 0; left: 50%;
+  top: env(safe-area-inset-top, 0px);
+  left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -178,8 +180,8 @@
 
 #hud-joystick {
   position: absolute;
-  bottom: 20px;
-  left: 18px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: calc(18px + env(safe-area-inset-left, 0px));
   width:  152px;   /* stick_circle sprite */
   height: 152px;
   pointer-events: auto;
@@ -211,8 +213,8 @@
 
 #hud-right-panel {
   position: absolute;
-  bottom: 20px;
-  right: 18px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  right: calc(18px + env(safe-area-inset-right, 0px));
   width:  370px;
   height: 271px;   /* dir row (78) + gap (8) + attack area (185) */
   pointer-events: none;
